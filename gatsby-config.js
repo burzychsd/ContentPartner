@@ -6,6 +6,16 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-transition-link`,
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `raleway\:300,400,400i,700` // you can also specify font weights and styles
+        ]
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
