@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import { styles as GlobalStyles } from './../../design_system/global'
 import { Normalize } from 'styled-normalize'
+import Header from './../../components/organisms/Header'
 
 
 const Layout = ({ children }) => (
@@ -20,7 +21,7 @@ const Layout = ({ children }) => (
       <Fragment>
         <GlobalStyles />
         <Normalize />
-        <header></header>
+        <Header />
         <main>{children}</main>
         <footer></footer>
       </Fragment>

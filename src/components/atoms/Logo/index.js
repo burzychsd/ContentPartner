@@ -17,7 +17,7 @@ const Image = styled.img`
 
 const Logo = (props) => (
     <FlexDiv {...props}>
-        <TransitionLink to='/'>
+        <TransitionLink style={{ height: '100%' }} to='/'>
             <Image src={logo} alt='logo' />
         </TransitionLink>
     </FlexDiv>

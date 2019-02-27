@@ -43,9 +43,11 @@ export const styles = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
-    #root {
+    #___gatsby {
+        max-width: 1140px;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        margin: 0 auto;
     }
 `
