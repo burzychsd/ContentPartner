@@ -11,7 +11,7 @@ const Navigation = styled(Flex)`
 
 const MobileNav = ({ clicked, status, innerRefs }) => (
     <Navigation as='nav'>
-        <Logo />
+        <Logo clicked={clicked} status={status} />
         <Hamburger clicked={clicked} status={status} innerRefs={innerRefs} />
     </Navigation>
 )

@@ -6,7 +6,7 @@ import { Normalize } from 'styled-normalize'
 import Header from './../../components/organisms/Header'
 
 
-const Layout = ({ children }) => (
+const Layout = (props) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -21,8 +21,8 @@ const Layout = ({ children }) => (
       <Fragment>
         <GlobalStyles />
         <Normalize />
-        <Header />
-        <main>{children}</main>
+        <Header location={props.location} />
+        <main style={{ paddingTop: 130, position: 'relative', zIndex: 998 }}>{props.children}</main>
         <footer></footer>
       </Fragment>
     )}

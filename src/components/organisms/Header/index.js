@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import { Flex } from './../../../design_system/flexbox'
 import MobileNav from './../../molecules/MobileNav'
+import Link from './../../atoms/TransitionLink'
+import shortid from 'shortid'
+import Background from './../../atoms/MenuBackground'
 import { TimelineLite, Power2 } from 'gsap/TweenMax'
 
-const Container = styled(Flex)`
+const HeaderContainer = styled(Flex)`
     position: fixed;
     width: 100%;
     max-width: 1140px;
@@ -20,7 +23,44 @@ const Container = styled(Flex)`
     }
 `
 
-class Header extends Component {
+const MenuContainer = styled(Flex)`
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1140px;
+    padding: 2rem 5rem;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 997;
+`
+
+const ListContainer = styled(Flex)`
+    width: 100%;
+    flex-flow: ${props => props.direction || 'column nowrap'};
+    transition: opacity 0.55s cubic-bezier(0.86, 0, 0.07, 1);
+`
+
+const ListItem = styled.li`
+    margin: ${props => props.margin || '0.3em auto'};
+    text-align: center;
+
+    &:first-child {
+        margin: ${props => props.margin || '0.6em 0 0.3em 0'};
+    }
+
+    &:last-child {
+        margin: ${props => props.margin || '0.3em 0 0.6em 0'};
+    }
+`
+
+const list = ['O mnie', 'Oferta', 'Portfolio', 'Blog', 'Kontakt']
+const rowMap = Array.from({length: 20}, (v, k) => k+1)
+const columnMap = Array.from({length: 10}, (v, k) => k+1)
+const regex = /\s+/
+class Header extends PureComponent {
 
     state = {
         clicked: false
@@ -29,29 +69,63 @@ class Header extends Component {
     tl = new TimelineLite({ paused: true })
     bar1 = React.createRef()
     bar2 = React.createRef()
+    innerGridRefs = {}
+    gridRefs = []
 
-    handleOnClick = async () => {
-        await this.setState(state => ( { clicked: !state.clicked } ))
-        await this.handleHamburgerAnimation(this.state.clicked, this.hamburgerAnimation(this.tl, this.bar1.current, this.bar2.current))
+    handleOnClick = () => {
+        this.setState(state => ( { clicked: !state.clicked } ))
     }
 
     handleHamburgerAnimation = (status, animation) => {
-
-        status ? animation.play().timeScale(1) : animation.reverse().timeScale(2)
+        status ? animation.play().timeScale(2) : animation.reverse().timeScale(2.5)
     }
 
-    hamburgerAnimation = (tl, bar1, bar2) => tl.to(bar1, 0.3, { transform: 'rotate(45deg)', top: '32px', ease: Power2.easeInOut })
-                                               .to(bar2, 0.3, { transform: 'rotate(-45deg)', bottom: '31px', ease: Power2.easeInOut }, '-=0.2')
+    componentDidUpdate = (prevProps, prevState) => {
+        if(prevState.clicked !== this.state.clicked) {
+            this.handleHamburgerAnimation(this.state.clicked, this.tl)
+        }
+    }
+
+    componentDidMount = async () => {
+        const { bar1, bar2, tl } = this
+        await columnMap.forEach(column => rowMap.forEach(row => {
+            this.innerGridRefs[`grid_item${column}-${row}`] = (ref) => this[`grid_item${column}-${row}`] = ref
+            this.setState({ [`grid_item${column}-${row}`]: `grid_item${column}-${row}` })
+        }))
+
+        this.gridRefs = await Object.values(this.state)
+        .filter(el => typeof el === 'string' && el.includes('grid_item'))
+        .map(el => this[`${el}`]).sort(() => 0.5 - Math.random())
+
+
+        tl.to(bar1.current, 0.25, { transform: 'rotate(45deg)', top: '32px', ease: Power2.easeInOut })
+          .to(bar2.current, 0.25, { transform: 'rotate(-45deg)', bottom: '31px', ease: Power2.easeInOut }, '-=0.2')
+          .staggerTo(this.gridRefs, 0.2, { opacity: 1, ease: Power2.easeInOut }, 0.003)
+    }
 
     render() {
 
         const { clicked } = this.state
-        const { handleOnClick, bar1, bar2 } = this
+        const { handleOnClick, bar1, bar2, innerGridRefs } = this
+
+        const links = list.map((item, i) => 
+            <ListItem key={shortid.generate()}>
+                <Link location={this.props.location} to={`/${item.toLowerCase().replace(regex, '-')}`} delay={1000} clicked={handleOnClick}>
+                    {item}
+                </Link>
+            </ListItem>
+        )
 
         return (
-            <Container as='header'>
+            <HeaderContainer as='header'>
                 <MobileNav clicked={handleOnClick} status={clicked} innerRefs={{ first: bar1, second: bar2 }} />
-            </Container>
+                <MenuContainer>
+                <ListContainer as='ul' style={{ opacity: `${clicked ? 1 : 0}` }}>
+                    {links}
+                </ListContainer>
+                    <Background {...innerGridRefs} />
+                </MenuContainer>
+            </HeaderContainer>
         )
     }
 
