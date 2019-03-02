@@ -14,6 +14,7 @@ const NavLink = styled.a`
             font-weight: 300;
             text-align: center;
             margin: ${props => props.margin || '0.3em 0'};
+            padding: 5px 0;
             cursor: pointer;
 
             &:after {
@@ -22,7 +23,7 @@ const NavLink = styled.a`
                 position: absolute;
                 bottom: 0;
                 left: 0;
-                border-bottom: 1px solid ${Primary};
+                border-bottom: 1px solid ${Gray4};
                 transition: width 0.4s cubic-bezier(0.86, 0, 0.07, 1);
             }
 
@@ -51,7 +52,7 @@ class Link extends Component {
 
     render() {
         return (
-            <NavLink to={this.props.to} onClick={this.handleClick} customStyles={this.props.customStyles} style={{ color: `${ this.isCurrent() ? Gray4 : Primary }` }}>{this.props.children}</NavLink>
+            <NavLink onClick={this.handleClick} customStyles={this.props.customStyles} style={{ color: `${ this.isCurrent() ? Gray4 : Primary }` }}>{this.props.children}</NavLink>
         )
     }
 }

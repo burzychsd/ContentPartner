@@ -4,7 +4,7 @@ import { Flex } from './../../../design_system/flexbox'
 import MobileNav from './../../molecules/MobileNav'
 import Link from './../../atoms/TransitionLink'
 import shortid from 'shortid'
-import Background from './../../atoms/MenuBackground'
+import Background from './../../molecules/MenuBackground'
 import { TimelineLite, Power2 } from 'gsap/TweenMax'
 
 const HeaderContainer = styled(Flex)`
@@ -63,12 +63,15 @@ const regex = /\s+/
 class Header extends PureComponent {
 
     state = {
-        clicked: false
+        clicked: false,
+        animationEnd: false
     }
 
-    tl = new TimelineLite({ paused: true })
+    tl = new TimelineLite({ paused: true, onReverseComplete: () => this.setState(state => ({ animationEnd: !state.animationEnd })) })
     bar1 = React.createRef()
     bar2 = React.createRef()
+    menuContainer = React.createRef()
+    overlayContainer = React.createRef()
     innerGridRefs = {}
     gridRefs = []
 
@@ -78,6 +81,7 @@ class Header extends PureComponent {
 
     handleHamburgerAnimation = (status, animation) => {
         status ? animation.play().timeScale(2) : animation.reverse().timeScale(2.5)
+        console.log(animation.time())
     }
 
     componentDidUpdate = (prevProps, prevState) => {
@@ -87,7 +91,8 @@ class Header extends PureComponent {
     }
 
     componentDidMount = async () => {
-        const { bar1, bar2, tl } = this
+        const { bar1, bar2, tl, menuContainer, overlayContainer } = this
+
         await columnMap.forEach(column => rowMap.forEach(row => {
             this.innerGridRefs[`grid_item${column}-${row}`] = (ref) => this[`grid_item${column}-${row}`] = ref
             this.setState({ [`grid_item${column}-${row}`]: `grid_item${column}-${row}` })
@@ -98,19 +103,21 @@ class Header extends PureComponent {
         .map(el => this[`${el}`]).sort(() => 0.5 - Math.random())
 
 
-        tl.to(bar1.current, 0.25, { transform: 'rotate(45deg)', top: '32px', ease: Power2.easeInOut })
+        tl.to(menuContainer.current, 0.01, { autoAlpha: 1, ease: Power2.easeInOut })
+          .to(bar1.current, 0.25, { transform: 'rotate(45deg)', top: '32px', ease: Power2.easeInOut })
           .to(bar2.current, 0.25, { transform: 'rotate(-45deg)', bottom: '31px', ease: Power2.easeInOut }, '-=0.2')
           .staggerTo(this.gridRefs, 0.2, { opacity: 1, ease: Power2.easeInOut }, 0.003)
+          .to(overlayContainer.current, 1, { opacity: 1, ease: Power2.easeInOut }, '-=0.6')
     }
 
     render() {
 
-        const { clicked } = this.state
-        const { handleOnClick, bar1, bar2, innerGridRefs } = this
+        const { clicked, animationEnd } = this.state
+        const { handleOnClick, bar1, bar2, innerGridRefs, menuContainer, overlayContainer } = this
 
         const links = list.map((item, i) => 
             <ListItem key={shortid.generate()}>
-                <Link location={this.props.location} to={`/${item.toLowerCase().replace(regex, '-')}`} delay={1000} clicked={handleOnClick}>
+                <Link location={this.props.location} delay={1000} to={`/${item.toLowerCase().replace(regex, '-')}`} animationEnd={animationEnd} clicked={handleOnClick}>
                     {item}
                 </Link>
             </ListItem>
@@ -119,11 +126,11 @@ class Header extends PureComponent {
         return (
             <HeaderContainer as='header'>
                 <MobileNav clicked={handleOnClick} status={clicked} innerRefs={{ first: bar1, second: bar2 }} />
-                <MenuContainer>
-                <ListContainer as='ul' style={{ opacity: `${clicked ? 1 : 0}` }}>
-                    {links}
-                </ListContainer>
-                    <Background {...innerGridRefs} />
+                <MenuContainer ref={menuContainer} style={{ visibility: 'hidden', opacity: 0 }}>
+                    <ListContainer as='ul' style={{ opacity: `${clicked ? 1 : 0}` }}>
+                        {links}
+                    </ListContainer>
+                    <Background {...innerGridRefs} overlay={overlayContainer} />
                 </MenuContainer>
             </HeaderContainer>
         )

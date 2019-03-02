@@ -50,4 +50,8 @@ export const styles = createGlobalStyle`
         flex-direction: column;
         margin: 0 auto;
     }
+    .gatsby-image-outer-wrapper, 
+    .gatsby-image-wrapper {
+        height: 100%; 
+    }
 `

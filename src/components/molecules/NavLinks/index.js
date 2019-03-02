@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Flex } from './../../../design_system/flexbox'
-import NavLink from './../../atoms/TransitionLink'
 import shortid from 'shortid'
-import { Gray4 } from './../../../design_system/colors'
 
 const Container = styled(Flex)`
     flex-flow: ${props => props.direction || 'column nowrap'};
@@ -20,15 +18,15 @@ const ListItem = styled.li`
     }
 `
 
-const NavLinks = ({ list, direction }) => {
+const NavLinks = ({ list, direction, location, animationEnd, clicked }) => {
 
     const regex = /\s+/
 
     const links = list.map((item, i) => 
         <ListItem key={shortid.generate()}>
-            <NavLink to={`/${item.toLowerCase().replace(regex, '-')}`}  activeStyle={{ color: `${Gray4}` }}>
+            <Link location={location} delay={1000} to={`/${item.toLowerCase().replace(regex, '-')}`} animationEnd={animationEnd} clicked={clicked}>
                 {item}
-            </NavLink>
+            </Link>
         </ListItem>
     )
 
