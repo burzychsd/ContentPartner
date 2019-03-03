@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{168:function(n,e,t){"use strict";t.r(e);var o=t(0),a=t.n(o),i=t(176),c=t(175);e.default=function(n){return a.a.createElement(i.a,{location:n.location},a.a.createElement(c.a,{title:"O mnie",keywords:["O mnie","content","copywriting"]}))}}}]);
+//# sourceMappingURL=component---src-pages-o-mnie-js-d4dd53de29509aace7d6.js.map

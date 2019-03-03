@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "name": "Content Partner",
+  "description": null,
+  "icons": {
+    "60": "/icons-270f053cf77634e3b5bab0b2f24f0747/firefox_app_60x60.png",
+    "128": "/icons-270f053cf77634e3b5bab0b2f24f0747/firefox_app_128x128.png",
+    "512": "/icons-270f053cf77634e3b5bab0b2f24f0747/firefox_app_512x512.png"
+  },
+  "developer": {
+    "name": null,
+    "url": null
+  }
+}

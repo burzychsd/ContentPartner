@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{169:function(t,e,n){"use strict";n.r(e);var a=n(0),o=n.n(a),c=n(176),r=n(175);e.default=function(t){return o.a.createElement(c.a,{location:t.location},o.a.createElement(r.a,{title:"Oferta",keywords:["Oferta","content","copywriting"]}))}}}]);
+//# sourceMappingURL=component---src-pages-oferta-js-ad23bbf026a9aee8b2a4.js.map

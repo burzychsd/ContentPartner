@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{167:function(t,n,e){"use strict";e.r(n);var o=e(0),a=e.n(o),c=e(176),i=e(175);n.default=function(t){return a.a.createElement(c.a,{location:t.location},a.a.createElement(i.a,{title:"Kontakt",keywords:["Kontakt","content","copywriting"]}))}}}]);
+//# sourceMappingURL=component---src-pages-kontakt-js-87a4ebeae0aa9e0e85bc.js.map
