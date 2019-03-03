@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/ContentPartner",
   siteMetadata: {
     title: `ContentPartner`,
     description: `Description of the site`,
@@ -33,7 +34,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-favicon`,
       options: {
-        logo: "./src/favicon.png",
+        logo: "./src/favicon.svg",
   
         // WebApp Manifest Configuration
         appName: 'Content Partner', // Inferred with your package.json
@@ -74,7 +75,7 @@ module.exports = {
         background_color: `#FFFFFF`,
         theme_color: `#FFFFFF`,
         display: `minimal-ui`,
-        icon: `src/favicon.png`, // This path is relative to the root of the site.
+        icon: `src/favicon.svg`, // This path is relative to the root of the site.
       },
     },
     {

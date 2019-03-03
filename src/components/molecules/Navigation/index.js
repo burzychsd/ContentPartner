@@ -47,7 +47,7 @@ const Navigation = ({ clicked, status, innerRefs, menuContainer, innerGridRefs, 
 
     const links = list.map((item, i) => 
         <ListItem key={shortid.generate()}>
-            <Link location={location} delay={2700} to={`/${item.toLowerCase().replace(regex, '-')}`} 
+            <Link location={location} delay={2000} to={`/${item.toLowerCase().replace(regex, '-')}`} 
             clicked={location.pathname !== `/${item.toLowerCase().replace(regex, '-')}` ? clicked : null}>
                 {item}
             </Link>

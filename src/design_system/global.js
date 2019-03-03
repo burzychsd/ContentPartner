@@ -47,11 +47,6 @@ export const styles = createGlobalStyle`
         max-width: 1140px;
         margin: 0 auto;
     }
-    #site_wrapper {
-        display: flex;
-        min-height: 100vh;
-        flex-direction: column;
-    }
     .gatsby-image-outer-wrapper, 
     .gatsby-image-wrapper {
         height: 100%; 

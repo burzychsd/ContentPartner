@@ -1,10 +1,21 @@
 import React, { Component, Fragment } from "react"
+import styled from  'styled-components'
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import { styles as GlobalStyles } from './../../design_system/global'
+import { Flex } from './../../design_system/flexbox'
 import { Normalize } from 'styled-normalize'
 import Header from './../../components/organisms/Header'
 import PageTransition from './../organisms/PageTransition'
+
+const SiteWrapper = styled(Flex)`
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+`
 
 class Layout extends Component {
 
@@ -15,7 +26,7 @@ class Layout extends Component {
 
   handleTransition = () => this.setState({ transition: true })
 
-  componentDidMount = () => setTimeout(() => this.setState({ isMounted: true }), 1400)
+  componentDidMount = () => setTimeout(() => this.setState({ isMounted: true }), 600)
 
   render() {
     return (
@@ -33,11 +44,11 @@ class Layout extends Component {
         <Fragment>
           <GlobalStyles />
           <Normalize />
-          <div id='site_wrapper'>
+          <SiteWrapper style={{ opacity: `${this.state.isMounted ? 1 : 0}` }}>
             <Header location={this.props.location} transitionStatus={this.state.transition} handleTransition={this.handleTransition} />
             <main style={{ flex: 1, paddingTop: 130, position: 'relative' }}>{this.props.children}</main>
             <footer></footer>
-          </div>
+          </SiteWrapper>
           {!this.state.isMounted && <PageTransition status='onExit'></PageTransition>}
         </Fragment>
       )}
