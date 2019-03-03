@@ -6,13 +6,6 @@ module.exports = {
     author: `@ContentPartner`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-portal`,
-      options: {
-        key: 'page_transition',
-        id: 'page_transition',        
-      },
-    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-transition-link`,

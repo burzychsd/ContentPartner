@@ -13,7 +13,6 @@
     "gatsby-plugin-google-fonts": "0.0.4",
     "gatsby-plugin-manifest": "^2.0.17",
     "gatsby-plugin-offline": "^2.0.24",
-    "gatsby-plugin-portal": "^1.0.7",
     "gatsby-plugin-react-helmet": "^3.0.6",
     "gatsby-plugin-react-svg": "^2.0.0-beta1",
     "gatsby-plugin-sharp": "^2.0.20",
@@ -49,5 +48,8 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
   }
 }

@@ -43,10 +43,6 @@ export const styles = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
-    #___gatsby {
-        max-width: 1140px;
-        margin: 0 auto;
-    }
     .gatsby-image-outer-wrapper, 
     .gatsby-image-wrapper {
         height: 100%; 

@@ -9,6 +9,8 @@ import Header from './../../components/organisms/Header'
 import PageTransition from './../organisms/PageTransition'
 
 const SiteWrapper = styled(Flex)`
+  max-width: 1140px;
+  margin: 0 auto;  
   display: flex;
   min-height: 100vh;
   flex-direction: column;
