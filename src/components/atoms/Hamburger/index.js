@@ -23,7 +23,7 @@ const Bar = styled.div`
 `
 
 const Hamburger = ({ clicked, status, innerRefs, props }) => (
-    <FlexDiv {...props} onClick={clicked}>
+    <FlexDiv {...props} onClick={(e) => clicked(e)}>
         <Bar top={22} ref={innerRefs.first} />
         <Bar bottom={22} ref={innerRefs.second} />
     </FlexDiv>

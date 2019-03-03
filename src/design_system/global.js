@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 import * as text from './typography'
 import * as colors from './colors'
-import bg from './../images/background.png'
+import bg from './../images/png/background.png'
 
 export const styles = createGlobalStyle`
     * {
@@ -12,7 +12,7 @@ export const styles = createGlobalStyle`
     }
     html,
     body {
-        height: 100vh;
+        min-height: 100%;
     }
     html {
         background: url(${bg}) no-repeat center center;
@@ -45,10 +45,12 @@ export const styles = createGlobalStyle`
     }
     #___gatsby {
         max-width: 1140px;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
         margin: 0 auto;
+    }
+    #site_wrapper {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
     }
     .gatsby-image-outer-wrapper, 
     .gatsby-image-wrapper {

@@ -1,14 +1,26 @@
-import React, { Fragment } from "react"
+import React, { Component, Fragment } from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import { styles as GlobalStyles } from './../../design_system/global'
 import { Normalize } from 'styled-normalize'
 import Header from './../../components/organisms/Header'
+import PageTransition from './../organisms/PageTransition'
 
+class Layout extends Component {
 
-const Layout = (props) => (
-  <StaticQuery
-    query={graphql`
+  state = {
+    transition: false,
+    isMounted: false
+  }
+
+  handleTransition = () => this.setState({ transition: true })
+
+  componentDidMount = () => setTimeout(() => this.setState({ isMounted: true }), 1400)
+
+  render() {
+    return (
+      <StaticQuery
+      query={graphql`
       query SiteTitleQuery {
         site {
           siteMetadata {
@@ -16,18 +28,23 @@ const Layout = (props) => (
           }
         }
       }
-    `}
-    render={data => (
-      <Fragment>
-        <GlobalStyles />
-        <Normalize />
-        <Header location={props.location} />
-        <main style={{ paddingTop: 130, position: 'relative', zIndex: 998 }}>{props.children}</main>
-        <footer></footer>
-      </Fragment>
-    )}
-  />
-)
+      `}
+      render={data => (
+        <Fragment>
+          <GlobalStyles />
+          <Normalize />
+          <div id='site_wrapper'>
+            <Header location={this.props.location} transitionStatus={this.state.transition} handleTransition={this.handleTransition} />
+            <main style={{ flex: 1, paddingTop: 130, position: 'relative' }}>{this.props.children}</main>
+            <footer></footer>
+          </div>
+          {!this.state.isMounted && <PageTransition status='onExit'></PageTransition>}
+        </Fragment>
+      )}
+      />
+    )
+  }
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

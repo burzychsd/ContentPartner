@@ -1,19 +1,18 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import styled from 'styled-components'
 import { Flex } from './../../../design_system/flexbox'
-import MobileNav from './../../molecules/MobileNav'
-import Link from './../../atoms/TransitionLink'
-import shortid from 'shortid'
-import Background from './../../molecules/MenuBackground'
+import Navigation from './../../molecules/Navigation'
 import { TimelineLite, Power2 } from 'gsap/TweenMax'
+import PageTransition from './../PageTransition'
+import BulbAnimated from './../../../images/Bulb_animated.svg'
 
 const HeaderContainer = styled(Flex)`
     position: fixed;
     width: 100%;
     max-width: 1140px;
     height: 100px;
-    margin-top: 15px;
-    padding: 0 1.5em;
+    padding: 15px 1.5em 0 1.5em;
+    justify-content: space-between;
 
     align-items: center;
     z-index: 1000;
@@ -23,51 +22,26 @@ const HeaderContainer = styled(Flex)`
     }
 `
 
-const MenuContainer = styled(Flex)`
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 1140px;
-    padding: 2rem 5rem;
-    top: 50px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    z-index: 997;
+const ImageDiv = styled(Flex)`
+  width: 60%;
+  height: 75%;
+  max-width: 600px;
+  max-height: 411px;
+  justify-content: center;
+  align-items: center;
 `
 
-const ListContainer = styled(Flex)`
-    width: 100%;
-    flex-flow: ${props => props.direction || 'column nowrap'};
-    transition: opacity 0.55s cubic-bezier(0.86, 0, 0.07, 1);
-`
-
-const ListItem = styled.li`
-    margin: ${props => props.margin || '0.3em auto'};
-    text-align: center;
-
-    &:first-child {
-        margin: ${props => props.margin || '0.6em 0 0.3em 0'};
-    }
-
-    &:last-child {
-        margin: ${props => props.margin || '0.3em 0 0.6em 0'};
-    }
-`
-
-const list = ['O mnie', 'Oferta', 'Portfolio', 'Blog', 'Kontakt']
 const rowMap = Array.from({length: 20}, (v, k) => k+1)
 const columnMap = Array.from({length: 10}, (v, k) => k+1)
-const regex = /\s+/
+
+
 class Header extends PureComponent {
 
     state = {
-        clicked: false,
-        animationEnd: false
+        clicked: false
     }
 
-    tl = new TimelineLite({ paused: true, onReverseComplete: () => this.setState(state => ({ animationEnd: !state.animationEnd })) })
+    tl = new TimelineLite({ paused: true })
     bar1 = React.createRef()
     bar2 = React.createRef()
     menuContainer = React.createRef()
@@ -75,13 +49,13 @@ class Header extends PureComponent {
     innerGridRefs = {}
     gridRefs = []
 
-    handleOnClick = () => {
+    handleOnClick = (e, link) => {
         this.setState(state => ( { clicked: !state.clicked } ))
+        if ( link === 'link') { this.props.handleTransition() }
     }
 
     handleHamburgerAnimation = (status, animation) => {
         status ? animation.play().timeScale(2) : animation.reverse().timeScale(2.5)
-        console.log(animation.time())
     }
 
     componentDidUpdate = (prevProps, prevState) => {
@@ -112,27 +86,24 @@ class Header extends PureComponent {
 
     render() {
 
-        const { clicked, animationEnd } = this.state
+        const { clicked } = this.state
         const { handleOnClick, bar1, bar2, innerGridRefs, menuContainer, overlayContainer } = this
-
-        const links = list.map((item, i) => 
-            <ListItem key={shortid.generate()}>
-                <Link location={this.props.location} delay={1000} to={`/${item.toLowerCase().replace(regex, '-')}`} animationEnd={animationEnd} clicked={handleOnClick}>
-                    {item}
-                </Link>
-            </ListItem>
-        )
+        const { location, transitionStatus, handleTransition } = this.props
 
         return (
-            <HeaderContainer as='header'>
-                <MobileNav clicked={handleOnClick} status={clicked} innerRefs={{ first: bar1, second: bar2 }} />
-                <MenuContainer ref={menuContainer} style={{ visibility: 'hidden', opacity: 0 }}>
-                    <ListContainer as='ul' style={{ opacity: `${clicked ? 1 : 0}` }}>
-                        {links}
-                    </ListContainer>
-                    <Background {...innerGridRefs} overlay={overlayContainer} />
-                </MenuContainer>
-            </HeaderContainer>
+            <Fragment>
+                <HeaderContainer as='header'>
+                    <Navigation clicked={handleOnClick} status={clicked} 
+                    innerRefs={{ first: bar1, second: bar2 }} menuContainer={menuContainer} 
+                    innerGridRefs={innerGridRefs} overlay={overlayContainer}
+                    location={location} handleTransition={handleTransition} />
+                </HeaderContainer>
+                {transitionStatus && <PageTransition status='onEnter'>
+                    <ImageDiv>
+                        <BulbAnimated style={{ height: '100%' }} />
+                    </ImageDiv>
+                </PageTransition>}
+            </Fragment>
         )
     }
 

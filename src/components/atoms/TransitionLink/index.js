@@ -37,9 +37,18 @@ const NavLink = styled.a`
 
 class Link extends Component {
 
-    handleClick = () => {
-        if (this.props.clicked) { this.props.clicked() }
-        setTimeout(() => navigate(this.props.to), this.props.delay)
+    handleClick = (e, link) => {
+        e.stopPropagation()
+        e.preventDefault()
+        
+        if (this.props.clicked) { this.props.clicked(e, link) }
+        if (this.props.handleTransition && !this.props.clicked && 
+            this.props.location.pathname !== this.props.to) {
+            this.props.handleTransition()
+        }
+        if (this.props.location.pathname !== this.props.to) {
+            setTimeout(() => navigate(this.props.to), this.props.delay)
+        }
     }
 
     isCurrent = () => {
@@ -52,7 +61,7 @@ class Link extends Component {
 
     render() {
         return (
-            <NavLink onClick={this.handleClick} customStyles={this.props.customStyles} style={{ color: `${ this.isCurrent() ? Gray4 : Primary }` }}>{this.props.children}</NavLink>
+            <NavLink onClick={(e) => this.handleClick(e, 'link')} customStyles={this.props.customStyles} style={{ color: `${ this.isCurrent() ? Gray4 : Primary }` }}>{this.props.children}</NavLink>
         )
     }
 }

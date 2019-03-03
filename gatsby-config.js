@@ -5,6 +5,13 @@ module.exports = {
     author: `@ContentPartner`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-portal`,
+      options: {
+        key: 'page_transition',
+        id: 'page_transition',        
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-transition-link`,
@@ -70,6 +77,14 @@ module.exports = {
         icon: `src/favicon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+          rule: {
+            exclude: /png/
+          }
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',

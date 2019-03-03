@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from './../../../images/Bulb.svg'
+import Bulb from './../../../images/Bulb.svg'
 import { Flex } from './../../../design_system/flexbox'
 import Link from './../TransitionLink'
 
@@ -13,14 +13,10 @@ const FlexDiv = styled(Flex)`
     z-index: 999;
 `
 
-const Image = styled.img`
-    height: 100%;
-`
-
 const Logo = (props) => (
     <FlexDiv {...props}>
-        <Link location={null} customStyles='height: 100%' to='/' delay={1000} clicked={props.status ? props.clicked : null}>
-            <Image src={logo} alt='logo' />
+        <Link location={props.location} customStyles='height: 100%' to='/' delay={2700} clicked={props.location.pathname !== '/' && props.status ? props.clicked : null} handleTransition={props.handleTransition}>
+            <Bulb style={{ height: '100%' }} />
         </Link>
     </FlexDiv>
 )

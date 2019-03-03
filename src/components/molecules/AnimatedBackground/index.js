@@ -22,7 +22,7 @@ const Image = () => (
     <StaticQuery
         query={graphql`
         query {
-            Image1: file(relativePath: { eq: "bulb-background.png" }) {
+            Image1: file(relativePath: { eq: "png/bulb-background.png" }) {
             childImageSharp {
                 sizes(maxWidth: 1140) {
                     ...GatsbyImageSharpSizes
@@ -43,7 +43,7 @@ const Row = (props) => {
         <div key={shortid.generate()} ref={props[`grid_item${props.top + 1}-${i + 1}`]} id={`grid_item${props.top + 1}-${i + 1}`} style={{ 
             position: 'absolute', 
             width: '5%', height: '10%', 
-            background: `${Accent}`,
+            background: `${props.color ? props.color : Accent}`,
             top: `${props.top * 10}%`, 
             left: `${i * 5}%`, zIndex: -2, opacity: 0 }}></div>
     )
@@ -74,9 +74,9 @@ class Background extends PureComponent {
                     <Row top={8} {...props} />
                     <Row top={9} {...props} />
                 </div>
-                <Overlay ref={props.overlay}>
+                {props.overlay && <Overlay ref={props.overlay}>
                     <Image />
-                </Overlay>
+                </Overlay>}
             </Fragment>
         )
     }
