@@ -16,7 +16,7 @@ const Wrapper = styled(Flex)`
     opacity: 0;
 
     background: #FFF;
-    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 `
 
 class PageTransition extends React.Component {
@@ -25,12 +25,11 @@ class PageTransition extends React.Component {
 
     componentDidMount = async () => {
         const scrollBarWidth = typeof document !== `undefined` && typeof window !== `undefined` ? window.innerWidth - document.body.offsetWidth : null
-        const condition = this.props.status === 'onExit'
 
         document.body.style.overflow = await 'hidden'
         document.body.style.paddingRight = await scrollBarWidth
-        if (condition) { this.container.current.style.opacity = await 1 } else { this.container.current.style.opacity = await 0 }
-        await setTimeout(() => this.container.current.style.opacity = condition ? 0 : 1, 300)
+        this.container.current.style.opacity = await 0
+        await setTimeout(() => this.container.current.style.opacity = 1, 300)
     }
 
     componentWillUnmount = () => {

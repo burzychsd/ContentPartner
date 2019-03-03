@@ -6,7 +6,6 @@ import { styles as GlobalStyles } from './../../design_system/global'
 import { Flex } from './../../design_system/flexbox'
 import { Normalize } from 'styled-normalize'
 import Header from './../../components/organisms/Header'
-import PageTransition from './../organisms/PageTransition'
 
 const SiteWrapper = styled(Flex)`
   max-width: 1140px;
@@ -16,7 +15,7 @@ const SiteWrapper = styled(Flex)`
   flex-direction: column;
 
   opacity: 0;
-  transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: all 0.2s cubic-bezier(0.86, 0, 0.07, 1);
 `
 
 class Layout extends Component {
@@ -28,7 +27,7 @@ class Layout extends Component {
 
   handleTransition = () => this.setState({ transition: true })
 
-  componentDidMount = () => setTimeout(() => this.setState({ isMounted: true }), 600)
+  componentDidMount = () => setTimeout(() => this.setState({ isMounted: true }), 200)
 
   render() {
     return (
@@ -51,7 +50,6 @@ class Layout extends Component {
             <main style={{ flex: 1, paddingTop: 130, position: 'relative' }}>{this.props.children}</main>
             <footer></footer>
           </SiteWrapper>
-          {!this.state.isMounted && <PageTransition status='onExit'></PageTransition>}
         </Fragment>
       )}
       />

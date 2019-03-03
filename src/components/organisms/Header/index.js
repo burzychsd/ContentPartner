@@ -29,6 +29,7 @@ const ImageDiv = styled(Flex)`
   max-height: 411px;
   justify-content: center;
   align-items: center;
+  padding: 1em;
 `
 
 const rowMap = Array.from({length: 20}, (v, k) => k+1)
@@ -98,7 +99,7 @@ class Header extends PureComponent {
                     innerGridRefs={innerGridRefs} overlay={overlayContainer}
                     location={location} handleTransition={handleTransition} />
                 </HeaderContainer>
-                {transitionStatus && <PageTransition status='onEnter'>
+                {transitionStatus && <PageTransition>
                     <ImageDiv>
                         <BulbAnimated style={{ height: '100%' }} />
                     </ImageDiv>

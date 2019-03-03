@@ -15,7 +15,7 @@ const FlexDiv = styled(Flex)`
 
 const Logo = (props) => (
     <FlexDiv {...props}>
-        <Link location={props.location} customStyles='height: 100%' to='/' delay={2000} clicked={props.location.pathname !== '/' && props.status ? props.clicked : null} handleTransition={props.handleTransition}>
+        <Link location={props.location} customStyles='height: 100%' to='/' delay={1900} clicked={props.location.pathname !== '/' && props.status ? props.clicked : null} handleTransition={props.handleTransition}>
             <Bulb style={{ height: '100%' }} />
         </Link>
     </FlexDiv>
