@@ -31,6 +31,7 @@ export const styles = createGlobalStyle`
         background: url(${bg}) no-repeat center center;
         background-size: cover;
         transform: scale(1, 1);
+        overflow: hidden;
     }
     ol, ul {
         list-style: none;
@@ -52,7 +53,7 @@ export const styles = createGlobalStyle`
         border-spacing: 0;
     }
     .tl-wrapper {
-        overflow: hidden;
+        height: 100%;
     }
     .gatsby-image-outer-wrapper, 
     .gatsby-image-wrapper {

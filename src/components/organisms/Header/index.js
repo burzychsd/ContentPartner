@@ -76,12 +76,13 @@ class Header extends PureComponent {
 
         const { clicked } = this.state
         const { handleOnClick, bar1, bar2, innerGridRefs, menuContainer, overlayContainer } = this
-        const { location, handleTransition } = this.props
+        const { location, handleTransition, endTime } = this.props
 
         return (
             <Fragment>
                 <HeaderContainer as='header'>
                     <Navigation clicked={handleOnClick} status={clicked} 
+                    endTime={endTime}
                     innerRefs={{ first: bar1, second: bar2 }} menuContainer={menuContainer} 
                     innerGridRefs={innerGridRefs} overlay={overlayContainer}
                     location={location} handleTransition={handleTransition} />

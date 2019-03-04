@@ -43,11 +43,11 @@ const ListItem = styled.li`
 const list = ['O mnie', 'Oferta', 'Portfolio', 'Kontakt', 'Blog']
 const regex = /\s+/
 
-const Navigation = ({ clicked, status, innerRefs, menuContainer, innerGridRefs, location, overlay, handleTransition }) => {
+const Navigation = ({ clicked, status, innerRefs, menuContainer, innerGridRefs, location, overlay, handleTransition, endTime }) => {
 
     const links = list.map((item, i) => 
         <ListItem key={shortid.generate()}>
-            <Link location={location} delay={1300} to={`/${item.toLowerCase().replace(regex, '-')}`} 
+            <Link location={location} delay={endTime} to={`/${item.toLowerCase().replace(regex, '-')}`} 
             clicked={location.pathname !== `/${item.toLowerCase().replace(regex, '-')}` ? clicked : null}>
                 {item}
             </Link>
@@ -56,7 +56,7 @@ const Navigation = ({ clicked, status, innerRefs, menuContainer, innerGridRefs, 
 
     return (
         <Fragment>
-            <Logo clicked={clicked} status={status} location={location} handleTransition={handleTransition} />
+            <Logo clicked={clicked} status={status} location={location} handleTransition={handleTransition} endTime={endTime} />
             <Hamburger clicked={clicked} status={status} innerRefs={innerRefs} />
             <MenuContainer as='nav' ref={menuContainer} style={{ visibility: 'hidden', opacity: 0 }}>
                 <ListContainer as='ul' style={{ opacity: `${status ? 1 : 0}` }}>

@@ -36,7 +36,6 @@ const SiteWrapper = styled(Flex)`
   min-height: 100vh;
   flex-direction: column;
   z-index: 2;
-	box-shadow: 0 10px 6px -6px #777;
 
   @media (max-width: ${Lg}px) {
     @supports (-webkit-appearance:none) {
@@ -88,7 +87,10 @@ class Layout extends Component {
 
     tl.to(body, 0.6, { scaleX: 0.8, scaleY: 0.8, ease: Power2.easeInOut })
       .to(transitionFirst.current, 0.6, { width: '100%', ease: Power2.easeIn })
-      .to(body, 0, { scaleX: 1, scaleY: 1, ease: Power2.easeInOut, onComplete: () => setTimeout(() => this.setState({ transition: false }), 200) })
+      .to(body, 0.01, { scaleX: 1, scaleY: 1, ease: Power2.easeInOut })
+
+    
+    this.setState({ endTime: tl.duration() * 1000 })
 
     setTimeout(() => bulbIcon.style.opacity = 1, 50)
 
@@ -107,6 +109,8 @@ class Layout extends Component {
       this.tl.play()
     }
   }
+
+  componentWillUnmount = () => this.setState({ transition: false })
 
   handleTransition = () => this.setState({ transition: true })
 
@@ -127,7 +131,7 @@ class Layout extends Component {
           <GlobalStyles />
           <Normalize />
           <SiteWrapper>
-            <Header location={this.props.location} transitionStatus={this.state.transition} handleTransition={this.handleTransition} />
+            <Header location={this.props.location} endTime={this.state.endTime} handleTransition={this.handleTransition} />
             <main style={{ flex: 1, paddingTop: 130, position: 'relative' }}>{this.props.children}</main>
             <footer></footer>
             <FirstTransition ref={this.transitionFirst} style={{ display: `${this.state.transition ? 'inherit' : 'none'}` }}></FirstTransition>
