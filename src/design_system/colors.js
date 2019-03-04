@@ -8,7 +8,7 @@ export const PrimaryBg = '#FFFFFF'
 export const Accent = '#F6F5F5'
 export const AccentLight = '#F8F7F7'
 export const AccentDark  = '#E0DFDF'
-export const AccentBg = '#85FFC7'
+export const AccentBg = '#FEFCAD'
 
 // SHADES
 export const Dark = '#080500'

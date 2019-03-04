@@ -3,11 +3,9 @@ import styled from 'styled-components'
 import { Flex } from './../../../design_system/flexbox'
 import Navigation from './../../molecules/Navigation'
 import { TimelineLite, Power2 } from 'gsap/TweenMax'
-import PageTransition from './../PageTransition'
-import BulbAnimated from './../../../images/Bulb_animated.svg'
 
 const HeaderContainer = styled(Flex)`
-    position: fixed;
+    position: absolute;
     width: 100%;
     max-width: 1140px;
     height: 100px;
@@ -22,19 +20,8 @@ const HeaderContainer = styled(Flex)`
     }
 `
 
-const ImageDiv = styled(Flex)`
-  width: 60%;
-  height: 75%;
-  max-width: 600px;
-  max-height: 411px;
-  justify-content: center;
-  align-items: center;
-  padding: 1em;
-`
-
 const rowMap = Array.from({length: 20}, (v, k) => k+1)
 const columnMap = Array.from({length: 10}, (v, k) => k+1)
-
 
 class Header extends PureComponent {
 
@@ -89,7 +76,7 @@ class Header extends PureComponent {
 
         const { clicked } = this.state
         const { handleOnClick, bar1, bar2, innerGridRefs, menuContainer, overlayContainer } = this
-        const { location, transitionStatus, handleTransition } = this.props
+        const { location, handleTransition } = this.props
 
         return (
             <Fragment>
@@ -99,11 +86,6 @@ class Header extends PureComponent {
                     innerGridRefs={innerGridRefs} overlay={overlayContainer}
                     location={location} handleTransition={handleTransition} />
                 </HeaderContainer>
-                {transitionStatus && <PageTransition>
-                    <ImageDiv>
-                        <BulbAnimated style={{ height: '100%' }} />
-                    </ImageDiv>
-                </PageTransition>}
             </Fragment>
         )
     }

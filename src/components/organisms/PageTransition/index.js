@@ -2,8 +2,8 @@ import React from "react"
 import styled from 'styled-components'
 import { Flex } from './../../../design_system/flexbox'
 
-const Wrapper = styled(Flex)`
-    position: fixed;
+const PageTransition = styled(Flex)`
+    position: absolute;
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -15,28 +15,13 @@ const Wrapper = styled(Flex)`
     z-index: 1001;
     opacity: 0;
 
-    background: #FFF;
+    background: #F6F5F5;
     transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 `
 
 class PageTransition extends React.Component {
 
     container = React.createRef()
-
-    componentDidMount = async () => {
-        const scrollBarWidth = typeof document !== `undefined` && typeof window !== `undefined` ? window.innerWidth - document.body.offsetWidth : null
-
-        document.body.style.overflow = await 'hidden'
-        document.body.style.paddingRight = await scrollBarWidth
-        this.container.current.style.opacity = await 0
-        await setTimeout(() => this.container.current.style.opacity = 1, 300)
-    }
-
-    componentWillUnmount = () => {
-        this.container.current.style.opacity = 0
-        document.body.style.overflow = 'auto'
-        document.body.style.paddingRight = 0
-    }
 
     render() {
         const { children } = this.props

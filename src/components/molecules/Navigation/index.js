@@ -40,14 +40,14 @@ const ListItem = styled.li`
     }
 `
 
-const list = ['O mnie', 'Oferta', 'Portfolio', 'Blog', 'Kontakt']
+const list = ['O mnie', 'Oferta', 'Portfolio', 'Kontakt', 'Blog']
 const regex = /\s+/
 
 const Navigation = ({ clicked, status, innerRefs, menuContainer, innerGridRefs, location, overlay, handleTransition }) => {
 
     const links = list.map((item, i) => 
         <ListItem key={shortid.generate()}>
-            <Link location={location} delay={1900} to={`/${item.toLowerCase().replace(regex, '-')}`} 
+            <Link location={location} delay={1200} to={`/${item.toLowerCase().replace(regex, '-')}`} 
             clicked={location.pathname !== `/${item.toLowerCase().replace(regex, '-')}` ? clicked : null}>
                 {item}
             </Link>

@@ -4,23 +4,8 @@ import * as colors from './colors'
 import bg from './../images/png/background.png'
 
 const dash = keyframes`
-    0% {
-        stroke-dashoffset: 900;
-        stroke-opacity: 0;
-        opacity: 0;
-        fill: #463E43;
-    }
-
-    50% {
-        stroke-opacity: 1;
-        opacity: 1;
-    }
-    
-    100% {
+    to {
         stroke-dashoffset: 0;
-        stroke-opacity: 0;
-        opacity: 0;
-        fill: none;
     }
 `
 
@@ -36,14 +21,16 @@ export const styles = createGlobalStyle`
         min-height: 100%;
     }
     html {
-        background: url(${bg}) no-repeat center center;
-        background-size: cover;
+        background: ${colors.Accent};
     }
     body {
         font-family: ${text.fontPrimary};
         font-size: ${text.baseSize}
         color: ${colors.text};
         line-height: ${text.bodyLineHeight};
+        background: url(${bg}) no-repeat center center;
+        background-size: cover;
+        transform: scale(1, 1);
     }
     ol, ul {
         list-style: none;
@@ -64,15 +51,17 @@ export const styles = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
+    .tl-wrapper {
+        overflow: hidden;
+    }
     .gatsby-image-outer-wrapper, 
     .gatsby-image-wrapper {
         height: 100%; 
     }
-    .path {
-        stroke-dasharray: 900;
-        stroke-dashoffset: 900;
-        animation: ${dash} 2.2s cubic-bezier(0.86, 0, 0.07, 1);
-        transition: opacity 600ms cubic-bezier(0.86, 0, 0.07, 1);
+    .light {
+        stroke-dasharray: 116 118;
+        stroke-dashoffset: 117;
+        animation: ${dash} 1.6s cubic-bezier(0.86, 0, 0.07, 1) 400ms;
     }
 
 `
