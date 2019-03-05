@@ -10,12 +10,15 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-transition-link`,
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
-          `raleway\:300,400,400i,700` // you can also specify font weights and styles
-        ]
-      }
+          {
+            family: `Raleway`,
+            variants: [`300`, `400`, `700`]
+          }
+        ],
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
