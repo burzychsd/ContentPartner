@@ -27,6 +27,8 @@ class Link extends PureComponent {
     }
 
     isCurrent = () => {
+        const { location } = this.props
+
         if (location) {
             return location.pathname === to
         } else {
