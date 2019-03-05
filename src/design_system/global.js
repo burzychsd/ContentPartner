@@ -16,12 +16,9 @@ export const styles = createGlobalStyle`
         margin: 0;
         -webkit-tap-highlight-color: transparent;
     }
-    html,
-    body {
-        min-height: 100%;
-    }
     html {
         background: ${colors.Accent};
+        height: 100%;
     }
     body {
         font-family: ${text.fontPrimary};
@@ -32,6 +29,7 @@ export const styles = createGlobalStyle`
         background-size: cover;
         transform: scale(1, 1);
         overflow: hidden;
+        min-height: 100%;
     }
     ol, ul {
         list-style: none;

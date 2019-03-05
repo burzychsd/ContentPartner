@@ -3,7 +3,6 @@ import styled, { css } from  'styled-components'
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import { styles as GlobalStyles } from './../../design_system/global'
-import { Lg } from './../../design_system/breakpoints'
 import { Flex } from './../../design_system/flexbox'
 import { Normalize } from 'styled-normalize'
 import Header from './../../components/organisms/Header'
@@ -33,18 +32,8 @@ const SiteWrapper = styled(Flex)`
   max-width: 1140px;
   margin: 0 auto;
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
   z-index: 2;
-
-  @media (max-width: ${Lg}px) {
-    @supports (-webkit-appearance:none) {
-      & {
-        min-height: calc(100vh - 56px);
-      }
-    }
-  }
-}
 
   ${transition};
 `
@@ -73,7 +62,9 @@ class Layout extends Component {
 
   state = {
     transition: false,
-    isMounted: false
+    isMounted: false,
+    width: window.innerWidth,
+    height: window.innerHeight
   }
 
   initialTween
@@ -89,8 +80,10 @@ class Layout extends Component {
       .to(transitionFirst.current, 0.6, { width: '100%', ease: Power2.easeIn })
       .to(body, 0.01, { scaleX: 1, scaleY: 1, ease: Power2.easeInOut })
 
-    
     this.setState({ endTime: tl.duration() * 1000 })
+
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions)
 
     setTimeout(() => bulbIcon.style.opacity = 1, 50)
 
@@ -110,9 +103,14 @@ class Layout extends Component {
     }
   }
 
-  componentWillUnmount = () => this.setState({ transition: false })
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.updateWindowDimensions)
+    this.setState({ transition: false }) 
+  }
 
   handleTransition = () => this.setState({ transition: true })
+
+  updateWindowDimensions = () => this.setState({ width: window.innerWidth, height: window.innerHeight })
 
   render() {
     return (
@@ -130,7 +128,7 @@ class Layout extends Component {
         <Fragment>
           <GlobalStyles />
           <Normalize />
-          <SiteWrapper>
+          <SiteWrapper style={{ minHeight: `${this.state.height}px` }}>
             <Header location={this.props.location} endTime={this.state.endTime} handleTransition={this.handleTransition} />
             <main style={{ flex: 1, paddingTop: 130, position: 'relative' }}>{this.props.children}</main>
             <footer></footer>
