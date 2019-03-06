@@ -1,24 +1,10 @@
+// DEPENDENCIES
 import React, { PureComponent, Fragment } from 'react'
-import styled from 'styled-components'
-import { Flex } from './../../../design_system/flexbox'
-import Navigation from './../../molecules/Navigation'
 import { TimelineLite, Power2 } from 'gsap/TweenMax'
 
-const HeaderContainer = styled(Flex)`
-    position: absolute;
-    width: 100%;
-    max-width: 1140px;
-    height: 100px;
-    padding: 15px 1.5em 0 1.5em;
-    justify-content: space-between;
-
-    align-items: center;
-    z-index: 1000;
-
-    @media (min-width: 1140px) {
-        padding: 0;
-    }
-`
+// COMPONENTS
+import Navigation from './../../molecules/Navigation'
+import { HeaderContainer } from './styled'
 
 const rowMap = Array.from({length: 20}, (v, k) => k+1)
 const columnMap = Array.from({length: 10}, (v, k) => k+1)
@@ -53,7 +39,6 @@ class Header extends PureComponent {
     }
 
     componentDidMount = async () => {
-        const { bar1, bar2, tl, menuContainer, overlayContainer } = this
 
         await columnMap.forEach(column => rowMap.forEach(row => {
             this.innerGridRefs[`grid_item${column}-${row}`] = (ref) => this[`grid_item${column}-${row}`] = ref
@@ -64,13 +49,14 @@ class Header extends PureComponent {
         .filter(el => typeof el === 'string' && el.includes('grid_item'))
         .map(el => this[`${el}`]).sort(() => 0.5 - Math.random())
 
-
-        tl.to(menuContainer.current, 0.01, { autoAlpha: 1, ease: Power2.easeInOut })
-          .to(bar1.current, 0.25, { transform: 'rotate(45deg)', top: '32px', ease: Power2.easeInOut })
-          .to(bar2.current, 0.25, { transform: 'rotate(-45deg)', bottom: '31px', ease: Power2.easeInOut }, '-=0.2')
-          .staggerTo(this.gridRefs, 0.2, { opacity: 1, ease: Power2.easeInOut }, 0.003)
-          .to(overlayContainer.current, 1, { opacity: 1, ease: Power2.easeInOut }, '-=0.6')
+        this.navAnimation()
     }
+
+    navAnimation = () => this.tl.to(this.menuContainer.current, 0.01, { autoAlpha: 1, ease: Power2.easeInOut })
+                             .to(this.bar1.current, 0.25, { transform: 'rotate(45deg)', top: '32px', ease: Power2.easeInOut })
+                             .to(this.bar2.current, 0.25, { transform: 'rotate(-45deg)', bottom: '31px', ease: Power2.easeInOut }, '-=0.2')
+                             .staggerTo(this.gridRefs, 0.2, { opacity: 1, ease: Power2.easeInOut }, 0.003)
+                             .to(this.overlayContainer.current, 1, { opacity: 1, ease: Power2.easeInOut }, '-=0.6')
 
     render() {
 

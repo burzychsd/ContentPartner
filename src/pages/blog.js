@@ -1,6 +1,6 @@
 import React from "react"
 
-import Layout from "../components/template/layout"
+import Layout from "../components/template/Layout"
 import SEO from "../components/template/seo"
 
 const Blog = (props) => (
