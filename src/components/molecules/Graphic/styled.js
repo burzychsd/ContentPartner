@@ -10,6 +10,6 @@ export const Wrapper = styled(Flex)`
     max-height: 400px;
     max-width: 419px;
     width: 100%;
-    height: 80vh;
+    height: 80%;
     ${props => props.side || null};
 `
