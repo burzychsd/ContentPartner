@@ -26,17 +26,17 @@ class Layout extends Component {
   tl = new TimelineLite({ paused: true })
   transitionFirst = React.createRef()
   transitionSecond = React.createRef()
-  body = document.getElementsByTagName('body')
 
   componentDidMount = () => {
     const { transitionSecond, bulbIcon, tl } = this
+    const body = document.getElementsByTagName('body')
 
-    this.animationOnLoad()
+    this.animationOnExit(body)
     this.updateWindowDimensions();
     
     window.addEventListener('resize', this.updateWindowDimensions)
 
-    setTimeout(() => bulbIcon.style.opacity = 1, 50)
+    setTimeout(() => bulbIcon.style.opacity = 1, 0.50)
 
     setTimeout(() => {
       transitionSecond.current.style.opacity = 0
@@ -61,9 +61,9 @@ class Layout extends Component {
     this.setState({ transition: false }) 
   }
 
-  animationOnLoad = () => this.tl.to(this.body, 0.5, { scaleX: 0.8, scaleY: 0.8, ease: Power2.easeInOut })
-                                 .to(this.transitionFirst.current, 0.4, { width: '100%', ease: Power2.easeIn })
-                                 .to(this.body, 0.01, { scaleX: 1, scaleY: 1, ease: Power2.easeInOut })
+  animationOnExit = (body) => this.tl.to(body, 0.5, { scaleX: 0.8, scaleY: 0.8, ease: Power2.easeInOut })
+                                 .to(this.transitionFirst.current, 0.45, { width: '100%', ease: Power2.easeIn })
+                                 .to(body, 0.01, { scaleX: 1, scaleY: 1, ease: Power2.easeInOut })
 
   handleTransition = () => this.setState({ transition: true })
 
@@ -85,12 +85,12 @@ class Layout extends Component {
         <Fragment>
           <GlobalStyles />
           <Normalize />
-          <SiteWrapper style={{ minHeight: `${this.state.height}px` }}>
+          <SiteWrapper style={{ height: `${this.state.height}px` }}>
             <Header location={this.props.location} endTime={this.state.endTime} handleTransition={this.handleTransition} />
-            <main style={{ flex: 1, paddingTop: 130, position: 'relative' }}>{this.props.children}</main>
+            <main style={{ flex: 1, marginTop: 115, position: 'relative' }}>{this.props.children}</main>
             <footer></footer>
-            <FirstTransition ref={this.transitionFirst} style={{ display: `${this.state.transition ? 'inherit' : 'none'}` }}></FirstTransition>
-            <SecondTransition ref={this.transitionSecond}>
+            <FirstTransition ref={this.transitionFirst} style={{ display: `${this.state.transition ? 'inherit' : 'none'}`, minHeight: `${this.state.height}px` }}></FirstTransition>
+            <SecondTransition ref={this.transitionSecond} style={{ minHeight: `${this.state.height}px` }}>
                 <ImageDiv>
                   <BulbAnimated innerRef={ref => this.bulbIcon = ref} />
                 </ImageDiv>

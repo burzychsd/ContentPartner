@@ -11,7 +11,6 @@ const transition = css`
 `
 const styles = css`
   position: fixed;
-  height: 100%;
   top: 0;
   bottom: 0;
   left: 0;
@@ -22,7 +21,6 @@ const styles = css`
 `
 
 export const SiteWrapper = styled(Flex)`
-  position: relative;
   max-width: 1140px;
   margin: 0 auto;
   display: flex;

@@ -15,7 +15,7 @@ module.exports = {
         fonts: [
           {
             family: `Raleway`,
-            variants: [`300`, `400`, `700`]
+            variants: [`100`, `200`, `300`, `700`]
           }
         ],
       },

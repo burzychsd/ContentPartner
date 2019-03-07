@@ -25,10 +25,8 @@ export const styles = createGlobalStyle`
         font-size: ${text.baseSize}
         color: ${colors.text};
         line-height: ${text.bodyLineHeight};
-        background: url(${bg}) no-repeat center center;
-        background-size: cover;
+        background: url(${bg}) repeat center center;
         transform: scale(1, 1);
-        overflow: hidden;
         min-height: 100%;
     }
     ol, ul {
