@@ -4,6 +4,9 @@ import * as colors from './colors'
 import bg from './../images/png/background.png'
 
 const dash = keyframes`
+    from {
+        stroke-dashoffset: 117;
+    }
     to {
         stroke-dashoffset: 0;
     }
@@ -57,7 +60,7 @@ export const styles = createGlobalStyle`
     }
     .light {
         stroke-dasharray: 116 118;
-        stroke-dashoffset: 117;
+        stroke-dashoffset: 0;
         animation: ${dash} 1.6s cubic-bezier(0.86, 0, 0.07, 1) 400ms;
     }
 

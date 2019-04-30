@@ -9,6 +9,8 @@ import { Normalize } from 'styled-normalize'
 import Header from '../../organisms/Header'
 import BulbAnimated from '../../atoms/BulbAnimated'
 import { SiteWrapper, FirstTransition, SecondTransition, ImageDiv } from './styled'
+import SocialMedia from '../../atoms/SocialMedia'
+import AnimatedHeadline from '../../atoms/AnimatedHeadline'
 
 // STYLED_SYSTEM
 import { styles as GlobalStyles } from '../../../design_system/global'
@@ -38,23 +40,23 @@ class Layout extends Component {
 
     setTimeout(() => bulbIcon.style.opacity = 1, 0.50)
 
-    setTimeout(() => {
-      transitionSecond.current.style.opacity = 0
-    }, 1700)
+    // setTimeout(() => {
+    //   transitionSecond.current.style.opacity = 0
+    // }, 1700)
 
-    setTimeout(async () => {
-      await this.setState({ isMounted: true })
-      await setTimeout(() => transitionSecond.current.style.display = 'none', 100)
-    }, 2100)
+    // setTimeout(async () => {
+    //   await this.setState({ isMounted: true })
+    //   await setTimeout(() => transitionSecond.current.style.display = 'none', 100)
+    // }, 2100)
 
-    this.setState({ endTime: tl.duration() * 1000 })
+    // this.setState({ endTime: tl.duration() * 1000 })
   }
 
-  componentDidUpdate = (prevProps, prevState) => {
-    if (prevState.transition !== this.state.transition) {
-      this.tl.play()
-    }
-  }
+  // componentDidUpdate = (prevProps, prevState) => {
+  //   if (prevState.transition !== this.state.transition) {
+  //     this.tl.play()
+  //   }
+  // }
 
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.updateWindowDimensions)
@@ -90,10 +92,12 @@ class Layout extends Component {
             <main style={{ flex: 1, marginTop: 115, position: 'relative' }}>{this.props.children}</main>
             <footer></footer>
             <FirstTransition ref={this.transitionFirst} style={{ display: `${this.state.transition ? 'inherit' : 'none'}`, minHeight: `${this.state.height}px` }}></FirstTransition>
-            <SecondTransition ref={this.transitionSecond} style={{ minHeight: `${this.state.height}px` }}>
+            <SecondTransition ref={this.transitionSecond} style={{ minHeight: `${this.state.height}px`, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                 <ImageDiv>
                   <BulbAnimated innerRef={ref => this.bulbIcon = ref} />
                 </ImageDiv>
+                <AnimatedHeadline />
+                <SocialMedia />
             </SecondTransition>
           </SiteWrapper>
         </Fragment>

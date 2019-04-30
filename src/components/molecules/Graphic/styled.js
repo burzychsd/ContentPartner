@@ -8,8 +8,8 @@ import { Flex } from './../../../design_system/flexbox'
 export const Wrapper = styled(Flex)`
     position: relative;
     max-height: 400px;
-    max-width: 419px;
     width: 100%;
     height: 80%;
     ${props => props.side || null};
+    z-index: -3;
 `

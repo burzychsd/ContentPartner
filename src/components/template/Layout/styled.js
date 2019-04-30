@@ -26,7 +26,7 @@ export const SiteWrapper = styled(Flex)`
   display: flex;
   flex-direction: column;
   z-index: 2;
-
+  
   ${transition};
 `
 
@@ -45,7 +45,7 @@ export const SecondTransition = styled(Flex)`
 
 export const ImageDiv = styled(Flex)`
   width: 100%;
-  height: 60%;
+  height: 50%;
   maxHeight: 411px;
   justify-content: center;
 `
