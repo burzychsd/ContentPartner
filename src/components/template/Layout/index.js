@@ -9,7 +9,7 @@ import { Normalize } from 'styled-normalize'
 import Header from '../../organisms/Header'
 import BulbAnimated from '../../atoms/BulbAnimated'
 import { SiteWrapper, FirstTransition, SecondTransition, ImageDiv } from './styled'
-import SocialMedia from '../../atoms/SocialMedia'
+import EmailBtn from './../../../images/email.svg'
 import AnimatedHeadline from '../../atoms/AnimatedHeadline'
 
 // STYLED_SYSTEM
@@ -101,7 +101,7 @@ class Layout extends Component {
                   <BulbAnimated innerRef={ref => this.bulbIcon = ref} />
                 </ImageDiv>
                 <AnimatedHeadline showHeadline={this.state.showHeadline} />
-                <SocialMedia />
+                <a href='mailto:franciszekbudzbon@prokonto.pl' style={{ height: 32, position: 'absolute', right: '1em', bottom: '0.5em', width: 32 }}><EmailBtn style={{ height: '100%' }} /></a>
             </SecondTransition>
           </SiteWrapper>
         </Fragment>
