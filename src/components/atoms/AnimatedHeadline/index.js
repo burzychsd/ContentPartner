@@ -19,7 +19,7 @@ const Animated = styled(TextAnim)`
 `
 
 const AnimatedHeadline = () => (
-    <Animated component='h1' delay={400} duration={600}>{`${'>'} Strona w trakcie budowy`}</Animated>
+    <Animated component='h1' duration={600}>{`${'>'} Strona w trakcie budowy`}</Animated>
 )
 
 export default AnimatedHeadline
