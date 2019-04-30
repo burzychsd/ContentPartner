@@ -18,8 +18,8 @@ const Animated = styled(TextAnim)`
     }
 `
 
-const AnimatedHeadline = () => (
-    <Animated component='h1' duration={600}>{`${'>'} Strona w trakcie budowy`}</Animated>
+const AnimatedHeadline = ({ showHeadline }) => (
+    <Animated component='h1' delay={400} duration={600} style={{ opacity: showHeadline ? 1 : 0, transition: 'opacity 0.4s cubic-bezier(0.86, 0, 0.07, 1)' }}>{`${'>'} Strona w trakcie budowy`}</Animated>
 )
 
 export default AnimatedHeadline

@@ -21,7 +21,8 @@ class Layout extends Component {
     transition: false,
     isMounted: false,
     width: 0,
-    height: 0
+    height: 0,
+    showHeadline: false
   }
 
   initialTween
@@ -38,7 +39,10 @@ class Layout extends Component {
     
     window.addEventListener('resize', this.updateWindowDimensions)
 
-    setTimeout(() => bulbIcon.style.opacity = 1, 0.50)
+    setTimeout(() => {
+      bulbIcon.style.opacity = 1
+      this.setState({ showHeadline: true })
+    }, 0.50)
 
     // setTimeout(() => {
     //   transitionSecond.current.style.opacity = 0
@@ -96,7 +100,7 @@ class Layout extends Component {
                 <ImageDiv>
                   <BulbAnimated innerRef={ref => this.bulbIcon = ref} />
                 </ImageDiv>
-                <AnimatedHeadline />
+                <AnimatedHeadline showHeadline={this.state.showHeadline} />
                 <SocialMedia />
             </SecondTransition>
           </SiteWrapper>
