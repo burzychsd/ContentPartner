@@ -3,11 +3,16 @@ import React, { Fragment } from 'react'
 
 // COMPONENTS
 import SEO from '../components/templates/SEO'
+import Section from '../components/molecules/Section'
+import HomeContent from '../components/organisms/HomeContent'
+
 
 const IndexPage = () => (
     <Fragment>
         <SEO title="Home" keywords={[`website`, `personal`, `blog`]} />
-        <h1 css={tw`m-0`}>Home</h1>
+        <Section sectionCss={tw`w-full flex-col items-center xl:items-start`} style={{ maxWidth: 960, height: '100%', margin: '0 auto' }}>
+            <HomeContent />
+        </Section>
     </Fragment>
 )
 

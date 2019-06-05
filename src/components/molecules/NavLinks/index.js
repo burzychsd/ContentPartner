@@ -32,14 +32,6 @@ const NavLinks = (props) => {
         className: 'navLink',
     }
 
-    const navLinks = links.map(link => 
-        <NavLink 
-        to={link.replace(/\s+/g, '-').toLowerCase()}
-        key={shortid.generate()}
-        onClick={() => setToggle(toggle => !toggle)}
-        {...linkProps}>{link}</NavLink>
-    )
-
     return (
         <Flex {...containerProps} css={tw`w-4/5 mx-auto justify-center align-items`}>
             <Flex {...linkContainerProps} css={tw`w-auto h-auto flex-col align-items`}>

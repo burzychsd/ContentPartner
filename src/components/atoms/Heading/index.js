@@ -1,22 +1,22 @@
 // DEPENDENCIES
 import styled from 'styled-components'
 
-const defaultStyles = { ...tw`font-heading text-dark_puce leading-normal mx-4` }
+const defaultStyles = {...tw`font-heading text-dark_puce leading-normal antialiased`}
 
 const H1 = styled.h1`
-    ${props => props.reset ? null : defaultStyles + 'text-3xl'};
+    ${props => props.reset ? null : defaultStyles};
 `
 const H2 = styled.h2`
-    ${props => props.reset ? null : defaultStyles + 'text-2xl'};
+    ${props => props.reset ? null : defaultStyles};
 `
 const H3 = styled.h3`
-    ${props => props.reset ? null : defaultStyles + 'text-xl'};
+    ${props => props.reset ? null : defaultStyles};
 `
 const H4 = styled.h4`
-    ${props => props.reset ? null : defaultStyles + 'text-lg'};
+    ${props => props.reset ? null : defaultStyles};
 `
 const H5 = styled.h5`
-    ${props => props.reset ? null : defaultStyles + 'text-base'};
+    ${props => props.reset ? null : defaultStyles};
 `
 
 export {

@@ -40,12 +40,12 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Raleway`,
+            family: `Lora`,
             variants: [`400`, `700`],
           },
           {
-            family: `Lato`,
-            variants: [`200`, `400`, `700`]
+            family: `Merriweather`,
+            variants: [`300`, `400`, `700`]
           },
         ],
       },

@@ -57,7 +57,8 @@ const Layout = ({ children, greaterThanMd, orientation }) => {
             <animated.main
             style={{...style,
               paddingTop: header.current.offsetHeight + 40,
-              paddingLeft: contentPadding, paddingRight: contentPadding}}>{children}</animated.main>
+              paddingLeft: contentPadding, paddingRight: contentPadding,
+              height: `100vh`, minHeight: 480}}>{children}</animated.main>
           )}
           </Transition>
           </div>
