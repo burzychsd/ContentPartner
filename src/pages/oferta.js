@@ -1,13 +1,13 @@
-import React from "react"
+// DEPENDENCIES
+import React, { Fragment } from 'react'
 
-import Layout from "../components/template/Layout"
-import SEO from "../components/template/seo"
+// COMPONENTS
+import SEO from '../components/templates/SEO'
 
-const Oferta = (props) => (
-  <Layout location={props.location}>
-    <SEO title="Oferta" keywords={[`Oferta`, `content`, `copywriting`]} />
-    <h1 style={{ textAlign: 'center' }}>I create stuff.</h1>
-  </Layout>
+const Oferta = () => (
+    <Fragment>
+        <SEO title="Oferta" keywords={[`website`, `personal`, `blog`]} />
+    </Fragment>
 )
 
 export default Oferta

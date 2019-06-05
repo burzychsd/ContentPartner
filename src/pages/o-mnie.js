@@ -1,13 +1,13 @@
-import React from "react"
+// DEPENDENCIES
+import React, { Fragment } from 'react'
 
-import Layout from "../components/template/Layout"
-import SEO from "../components/template/seo"
+// COMPONENTS
+import SEO from '../components/templates/SEO'
 
-const Omnie = (props) => (
-  <Layout location={props.location}>
-    <SEO title="O mnie" keywords={[`O mnie`, `content`, `copywriting`]} />
-    <h1 style={{ textAlign: 'center' }}>My Name is Franky.</h1>
-  </Layout>
+const O_Mnie = () => (
+    <Fragment>
+        <SEO title="O mnie" keywords={[`website`, `personal`, `blog`]} />
+    </Fragment>
 )
 
-export default Omnie
+export default O_Mnie

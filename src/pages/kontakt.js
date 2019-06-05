@@ -1,13 +1,13 @@
-import React from "react"
+// DEPENDENCIES
+import React, { Fragment } from 'react'
 
-import Layout from "../components/template/Layout"
-import SEO from "../components/template/seo"
+// COMPONENTS
+import SEO from '../components/templates/SEO'
 
-const Kontakt = (props) => (
-  <Layout location={props.location}>
-    <SEO title="Kontakt" keywords={[`Kontakt`, `content`, `copywriting`]} />
-    <h1 style={{ textAlign: 'center' }}>Wanna know more?</h1>
-  </Layout>
+const Kontakt = () => (
+    <Fragment>
+        <SEO title="Kontakt" keywords={[`website`, `personal`, `blog`]} />
+    </Fragment>
 )
 
 export default Kontakt

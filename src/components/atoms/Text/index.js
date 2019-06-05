@@ -1,12 +1,8 @@
 // DEPENDENCIES
-import React from 'react'
+import styled from 'styled-components'
 
-// COMPONENTS
-import { TextItem } from './styled'
-
-const Text = (props) => (
-    <TextItem {...props}>
-    {props.children}</TextItem>
-)
+const Text = styled.p`
+    ${props => props.reset ? null : tw`font-body text-lg text-dark_puce leading-normal`};
+`
 
 export default Text

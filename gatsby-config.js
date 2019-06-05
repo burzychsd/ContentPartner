@@ -1,22 +1,52 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
-  pathPrefix: "/ContentPartner",
   siteMetadata: {
-    title: `ContentPartner`,
-    description: `Description of the site`,
-    author: `@ContentPartner`,
+    title: `Content Partner`,
+    description: ``,
+    author: `@burzychsd`,
   },
   plugins: [
+    `gatsby-plugin-polyfill-io`,
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        showSpinner: false,
+        trickle: false,
+        minimum: 0.4,
+        color: `green`
+      }
+    },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+          component: require.resolve(`./src/components/templates/Layout`)
+      }
+    },
+    {
+      resolve: `gatsby-plugin-portal`,
+      options: {
+        key: 'portal',
+        id: 'portal',
+      },
+    },
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
         fonts: [
           {
             family: `Raleway`,
-            variants: [`100`, `200`, `300`, `700`]
-          }
+            variants: [`400`, `700`],
+          },
+          {
+            family: `Lato`,
+            variants: [`200`, `400`, `700`]
+          },
         ],
       },
     },
@@ -24,19 +54,46 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/images/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `qckrg0qo83qb`,
+        accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /svg/
+        }
+      }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Content Partner`,
+        short_name: `Content Partner`,
+        start_url: `/`,
+        background_color: `#FFFFFF`,
+        theme_color: `#FFFFFF`,
+        display: `minimal-ui`, // This path is relative to the root of the site.
       },
     },
     {
       resolve: `gatsby-plugin-favicon`,
       options: {
-        logo: "./src/favicon.svg",
-  
+        logo: "./favicon.svg",
         // WebApp Manifest Configuration
-        appName: 'Content Partner', // Inferred with your package.json
-        appDescription: null,
-        developerName: null,
-        developerURL: null,
+        appName: `Content Partner`, // Inferred with your package.json
+        appDescription: `Słowa to nie zbiór znaków.`,
+        developerName: `@burzychsd`,
+        developerURL: `https://www.github.com/burzychsd`,
         dir: 'auto',
         lang: 'en-US',
         background: '#fff',
@@ -45,7 +102,7 @@ module.exports = {
         orientation: 'any',
         start_url: '/?homescreen=1',
         version: '1.0',
-  
+
         icons: {
           android: true,
           appleIcon: true,
@@ -53,37 +110,13 @@ module.exports = {
           coast: false,
           favicons: true,
           firefox: true,
-          opengraph: false,
-          twitter: false,
           yandex: false,
           windows: false
         }
       }
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#FFFFFF`,
-        theme_color: `#FFFFFF`,
-        display: `minimal-ui`,
-        icon: `src/favicon.svg`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-react-svg',
-      options: {
-          rule: {
-            exclude: /png/
-          }
-      }
-    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
   ],
 }

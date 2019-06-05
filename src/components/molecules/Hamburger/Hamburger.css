@@ -1,0 +1,45 @@
+.hamburger_container {
+    position: relative;
+    margin: 1rem;
+}
+
+.hamburger_container:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale(0);
+    border-radius: 50%;
+    background: #FEFCAD;
+    z-index: -1;
+    transition: transform 400ms cubic-bezier(0.215, 0.610, 0.355, 1) 0.0001s
+}
+
+.hamburger_container:hover:before {
+    transform: scale(1.5);
+    transition: transform 800ms cubic-bezier(0.215, 0.610, 0.355, 1) 0.0001s
+}
+
+.hamburger_container > .hamburger_bar {
+    height: 1px;
+}
+
+.hamburger_container > .hamburger_bar:nth-child(1) {
+    width: 100%;
+}
+
+.hamburger_container > .hamburger_bar:nth-child(2) {
+    width: 75%;
+    transform: translateX(0);
+    align-self: flex-end;
+    transition: transform 400ms cubic-bezier(0.215, 0.610, 0.355, 1) 0.0001s;
+}
+
+.hamburger_container:hover > .hamburger_bar:nth-child(2) {
+    transform: translateX(-32.5%);
+    transition: transform 800ms cubic-bezier(0.215, 0.610, 0.355, 1) 0.0001s;
+}

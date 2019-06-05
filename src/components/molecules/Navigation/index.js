@@ -1,40 +1,54 @@
 // DEPENDENCIES
-import React, { Fragment } from 'react'
-import shortid from 'shortid'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { navigate } from 'gatsby'
 
 // COMPONENTS
-import Background from './../AnimatedBackground'
-import Link from './../../atoms/TransitionLink'
-import Logo from './../../atoms/Logo'
-import Hamburger from './../../atoms/Hamburger'
-import { MenuContainer, ListContainer, ListItem } from './styled'
+import Flex from './../../atoms/Flex'
+import Logo from './../../../images/svg/Bulb.svg'
+import Hamburger from './../Hamburger'
 
-const list = ['O mnie', 'Oferta', 'Portfolio', 'Kontakt', 'Blog']
-const regex = /\s+/
+const Navigation = (props) => {
 
-const Navigation = ({ clicked, status, innerRefs, menuContainer, innerGridRefs, location, overlay, handleTransition, endTime }) => {
+    const { height, toggle, setToggle, greaterThanMd, orientation } = props
 
-    const links = list.map((item, i) => 
-        <ListItem key={shortid.generate()}>
-            <Link location={location} delay={endTime} to={`/${item.toLowerCase().replace(regex, '-')}`} 
-            clicked={location.pathname !== `/${item.toLowerCase().replace(regex, '-')}` ? clicked : null}>
-                {item}
-            </Link>
-        </ListItem>
-    )
+    const navProps = {
+        as: `nav`,
+        reset: true,
+        style: { height }
+    }
+
+    const handleLogoClick = () => {
+        setToggle(false)
+        navigate('/')
+    }
+
+    const logoProps = {
+        style: { width: 'auto', height: '85%' },
+        onClick: () => handleLogoClick()
+    }
+
+    const hamburgerProps = {
+        toggle,
+        setToggle,
+        style: { width: greaterThanMd && orientation === 'portrait' ? 70 : 40, 
+                height: greaterThanMd && orientation === 'portrait' ? 70 : 40 }
+    }
 
     return (
-        <Fragment>
-            <Logo clicked={clicked} status={status} location={location} handleTransition={handleTransition} endTime={endTime} />
-            <Hamburger clicked={clicked} status={status} innerRefs={innerRefs} />
-            <MenuContainer as='nav' ref={menuContainer} style={{ visibility: 'hidden', opacity: 0 }}>
-                <ListContainer as='ul' style={{ opacity: `${status ? 1 : 0}` }}>
-                    {links}
-                </ListContainer>
-                <Background {...innerGridRefs} overlay={overlay} />
-            </MenuContainer>
-        </Fragment>
+        <Flex {...navProps} reset css={tw`w-full justify-between items-center`}>
+            <Logo {...logoProps} css={tw`cursor-pointer`} />
+            <Hamburger {...hamburgerProps} />
+        </Flex>
     )
+}
+
+Navigation.propTypes = {
+    height: PropTypes.string.isRequired,
+    toggle: PropTypes.bool.isRequired,
+    setToggle: PropTypes.func.isRequired,
+    greaterThanMd: PropTypes.bool.isRequired,
+    orientation: PropTypes.string.isRequired
 }
 
 export default Navigation
