@@ -19,6 +19,10 @@ const Layout = ({ children, greaterThanMd, orientation }) => {
 
   useEffect(() => {
     setMounted(true)
+
+    let vh = typeof window !== 'undefined' ? window.innerHeight * 0.01 : null
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+
   }, [])
 
   const header = useRef()
@@ -58,7 +62,7 @@ const Layout = ({ children, greaterThanMd, orientation }) => {
             style={{...style,
               paddingTop: header.current.offsetHeight + 40,
               paddingLeft: contentPadding, paddingRight: contentPadding,
-              height: `100vh`, minHeight: 480}}>{children}</animated.main>
+              height: `100%`, minHeight: 480}}>{children}</animated.main>
           )}
           </Transition>
           </div>
