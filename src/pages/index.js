@@ -1,19 +1,21 @@
 // DEPENDENCIES
 import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
 
 // COMPONENTS
 import SEO from '../components/templates/SEO'
-import Section from '../components/molecules/Section'
 import HomeContent from '../components/organisms/HomeContent'
 
-
-const IndexPage = () => (
+const IndexPage = ({ isWidth, orientation }) => (
     <Fragment>
         <SEO title="Home" keywords={[`website`, `personal`, `blog`]} />
-        <Section sectionCss={tw`w-full flex-col items-center xl:items-start`} style={{ maxWidth: 960, height: '100%', margin: '0 auto' }}>
-            <HomeContent />
-        </Section>
+        <HomeContent isWidth={isWidth} orientation={orientation} />
     </Fragment>
 )
 
-export default IndexPage
+const mapStateToProps = state => ({
+    isWidth: state.browser.is,
+    orientation: state.browser.orientation
+})
+
+export default connect(mapStateToProps, null)(IndexPage)

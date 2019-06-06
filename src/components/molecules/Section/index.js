@@ -7,7 +7,7 @@ import Flex from './../../atoms/Flex'
 
 const Section = (props) => {
 
-    const { sectionCss, style, children } = props
+    const { sectionCss, style, children, innerRef } = props
 
     const sectionProps = {
         as: `section`,

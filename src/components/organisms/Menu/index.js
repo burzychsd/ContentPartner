@@ -17,9 +17,8 @@ const Menu = (props) => {
     const navLinkItem = useRef()
 
     const menuContainerStyle = useSpring({
-        config: { mass: 1, tension: 60, friction: 20 },
+        config: { mass: 1, tension: 60, friction: 20, duration: 400 },
         opacity: toggle ? 1 : 0,
-        transform: `translateY(${ toggle ? '0%' : '-100%' })`,
         ref: menuContainer })
 
     const trail = useTrail(links.length, {
@@ -34,6 +33,7 @@ const Menu = (props) => {
     const containerProps = {
         reset: true,
         style: { ...menuContainerStyle,
+            visibility: menuContainerStyle.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible'),
             top: headerHeight / 2 + 40, minHeight: `calc(100% - ${headerHeight / 2 + 40}px)`,
             paddingTop: headerHeight / 2 }
     }
