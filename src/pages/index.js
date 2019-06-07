@@ -4,6 +4,8 @@ import loadable from '@loadable/component'
 
 // COMPONENTS
 import SEO from '../components/templates/SEO'
+
+// LAZY LOAD
 const HomeContent = loadable(() => import('../components/organisms/HomeContent'))
 
 const IndexPage = () => (

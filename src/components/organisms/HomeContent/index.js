@@ -1,14 +1,17 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-import { H1 as Heading } from './../../atoms/Heading'
-import Text from './../../atoms/Text'
-import Button from './../../atoms/Button'
-import TimeLineGraphic from './../../../images/svg/timeline_graphic.svg'
-import BulbsGraphic from './../../../images/svg/bulbs_graphic.svg'
 import Section from '../../molecules/Section'
+import { H1 as Heading } from './../../atoms/Heading'
+
+// LAZY LOAD
+const Text = loadable(() => import(/* webpackPrefetch: true */ './../../atoms/Text'))
+const Button = loadable(() => import(/* webpackPrefetch: true */ './../../atoms/Button'))
+const TimeLineGraphic = loadable(() => import(/* webpackPrefetch: true */ './../../../images/svg/timeline_graphic.svg'))
+const BulbsGraphic = loadable(() => import(/* webpackPrefetch: true */ './../../../images/svg/bulbs_graphic.svg'))
 
 // PROPS
 import { sectionProps, containerProps, headingProps, 
@@ -33,16 +36,16 @@ const HomeContent = () => {
                 css={tw`text-center my-2 xl:text-left`}>{content.title}</Heading>
                 <Text
                 {...textProps}
-                css={tw`w-full font-light text-center mx-auto mt-2 
+                css={tw`w-full font-light text-center mx-auto mt-2
                 px-0 md:px-8 xl:px-0 xl:w-4/5 xl:text-left xl:m-0`}>{content.subtitle}</Text>
                 <Button
                 {...buttonProps}
                 css={tw`self-center xl:self-start`}>{content.button}</Button>
             </Flex>
-            <Flex {...timelineProps}>
+            <Flex reset {...timelineProps}>
                 <TimeLineGraphic style={{ width: '100%' }} />
             </Flex>
-            <Flex {...bulbsProps}>
+            <Flex reset {...bulbsProps}>
                 <BulbsGraphic style={{ width: '100%' }} />
             </Flex>
         </Section>

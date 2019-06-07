@@ -26,13 +26,11 @@ export const buttonProps = {
 }
 
 export const timelineProps = {
-    reset: true,
     className: `timeline_graphic`,
     style: { maxWidth: 600, position: 'absolute', left: 0, bottom: 0, zIndex: -1 }
 }
 
 export const bulbsProps = {
-    reset: true,
     className: `bulbs_graphic`,
     style: { position: 'absolute', right: 0, bottom: 0, zIndex: -1 }
 }

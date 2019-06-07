@@ -3,10 +3,14 @@ import React, { memo } from 'react'
 import shortid from 'shortid'
 import PropTypes from 'prop-types'
 import { animated } from 'react-spring'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-import NavLink from './../../atoms/NavLink'
+
+// LAZY LOAD
+const NavLink = loadable(() => import('./../../atoms/NavLink'))
+const LazyFlex = loadable(() => import('./../../atoms/Flex'))
 
 const AnimatedNavLink = animated(NavLink)
 
@@ -19,10 +23,10 @@ import { containerProps, linkContainerProps, linkProps } from './props'
 const NavLinks = (props) => {
 
     const { links, setToggle, trail } = props
-    
+
     return (
         <Flex {...containerProps} css={tw`w-4/5 mx-auto justify-center align-items`}>
-            <Flex {...linkContainerProps} css={tw`w-auto h-auto flex-col align-items`}>
+            <LazyFlex {...linkContainerProps} css={tw`w-auto h-auto flex-col align-items`}>
                 {trail.map(({ x, height, ...rest }, i) => 
                     <AnimatedNavLink 
                     style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}
@@ -31,7 +35,7 @@ const NavLinks = (props) => {
                     onClick={() => setToggle(toggle => !toggle)}
                     {...linkProps}>{links[i]}</AnimatedNavLink>
                 )}
-            </Flex>
+            </LazyFlex>
         </Flex>
     )
 }

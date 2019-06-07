@@ -28,8 +28,8 @@ header, main {
 }
 
 main {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 footer {
@@ -82,7 +82,7 @@ form[name='contact_basic'] {
 }
 
 .bulbs_graphic {
-    display: none;
+    visibility: hidden;
 }
 
 /* MEDIA QUERIES */
@@ -90,11 +90,11 @@ form[name='contact_basic'] {
 @media only screen and (max-height: 450px) {
 
     .heading {
-        font-size: calc(20px + 1.5vw);
+        font-size: calc(1.25rem + 1.5vw);
     }
 
     body, .text {
-        font-size: calc(9px + 1.5vw);
+        font-size: calc(0.5625rem + 1.5vw);
     }
 
     .timeline_graphic {
@@ -118,11 +118,11 @@ form[name='contact_basic'] {
     }
 
     .heading {
-        font-size: calc(16px + 1.8vw);
+        font-size: calc(1rem + 1.8vw);
     }
 
     body, .text {
-        font-size: calc(8px + 1.5vw);
+        font-size: calc(0.62rem + 1.5vw);
     }
 }
 
@@ -144,11 +144,11 @@ form[name='contact_basic'] {
     }
 
     .heading {
-        font-size: calc(18px + 1.8vw);
+        font-size: calc(1.125rem + 1.8vw);
     }
 
     body, .text {
-        font-size: calc(11px + 0.9vw);
+        font-size: calc(0.75rem + 0.9vw);
     }
 }
 
@@ -168,7 +168,7 @@ form[name='contact_basic'] {
     }
 
     .bulbs_graphic {
-        display: inherit;
+        visibility: visible;
         min-width: 40%;
         min-height: 60%;
     }
@@ -190,7 +190,7 @@ form[name='contact_basic'] {
     }
 
     .bulbs_graphic {
-        display: inherit;
+        visibility: visible;
         min-width: 50%;
         min-height: 50%;
     }

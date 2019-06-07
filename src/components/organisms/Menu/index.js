@@ -1,11 +1,14 @@
 // DEPENDENCIES
 import React, { useRef, memo } from 'react'
 import PropTypes from 'prop-types'
-import { useSpring, useTrail, useChain, animated } from 'react-spring'
+import { useChain, animated } from 'react-spring'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-import NavLinks from './../../molecules/NavLinks'
+
+// LAZY LOAD
+const NavLinks = loadable(() => import('./../../molecules/NavLinks'))
 
 const AnimatedFlex = animated(Flex)
 
