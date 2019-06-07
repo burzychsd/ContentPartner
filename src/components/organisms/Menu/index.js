@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { useRef } from 'react'
+import React, { useRef, memo } from 'react'
 import PropTypes from 'prop-types'
 import { useSpring, useTrail, useChain, animated } from 'react-spring'
 
@@ -9,6 +9,12 @@ import NavLinks from './../../molecules/NavLinks'
 
 const AnimatedFlex = animated(Flex)
 
+// ANIMATION
+import { menuAnimation, trailLinks } from './animation'
+
+// PROPS
+import { container } from './props'
+
 const Menu = (props) => {
 
     const { links, headerHeight, toggle, setToggle } = props
@@ -16,37 +22,19 @@ const Menu = (props) => {
     const menuContainer = useRef()
     const navLinkItem = useRef()
 
-    const menuContainerStyle = useSpring({
-        config: { mass: 1, tension: 60, friction: 20, duration: 400 },
-        opacity: toggle ? 1 : 0,
-        ref: menuContainer })
-
-    const trail = useTrail(links.length, {
-        opacity: toggle ? 1 : 0,
-        x: toggle ? 0 : 20,
-        ref: navLinkItem,
-        from: { opacity: 0, x: 20 },
-    })
+    const menuContainerStyle = menuAnimation(menuContainer, toggle)
+    const trail = trailLinks(navLinkItem, toggle, links)
 
     useChain(toggle ? [menuContainer, navLinkItem] : [navLinkItem, menuContainer], [0, 0.6])
 
-    const containerProps = {
-        reset: true,
-        style: { ...menuContainerStyle,
-            visibility: menuContainerStyle.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible'),
-            top: headerHeight / 2 + 40, minHeight: `calc(100% - ${headerHeight / 2 + 40}px)`,
-            paddingTop: headerHeight / 2 }
-    }
-
-    const navLinksProps = {
-        links,
-        setToggle,
-        trail
-    }
+    const containerProps = container(menuContainerStyle, headerHeight)
 
     return (
         <AnimatedFlex {...containerProps} css={tw`absolute w-full m-auto bg-white z-40`}>
-            <NavLinks {...navLinksProps} />
+            <NavLinks
+            links={links}
+            setToggle={setToggle}
+            trail={trail} />
         </AnimatedFlex>
     )
 }
@@ -58,4 +46,4 @@ Menu.propTypes = {
     setToggle: PropTypes.func.isRequired
 }
 
-export default Menu
+export default memo(Menu)

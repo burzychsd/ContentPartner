@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React from 'react'
+import React, { memo } from 'react'
 import { navigate } from 'gatsby-link'
 import { Link } from 'gatsby'
 import { Location } from '@reach/router'
@@ -47,4 +47,4 @@ DelayLink.propTypes = {
     activeClassName: PropTypes.string
 }
 
-export default DelayLink
+export default memo(DelayLink)

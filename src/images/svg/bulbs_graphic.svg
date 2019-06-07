@@ -1,5 +1,10 @@
-<?xml version="1.0" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="-475.729 -348.405 455.333 365.498">
+<?xml version="1.0" standalone="no"?><!-- Generator: Gravit.io --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="-475.729 -348.405 455.333 365.498" preserveAspectRatio="xMaxYMax meet">
 <style>
+
+    @-webkit-keyframes fadeBulb {
+        from { opacity: 0 }
+        to { opacity: 1 }
+    }
 
     @keyframes fadeBulb {
         from { opacity: 0 }
@@ -45,52 +50,53 @@
     .bulb_bg--yellow,
     .bulb_bg--green {
         opacity: 0;
-        animation: fadeBulb 1200ms cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+        -webkit-animation: fadeBulb 1200ms cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+                animation: fadeBulb 1200ms cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
     }
 
-    .bulb_element01--01 { animation-delay: 0ms; }
-    .bulb_element02--01 { animation-delay: 200ms; }
-    .bulb_element03--01 { animation-delay: 300ms; }
-    .bulb_element04--01 { animation-delay: 400ms; }
-    .bulb_element05--01 { animation-delay: 500ms; }
-    .bulb_element06--01 { animation-delay: 600ms; }
-    .bulb_element07--01 { animation-delay: 700ms; }
+    .bulb_element01--01 { -webkit-animation-delay: 0ms; animation-delay: 0ms; }
+    .bulb_element02--01 { -webkit-animation-delay: 200ms; animation-delay: 200ms; }
+    .bulb_element03--01 { -webkit-animation-delay: 300ms; animation-delay: 300ms; }
+    .bulb_element04--01 { -webkit-animation-delay: 400ms; animation-delay: 400ms; }
+    .bulb_element05--01 { -webkit-animation-delay: 500ms; animation-delay: 500ms; }
+    .bulb_element06--01 { -webkit-animation-delay: 600ms; animation-delay: 600ms; }
+    .bulb_element07--01 { -webkit-animation-delay: 700ms; animation-delay: 700ms; }
 
-    .bulb_element01--02 { animation-delay: 50ms; }
-    .bulb_element02--02 { animation-delay: 250ms; }
-    .bulb_element03--02 { animation-delay: 350ms; }
-    .bulb_element04--02 { animation-delay: 450ms; }
-    .bulb_element05--02 { animation-delay: 550ms; }
-    .bulb_element06--02 { animation-delay: 650ms; }
+    .bulb_element01--02 { -webkit-animation-delay: 50ms; animation-delay: 50ms; }
+    .bulb_element02--02 { -webkit-animation-delay: 250ms; animation-delay: 250ms; }
+    .bulb_element03--02 { -webkit-animation-delay: 350ms; animation-delay: 350ms; }
+    .bulb_element04--02 { -webkit-animation-delay: 450ms; animation-delay: 450ms; }
+    .bulb_element05--02 { -webkit-animation-delay: 550ms; animation-delay: 550ms; }
+    .bulb_element06--02 { -webkit-animation-delay: 650ms; animation-delay: 650ms; }
 
-    .bulb_element01--03 { animation-delay: 100ms; }
-    .bulb_element02--03 { animation-delay: 300ms; }
-    .bulb_element03--03 { animation-delay: 400ms; }
-    .bulb_element04--03 { animation-delay: 500ms; }
-    .bulb_element05--03 { animation-delay: 600ms; }
-    .bulb_element06--03 { animation-delay: 700ms; }
-    .bulb_element07--03 { animation-delay: 800ms; }
-    .bulb_element08--03 { animation-delay: 900ms; }
+    .bulb_element01--03 { -webkit-animation-delay: 100ms; animation-delay: 100ms; }
+    .bulb_element02--03 { -webkit-animation-delay: 300ms; animation-delay: 300ms; }
+    .bulb_element03--03 { -webkit-animation-delay: 400ms; animation-delay: 400ms; }
+    .bulb_element04--03 { -webkit-animation-delay: 500ms; animation-delay: 500ms; }
+    .bulb_element05--03 { -webkit-animation-delay: 600ms; animation-delay: 600ms; }
+    .bulb_element06--03 { -webkit-animation-delay: 700ms; animation-delay: 700ms; }
+    .bulb_element07--03 { -webkit-animation-delay: 800ms; animation-delay: 800ms; }
+    .bulb_element08--03 { -webkit-animation-delay: 900ms; animation-delay: 900ms; }
 
-    .bulb_element01--04 { animation-delay: 150ms; }
-    .bulb_element02--04 { animation-delay: 350ms; }
-    .bulb_element03--04 { animation-delay: 450ms; }
-    .bulb_element04--04 { animation-delay: 550ms; }
-    .bulb_element05--04 { animation-delay: 650ms; }
-    .bulb_element06--04 { animation-delay: 750ms; }
-    .bulb_element07--04 { animation-delay: 850ms; }
+    .bulb_element01--04 { -webkit-animation-delay: 150ms; animation-delay: 150ms; }
+    .bulb_element02--04 { -webkit-animation-delay: 350ms; animation-delay: 350ms; }
+    .bulb_element03--04 { -webkit-animation-delay: 450ms; animation-delay: 450ms; }
+    .bulb_element04--04 { -webkit-animation-delay: 550ms; animation-delay: 550ms; }
+    .bulb_element05--04 { -webkit-animation-delay: 650ms; animation-delay: 650ms; }
+    .bulb_element06--04 { -webkit-animation-delay: 750ms; animation-delay: 750ms; }
+    .bulb_element07--04 { -webkit-animation-delay: 850ms; animation-delay: 850ms; }
 
-    .bulb_element01--05 { animation-delay: 200ms; }
-    .bulb_element02--05 { animation-delay: 400ms; }
-    .bulb_element03--05 { animation-delay: 500ms; }
-    .bulb_element04--05 { animation-delay: 600ms; }
-    .bulb_element05--05 { animation-delay: 700ms; }
-    .bulb_element06--05 { animation-delay: 800ms; }
-    .bulb_element07--05 { animation-delay: 900ms; }
-    .bulb_element08--05 { animation-delay: 1000ms; }
+    .bulb_element01--05 { -webkit-animation-delay: 200ms; animation-delay: 200ms; }
+    .bulb_element02--05 { -webkit-animation-delay: 400ms; animation-delay: 400ms; }
+    .bulb_element03--05 { -webkit-animation-delay: 500ms; animation-delay: 500ms; }
+    .bulb_element04--05 { -webkit-animation-delay: 600ms; animation-delay: 600ms; }
+    .bulb_element05--05 { -webkit-animation-delay: 700ms; animation-delay: 700ms; }
+    .bulb_element06--05 { -webkit-animation-delay: 800ms; animation-delay: 800ms; }
+    .bulb_element07--05 { -webkit-animation-delay: 900ms; animation-delay: 900ms; }
+    .bulb_element08--05 { -webkit-animation-delay: 1000ms; animation-delay: 1000ms; }
 
-    .bulb_bg--yellow { animation-delay: 1400ms; }
-    .bulb_bg--green { animation-delay: 1800ms; }
+    .bulb_bg--yellow { -webkit-animation-delay: 1400ms; animation-delay: 1400ms; }
+    .bulb_bg--green { -webkit-animation-delay: 1800ms; animation-delay: 1800ms; }
 
 </style>
 <path class="bulb_bg--yellow" d=" M -156.825 -161.361 C -143.277 -160.893 -129.602 -166.961 -118.237 -175.623 C -107.228 -184.013 -97.565 -195.68 -92.332 -209.651 C -87.337 -222.99 -87.208 -237.584 -91.723 -250.68 C -95.987 -263.046 -103.729 -273.506 -112.837 -281.541 C -114.489 -283.802 -116.395 -285.801 -118.705 -287.337 C -124.706 -291.324 -131.942 -292.026 -138.838 -292.421 C -145.625 -292.81 -152.463 -293.144 -159.283 -292.507 C -172.885 -291.235 -185.26 -284.869 -193.186 -271.426 C -201.367 -257.551 -203.133 -240.685 -201.407 -224.778 C -198.324 -196.372 -185.637 -162.356 -156.825 -161.361" fill="rgb(254,252,173)"/>

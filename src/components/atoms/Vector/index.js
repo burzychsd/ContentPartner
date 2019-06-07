@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React from 'react'
+import React, { memo } from 'react'
 import styled from 'styled-components'
 
 export const Img = styled.img`
@@ -17,4 +17,4 @@ const Vector = (props) => {
     )
 }
 
-export default Vector
+export default memo(Vector)

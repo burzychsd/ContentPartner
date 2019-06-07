@@ -1,21 +1,16 @@
 // DEPENDENCIES
 import React, { Fragment } from 'react'
-import { connect } from 'react-redux'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import SEO from '../components/templates/SEO'
-import HomeContent from '../components/organisms/HomeContent'
+const HomeContent = loadable(() => import('../components/organisms/HomeContent'))
 
-const IndexPage = ({ isWidth, orientation }) => (
+const IndexPage = () => (
     <Fragment>
         <SEO title="Home" keywords={[`website`, `personal`, `blog`]} />
-        <HomeContent isWidth={isWidth} orientation={orientation} />
+        <HomeContent />
     </Fragment>
 )
 
-const mapStateToProps = state => ({
-    isWidth: state.browser.is,
-    orientation: state.browser.orientation
-})
-
-export default connect(mapStateToProps, null)(IndexPage)
+export default IndexPage

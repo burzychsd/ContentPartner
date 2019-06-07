@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React from 'react'
+import React, { memo } from 'react'
 import shortid from 'shortid'
 import PropTypes from 'prop-types'
 import { animated } from 'react-spring'
@@ -13,25 +13,13 @@ const AnimatedNavLink = animated(NavLink)
 // STYLES
 import './NavLinks.css'
 
+// PROPS
+import { containerProps, linkContainerProps, linkProps } from './props'
+
 const NavLinks = (props) => {
 
     const { links, setToggle, trail } = props
-
-    const containerProps = {
-        reset: true,
-        as: `ul`
-    }
-
-    const linkContainerProps = {
-        reset: true
-    }
-
-    const linkProps = {
-        mobile: 'mobile',
-        activeClassName: 'navLink--active',
-        className: 'navLink',
-    }
-
+    
     return (
         <Flex {...containerProps} css={tw`w-4/5 mx-auto justify-center align-items`}>
             <Flex {...linkContainerProps} css={tw`w-auto h-auto flex-col align-items`}>
@@ -53,4 +41,4 @@ NavLinks.propTypes = {
     setToggle: PropTypes.func.isRequired
 }
 
-export default NavLinks
+export default memo(NavLinks)

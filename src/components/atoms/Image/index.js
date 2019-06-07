@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import Img from 'gatsby-image'
 
 const Image = ({ objFit = `cover`, objPosition = `50% 50%`, ...props }) => (
@@ -13,4 +13,4 @@ const Image = ({ objFit = `cover`, objPosition = `50% 50%`, ...props }) => (
     />
 )
 
-export default Image
+export default memo(Image)

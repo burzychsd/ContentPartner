@@ -1,11 +1,11 @@
 // DEPENDENCIES
-import React from 'react'
+import React, { memo } from 'react'
 import LazyLoad from 'react-lazy-load'
 import { useSpring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 
 // COMPONENTS
-import { Img } from '../../atoms/Vector'
+import Img from '../../atoms/Vector'
 
 const AnimatedImg = animated(Img)
 
@@ -42,4 +42,4 @@ LazyLoader.propTypes = {
     loaded: PropTypes.bool.isRequired
 }
 
-export default LazyLoader
+export default memo(LazyLoader)

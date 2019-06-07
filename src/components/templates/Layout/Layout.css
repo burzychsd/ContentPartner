@@ -18,9 +18,18 @@ body {
     flex-flow: column nowrap;
 }
 
+header {
+    padding: 0 1.5rem;
+}
+
 header, main {
     max-width: 1140px;
     margin: 0 auto;
+}
+
+main {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
 footer {
@@ -57,7 +66,7 @@ form[name='contact_basic'] {
     content: '';
     position: absolute;
     width: 100%;
-    height: 30%;
+    height: 22.5%;
     left: 0;
     bottom: -12px;
     background: #B4EBCA;
@@ -72,44 +81,117 @@ form[name='contact_basic'] {
     transition: transform 800ms cubic-bezier(0.215, 0.610, 0.355, 1) 0.0001s;
 }
 
+.bulbs_graphic {
+    display: none;
+}
+
 /* MEDIA QUERIES */
 
-@media only screen and (min-width: 320px) and (max-height: 450px) {
+@media only screen and (max-height: 450px) {
+
     .heading {
-        font-size: 1.85rem;
+        font-size: calc(20px + 1.5vw);
     }
 
     body, .text {
-        font-size: 1rem;
+        font-size: calc(9px + 1.5vw);
+    }
+
+    .timeline_graphic {
+        min-height: 38%;
     }
 }
 
-@media only screen and (min-width: 600px) and (min-height: 450px) {
-    .heading {
-        font-size: 2.5rem;
-    }
-
-    body, .button, .text {
-        font-size: 1.2rem;
-    }
-}
-
-@media only screen and (min-width: 960px) and (max-height: 960px) {
+@media only screen and (min-width: 700px) and (max-height: 450px) {
     .heading {
         font-size: 2rem;
     }
 
-    body, .button, .text {
+    body, .text {
         font-size: 1.2rem;
     }
 }
 
-@media only screen and (min-width: 960px) and (min-height: 960px) {
-    .heading {
-        font-size: 3rem;
+@media only screen and (min-height: 451px) and (max-height: 600px) {
+    .timeline_graphic {
+        min-height: 40%;
     }
 
-    body, .button, .text {
-        font-size: 1.5rem;
+    .heading {
+        font-size: calc(16px + 1.8vw);
+    }
+
+    body, .text {
+        font-size: calc(8px + 1.5vw);
+    }
+}
+
+@media only screen and (min-width: 700px) and (min-height: 451px) and (max-height: 600px) {
+
+    .heading {
+        font-size: 2.1rem;
+    }
+
+    body, .text {
+        font-size: 1.25rem;
+    }
+}
+
+@media only screen and (min-height: 601px) {
+    .timeline_graphic {
+        width: 90%;
+        min-height: 45%;
+    }
+
+    .heading {
+        font-size: calc(18px + 1.8vw);
+    }
+
+    body, .text {
+        font-size: calc(11px + 0.9vw);
+    }
+}
+
+@media only screen and (min-width: 700px) and (min-height: 601px) and (max-height: 1140px) {
+
+    .heading {
+        font-size: 2.5rem;
+    }
+
+    body, .text {
+        font-size: 1.2rem;
+    }
+
+    .timeline_graphic {
+        width: 60%;
+        min-height: 45%;
+    }
+
+    .bulbs_graphic {
+        display: inherit;
+        min-width: 40%;
+        min-height: 60%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (min-height: 1140px) {
+
+    .heading {
+        font-size: 3.4rem;
+    }
+
+    body, .text {
+        font-size: 1.6rem;
+    }
+
+    .timeline_graphic {
+        width: 60%;
+        min-height: 45%;
+    }
+
+    .bulbs_graphic {
+        display: inherit;
+        min-width: 50%;
+        min-height: 50%;
     }
 }

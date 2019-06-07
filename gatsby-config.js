@@ -5,20 +5,11 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Content Partner`,
-    description: ``,
+    description: `Słowa to nie zbiór znaków`,
     author: `@burzychsd`,
   },
   plugins: [
     `gatsby-transformer-remark`,
-    {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        showSpinner: false,
-        trickle: false,
-        minimum: 0.4,
-        color: `green`
-      }
-    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-layout`,
@@ -27,10 +18,15 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-portal`,
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        key: 'portal',
-        id: 'portal',
+        name: `Content Partner`,
+        short_name: `Content Partner`,
+        start_url: `/`,
+        background_color: `#FFFFFF`,
+        theme_color: `#FFFFFF`,
+        display: `standalone`,
+        icon: `src/favicon.png`
       },
     },
     `gatsby-plugin-styled-components`,
@@ -40,11 +36,11 @@ module.exports = {
         fonts: [
           {
             family: `Lora`,
-            variants: [`400`, `700`],
+            variants: [`700`],
           },
           {
             family: `Merriweather`,
-            variants: [`300`, `400`, `700`]
+            variants: [`300`, `400`]
           },
         ],
       },
@@ -74,47 +70,6 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Content Partner`,
-        short_name: `Content Partner`,
-        start_url: `/`,
-        background_color: `#FFFFFF`,
-        theme_color: `#FFFFFF`,
-        display: `minimal-ui`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: `gatsby-plugin-favicon`,
-      options: {
-        logo: "./favicon.svg",
-        // WebApp Manifest Configuration
-        appName: `Content Partner`, // Inferred with your package.json
-        appDescription: `Słowa to nie zbiór znaków.`,
-        developerName: `@burzychsd`,
-        developerURL: `https://www.github.com/burzychsd`,
-        dir: 'auto',
-        lang: 'en-US',
-        background: '#fff',
-        theme_color: '#fff',
-        display: 'standalone',
-        orientation: 'any',
-        start_url: '/?homescreen=1',
-        version: '1.0',
-
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          yandex: false,
-          windows: false
-        }
-      }
-    },
-    { 
       resolve: `gatsby-plugin-purgecss`,
       options: {
         printRejected: true, // Print removed selectors and processed file names
