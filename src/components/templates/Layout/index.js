@@ -2,7 +2,6 @@
 import React, { Fragment, useState, useRef, useEffect, memo } from 'react'
 import PropTypes from 'prop-types'
 import loadable from '@loadable/component'
-import { Location } from '@reach/router'
 
 // COMPONENTS
 import Header from './../../organisms/Header'
@@ -18,7 +17,7 @@ const links = ['O mnie', 'Oferta', 'Portfolio', 'Kontakt', 'Blog']
 // STYLES
 import './Layout.css'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
 
   const [toggle, setToggle] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -28,6 +27,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     setTimeout(() => setMounted(true), 200)
+    console.log(location)
     setHeight()
 
     typeof window !== 'undefined' ? window.addEventListener('resize', setHeight) : null
@@ -41,33 +41,26 @@ const Layout = ({ children }) => {
   const header = useRef()
 
   return (
-      <Location>
-        {({ location }) => (
-            <Fragment>
-              <div id='site_wrapper'>
-                <Header innerRef={header} toggle={toggle} setToggle={setToggle} />
-                {mounted &&
-                  <Fragment>
-                    <Menu
-                    links={links}
-                    toggle={toggle}
-                    setToggle={setToggle}
-                    headerHeight={header.current.offsetHeight} />
-                    <Flex as='main' reset style={{paddingTop: header.current.offsetHeight + 40,
-                    height: `100%`, minHeight: 480, display: 'block'}}>{children}</Flex>
-                  </Fragment>
-                }
-            </div>
-            {location.pathname !== '/' && <footer></footer>}
-            <form name='contact_basic' data-netlify='true' hidden>
-              <input type='text' name='name' />
-              <input type='email' name='email' />
-              <textarea name='message'></textarea>
-            </form>
-            <Loader animate={!mounted} />
-          </Fragment>
-        )}
-      </Location>
+    <Fragment>
+      <Header innerRef={header} toggle={toggle} setToggle={setToggle} />
+        {mounted &&
+          <div id='site_wrapper' style={{ paddingTop: header.current.offsetHeight + 40 }}>
+            <Menu
+            links={links}
+            toggle={toggle}
+            setToggle={setToggle}
+            headerHeight={header.current.offsetHeight} />
+            {children}
+          </div>
+        }
+      {location.pathname !== '/' && <footer></footer>}
+      <form name='contact_basic' data-netlify='true' hidden>
+        <input type='text' name='name' />
+        <input type='email' name='email' />
+        <textarea name='message'></textarea>
+      </form>
+      <Loader animate={!mounted} />
+    </Fragment>
   )
 }
 

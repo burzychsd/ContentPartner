@@ -1,10 +1,10 @@
 // DEPENDENCIES
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import loadable from '@loadable/component'
+import PropTypes from 'prop-types'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-import Section from '../../molecules/Section'
 import { H1 as Heading } from './../../atoms/Heading'
 
 // LAZY LOAD
@@ -17,6 +17,9 @@ const BulbsGraphic = loadable(() => import(/* webpackPrefetch: true */ './../../
 import { sectionProps, containerProps, headingProps, 
          textProps, buttonProps, timelineProps, bulbsProps } from './props'
 
+// ANIMATION
+import { loaderAnimation } from './../../molecules/Loader/animation'
+
 const HomeContent = () => {
 
     const content = {
@@ -27,7 +30,9 @@ const HomeContent = () => {
     }
 
     return (
-        <Section {...sectionProps}>
+        <Flex
+        {...sectionProps}
+        css={tw`relative w-full flex-col items-center xl:items-start`}>
             <Flex
             {...containerProps}
             css={tw`w-full flex-col justify-center`}>
@@ -48,7 +53,7 @@ const HomeContent = () => {
             <Flex reset {...bulbsProps}>
                 <BulbsGraphic style={{ width: '100%' }} />
             </Flex>
-        </Section>
+        </Flex>
     )
 }
 

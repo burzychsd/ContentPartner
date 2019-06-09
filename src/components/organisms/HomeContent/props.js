@@ -1,7 +1,8 @@
 import { navigate } from 'gatsby'
 
 export const sectionProps = {
-    sectionCss: { ...tw`relative w-full flex-col items-center xl:items-start` },
+    as: `section`,
+    reset: true,
     style: { maxWidth: 960, height: '100%', margin: '0 auto' }
 }
 
