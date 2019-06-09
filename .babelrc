@@ -1,0 +1,16 @@
+{
+    "plugins": [
+      "@loadable/babel-plugin",
+      "tailwind-components"
+    ],
+    "presets": [
+      [
+        "babel-preset-gatsby",
+        {
+          "targets": {
+            "browsers": [">0.1%", "not dead"]
+          }
+        }
+      ]
+    ]
+  }
