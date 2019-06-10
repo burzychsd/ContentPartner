@@ -1,18 +1,8 @@
 import { navigate } from 'gatsby'
 
-export const sectionProps = {
-    as: `section`,
-    reset: true,
-    style: { maxWidth: 960, height: '100%', margin: '0 auto' }
-}
-
 export const containerProps = {
     reset: true,
     style: { maxWidth: 700, minHeight: '50%' }
-}
-
-export const headingProps = {
-    className: 'heading'
 }
 
 export const textProps = {
@@ -28,10 +18,10 @@ export const buttonProps = {
 
 export const timelineProps = {
     className: `timeline_graphic`,
-    style: { maxWidth: 600, position: 'absolute', left: 0, bottom: 0, zIndex: -1 }
+    style: { maxWidth: 600, position: 'absolute', left: '1rem', bottom: 0, zIndex: -1 }
 }
 
 export const bulbsProps = {
     className: `bulbs_graphic`,
-    style: { position: 'absolute', right: 0, bottom: 0, zIndex: -1 }
+    style: { position: 'absolute', right: '1rem', bottom: 0, zIndex: -1 }
 }

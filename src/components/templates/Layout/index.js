@@ -1,15 +1,10 @@
 // DEPENDENCIES
 import React, { Fragment, useState, useRef, useEffect, memo } from 'react'
 import PropTypes from 'prop-types'
-import loadable from '@loadable/component'
 
 // COMPONENTS
 import Header from './../../organisms/Header'
-import Loader from './../../molecules/Loader'
-
-// LAZY LOAD
-const Menu = loadable(() => import(/* webpackPrefetch: true */ './../../organisms/Menu'))
-const Flex = loadable(() => import(/* webpackPrefetch: true */ './../../atoms/Flex'))
+import Menu from './../../organisms/Menu'
 
 // DATA
 const links = ['O mnie', 'Oferta', 'Portfolio', 'Kontakt', 'Blog']
@@ -26,8 +21,7 @@ const Layout = ({ children, location }) => {
   document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`) : null
 
   useEffect(() => {
-    setTimeout(() => setMounted(true), 200)
-    console.log(location)
+    setMounted(true)
     setHeight()
 
     typeof window !== 'undefined' ? window.addEventListener('resize', setHeight) : null
@@ -59,7 +53,6 @@ const Layout = ({ children, location }) => {
         <input type='email' name='email' />
         <textarea name='message'></textarea>
       </form>
-      <Loader animate={!mounted} />
     </Fragment>
   )
 }

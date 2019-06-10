@@ -1,10 +1,9 @@
 import { useTransition, useSpring } from 'react-spring'
 
 export const loaderAnimation = (animate, ref) => useTransition(animate, null, {
-    from: { opacity: 0 },
+    from: { opacity: 1 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: { mass: 1, tension: 120, friction: 14 },
     ref: ref ? ref : null
 })
 

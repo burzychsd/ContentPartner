@@ -8,7 +8,7 @@
 import './normalize.css'
 import wrapPage from './wrapPage'
 
-const wrapRootElement = wrapPage
+const wrapPageElement = wrapPage
 
 const onClientEntry = () => {
   // IntersectionObserver polyfill for gatsby-image (Safari, IE)
@@ -30,5 +30,5 @@ const onClientEntry = () => {
 
 export {
   onClientEntry,
-  wrapRootElement
+  wrapPageElement
 }

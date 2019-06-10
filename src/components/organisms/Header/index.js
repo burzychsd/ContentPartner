@@ -1,13 +1,10 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-
-// LAZY LOAD
-const Navigation = loadable(() => import(/* webpackPrefetch: true */ './../../molecules/Navigation'))
+import Navigation from './../../molecules/Navigation'
 
 // PROPS
 import { headerProps, navProps } from './props'

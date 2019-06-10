@@ -1,18 +1,26 @@
 // DEPENDENCIES
-import React, { Fragment } from 'react'
-import loadable from '@loadable/component'
+import React from 'react'
+import { animated } from 'react-spring/renderprops'
 
 // COMPONENTS
-import SEO from '../components/templates/SEO'
+import Flex from '../components/atoms/Flex'
+import HomeContent from '../components/organisms/HomeContent'
 
-// LAZY LOAD
-const HomeContent = loadable(() => import('../components/organisms/HomeContent'))
+const AnimatedFlex = animated(Flex)
 
-const IndexPage = () => (
-    <Fragment>
-        <SEO title="Home" keywords={[`website`, `personal`, `blog`]} />
-        <HomeContent />
-    </Fragment>
-)
+const IndexPage = ({ style }) => {
+
+    const sectionProps = {
+        as: `section`,
+        reset: true,
+        style
+    }
+
+    return (
+        <AnimatedFlex {...sectionProps}>
+            <HomeContent />
+        </AnimatedFlex>
+    )
+}
 
 export default IndexPage

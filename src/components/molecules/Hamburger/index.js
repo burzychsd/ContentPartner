@@ -2,7 +2,6 @@
 import React, { useRef, memo } from 'react'
 import PropTypes from 'prop-types'
 import { useChain, animated } from 'react-spring'
-import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'

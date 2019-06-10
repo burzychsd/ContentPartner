@@ -4,5 +4,5 @@ export const navProps = {
 }
 
 export const logoProps = {
-    style: { width: 'auto', height: '85%' },
+    style: { width: 'auto', height: '85%', maxHeight: 100 },
 }

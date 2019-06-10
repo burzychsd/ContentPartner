@@ -3,7 +3,6 @@ import React, { memo } from 'react'
 import LazyLoad from 'react-lazy-load'
 import { useSpring, animated } from 'react-spring'
 import PropTypes from 'prop-types'
-import loadable from '@loadable/component'
 
 // COMPONENTS
 import Img from '../../atoms/Vector'

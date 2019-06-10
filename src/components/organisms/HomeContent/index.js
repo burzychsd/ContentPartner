@@ -1,44 +1,33 @@
 // DEPENDENCIES
-import React, { memo, useEffect, useState } from 'react'
-import loadable from '@loadable/component'
-import PropTypes from 'prop-types'
+import React, { memo, Fragment } from 'react'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-import { H1 as Heading } from './../../atoms/Heading'
-
-// LAZY LOAD
-const Text = loadable(() => import(/* webpackPrefetch: true */ './../../atoms/Text'))
-const Button = loadable(() => import(/* webpackPrefetch: true */ './../../atoms/Button'))
-const TimeLineGraphic = loadable(() => import(/* webpackPrefetch: true */ './../../../images/svg/timeline_graphic.svg'))
-const BulbsGraphic = loadable(() => import(/* webpackPrefetch: true */ './../../../images/svg/bulbs_graphic.svg'))
+import InteractiveHeading from './../../molecules/InteractiveHeading'
+import Text from './../../atoms/Text'
+import Button from './../../atoms/Button'
+import TimeLineGraphic from './../../../images/svg/timeline_graphic.svg'
+import BulbsGraphic from './../../../images/svg/bulbs_graphic.svg'
 
 // PROPS
-import { sectionProps, containerProps, headingProps, 
+import { containerProps,
          textProps, buttonProps, timelineProps, bulbsProps } from './props'
-
-// ANIMATION
-import { loaderAnimation } from './../../molecules/Loader/animation'
 
 const HomeContent = () => {
 
     const content = {
-        title: `Słowa to nie zbiór znaków`,
+        title: `Słowa to nie zbiór znaków.`,
         subtitle: `Słowa to treść Twojego biznesu. Zamów artykuły, opisy 
                    oraz inne teksty, które inspirują i przekonują.`,
         button: `Dowiedz się więcej`
     }
 
     return (
-        <Flex
-        {...sectionProps}
-        css={tw`relative w-full flex-col items-center xl:items-start`}>
+        <Fragment>
             <Flex
             {...containerProps}
-            css={tw`w-full flex-col justify-center`}>
-                <Heading
-                {...headingProps}
-                css={tw`text-center my-2 xl:text-left`}>{content.title}</Heading>
+            css={tw`w-full flex-col justify-center xl:self-start`}>
+                <InteractiveHeading>{content.title}</InteractiveHeading>
                 <Text
                 {...textProps}
                 css={tw`w-full font-light text-center mx-auto mt-2
@@ -53,7 +42,7 @@ const HomeContent = () => {
             <Flex reset {...bulbsProps}>
                 <BulbsGraphic style={{ width: '100%' }} />
             </Flex>
-        </Flex>
+        </Fragment>
     )
 }
 
