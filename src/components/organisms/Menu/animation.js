@@ -1,7 +1,7 @@
 import { useSpring, useTrail } from 'react-spring'
 
 export const menuAnimation = (ref, toggle) => useSpring({
-    config: { mass: 1, tension: 60, friction: 20, duration: 400 },
+    config: { mass: 1, tension: 60, friction: 20 },
     opacity: toggle ? 1 : 0,
     ref })
 

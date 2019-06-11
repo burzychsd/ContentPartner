@@ -14,7 +14,7 @@ import classes from './InteractiveHeading.module.css'
 // ANIMATION
 import { titleAnimation } from './animation'
 
-const InteractiveHeading = ({ title }) => {
+const InteractiveHeading = ({ title, containerCss }) => {
 
     const containerElem = useRef(null)
 
@@ -24,8 +24,12 @@ const InteractiveHeading = ({ title }) => {
     const [animationEnd, setAnimationEnd] = useState(false)
 
     useEffect(() => {
-        setMounted(true)
-        setTimeout(() => setAnimationEnd(true), 2000)
+        const asyncFunc = async () => {
+            await setMounted(true)
+            await setTimeout(() => setAnimationEnd(true), 2000)
+        }
+
+        asyncFunc()
     }, [])
 
     const handleMouseMove = event => {
@@ -63,7 +67,7 @@ const InteractiveHeading = ({ title }) => {
     const trail = titleAnimation(letters, mounted)
 
     return (
-        <Flex {...textContainerProps}>
+        <Flex {...textContainerProps} css={containerCss}>
             <Heading {...headingProps(1)}
             css={tw`text-center my-2 xl:text-left subpixel-antialiased`}
             style={{ color: '#B4EBCA' }}>{letters}</Heading>
@@ -78,7 +82,8 @@ const InteractiveHeading = ({ title }) => {
 }
 
 InteractiveHeading.propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    containerCss: PropTypes.object
 }
 
 export default memo(InteractiveHeading)

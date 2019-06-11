@@ -1,0 +1,50 @@
+section > .stageInfo_container:first-child {
+    margin: 0 0 1rem 0;
+}
+
+.stageInfo_container {
+    margin: 1rem 0;
+    width: 100%;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+.graphic_container {
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+@media only screen and (min-width: 575px) {
+    .stageInfo_container {
+        padding: 0 2rem;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    section > .stageInfo_container:first-child {
+        margin: 2rem 0;
+    }
+
+    section > .stageInfo_container:nth-child(even) {
+        flex-flow: row nowrap
+    }
+
+    section > .stageInfo_container:nth-child(odd) {
+        flex-flow: row-reverse nowrap
+    }
+
+    .stageInfo_container {
+        margin: 2rem 0;
+    }
+
+    .graphic_container {
+        width: 30%;
+        justify-content: flex-start;
+        margin-bottom: 0;
+    }
+
+    .info_container {
+        width: 60%;
+    }
+
+}

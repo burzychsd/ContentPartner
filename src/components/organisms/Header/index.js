@@ -14,7 +14,7 @@ const Header = (props) => {
     const { toggle, setToggle, innerRef } = props
 
     return (
-        <Flex ref={innerRef} {...headerProps} reset css={tw`w-full absolute z-50`}>
+        <Flex ref={innerRef} {...headerProps} reset css={tw`w-full px-6 sm:px-12 absolute z-50`}>
             <Navigation {...navProps} toggle={toggle} setToggle={setToggle} />
         </Flex>
     )

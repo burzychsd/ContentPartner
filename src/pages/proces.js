@@ -1,11 +1,11 @@
 // DEPENDENCIES
-import React from 'react'
+import React, { memo } from 'react'
 import { animated } from 'react-spring/renderprops'
+import shortid from 'shortid'
 
 // COMPONENTS
 import Flex from '../components/atoms/Flex'
-import InteractiveHeading from '../components/molecules/InteractiveHeading'
-import Text from '../components/atoms/Text'
+import StageInfo from '../components/molecules/StageInfo'
 
 const AnimatedFlex = animated(Flex)
 
@@ -17,16 +17,50 @@ const Proces = ({ style }) => {
         style
     }
 
-    const textProps = {
-        className: `text`
-    }
+    const stageContent = [
+        {
+            title: `Etap 1.`,
+            text: `Szukasz sposobów na skuteczne budowanie dobrego wizerunku? Martwisz się słabą pozycją
+            w wyszukiwarce Google? Przemyślana, perswazyjna, wyczerpująca treść jest podstawą
+            nowoczesnej strony www, profilu w mediach społecznościowych i wszelkich działań
+            promocyjnych. Dowiedz się, jak mogę pomóc.`
+        },
+        {
+            title: `Etap 2.`,
+            text: `Wspólnie ustalamy zakres działań, specyfikację treści, cele, harmonogram i budżet.
+            Wystarczy, że do mnie napiszesz lub zadzwonisz – każde zlecenie traktuję indywidualnie,
+            jako nowe, rozwijające wyzwanie.`
+        },
+        {
+            title: `Etap 3.`,
+            text: `10-letnie doświadczenie w tworzeniu treści sprawia, że szybko i skutecznie wyszukuję oraz
+            przetwarzam informacje. Otrzymujesz teksty wyłącznie oryginalne i dopracowane pod
+            względem poprawności, stylistyki oraz wytycznych.`
+        },
+        {
+            title: `Etap 4.`,
+            text: `Pisałem już (chyba) o wszystkim, a jeśli nie, to chętnie poznam kolejną branżę, w której
+            warto wyróżnić się angażującą komunikacją. Zamów to, czego potrzebujesz: treść na stronę
+            www, artykuły tematyczne, opisy produktów, wpisy do mediów społecznościowych czy
+            branżowego e-booka.`
+        },
+        {
+            title: `Etap 5.`,
+            text: `Najważniejsza jest realizacja Twoich celów wizerunkowych i sprzedażowych. Jestem
+            otwarty zarówno na pojedynczą, doraźną współpracę, jak i długofalowe, szerokie działania.
+            Skoro obok imienia i nazwiska w nazwie firmy znajduje się Content Partner – nie są to puste
+            słowa, ale deklaracja partnerskiej współpracy nad treścią dla Twojego biznesu.`
+        }
+    ]
+
+    const stages = stageContent.map((stage, i) => 
+    <StageInfo key={shortid.generate()} graphicNum={i + 1} title={stage.title} text={stage.text} />)
 
     return (
         <AnimatedFlex {...sectionProps}>
-            <InteractiveHeading title='Proces.' />
-            <Text {...textProps} css={tw`font-light`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempus auctor nulla. Pellentesque fringilla, ante sed ultrices dignissim, ligula nunc rhoncus magna, a interdum ante turpis et erat. Aliquam venenatis vehicula eros, in dapibus lectus sodales nec. Mauris aliquet lectus mauris. Cras laoreet purus lorem, sit amet tincidunt tellus congue vitae. Aliquam molestie turpis eget est gravida, sit amet consectetur diam feugiat. Suspendisse ac eros commodo, cursus urna vel, faucibus urna. Etiam orci lacus, sagittis non porta ac, vestibulum luctus massa. Phasellus finibus consectetur quam, eu suscipit urna tempor vitae. Sed in pretium ipsum, ut porta lacus. Proin at orci at tellus euismod tempus nec et massa. Vestibulum sit amet vestibulum ligula. Ut at urna eros. Nulla ultricies metus et nibh tristique, ac laoreet elit lobortis.</Text>
+            {stages}
         </AnimatedFlex>
     )
 }
 
-export default Proces
+export default memo(Proces)
