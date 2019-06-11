@@ -27,7 +27,7 @@ import FadeTransition from './src/animations/FadeTransition'
 const WrapPage = ({ data }) => {
 
     const paths = data.allSitePage.edges.map(edge => edge.node.path)
-                                        .filter(path => path !== '/dev-404-page/' && path !== '/404.html')
+                                        .filter(path => path !== '/dev-404-page/' && path !== '/404.html' && path !== '/404/')
 
     const conditions = (path, page) =>
         page === 'home' ? path === '/' :
@@ -75,8 +75,6 @@ const WrapPage = ({ data }) => {
         title: `Proces`,
         keywords: [`process`]
     } : { title: `404: Not found` }
-
-    console.log(paths)
 
     return (
         <Location>

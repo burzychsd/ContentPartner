@@ -5,16 +5,17 @@ export const containerProps = {
     style: { maxWidth: 700, minHeight: '50%' }
 }
 
-export const textProps = {
+export const textProps = style => ({
     className: 'text',
-    style: { width: '90%', maxWidth: 600 }
-}
+    style: { width: '90%', maxWidth: 600, ...style }
+})
 
-export const buttonProps = {
+export const buttonProps = style => ({
     reset: true,
     className: `button`,
-    onClick: () => navigate('/proces')
-}
+    onClick: () => navigate('/proces'),
+    style
+})
 
 export const timelineProps = {
     className: `timeline_graphic`,

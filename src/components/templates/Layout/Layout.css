@@ -171,12 +171,6 @@ form[name='contact_basic'] {
         width: 60%;
         min-height: 45%;
     }
-
-    .bulbs_graphic {
-        visibility: visible;
-        min-width: 40%;
-        min-height: 60%;
-    }
 }
 
 @media only screen and (min-width: 768px) and (min-height: 1140px) {
@@ -193,7 +187,9 @@ form[name='contact_basic'] {
         width: 60%;
         min-height: 45%;
     }
+}
 
+@media only screen and (min-width: 1140px) and (max-height: 800px) {
     .bulbs_graphic {
         visibility: visible;
         min-width: 50%;

@@ -23,7 +23,7 @@ const NotFoundPage = ({ style }) => {
 
   return (
     <AnimatedFlex {...sectionProps}>
-      <InteractiveHeading>Not Found.</InteractiveHeading>
+      <InteractiveHeading title='Not Found.' />
       <Text {...textProps} css={tw`font-light`}>You just hit a route that doesn&#39;t exist... the sadness.</Text>
     </AnimatedFlex>
   )
