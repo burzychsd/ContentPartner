@@ -4,7 +4,7 @@ import { animated, useChain } from 'react-spring'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-import InteractiveHeading from './../../molecules/InteractiveHeading'
+import TrailHeading from '../../molecules/TrailHeading'
 import Text from './../../atoms/Text'
 import Button from './../../atoms/Button'
 import TimeLineGraphic from './../../../images/svg/timeline_graphic.svg'
@@ -49,7 +49,7 @@ const HomeContent = () => {
             <Flex
             {...containerProps}
             css={tw`w-full flex-col justify-center xl:self-start`}>
-                <InteractiveHeading title={content.title} />
+                <TrailHeading title={content.title} />
                 <AnimatedText
                 ref={text}
                 {...textProps(textStyle)}

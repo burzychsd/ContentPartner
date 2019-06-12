@@ -4,7 +4,7 @@ import { animated } from 'react-spring/renderprops'
 
 // COMPONENTS
 import Flex from '../components/atoms/Flex'
-import InteractiveHeading from '../components/molecules/InteractiveHeading'
+import TrailHeading from '../components/molecules/TrailHeading'
 import Text from '../components/atoms/Text'
 
 const AnimatedFlex = animated(Flex)
@@ -23,7 +23,7 @@ const NotFoundPage = ({ style }) => {
 
   return (
     <AnimatedFlex {...sectionProps}>
-      <InteractiveHeading title='Not Found.' />
+      <TrailHeading title='Not Found.' />
       <Text {...textProps} css={tw`font-light`}>You just hit a route that doesn&#39;t exist... the sadness.</Text>
     </AnimatedFlex>
   )

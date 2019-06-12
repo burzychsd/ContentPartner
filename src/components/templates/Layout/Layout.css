@@ -115,7 +115,7 @@ form[name='contact_basic'] {
 
 @media only screen and (min-height: 481px) and (max-height: 600px) {
     .timeline_graphic {
-        min-height: 40%;
+        height: 40%;
     }
 
     .heading {
@@ -141,7 +141,7 @@ form[name='contact_basic'] {
 @media only screen and (min-height: 601px) {
     .timeline_graphic {
         width: 90%;
-        min-height: 45%;
+        height: 45%;
     }
 
     .heading {
@@ -165,7 +165,7 @@ form[name='contact_basic'] {
 
     .timeline_graphic {
         width: 60%;
-        min-height: 45%;
+        height: 45%;
     }
 }
 
@@ -181,14 +181,14 @@ form[name='contact_basic'] {
 
     .timeline_graphic {
         width: 60%;
-        min-height: 45%;
+        height: 45%;
     }
 }
 
 @media only screen and (min-width: 1140px) and (max-height: 800px) {
     .bulbs_graphic {
         visibility: visible;
-        min-width: 50%;
-        min-height: 50%;
+        width: 50%;
+        height: 50%;
     }
 }

@@ -51,7 +51,7 @@ const StageInfo = (props) => {
             </Flex>
             <Flex {...infoContainerProps} css={tw`flex-col`}>
                 <Heading className='heading stage_heading' css={tw`m-0`}>{title}</Heading>
-                <Text className='text stage_text' css={tw`mt-2 mb-6 font-light leading-relaxed`}>{text}</Text>
+                <Text className='text stage_text' css={tw`mt-2 mb-6 font-light leading-relaxed break-all`}>{text}</Text>
             </Flex>
         </Flex>
     )
