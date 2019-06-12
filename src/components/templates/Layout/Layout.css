@@ -28,6 +28,10 @@ main {
     padding-right: 1rem;
 }
 
+main > section {
+    padding: 0 1.5rem;
+}
+
 div[role=group] {
     height: 100%;
 }
@@ -190,5 +194,17 @@ form[name='contact_basic'] {
         visibility: visible;
         width: 50%;
         height: 50%;
+    }
+}
+
+@media only screen and (min-width: 575px) {
+    main > section {
+        padding: 0 3.5rem;
+    }
+}
+
+@media only screen and (min-width: 1140px) {
+    main > section {
+        padding: 0;
     }
 }

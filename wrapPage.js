@@ -47,8 +47,7 @@ const WrapPage = ({ data }) => {
         flexFlow: 'column nowrap',
         alignItems: 'center',
         maxWidth: 960,
-        height: '100%',
-        padding: '0 1.5rem'
+        height: '100%'
     }
 
     const seoProps = path =>

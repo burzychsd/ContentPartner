@@ -20,10 +20,10 @@ const Proces = ({ style }) => {
     const stageContent = [
         {
             title: `Etap 1.`,
-            text: `Szukasz sposobów na skuteczne budowanie dobrego wizerunku? Martwisz się słabą pozycją
-            w wyszukiwarce Google? Przemyślana, perswazyjna, wyczerpująca treść jest podstawą
-            nowoczesnej strony www, profilu w mediach społecznościowych i wszelkich działań
-            promocyjnych. Dowiedz się, jak mogę pomóc.`
+            text: `Szukasz sposobów na skuteczne budowanie dobrego wizerunku? 
+            Martwisz się słabą pozycją w wyszukiwarce Google? Przemyślana, perswazyjna, 
+            wyczerpująca treść jest podstawą nowoczesnej strony www, profilu w mediach społecznościowych 
+            i wszelkich działań promocyjnych. Dowiedz się, jak mogę pomóc.`
         },
         {
             title: `Etap 2.`,

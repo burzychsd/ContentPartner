@@ -34,19 +34,23 @@ const StageInfo = (props) => {
         reset: true
     }
 
+    const stageGraphicProps = {
+        preserveAspectRatio: `xMidYMid meet`
+    }
+
     return (
         <Flex {...containerProps}>
             <Flex {...graphicContainerProps}>
                 {
                     graphicNum === 1 ?
-                    <Stage01 /> :
+                    <Stage01 {...stageGraphicProps} /> :
                     graphicNum === 2 ?
-                    <Stage02 /> :
+                    <Stage02 {...stageGraphicProps} /> :
                     graphicNum === 3 ?
-                    <Stage03 /> :
+                    <Stage03 {...stageGraphicProps} /> :
                     graphicNum === 4 ?
-                    <Stage04 /> :
-                    <Stage05 />
+                    <Stage04 {...stageGraphicProps} /> :
+                    <Stage05 {...stageGraphicProps} />
                 }
             </Flex>
             <Flex {...infoContainerProps} css={tw`flex-col`}>
