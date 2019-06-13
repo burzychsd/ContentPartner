@@ -23,7 +23,7 @@ const Page = props => {
             <Flex
             className='section_container'
             reset css={tw`flex-col w-full items-center`}
-            style={{ minHeight: `calc(100vh - ${style.paddingTop})` }}>
+            style={{ minHeight: window.innerHeight - style.paddingTop }}>
                 {children}
             </Flex>
             {footer && <Footer />}
