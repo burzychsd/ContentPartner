@@ -3,7 +3,8 @@ import { useSpring, useTrail } from 'react-spring'
 export const menuAnimation = (ref, toggle) => useSpring({
     config: { mass: 1, tension: 60, friction: 20 },
     opacity: toggle ? 1 : 0,
-    ref })
+    ref
+    })
 
 export const trailLinks = (ref, toggle, links) => useTrail(links.length, {
     opacity: toggle ? 1 : 0,

@@ -29,7 +29,6 @@
     "object-fit-images": "^3.2.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-lazy-load": "^3.0.13",

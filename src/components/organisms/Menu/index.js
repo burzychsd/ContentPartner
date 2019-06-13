@@ -20,7 +20,7 @@ import { container } from './props'
 
 const Menu = (props) => {
 
-    const { links, headerHeight, toggle, setToggle } = props
+    const { links, toggle, setToggle, innerRef } = props
 
     const menuContainer = useRef()
     const navLinkItem = useRef()
@@ -30,10 +30,10 @@ const Menu = (props) => {
 
     useChain(toggle ? [menuContainer, navLinkItem] : [navLinkItem, menuContainer], [0, 0.6])
 
-    const containerProps = container(menuContainerStyle, headerHeight)
+    const containerProps = container(menuContainerStyle)
 
     return (
-        <AnimatedFlex {...containerProps} css={tw`absolute w-full m-auto bg-white z-40`}>
+        <AnimatedFlex ref={innerRef} {...containerProps} css={tw`fixed w-full m-auto bg-white z-40`}>
             <NavLinks
             links={links}
             setToggle={setToggle}
@@ -44,9 +44,8 @@ const Menu = (props) => {
 
 Menu.propTypes = {
     links: PropTypes.array.isRequired,
-    headerHeight: PropTypes.number.isRequired,
     toggle: PropTypes.bool.isRequired,
-    setToggle: PropTypes.func.isRequired
+    setToggle: PropTypes.func.isRequired,
 }
 
 export default memo(Menu)

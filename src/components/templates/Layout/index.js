@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { Fragment, useState, useRef, useEffect, memo } from 'react'
+import React, { useState, useRef, useEffect, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 // COMPONENTS
@@ -14,15 +14,20 @@ import './Layout.css'
 
 const Layout = ({ children, location }) => {
 
+  const header = useRef()
+  const siteWrapper = useRef()
+  const menu = useRef()
+
   const [toggle, setToggle] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const [preventScroll, setPreventScroll] = useState()
 
   const setHeight = () => typeof window !== 'undefined' && typeof document !== 'undefined' ? 
   document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`) : null
 
   useEffect(() => {
-    setMounted(true)
     setHeight()
+    siteWrapper.current.style.paddingTop = `${header.current.offsetHeight + 40}px`
+    menu.current.style.paddingTop = `${header.current.offsetHeight + 40}px`
 
     typeof window !== 'undefined' ? window.addEventListener('resize', setHeight) : null
 
@@ -32,27 +37,37 @@ const Layout = ({ children, location }) => {
 
   }, [])
 
-  const header = useRef()
+  useEffect(() => {
+    preventScrolling()
+  }, [location.pathname])
+
+  const preventScrolling = async () => {
+    await setPreventScroll(true)
+    await setTimeout(() => setPreventScroll(false), 900)
+  }
 
   return (
     <Fragment>
-      <Header innerRef={header} toggle={toggle} setToggle={setToggle} />
-        {mounted &&
-          <div id='site_wrapper' style={{ paddingTop: header.current.offsetHeight + 40 }}>
-            <Menu
-            links={links}
-            toggle={toggle}
-            setToggle={setToggle}
-            headerHeight={header.current.offsetHeight} />
-            {children}
-          </div>
-        }
-      {location.pathname !== '/' && <footer></footer>}
-      <form name='contact_basic' data-netlify='true' hidden>
-        <input type='text' name='name' />
-        <input type='email' name='email' />
-        <textarea name='message'></textarea>
-      </form>
+      <Header
+      innerRef={header}
+      toggle={toggle}
+      setToggle={setToggle}
+      preventScroll={preventScroll} />
+      <Menu
+      innerRef={menu}
+      links={links}
+      toggle={toggle}
+      setToggle={setToggle} />
+        <div style={{ width: '100%', height: 30, background: '#FFF', position: 'fixed', top: 0, zIndex: 1000 }}></div>
+        <div ref={siteWrapper} id='site_wrapper'>
+          {children}
+        </div>
+        {location.pathname !== '/' && <footer></footer>}
+        <form name='contact_basic' data-netlify='true' hidden>
+          <input type='text' name='name' />
+          <input type='email' name='email' />
+          <textarea name='message'></textarea>
+        </form>
     </Fragment>
   )
 }
@@ -61,4 +76,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default memo(Layout)
+export default Layout

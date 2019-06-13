@@ -10,5 +10,5 @@ export const linkContainerProps = {
 export const linkProps = {
     mobile: 'mobile',
     activeClassName: 'navLink--active',
-    className: 'navLink',
+    className: 'navLink'
 }

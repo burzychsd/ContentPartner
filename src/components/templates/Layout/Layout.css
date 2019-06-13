@@ -8,8 +8,9 @@
     outline: none;
 }
 
-html {
+html, body {
     min-width: 280px;
+    height: 100%;
 }
 
 body {
@@ -18,7 +19,24 @@ body {
     flex-flow: column nowrap;
 }
 
-header, main {
+body::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: #B4EBCA;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #FEFCAD;
+}
+
+header {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+main {
     max-width: 1140px;
     margin: 0 auto;
 }
@@ -42,6 +60,10 @@ footer {
 
 form[name='contact_basic'] {
     width: 100%;
+}
+
+#___gatsby {
+    height: 100%;
 }
 
 #site_wrapper {

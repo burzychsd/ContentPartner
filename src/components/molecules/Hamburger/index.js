@@ -35,7 +35,7 @@ const Hamburger = (props) => {
         <Flex
         {...containerProps}
         css={tw`relative flex-col justify-around cursor-pointer`}
-        onClick={e => setToggle(toggle => !toggle)}>
+        onClick={setToggle}>
             <AnimatedFlex {...barProps} style={animate.style1} css={barCss}></AnimatedFlex>
             <AnimatedFlex {...barProps} style={animate.style2} css={barCss}></AnimatedFlex>
             <AnimatedFlex {...barHiddenProps} style={animate.style3} css={barCssHidden}></AnimatedFlex>

@@ -1,7 +1,6 @@
 // DEPENDENCIES
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Location } from '@reach/router'
-import { Transition } from 'react-spring/renderprops'
 import loadable from '@loadable/component'
 
 // COMPONENTS
@@ -47,7 +46,7 @@ const WrapPage = ({ data }) => {
         flexFlow: 'column nowrap',
         alignItems: 'center',
         maxWidth: 960,
-        height: '100%'
+        height: `100%`
     }
 
     const seoProps = path =>
@@ -80,7 +79,7 @@ const WrapPage = ({ data }) => {
             {({ location }) =>
                 <Layout location={location}>
                     <main
-                    style={{ height: `100%`, display: 'block', position: 'relative' }}>
+                    style={{ minHeight: `100%`, display: 'block', position: 'relative' }}>
                         <SEO {...seoProps(location.pathname)} />
                         <FadeTransition
                         items={conditions(location.pathname, 'home')}>

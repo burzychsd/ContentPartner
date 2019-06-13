@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 
@@ -13,17 +13,36 @@ import { navProps, logoProps } from './props'
 
 const Navigation = (props) => {
 
-    const { height, toggle, setToggle } = props
+    const { height, toggle, setToggle, isScrolled } = props
 
-    const handleLogoClick = () => {
-        setToggle(false)
-        navigate('/')
+    const handleClick = async (e, status) => {
+        if (status === 'logo') {
+            await setToggle(false)
+            await navigate('/')
+        } else {
+            await setToggle(toggle => !toggle)
+        }
     }
+
+    useEffect(() => {
+        isScrolled ? 
+        document.querySelector('#light').style.opacity = 1 : 
+        document.querySelector('#light').style.opacity = null
+
+        isScrolled ? 
+        document.querySelector('.hamburger_container').classList.add('hamburger_container--scrolled') : 
+        document.querySelector('.hamburger_container').classList.remove('hamburger_container--scrolled')
+
+        isScrolled ? 
+        document.getElementsByTagName('header')[0].style.background = 'linear-gradient(rgb(255,255,255), transparent)' : 
+        document.getElementsByTagName('header')[0].style.background = 'transparent'
+
+    }, [isScrolled])
 
     return (
         <Flex {...navProps} style={{ height }} css={tw`w-full justify-between items-center`}>
-            <Logo {...logoProps} css={tw`cursor-pointer`} onClick={e => handleLogoClick()}/>
-            <Hamburger toggle={toggle} setToggle={setToggle} />
+            <Logo {...logoProps} css={tw`cursor-pointer`} onClick={e => handleClick(e, 'logo')}/>
+            <Hamburger toggle={toggle} setToggle={e => handleClick(e, 'hamburger')} />
         </Flex>
     )
 }
@@ -31,7 +50,8 @@ const Navigation = (props) => {
 Navigation.propTypes = {
     height: PropTypes.string.isRequired,
     toggle: PropTypes.bool.isRequired,
-    setToggle: PropTypes.func.isRequired
+    setToggle: PropTypes.func.isRequired,
+    isScrolled: PropTypes.bool.isRequired
 }
 
 export default memo(Navigation)

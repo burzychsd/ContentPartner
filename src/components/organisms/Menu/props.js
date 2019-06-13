@@ -1,7 +1,5 @@
-export const container = (menuContainerStyle, headerHeight) => ({
+export const container = menuContainerStyle => ({
     reset: true,
     style: { ...menuContainerStyle,
-        visibility: menuContainerStyle.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible'),
-        top: headerHeight / 2 + 40, minHeight: `calc(100% - ${headerHeight / 2 + 40}px)`,
-        paddingTop: headerHeight / 2 }
+        visibility: menuContainerStyle.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible'), height: '100%' }
 })
