@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 // COMPONENTS
 import Header from './../../organisms/Header'
 import Menu from './../../organisms/Menu'
-import Footer from './../../organisms/Footer'
 
 // DATA
 const links = ['O mnie', 'Oferta', 'Portfolio', 'Kontakt', 'Blog']
@@ -22,9 +21,14 @@ const Layout = ({ render, location }) => {
   const [toggle, setToggle] = useState(false)
   const [preventScroll, setPreventScroll] = useState(false)
   const [headerHeight, setHeaderHeight] = useState(0)
+  const [windowHeight, setWindowHeight] = useState(0)
 
-  const setHeight = () => typeof window !== 'undefined' && typeof document !== 'undefined' ? 
-  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`) : null
+  const setHeight = () => {
+    typeof window !== 'undefined' && typeof document !== 'undefined' ? 
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`) : null
+
+    setWindowHeight(window.innerHeight)
+  }
 
   useEffect(() => {
     setHeight()
@@ -62,7 +66,7 @@ const Layout = ({ render, location }) => {
       setToggle={setToggle} />
         <div style={{ width: '100%', height: 30, background: '#FFF', position: 'fixed', top: 0, zIndex: 1000 }}></div>
         <main ref={siteWrapper} id='site_wrapper'>
-          {render({ paddingTop: `${headerHeight + 40}px` })}
+          {render({ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight })}
         </main>
         <form name='contact_basic' data-netlify='true' hidden>
           <input type='text' name='name' />

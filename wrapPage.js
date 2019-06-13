@@ -76,40 +76,40 @@ const WrapPage = ({ data }) => {
     return (
         <Location>
             {({ location }) =>
-                <Layout location={location} render={({ paddingTop }) => (
+                <Layout location={location} render={({ paddingTop, minHeight }) => (
                     <>
                         <SEO {...seoProps(location.pathname)} />
                         <FadeTransition
                         items={conditions(location.pathname, 'home')}>
-                            {items => items && (props => <Home style={{...pageStyles, ...props, paddingTop}} />)}
+                            {items => items && (props => <Home style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
                         </FadeTransition>
                         <FadeTransition
                         items={conditions(location.pathname, 'about')}>
-                            {items => items && (props => <About style={{...pageStyles, ...props, paddingTop}} />)}
+                            {items => items && (props => <About style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
                         </FadeTransition>
                         <FadeTransition
                         items={conditions(location.pathname, 'services')}>
-                            {items => items && (props => <Services style={{...pageStyles, ...props, paddingTop}} />)}
+                            {items => items && (props => <Services style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
                         </FadeTransition>
                         <FadeTransition
                         items={conditions(location.pathname, 'portfolio')}>
-                            {items => items && (props => <Portfolio style={{...pageStyles, ...props, paddingTop}} />)}
+                            {items => items && (props => <Portfolio style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
                         </FadeTransition>
                         <FadeTransition
                         items={conditions(location.pathname, 'contact')}>
-                            {items => items && (props => <Contact style={{...pageStyles, ...props, paddingTop}} />)}
+                            {items => items && (props => <Contact style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
                         </FadeTransition>
                         <FadeTransition
                         items={conditions(location.pathname, 'blog')}>
-                            {items => items && (props => <Blog style={{...pageStyles, ...props, paddingTop}} />)}
+                            {items => items && (props => <Blog style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
                         </FadeTransition>
                         <FadeTransition
                         items={conditions(location.pathname, 'process')}>
-                            {items => items && (props => <Process style={{...pageStyles, ...props, paddingTop}} />)}
+                            {items => items && (props => <Process style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
                         </FadeTransition>
                         <FadeTransition
                         items={paths.filter(path => '/' + path.replace(/\W+/g, '') === '/' + location.pathname.replace(/\W+/g, '')).length === 0}>
-                            {items => items && (props => <NotFound style={{...pageStyles, ...props, paddingTop}} />)}
+                            {items => items && (props => <NotFound style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
                         </FadeTransition> 
                     </>
                 )} />

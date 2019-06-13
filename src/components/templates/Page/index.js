@@ -10,7 +10,7 @@ import Footer from './../../organisms/Footer'
 const AnimatedFlex = animated(Flex)
 
 const Page = props => {
-    const { footer, style , children } = props
+    const { footer, style , children, minHeight } = props
 
     const sectionProps = {
         as: `section`,
@@ -23,7 +23,7 @@ const Page = props => {
             <Flex
             className='section_container'
             reset css={tw`flex-col w-full items-center`}
-            style={{ minHeight: window.innerHeight - style.paddingTop }}>
+            style={{ minHeight: `calc(${minHeight}px - ${style.paddingTop})` }}>
                 {children}
             </Flex>
             {footer && <Footer />}

@@ -6,10 +6,10 @@ import Page from '../components/templates/Page'
 import Flex from '../components/atoms/Flex'
 import HomeContent from '../components/organisms/HomeContent'
 
-const IndexPage = ({ style }) => {
+const IndexPage = ({ style, minHeight }) => {
 
     return (
-        <Page style={style}>
+        <Page style={style} minHeight={minHeight}>
             <HomeContent />
         </Page>
     )

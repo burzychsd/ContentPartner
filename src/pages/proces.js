@@ -7,7 +7,7 @@ import Page from '../components/templates/Page'
 import StageInfo from '../components/molecules/StageInfo'
 import Footer from '../components/organisms/Footer'
 
-const Proces = ({ style }) => {
+const Proces = ({ style, minHeight }) => {
 
     const stageContent = [
         {
@@ -49,7 +49,7 @@ const Proces = ({ style }) => {
     <StageInfo key={shortid.generate()} graphicNum={i + 1} title={stage.title} text={stage.text} />)
 
     return (
-        <Page footer style={style}>
+        <Page footer style={style} minHeight={minHeight}>
             {stages}
         </Page>
     )
