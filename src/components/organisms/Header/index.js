@@ -1,7 +1,7 @@
 // DEPENDENCIES
 import React, { memo, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { RemoveScrollBar } from 'react-remove-scroll-bar'
+import { RemoveScrollBar, zeroRightClassName } from 'react-remove-scroll-bar'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -15,14 +15,19 @@ const Header = (props) => {
     const { toggle, setToggle, innerRef, preventScroll } = props
 
     const [scrollPos, setScrollPos] = useState({ y: 0 })
+    const [scrollbarWidth, setScrollbarWidth] = useState(0)
 
     useEffect(() => {
+
+        setScrollbarWidth(window.innerWidth - document.documentElement.clientWidth)
+
         typeof window !== 'undefined' ? window.addEventListener('scroll', listenToScroll) : null
 
         return () => {
             typeof window !== 'undefined' ? window.removeEventListener('scroll', listenToScroll) : null
         }
     }, [])
+
 
     const listenToScroll = () => {
         const winScroll =
@@ -38,7 +43,7 @@ const Header = (props) => {
     }
 
     return (
-        <Flex ref={innerRef} {...headerProps} reset css={tw`w-full px-6 sm:px-12 fixed z-50`}>
+        <Flex className={zeroRightClassName} ref={innerRef} {...headerProps} reset css={tw`w-full px-6 sm:px-12 fixed z-50`}>
             {(toggle || preventScroll) && <RemoveScrollBar />}
             <Navigation {...navProps} toggle={toggle} setToggle={setToggle} isScrolled={scrollPos.y > 0}/>
         </Flex>

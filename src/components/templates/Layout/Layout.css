@@ -14,9 +14,9 @@ html, body {
 }
 
 body {
-    min-width: 100%;
     display: flex;
     flex-flow: column nowrap;
+    overflow-y: scroll;
 }
 
 body::-webkit-scrollbar {

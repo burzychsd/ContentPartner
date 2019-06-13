@@ -19,7 +19,7 @@ const Layout = ({ children, location }) => {
   const menu = useRef()
 
   const [toggle, setToggle] = useState(false)
-  const [preventScroll, setPreventScroll] = useState()
+  const [preventScroll, setPreventScroll] = useState(false)
 
   const setHeight = () => typeof window !== 'undefined' && typeof document !== 'undefined' ? 
   document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`) : null

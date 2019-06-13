@@ -1,10 +1,14 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
+import { Spring, animated } from 'react-spring/renderprops'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
 import { H1 as Heading } from './../../atoms/Heading'
 import Text from './../../atoms/Text'
+import VisibilitySensor from './../../atoms/VisibilitySensor'
+
+const AnimatedFlex = animated(Flex)
 
 import Stage01 from './../../../images/svg/graphic01.svg'
 import Stage02 from './../../../images/svg/graphic02.svg'
