@@ -2,6 +2,7 @@
 import React, { useRef, memo } from 'react'
 import PropTypes from 'prop-types'
 import { useChain, animated } from 'react-spring'
+import { zeroRightClassName } from 'react-remove-scroll-bar'
 import loadable from '@loadable/component'
 
 // COMPONENTS
@@ -33,7 +34,7 @@ const Menu = (props) => {
     const containerProps = container(menuContainerStyle)
 
     return (
-        <AnimatedFlex ref={innerRef} {...containerProps} css={tw`fixed w-full m-auto bg-white z-40`}>
+        <AnimatedFlex className={zeroRightClassName} ref={innerRef} {...containerProps} css={tw`fixed w-full m-auto bg-white z-40`}>
             <NavLinks
             links={links}
             setToggle={setToggle}

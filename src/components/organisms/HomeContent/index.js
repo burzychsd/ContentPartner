@@ -54,7 +54,7 @@ const HomeContent = () => {
                 ref={text}
                 {...textProps(textStyle)}
                 css={tw`w-full font-light text-center mx-auto mt-2
-                px-0 md:px-8 xl:px-0 xl:w-4/5 xl:text-left xl:m-0`}>{content.subtitle}</AnimatedText>
+                px-0 md:px-4 xl:px-0 xl:w-4/5 xl:text-left xl:m-0`}>{content.subtitle}</AnimatedText>
                 <AnimatedButton
                 ref={heading}
                 {...buttonProps(buttonStyle)}

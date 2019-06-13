@@ -15,11 +15,8 @@ const Header = (props) => {
     const { toggle, setToggle, innerRef, preventScroll } = props
 
     const [scrollPos, setScrollPos] = useState({ y: 0 })
-    const [scrollbarWidth, setScrollbarWidth] = useState(0)
 
     useEffect(() => {
-
-        setScrollbarWidth(window.innerWidth - document.documentElement.clientWidth)
 
         typeof window !== 'undefined' ? window.addEventListener('scroll', listenToScroll) : null
 
@@ -43,7 +40,7 @@ const Header = (props) => {
     }
 
     return (
-        <Flex className={zeroRightClassName} ref={innerRef} {...headerProps} reset css={tw`w-full px-6 sm:px-12 fixed z-50`}>
+        <Flex className={zeroRightClassName} ref={innerRef} {...headerProps} reset css={tw`px-6 sm:px-12 fixed z-50`}>
             {(toggle || preventScroll) && <RemoveScrollBar />}
             <Navigation {...navProps} toggle={toggle} setToggle={setToggle} isScrolled={scrollPos.y > 0}/>
         </Flex>

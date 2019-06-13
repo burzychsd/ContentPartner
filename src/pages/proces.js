@@ -1,21 +1,13 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
-import { animated } from 'react-spring/renderprops'
 import shortid from 'shortid'
 
 // COMPONENTS
-import Flex from '../components/atoms/Flex'
+import Page from '../components/templates/Page'
 import StageInfo from '../components/molecules/StageInfo'
-
-const AnimatedFlex = animated(Flex)
+import Footer from '../components/organisms/Footer'
 
 const Proces = ({ style }) => {
-
-    const sectionProps = {
-        as: `section`,
-        reset: true,
-        style
-    }
 
     const stageContent = [
         {
@@ -57,9 +49,9 @@ const Proces = ({ style }) => {
     <StageInfo key={shortid.generate()} graphicNum={i + 1} title={stage.title} text={stage.text} />)
 
     return (
-        <AnimatedFlex {...sectionProps}>
+        <Page footer style={style}>
             {stages}
-        </AnimatedFlex>
+        </Page>
     )
 }
 

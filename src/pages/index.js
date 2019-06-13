@@ -1,25 +1,17 @@
 // DEPENDENCIES
 import React from 'react'
-import { animated } from 'react-spring/renderprops'
 
 // COMPONENTS
+import Page from '../components/templates/Page'
 import Flex from '../components/atoms/Flex'
 import HomeContent from '../components/organisms/HomeContent'
 
-const AnimatedFlex = animated(Flex)
-
 const IndexPage = ({ style }) => {
 
-    const sectionProps = {
-        as: `section`,
-        reset: true,
-        style
-    }
-
     return (
-        <AnimatedFlex {...sectionProps}>
+        <Page style={style}>
             <HomeContent />
-        </AnimatedFlex>
+        </Page>
     )
 }
 

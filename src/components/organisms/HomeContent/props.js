@@ -1,13 +1,14 @@
 import { navigate } from 'gatsby'
 
 export const containerProps = {
+    className: `home_content--container`,
     reset: true,
-    style: { maxWidth: 700, minHeight: '50%' }
+    style: { maxWidth: 700 }
 }
 
 export const textProps = style => ({
     className: 'text',
-    style: { width: '90%', maxWidth: 600, ...style }
+    style: { maxWidth: 600, ...style }
 })
 
 export const buttonProps = style => ({
@@ -24,5 +25,5 @@ export const timelineProps = {
 
 export const bulbsProps = {
     className: `bulbs_graphic`,
-    style: { position: 'absolute', right: '1rem', bottom: 0, zIndex: -1 }
+    style: { position: 'absolute', right: '6.5rem', bottom: 0, zIndex: -1 }
 }
