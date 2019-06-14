@@ -8,7 +8,7 @@ const FadeTransition = ({ children, items }) => (
     from={{ opacity: 0 }}
     enter={{ opacity: 1 }}
     leave={{ opacity: 0 }}
-    config={{ mass: 1, tension: 280, friction: 80 }}
+    config={{ mass: 1, tension: 400, friction: 80 }}
     delay={100}>
         {children}
     </Transition>

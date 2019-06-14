@@ -49,7 +49,7 @@ const Layout = ({ render, location }) => {
 
   const preventScrolling = async () => {
     await setPreventScroll(true)
-    await setTimeout(() => setPreventScroll(false), 900)
+    await setTimeout(() => setPreventScroll(false), 1500)
   }
 
   return (

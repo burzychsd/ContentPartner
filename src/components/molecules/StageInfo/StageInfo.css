@@ -17,7 +17,6 @@ section > .stageInfo_container:first-child {
 .graphic_container {
     position: relative;
     justify-content: center;
-    margin: 2rem 0;
     max-height: 250px;
 }
 
