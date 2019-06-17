@@ -1,11 +1,13 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
-import shortid from 'shortid'
 
 // COMPONENTS
 import Page from '../components/templates/Page'
 import StageInfo from '../components/molecules/StageInfo'
-import Footer from '../components/organisms/Footer'
+import VisibilitySensor from '../components/atoms/VisibilitySensor'
+
+// ANIMATION
+import SlideIn from './../animations/SlideIn'
 
 const Proces = ({ style, minHeight }) => {
 
@@ -45,12 +47,13 @@ const Proces = ({ style, minHeight }) => {
         }
     ]
 
-    const stages = stageContent.map((stage, i) => 
-    <StageInfo key={shortid.generate()} graphicNum={i + 1} title={stage.title} text={stage.text} />)
-
     return (
         <Page footer style={style} minHeight={minHeight}>
-            {stages}
+            <StageInfo graphicNum={1} title={stageContent[0].title} text={stageContent[0].text} /> 
+            <StageInfo graphicNum={2} title={stageContent[1].title} text={stageContent[1].text} />
+            <StageInfo graphicNum={3} title={stageContent[2].title} text={stageContent[2].text} />
+            <StageInfo graphicNum={4} title={stageContent[3].title} text={stageContent[3].text} />
+            <StageInfo graphicNum={5} title={stageContent[4].title} text={stageContent[4].text} />
         </Page>
     )
 }

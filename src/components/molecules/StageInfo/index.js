@@ -19,7 +19,10 @@ import Stage05 from './../../../images/svg/graphic05.svg'
 // STYLES
 import './StageInfo.css'
 
-const StageInfo = (props) => {
+// ANIMATION
+import SlideIn from './../../../animations/SlideIn'
+
+const StageInfo = props => {
     const { graphicNum, title, text } = props
 
     const containerProps = {
@@ -44,23 +47,35 @@ const StageInfo = (props) => {
 
     return (
         <Flex {...containerProps}>
-            <Flex {...graphicContainerProps}>
-                {
-                    graphicNum === 1 ?
-                    <Stage01 {...stageGraphicProps} /> :
-                    graphicNum === 2 ?
-                    <Stage02 {...stageGraphicProps} /> :
-                    graphicNum === 3 ?
-                    <Stage03 {...stageGraphicProps} /> :
-                    graphicNum === 4 ?
-                    <Stage04 {...stageGraphicProps} /> :
-                    <Stage05 {...stageGraphicProps} />
-                }
-            </Flex>
-            <Flex {...infoContainerProps} css={tw`flex-col`}>
-                <Heading className='heading stage_heading' css={tw`m-0`}>{title}</Heading>
-                <Text className='text stage_text' css={tw`mt-2 mb-6 font-light leading-relaxed break-all`}>{text}</Text>
-            </Flex>
+            <VisibilitySensor once>
+                {({ isVisible }) => (
+                    <>
+                        <Flex {...graphicContainerProps}>
+                            {
+                                graphicNum === 1 ?
+                                isVisible && <Stage01 {...stageGraphicProps} /> :
+                                graphicNum === 2 ?
+                                isVisible && <Stage02 {...stageGraphicProps} /> :
+                                graphicNum === 3 ?
+                                isVisible && <Stage03 {...stageGraphicProps} /> :
+                                graphicNum === 4 ?
+                                isVisible && <Stage04 {...stageGraphicProps} /> :
+                                isVisible && <Stage05 {...stageGraphicProps} />
+                            }
+                        </Flex>
+                        <Spring
+                        to={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 
+                              graphicNum % 2 !== 0 ? 'translateX(-100px)' : 'translateX(100px)' }} delay={600}>
+                            {
+                                props => <AnimatedFlex {...infoContainerProps} css={tw`flex-col`} style={props}>
+                                            <Heading className='heading stage_heading' css={tw`m-0`}>{title}</Heading>
+                                            <Text className='text stage_text' css={tw`mt-2 mb-6 font-light leading-relaxed break-all`}>{text}</Text>
+                                        </AnimatedFlex>
+                            }
+                        </Spring>
+                    </>
+                )}
+            </VisibilitySensor>
         </Flex>
     )
 }

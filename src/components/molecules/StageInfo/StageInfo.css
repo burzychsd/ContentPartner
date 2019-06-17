@@ -17,7 +17,7 @@ section > .stageInfo_container:first-child {
 .graphic_container {
     position: relative;
     justify-content: center;
-    max-height: 250px;
+    height: 250px;
 }
 
 .graphic_container > svg {
@@ -25,12 +25,13 @@ section > .stageInfo_container:first-child {
     height: auto;
 }
 
+
 @media only screen and (min-width: 575px) {
 
     .graphic_container {
         justify-content: center;
         margin-bottom: 2rem;
-        max-height: 350px;
+        height: 350px;
     }
 }
 
@@ -40,7 +41,7 @@ section > .stageInfo_container:first-child {
     }
 
     .section_container > .stageInfo_container:last-child {
-        margin-bottom: 6rem;
+        margin-bottom: 13rem;
     }
 
     .section_container > .stageInfo_container:nth-child(even) {
@@ -52,13 +53,13 @@ section > .stageInfo_container:first-child {
     }
 
     .stageInfo_container {
-        margin: 2rem 0;
+        margin: 6.5rem 0;
     }
 
     .graphic_container {
         width: 30%;
         justify-content: flex-start;
-        max-height: none;
+        height: auto;
         margin: 0;
     }
 

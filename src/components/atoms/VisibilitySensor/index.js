@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { memo, useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import VSensor from 'react-visibility-sensor'
 
@@ -27,4 +27,4 @@ VisibilitySensor.propTypes = {
     children: PropTypes.func.isRequired
 }
 
-export default memo(VisibilitySensor)
+export default VisibilitySensor

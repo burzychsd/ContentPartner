@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { useState, useRef, useEffect, Fragment } from 'react'
+import React, { useState, useRef, useEffect, Fragment, memo } from 'react'
 import PropTypes from 'prop-types'
 
 // COMPONENTS
@@ -81,4 +81,4 @@ Layout.propTypes = {
   render: PropTypes.func.isRequired,
 }
 
-export default Layout
+export default memo(Layout)

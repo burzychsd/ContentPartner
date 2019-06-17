@@ -1,11 +1,11 @@
 import React from 'react'
-import { String } from 'react-spring/renderprops'
+import { Spring } from 'react-spring/renderprops'
 
 const SlideIn = ({ children, status, direction }) => (
     <Spring
     native
-    from={{ opacity: 0, x: direction === 'left' ? -100 : 100 }}
-    to={{ opacity: 1, x: status ? 0 : direction === 'left' ? -100 : 100 }}>
+    from={{ opacity: 0, transform: direction === 'left' ? 'translateX(-100)' : 'translateX(100)' }}
+    to={{ opacity: 1, transform: status ? 'translateX(0)' : direction === 'left' ? 'translateX(100)' : 'translateX(-100)' }}>
         {children}
     </Spring>
 )

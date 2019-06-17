@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React from 'react'
+import React, { memo } from 'react'
 import { animated } from 'react-spring/renderprops'
 import PropTypes from 'prop-types'
 
@@ -17,7 +17,7 @@ const Page = props => {
         reset: true,
         style
     }
-    
+
     return (
         <AnimatedFlex {...sectionProps}>
             <Flex
@@ -37,4 +37,4 @@ Page.propTypes = {
     children: PropTypes.node.isRequired
 }
 
-export default Page
+export default memo(Page)
