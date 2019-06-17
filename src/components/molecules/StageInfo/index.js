@@ -19,9 +19,6 @@ import Stage05 from './../../../images/svg/graphic05.svg'
 // STYLES
 import './StageInfo.css'
 
-// ANIMATION
-import SlideIn from './../../../animations/SlideIn'
-
 const StageInfo = props => {
     const { graphicNum, title, text } = props
 
@@ -64,6 +61,7 @@ const StageInfo = props => {
                             }
                         </Flex>
                         <Spring
+                        native
                         to={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 
                               graphicNum % 2 !== 0 ? 'translateX(-100px)' : 'translateX(100px)' }} delay={600}>
                             {

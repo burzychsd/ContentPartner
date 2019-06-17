@@ -15,7 +15,7 @@ const Page = props => {
     const sectionProps = {
         as: `section`,
         reset: true,
-        style
+        style: { overflowX: 'hidden', ...style }
     }
 
     return (

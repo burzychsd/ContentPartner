@@ -4,10 +4,6 @@ import React, { memo } from 'react'
 // COMPONENTS
 import Page from '../components/templates/Page'
 import StageInfo from '../components/molecules/StageInfo'
-import VisibilitySensor from '../components/atoms/VisibilitySensor'
-
-// ANIMATION
-import SlideIn from './../animations/SlideIn'
 
 const Proces = ({ style, minHeight }) => {
 
