@@ -21,7 +21,7 @@ const ServiceInfo = props => {
 
     const { isActive, handleClick, content } = props
 
-    const containerStyle = useSpring({ transform: isActive ? 'scaleX(1)' : 'scaleX(0)', ref: infoContainer })
+    const containerStyle = useSpring({ opacity: isActive ? 1 : 0, ref: infoContainer })
     const contentStyle = useSpring({ opacity: isActive ? 1 : 0, ref: infoContent })
 
     const infoContainerProps = {
@@ -29,7 +29,8 @@ const ServiceInfo = props => {
         reset: true,
         style: { top: 0, right: 0, bottom: 0, left: 0, zIndex: 1000, 
                  background: '#FFF', position: 'fixed', 
-                 width: '100%', height: '100%', transformOrigin: '0 0', ...containerStyle }
+                 width: '100%', height: '100%', transformOrigin: '0 0', ...containerStyle,
+                 visibility: containerStyle.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible') }
     }
 
     const infoContentProps = {
