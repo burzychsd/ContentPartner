@@ -51,7 +51,7 @@ const ServiceInfo = props => {
             ebook: false,
             cooperation: false
         }),
-        style: { cursor: 'pointer', maxWidth: 160, position: 'absolute', top: '1rem', right: '2.5rem' }
+        style: { cursor: 'pointer', maxWidth: 160, position: 'absolute', top: '1rem', right: '2.5rem', fontWeight: 200 }
     }
 
     const titleProps = {
@@ -70,7 +70,7 @@ const ServiceInfo = props => {
         {isActive && <RemoveScrollBar />}
         <AnimatedFlex ref={infoContainer} {...infoContainerProps}>
             <AnimatedFlex ref={infoContent} {...infoContentProps}>
-                <Flex reset css={tw`flex-col w-full sm:w-2/3 m-auto`}>
+                <Flex reset css={tw`flex-col w-full m-auto`} style={{ maxWidth: 700 }}>
                     <Text {...buttonProps}>Wróć do Menu</Text>
                     <Heading {...titleProps}>{content.title}</Heading>
                     <Text css={tw`font-bold mt-4 px-4`} {...textProps}>{content.content.subtitle01}</Text>

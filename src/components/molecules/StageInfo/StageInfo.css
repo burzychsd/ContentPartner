@@ -41,7 +41,7 @@ section > .stageInfo_container:first-child {
     }
 
     .section_container > .stageInfo_container:last-child {
-        margin-bottom: 13rem;
+        margin-bottom: 9rem;
     }
 
     .section_container > .stageInfo_container:nth-child(even) {
@@ -53,7 +53,7 @@ section > .stageInfo_container:first-child {
     }
 
     .stageInfo_container {
-        margin: 6.5rem 0;
+        margin: 4.5rem 0;
     }
 
     .graphic_container {
