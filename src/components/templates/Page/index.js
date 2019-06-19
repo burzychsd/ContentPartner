@@ -18,9 +18,6 @@ const Page = props => {
         style: { overflowX: 'hidden', ...style }
     }
 
-
-    console.log(minHeight)
-
     return (
         <AnimatedFlex {...sectionProps}>
             <Flex

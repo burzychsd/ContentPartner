@@ -11,7 +11,7 @@ import { H1 as Heading } from '../../atoms/Heading'
 // ANIMATION
 import { titleAnimation } from './animation'
 
-const TrailHeading = ({ title }) => {
+const TrailHeading = ({ title, style, customCss }) => {
 
     const [mounted, setMounted] = useState(false)
 
@@ -27,7 +27,8 @@ const TrailHeading = ({ title }) => {
     return (
         <Heading
         className='heading'
-        css={tw`text-center my-2 xl:text-left subpixel-antialiased`}>{
+        css={customCss ? customCss : tw`text-center my-2 xl:text-left subpixel-antialiased`}
+        style={style}>{
             trail.map((props, i) => <animated.span key={shortid.generate()} style={props}>{letters[i]}</animated.span>)
         }
         </Heading>
