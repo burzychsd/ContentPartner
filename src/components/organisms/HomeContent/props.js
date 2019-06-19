@@ -20,10 +20,10 @@ export const buttonProps = style => ({
 
 export const timelineProps = {
     className: `timeline_graphic`,
-    style: { maxWidth: 600, position: 'absolute', left: '1rem', bottom: 0, zIndex: -1 }
+    style: { position: 'absolute', left: '1rem', bottom: 0, zIndex: -1 }
 }
 
 export const bulbsProps = {
     className: `bulbs_graphic`,
-    style: { position: 'absolute', right: '6.5rem', bottom: 0, zIndex: -1 }
+    style: { position: 'absolute', right: 0, bottom: 0, zIndex: -3 }
 }

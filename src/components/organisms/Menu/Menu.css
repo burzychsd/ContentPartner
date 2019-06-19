@@ -1,0 +1,15 @@
+.menu_container {
+    overflow-y: auto;
+}
+
+.menu_container::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.menu_container::-webkit-scrollbar-track {
+    background: #B4EBCA;
+}
+
+.menu_container::-webkit-scrollbar-thumb {
+    background: #FEFCAD;
+}

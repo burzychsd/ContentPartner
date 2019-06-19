@@ -19,6 +19,9 @@ import { menuAnimation, trailLinks } from './animation'
 // PROPS
 import { container } from './props'
 
+// STYLES
+import './Menu.css'
+
 const Menu = (props) => {
 
     const { links, toggle, setToggle, innerRef } = props
@@ -34,7 +37,7 @@ const Menu = (props) => {
     const containerProps = container(menuContainerStyle)
 
     return (
-        <AnimatedFlex className={zeroRightClassName} ref={innerRef} {...containerProps} css={tw`fixed w-full m-auto bg-white z-40`}>
+        <AnimatedFlex className={`menu_container ${zeroRightClassName}`} ref={innerRef} {...containerProps} css={tw`fixed w-full m-auto bg-white z-40`}>
             <NavLinks
             links={links}
             setToggle={setToggle}

@@ -10,10 +10,10 @@
 }
 
 .company_logo_container {
-    width: 100%;
+    width: 80%;
     max-width: 500px;
-    margin: 0 auto 1rem auto;
-    height: 250px;
+    margin: 0 auto;
+    height: 150px;
 }
 
 .company_logo_container > svg {

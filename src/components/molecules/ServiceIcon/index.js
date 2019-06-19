@@ -67,7 +67,8 @@ const ServiceIcon = props => {
                         }
                         <Spring
                         native
-                        to={{ opacity: status && isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 'translate(-20px)' }}>
+                        to={{ opacity: status && isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 'translate(-20px)' }}
+                        delay={600}>
                             { props => <AnimatedText
                                     {...textProps}
                                     css={tw`mx-4 text-center`}

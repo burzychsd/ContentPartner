@@ -18,12 +18,15 @@ const Page = props => {
         style: { overflowX: 'hidden', ...style }
     }
 
+
+    console.log(minHeight)
+
     return (
         <AnimatedFlex {...sectionProps}>
             <Flex
             className='section_container'
             reset css={tw`flex-col w-full items-center`}
-            style={{ minHeight: `calc(${minHeight}px - ${style.paddingTop})` }}>
+            style={{ minHeight: minHeight < 480 ? 480 : `calc(${minHeight}px - ${style.paddingTop})`, position: 'relative', height: '100%' }}>
                 {children}
             </Flex>
             {footer && <Footer />}

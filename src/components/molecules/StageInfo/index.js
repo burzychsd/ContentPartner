@@ -44,7 +44,7 @@ const StageInfo = props => {
 
     return (
         <Flex {...containerProps}>
-            <VisibilitySensor once>
+            <VisibilitySensor once partialVisibility>
                 {({ isVisible }) => (
                     <>
                         <Flex {...graphicContainerProps}>
@@ -63,7 +63,7 @@ const StageInfo = props => {
                         <Spring
                         native
                         to={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 
-                              graphicNum % 2 !== 0 ? 'translateX(-100px)' : 'translateX(100px)' }} delay={600}>
+                              graphicNum % 2 !== 0 ? 'translateX(-100px)' : 'translateX(100px)' }} delay={300}>
                             {
                                 props => <AnimatedFlex {...infoContainerProps} css={tw`flex-col`} style={props}>
                                             <Heading className='heading stage_heading' css={tw`m-0`}>{title}</Heading>

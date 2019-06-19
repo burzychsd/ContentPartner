@@ -51,7 +51,7 @@ const ServiceInfo = props => {
             ebook: false,
             cooperation: false
         }),
-        style: { cursor: 'pointer', maxWidth: 160, position: 'absolute', top: '1rem', right: '2.5rem', fontWeight: 200 }
+        style: { cursor: 'pointer', maxWidth: 200, position: 'absolute', top: '1rem', right: '2.5rem', fontWeight: 200 }
     }
 
     const titleProps = {
@@ -85,7 +85,7 @@ const ServiceInfo = props => {
 }
 
 ServiceInfo.propTypes = {
-    isActive: PropTypes.bool.isRequired,
+    isActive: PropTypes.bool,
     handleClick: PropTypes.func.isRequired,
     content: PropTypes.object.isRequired
 }

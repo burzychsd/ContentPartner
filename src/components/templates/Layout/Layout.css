@@ -105,6 +105,10 @@ form[name='contact_basic'] {
     transition: transform 800ms cubic-bezier(0.215, 0.610, 0.355, 1) 0.0001s;
 }
 
+.timeline_graphic {
+    max-width: 600px;
+}
+
 .bulbs_graphic {
     visibility: hidden;
 }
@@ -126,7 +130,14 @@ form[name='contact_basic'] {
     }
 }
 
-@media only screen and (min-width: 700px) and (max-height: 480px) {
+@media only screen and (min-width: 480px) and (max-height: 480px) {
+    .timeline_graphic {
+        max-height: 230px;
+        height: 45%;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-height: 480px) {
     .heading {
         font-size: 2rem;
     }
@@ -138,7 +149,8 @@ form[name='contact_basic'] {
 
 @media only screen and (min-height: 481px) and (max-height: 600px) {
     .timeline_graphic {
-        height: 30%;
+        width: 70%;
+        height: 40%;
     }
 
     .heading {
@@ -187,8 +199,9 @@ form[name='contact_basic'] {
     }
 
     .timeline_graphic {
-        width: 50%;
-        height: 40%;
+        width: 60%;
+        height: 45%;
+        max-width: 100%;
     }
 }
 
@@ -203,16 +216,9 @@ form[name='contact_basic'] {
     }
 
     .timeline_graphic {
-        width: 50%;
+        width: 70%;
         height: 50%;
-    }
-}
-
-@media only screen and (min-width: 1140px) and (max-height: 800px) {
-    .bulbs_graphic {
-        visibility: visible;
-        width: 50%;
-        height: 50%;
+        max-width: 600px;
     }
 }
 
@@ -227,15 +233,27 @@ form[name='contact_basic'] {
         padding: 0;
     }
 
+    .bulbs_graphic {
+        visibility: visible;
+        width: 320px;
+        height: 460px;
+    }
+
 }
 
-@media only screen and (min-width: 1200px) and (min-height: 1024px) {
+@media only screen and (min-width: 1140px) and (min-height: 1024px) {
     .heading {
         font-size: 3.4rem;
     }
 
     body, .text {
         font-size: 1.6rem;
+    }
+
+    .bulbs_graphic {
+        visibility: visible;
+        width: 420px;
+        height: 650px;
     }
 }
 

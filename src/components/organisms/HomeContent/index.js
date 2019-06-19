@@ -8,6 +8,7 @@ import TrailHeading from '../../molecules/TrailHeading'
 import Text from './../../atoms/Text'
 import Button from './../../atoms/Button'
 import TimeLineGraphic from './../../../images/svg/timeline_graphic.svg'
+import Image from './../../atoms/Image'
 import BulbsGraphic from './../../../images/svg/bulbs_graphic.svg'
 
 const AnimatedText = animated(Text)
@@ -20,7 +21,7 @@ import { containerProps,
 // ANIMATION
 import { fadeIn } from './../../../animations/fadeIn'
 
-const HomeContent = () => {
+const HomeContent = ({ data }) => {
 
     const content = {
         title: `Słowa to nie zbiór znaków.`,
@@ -64,7 +65,8 @@ const HomeContent = () => {
                 <TimeLineGraphic style={{ width: '100%' }} />
             </Flex>
             <Flex reset {...bulbsProps}>
-                <BulbsGraphic style={{ width: '100%' }} />
+                {/* <BulbsGraphic style={{ width: '100%' }} /> */}
+                <Image fluid={data.imageOne.childImageSharp.fluid} style={{ height: 'auto', width: '100%' }} />
             </Flex>
         </Fragment>
     )
