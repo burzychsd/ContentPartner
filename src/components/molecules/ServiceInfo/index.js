@@ -3,6 +3,7 @@ import React, { memo, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { RemoveScrollBar, zeroRightClassName } from 'react-remove-scroll-bar'
 import { useSpring, useChain, animated } from 'react-spring'
+import shortid from 'shortid'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -65,6 +66,10 @@ const ServiceInfo = props => {
 
     useChain(isActive ? [infoContainer, infoContent] : [infoContent, infoContainer])
 
+    const listItems = content.content.listItems.map(item => 
+        <li key={shortid.generate()} css={tw`font-light my-2 text-dark_puce`} {...textProps}>{`- ${item}`}</li>
+    )
+
     return (
         <>
         {isActive && <RemoveScrollBar />}
@@ -73,10 +78,13 @@ const ServiceInfo = props => {
                 <Flex reset css={tw`flex-col w-full m-auto`} style={{ maxWidth: 700 }}>
                     <Text {...buttonProps}>Wróć do Menu</Text>
                     <Heading {...titleProps}>{content.title}</Heading>
-                    <Text css={tw`font-bold mt-4 px-4`} {...textProps}>{content.content.subtitle01}</Text>
                     <Text css={tw`font-light my-4 px-4`} {...textProps}>{content.content.paragraph01}</Text>
-                    <Text css={tw`font-bold mt-4 px-4`} {...textProps}>{content.content.subtitle02}</Text>
-                    <Text css={tw`font-light mt-4 mb-8 px-4`} {...textProps}>{content.content.paragraph02}</Text>
+                    <Text css={tw`font-light my-4 px-4`} {...textProps}>{content.content.paragraph02}</Text>
+                    <Text css={tw`font-bold my-4 px-4`} {...textProps}>{content.content.listTitle}</Text>
+                    <ul css={tw`flex flex-col px-4`} style={{ listStyle: 'none' }}>
+                        {listItems}
+                    </ul>
+                    <Text css={tw`font-light my-8 px-4`} {...textProps}><span css={tw`font-bold`}>Napisz lub zadzwoń</span>{` - ${content.content.paragraph03}`}</Text>
                 </Flex>
             </AnimatedFlex>
         </AnimatedFlex>

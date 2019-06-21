@@ -34,15 +34,15 @@ const AboutContent = props => {
     }
 
     const paragraphs = text.map(paragraph => 
-        <Text className='text' key={shortid.generate()} css={tw`text-light my-4 lg:my-8`}>{paragraph}</Text>
+        <Text className='text' key={shortid.generate()} css={tw`font-light my-4 lg:mb-8 lg:mt-4`}>{paragraph}</Text>
     )
 
     return (
         <Flex {...containerProps}>
             <Flex {...picContainerProps}>
-                <Image fluid={data.imageTwo.childImageSharp.fluid} objFit='contain' style={{ width: '100%', height: '100%' }} />
+                <Image fluid={data.imageTwo.childImageSharp.fluid} objFit='contain' objPosition='50% 100%' style={{ width: '100%', height: '100%', marginBottom: '1rem' }} />
             </Flex>
-            <TrailHeading title='Franciszek Budzbon' customCss={{ ...tw`text-center my-2 lg:text-left subpixel-antialiased` }} />
+            <TrailHeading title='Franciszek Budzbon' customCss={{ ...tw`text-center my-0 lg:text-left subpixel-antialiased` }} />
             {paragraphs}
         </Flex>
     )

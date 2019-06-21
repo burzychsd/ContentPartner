@@ -55,6 +55,10 @@ main > section > .section_container {
     margin: 0 auto;
 }
 
+p {
+    line-height: 2rem!important;
+}
+
 footer {
     flex-shrink: 0;
 }
