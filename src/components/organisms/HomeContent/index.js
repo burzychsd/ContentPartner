@@ -59,7 +59,7 @@ const HomeContent = ({ data }) => {
                 <AnimatedButton
                 ref={heading}
                 {...buttonProps(buttonStyle)}
-                css={tw`relative self-center xl:self-start`}>{content.button}</AnimatedButton>
+                css={tw`relative self-center xl:self-start py-2`}>{content.button}</AnimatedButton>
             </Flex>
             <Flex reset {...timelineProps}>
                 <TimeLineGraphic style={{ width: '100%' }} />

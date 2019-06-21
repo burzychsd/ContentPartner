@@ -15,7 +15,7 @@ export const buttonProps = style => ({
     reset: true,
     className: `button`,
     onClick: () => navigate('/proces'),
-    style
+    style: { ...style, margin: '1rem 0' }
 })
 
 export const timelineProps = {

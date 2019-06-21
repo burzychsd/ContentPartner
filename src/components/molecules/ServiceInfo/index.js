@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { RemoveScrollBar, zeroRightClassName } from 'react-remove-scroll-bar'
 import { useSpring, useChain, animated } from 'react-spring'
 import shortid from 'shortid'
+import { navigate } from 'gatsby'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -67,7 +68,7 @@ const ServiceInfo = props => {
     useChain(isActive ? [infoContainer, infoContent] : [infoContent, infoContainer])
 
     const listItems = content.content.listItems.map(item => 
-        <li key={shortid.generate()} css={tw`font-light my-2 text-dark_puce`} {...textProps}>{`- ${item}`}</li>
+        <li key={shortid.generate()} css={tw`font-light my-1 text-dark_puce`} {...textProps}>{`- ${item}`}</li>
     )
 
     return (
@@ -76,15 +77,15 @@ const ServiceInfo = props => {
         <AnimatedFlex ref={infoContainer} {...infoContainerProps}>
             <AnimatedFlex ref={infoContent} {...infoContentProps}>
                 <Flex reset css={tw`flex-col w-full m-auto`} style={{ maxWidth: 700 }}>
-                    <Text {...buttonProps}>Wróć do Menu</Text>
+                    <Text {...buttonProps} css={tw`py-2`}>Wróć do Menu</Text>
                     <Heading {...titleProps}>{content.title}</Heading>
-                    <Text css={tw`font-light my-4 px-4`} {...textProps}>{content.content.paragraph01}</Text>
-                    <Text css={tw`font-light my-4 px-4`} {...textProps}>{content.content.paragraph02}</Text>
-                    <Text css={tw`font-bold my-4 px-4`} {...textProps}>{content.content.listTitle}</Text>
-                    <ul css={tw`flex flex-col px-4`} style={{ listStyle: 'none' }}>
+                    <Text css={tw`font-light my-4 px-2`} {...textProps}>{content.content.paragraph01}</Text>
+                    <Text css={tw`font-light my-4 px-2`} {...textProps}>{content.content.paragraph02}</Text>
+                    <Text css={tw`font-bold my-4 px-2`} {...textProps}>{content.content.listTitle}</Text>
+                    <ul css={tw`flex flex-col px-2`} style={{ listStyle: 'none' }}>
                         {listItems}
                     </ul>
-                    <Text css={tw`font-light my-8 px-4`} {...textProps}><span css={tw`font-bold`}>Napisz lub zadzwoń</span>{` - ${content.content.paragraph03}`}</Text>
+                    <Text css={tw`font-light my-8 px-2`} {...textProps}><span onClick={e => navigate('/kontakt')} css={tw`font-bold`}>Napisz lub zadzwoń</span>{` - ${content.content.paragraph03}`}</Text>
                 </Flex>
             </AnimatedFlex>
         </AnimatedFlex>
