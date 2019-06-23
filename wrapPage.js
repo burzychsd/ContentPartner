@@ -15,7 +15,8 @@ const Services = loadable(() => import('./src/pages/oferta'))
 const Portfolio = loadable(() => import('./src/pages/portfolio'))
 const Process = loadable(() => import('./src/pages/proces'))
 const Contact = loadable(() => import('./src/pages/kontakt'))
-const Blog = loadable(() => import('./src/pages/blog'))
+const Blog = loadable(() => import('./src/components/templates/Blog'))
+const BlogPost = loadable(() => import('./src/components/templates/BlogPost'))
 
 // HOC
 import pagesPaths from './src/HOC/pagesPaths'
@@ -23,10 +24,15 @@ import pagesPaths from './src/HOC/pagesPaths'
 // ANIMATION
 import FadeTransition from './src/animations/FadeTransition'
 
-const WrapPage = ({ data }) => {
+const WrapPage = ({ pages, ...props }) => {
 
-    const paths = data.allSitePage.edges.map(edge => edge.node.path)
+    const paths = pages.allSitePage.edges.map(edge => edge.node.path)
                                         .filter(path => path !== '/dev-404-page/' && path !== '/404.html' && path !== '/404/')
+
+    const blogPostsPaths = pages.allSitePage.edges.map(edge => edge.node.path)
+                                                  .filter(path => path.includes('post'))
+
+    console.log(blogPostsPaths)
 
     const conditions = (path, page) =>
         page === 'home' ? path === '/' :
@@ -35,6 +41,7 @@ const WrapPage = ({ data }) => {
         page === 'portfolio' ? path.includes('portfolio') :
         page === 'contact' ? path.includes('kontakt') :
         page === 'blog' ? path.includes('blog') :
+        page === 'post' ? path.includes('post') :
         page === 'process' ? path.includes('proces') : null
 
     const pageStyles = {
@@ -68,53 +75,56 @@ const WrapPage = ({ data }) => {
     } : conditions(path, 'blog') ? {
         title: `Blog`,
         keywords: [`blog`]
+    } : conditions(path, 'post') ? {
+        title: `Post`,
+        keywords: [`post`]
     } : conditions(path, 'process') ? {
         title: `Proces`,
         keywords: [`process`]
     } : { title: `404: Not found` }
 
     return (
-        <Location>
-            {({ location }) =>
-                <Layout location={location} render={({ paddingTop, minHeight }) => (
-                    <>
-                        <SEO {...seoProps(location.pathname)} />
-                        <FadeTransition
-                        items={conditions(location.pathname, 'home')}>
-                            {items => items && (props => <Home style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
-                        </FadeTransition>
-                        <FadeTransition
-                        items={conditions(location.pathname, 'about')}>
-                            {items => items && (props => <About style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
-                        </FadeTransition>
-                        <FadeTransition
-                        items={conditions(location.pathname, 'services')}>
-                            {items => items && (props => <Services style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
-                        </FadeTransition>
-                        <FadeTransition
-                        items={conditions(location.pathname, 'portfolio')}>
-                            {items => items && (props => <Portfolio style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
-                        </FadeTransition>
-                        <FadeTransition
-                        items={conditions(location.pathname, 'contact')}>
-                            {items => items && (props => <Contact style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
-                        </FadeTransition>
-                        <FadeTransition
-                        items={conditions(location.pathname, 'blog')}>
-                            {items => items && (props => <Blog style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
-                        </FadeTransition>
-                        <FadeTransition
-                        items={conditions(location.pathname, 'process')}>
-                            {items => items && (props => <Process style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
-                        </FadeTransition>
-                        <FadeTransition
-                        items={paths.filter(path => '/' + path.replace(/\W+/g, '') === '/' + location.pathname.replace(/\W+/g, '')).length === 0}>
-                            {items => items && (props => <NotFound style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
-                        </FadeTransition> 
-                    </>
-                )} />
-            }
-        </Location>
+        <Layout {...props} render={({ paddingTop, minHeight, data, pageContext }) => (
+            <>
+                <SEO {...seoProps(location.pathname)} />
+                <FadeTransition
+                items={conditions(location.pathname, 'home')}>
+                    {items => items && (props => <Home style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
+                </FadeTransition>
+                <FadeTransition
+                items={conditions(location.pathname, 'about')}>
+                    {items => items && (props => <About style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
+                </FadeTransition>
+                <FadeTransition
+                items={conditions(location.pathname, 'services')}>
+                    {items => items && (props => <Services style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
+                </FadeTransition>
+                <FadeTransition
+                items={conditions(location.pathname, 'portfolio')}>
+                    {items => items && (props => <Portfolio style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
+                </FadeTransition>
+                <FadeTransition
+                items={conditions(location.pathname, 'contact')}>
+                    {items => items && (props => <Contact style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
+                </FadeTransition>
+                <FadeTransition
+                items={conditions(location.pathname, 'blog')}>
+                    {items => items && (props => <Blog style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} data={data} pageContext={pageContext} />)}
+                </FadeTransition>
+                <FadeTransition
+                items={conditions(location.pathname, 'post')}>
+                    {items => items && (props => blogPostsPaths.includes(`/${pageContext.slug}`) && <BlogPost style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} data={data} pageContext={pageContext} />)}
+                </FadeTransition>
+                <FadeTransition
+                items={conditions(location.pathname, 'process')}>
+                    {items => items && (props => <Process style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
+                </FadeTransition>
+                <FadeTransition
+                items={paths.filter(path => '/' + path.replace(/\W+/g, '') === '/' + location.pathname.replace(/\W+/g, '')).length === 0}>
+                    {items => items && (props => <NotFound style={{...pageStyles, ...props, paddingTop}} minHeight={minHeight} />)}
+                </FadeTransition> 
+            </>
+        )} />
     )
 }
 

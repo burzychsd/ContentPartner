@@ -12,7 +12,9 @@ const links = ['O mnie', 'Oferta', 'Portfolio', 'Kontakt', 'Blog']
 // STYLES
 import './Layout.css'
 
-const Layout = ({ render, location }) => {
+const Layout = ({ render, props }) => {
+
+  const { data, pageContext, location } = props
 
   const header = useRef()
   const siteWrapper = useRef()
@@ -66,7 +68,7 @@ const Layout = ({ render, location }) => {
       setToggle={setToggle} />
         <div style={{ width: '100%', height: 30, background: '#FFF', position: 'fixed', top: 0, zIndex: 1000 }}></div>
         <main ref={siteWrapper} id='site_wrapper'>
-          {render({ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight })}
+          {render({ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight, data, pageContext })}
         </main>
         <form name='contact_basic' data-netlify='true' hidden>
           <input type='text' name='name' />

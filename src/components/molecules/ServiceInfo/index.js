@@ -68,7 +68,7 @@ const ServiceInfo = props => {
     useChain(isActive ? [infoContainer, infoContent] : [infoContent, infoContainer])
 
     const listItems = content.content.listItems.map(item => 
-        <li key={shortid.generate()} css={tw`font-light my-1 text-dark_puce`} {...textProps}>{`- ${item}`}</li>
+        <li key={shortid.generate()} css={tw`font-body font-light my-1 text-dark_puce`} {...textProps}>{`- ${item}`}</li>
     )
 
     return (

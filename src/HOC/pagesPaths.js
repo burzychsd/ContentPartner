@@ -14,7 +14,7 @@ const pagesPaths = Component => props => (
                 }
             }
         }`
-    } render={data => <Component data={data} /> } />
+    } render={data => <Component pages={data} {...props} /> } />
 )
 
 export default pagesPaths
