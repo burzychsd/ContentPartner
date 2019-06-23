@@ -1,7 +1,7 @@
 // DEPENDENCIES
 import styled from 'styled-components'
 
-const defaultStyles = {...tw`font-heading text-dark_puce leading-normal antialiased`}
+const defaultStyles = {...tw`font-heading text-dark_puce leading-normal antialiased px-2`}
 
 const H1 = styled.h1`
     ${props => props.reset ? null : defaultStyles};

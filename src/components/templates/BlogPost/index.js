@@ -7,9 +7,7 @@ import Page from './../../templates/Page'
 
 const BlogPost = props => {
 
-    const { style, minHeight, pageContext, data } = props
-
-    console.log(pageContext)
+    const { style, pageContext, data, minHeight } = props
 
     return (
         <Page footer style={style} minHeight={minHeight}>

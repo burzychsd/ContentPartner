@@ -76,7 +76,7 @@ const ServiceInfo = props => {
         {isActive && <RemoveScrollBar />}
         <AnimatedFlex ref={infoContainer} {...infoContainerProps}>
             <AnimatedFlex ref={infoContent} {...infoContentProps}>
-                <Flex reset css={tw`flex-col w-full m-auto`} style={{ maxWidth: 700 }}>
+                <Flex reset css={tw`flex-col w-full m-auto`} style={{ maxWidth: 850 }}>
                     <Text {...buttonProps} css={tw`py-2`}>Wróć do Menu</Text>
                     <Heading {...titleProps}>{content.title}</Heading>
                     <Text css={tw`font-light my-4 px-2`} {...textProps}>{content.content.paragraph01}</Text>

@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Spring, animated } from 'react-spring/renderprops'
 
@@ -7,7 +7,6 @@ import { Spring, animated } from 'react-spring/renderprops'
 import Flex from './../../atoms/Flex'
 import Text from './../../atoms/Text'
 import ServiceInfo from './../../molecules/ServiceInfo'
-import VisibilitySensor from './../../atoms/VisibilitySensor'
 import Articles from './../../../images/svg/articles.svg'
 import Ecommerce from './../../../images/svg/e-commerce.svg'
 import Website from './../../../images/svg/www.svg'
@@ -22,7 +21,7 @@ import { detailsInfo } from './detailsInfo'
 
 const ServiceIcon = props => {
 
-    const { title, status, handleClick, showInfo } = props
+    const { title, handleClick, showInfo } = props
 
     const conditions = {
         articles: title === 'Artykuły tematyczne',
@@ -52,31 +51,33 @@ const ServiceIcon = props => {
         className: 'text'
     }
 
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
     return (
         <Flex {...iconContainer} css={tw`flex-col items-center mt-8`}>
-            <VisibilitySensor once partialVisibility>
-                {({ isVisible }) => (
-                    <>
-                        {
-                            conditions.articles ? status && isVisible && <Articles {...iconProps} /> : 
-                            conditions.ecommerce ? status && isVisible && <Ecommerce {...iconProps} /> : 
-                            conditions.website ? status && isVisible && <Website {...iconProps} /> : 
-                            conditions.socialMedia ? status && isVisible && <SocialMedia {...iconProps} /> : 
-                            conditions.ebook ? status && isVisible && <Ebook {...iconProps} /> : 
-                            conditions.cooperation ? status && isVisible && <Cooperation {...iconProps} /> : null
-                        }
-                        <Spring
-                        native
-                        to={{ opacity: status && isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 'translate(-20px)' }}
-                        delay={600}>
-                            { props => <AnimatedText
-                                    {...textProps}
-                                    css={tw`mx-4 text-center`}
-                                    style={props}>{title}</AnimatedText> }
-                        </Spring>
-                    </>
-                )}
-            </VisibilitySensor>
+            <>
+                {
+                    conditions.articles ? <Articles {...iconProps} /> : 
+                    conditions.ecommerce ? <Ecommerce {...iconProps} /> : 
+                    conditions.website ? <Website {...iconProps} /> : 
+                    conditions.socialMedia ? <SocialMedia {...iconProps} /> : 
+                    conditions.ebook ? <Ebook {...iconProps} /> : 
+                    conditions.cooperation ? <Cooperation {...iconProps} /> : null
+                }
+                <Spring
+                native
+                to={{ opacity: mounted ? 1 : 0, transform: mounted ? 'translateX(0)' : 'translate(-20px)' }}
+                delay={600}>
+                    { props => <AnimatedText
+                            {...textProps}
+                            css={tw`mx-4 text-center`}
+                            style={props}>{title}</AnimatedText> }
+                </Spring>
+            </>
             {
                 conditions.articles ? <ServiceInfo handleClick={handleClick} isActive={showInfo.articles} content={detailsInfo.articles} /> : 
                 conditions.ecommerce ? <ServiceInfo handleClick={handleClick} isActive={showInfo.ecommerce} content={detailsInfo.ecommerce} /> : 
@@ -85,14 +86,12 @@ const ServiceIcon = props => {
                 conditions.ebook ? <ServiceInfo handleClick={handleClick} isActive={showInfo.ebook} content={detailsInfo.ebook} /> : 
                 conditions.cooperation ? <ServiceInfo handleClick={handleClick} isActive={showInfo.cooperation} content={detailsInfo.cooperation} /> : null
             }
-            
         </Flex>
     )
 }
 
 ServiceIcon.propTypes = {
     title: PropTypes.string.isRequired,
-    status: PropTypes.bool.isRequired,
     handleClick: PropTypes.func.isRequired,
     showInfo: PropTypes.object.isRequired,
 }

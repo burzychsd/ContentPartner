@@ -16,6 +16,7 @@ const Navigation = (props) => {
     const { height, toggle, setToggle, isScrolled } = props
 
     const handleClick = async (e, status) => {
+        await e.preventDefault()
         if (status === 'logo') {
             await setToggle(false)
             await navigate('/')

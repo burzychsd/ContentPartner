@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { memo, useState, useEffect } from 'react'
+import React, { memo, useState } from 'react'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -15,7 +15,6 @@ const ServicesDisplay = props => {
         reset: true
     }
 
-    const [mounted, setMounted] = useState(false)
     const [showInfo, setShowInfo] = useState({
         articles: false,
         ecommerce: false,
@@ -25,22 +24,14 @@ const ServicesDisplay = props => {
         cooperation: false
     })
 
-    useEffect(() => {
-        setTimeout(() => setMounted(true), 400)
-
-        return () => {
-            setMounted(false)
-        }
-    },[])
-
     return (
         <Flex {...containerProps}>
-            <ServiceIcon title='Artykuły tematyczne' status={mounted} handleClick={setShowInfo} showInfo={showInfo} />
-            <ServiceIcon title='Opisy produktów' status={mounted} handleClick={setShowInfo} showInfo={showInfo} />
-            <ServiceIcon title='Treści na strony www' status={mounted} handleClick={setShowInfo} showInfo={showInfo} />
-            <ServiceIcon title='Media społecznościowe' status={mounted} handleClick={setShowInfo} showInfo={showInfo} />
-            <ServiceIcon title='E-booki' status={mounted} handleClick={setShowInfo} showInfo={showInfo} />
-            <ServiceIcon title='Kompleksowa współpraca' status={mounted} handleClick={setShowInfo} showInfo={showInfo} />
+            <ServiceIcon title='Artykuły tematyczne' handleClick={setShowInfo} showInfo={showInfo} />
+            <ServiceIcon title='Opisy produktów' handleClick={setShowInfo} showInfo={showInfo} />
+            <ServiceIcon title='Treści na strony www' handleClick={setShowInfo} showInfo={showInfo} />
+            <ServiceIcon title='Media społecznościowe' handleClick={setShowInfo} showInfo={showInfo} />
+            <ServiceIcon title='E-booki' handleClick={setShowInfo} showInfo={showInfo} />
+            <ServiceIcon title='Kompleksowa współpraca' handleClick={setShowInfo} showInfo={showInfo} />
         </Flex>
     )
 }

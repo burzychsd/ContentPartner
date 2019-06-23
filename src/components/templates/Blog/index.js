@@ -1,25 +1,28 @@
 // DEPENDENCIES
-import React, { memo } from 'react'
+import React, { memo, useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import shortid from 'shortid'
 
 // COMPONENTS
-import Flex from './../../atoms/Flex'
 import Page from './../../templates/Page'
+import BlogCard from './../../molecules/BlogCard'
+import Pagination from './../../molecules/Pagination'
 
 const Blog = props => {
 
-    const { style, minHeight, pageContext, data } = props
+    const { style, pageContext, data, location, minHeight } = props
 
-    console.log(pageContext)
+    const [posts, setPosts] = useState(null)
+
+    useEffect(() => {
+      setPosts(data.posts)
+    }, location.pathname.includes('blog') && typeof data !== 'undefined' ? [pageContext.currentPage] : [])
 
     return (
         <Page footer style={style} minHeight={minHeight}>
-            <Flex>
-
-            </Flex>
+            {posts && posts.edges.map(edge => <BlogCard key={shortid.generate()} data={edge.node} />)}
+            <Pagination location={location} pageContext={pageContext} />
         </Page>
-
     )
 }
 
