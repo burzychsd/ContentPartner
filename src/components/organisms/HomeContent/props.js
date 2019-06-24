@@ -14,7 +14,7 @@ export const textProps = style => ({
 export const buttonProps = style => ({
     reset: true,
     className: `button`,
-    onClick: () => navigate('/proces'),
+    onClick: () => navigate('/proces/'),
     style: { ...style, margin: '1rem 0' }
 })
 

@@ -32,16 +32,16 @@ const WrapPage = ({ pages, ...props }) => {
     const blogPostsPaths = pages.allSitePage.edges.map(edge => edge.node.path)
                                                   .filter(path => path.includes('post'))
 
+    const regex = new RegExp('/blog/([0-9]+$)')
 
     const conditions = (path, page) =>
         page === 'home' ? path === '/' :
-        page === 'about' ? path.includes('o-mnie') :
-        page === 'services' ? path.includes('oferta') :
-        page === 'portfolio' ? path.includes('portfolio') :
-        page === 'contact' ? path.includes('kontakt') :
-        page === 'blog' ? path.includes('blog') :
-        page === 'post' ? path.includes('post') :
-        page === 'process' ? path.includes('proces') : null
+        page === 'about' ? path === '/o-mnie/' :
+        page === 'services' ? path === '/oferta/' :
+        page === 'portfolio' ? path === '/portfolio/' :
+        page === 'contact' ? path === '/kontakt/' :
+        page === 'blog' ? path === '/blog/' || regex.test(path) :
+        page === 'process' ? path === '/proces/' : null
 
     const pageStyles = {
         position: 'absolute',
@@ -83,7 +83,7 @@ const WrapPage = ({ pages, ...props }) => {
     } : { title: `404: Not found` }
 
     return (
-        <Layout {...props} render={({ paddingTop, minHeight, pageContext, location }) => (
+        <Layout {...props} render={({ paddingTop, minHeight, data, pageContext, location }) => (
             <>
                 <SEO {...seoProps(location.pathname)} />
                 <FadeTransition
@@ -106,14 +106,8 @@ const WrapPage = ({ pages, ...props }) => {
                 items={conditions(location.pathname, 'contact')}>
                     {items => items && (props => <Contact style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
                 </FadeTransition>
-                <FadeTransition
-                items={conditions(location.pathname, 'blog')}>
-                    {items => items && (props => <Blog style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} pageContext={pageContext} location={location} />)}
-                </FadeTransition>
-                <FadeTransition
-                items={conditions(location.pathname, 'post')}>
-                    {items => items && (props => blogPostsPaths.includes(`/${pageContext.slug}`) && <BlogPost style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} pageContext={pageContext} />)}
-                </FadeTransition>
+                {conditions(location.pathname, 'blog') && <Blog style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} data={data} pageContext={pageContext} location={location} />}
+                {blogPostsPaths.includes(`/${pageContext.slug}`) && <BlogPost style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} pageContext={pageContext} />}
                 <FadeTransition
                 items={conditions(location.pathname, 'process')}>
                     {items => items && (props => <Process style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}

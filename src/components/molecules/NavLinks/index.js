@@ -26,7 +26,7 @@ const NavLinks = (props) => {
                 {trail.map(({ x, height, ...rest }, i) => 
                     <AnimatedNavLink 
                     style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}
-                    to={links[i].replace(/\s+/g, '-').toLowerCase()}
+                    to={`/${links[i].replace(/\s+/g, '-').toLowerCase()}/`}
                     key={shortid.generate()}
                     onClick={() => setToggle(toggle => !toggle)}
                     {...linkProps}>{links[i]}</AnimatedNavLink>

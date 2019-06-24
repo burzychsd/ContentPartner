@@ -14,7 +14,7 @@ exports.onCreateWebpackConfig = ({ stage, getConfig, rules, loaders, plugins, ac
   })
 }
 
-exports.createPagesStatefully = ({ actions, graphql }) => {
+exports.createPages = ({ actions, graphql }) => {
     const { createPage } = actions
 
     return graphql(`
