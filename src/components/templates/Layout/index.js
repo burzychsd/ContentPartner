@@ -14,7 +14,7 @@ import './Layout.css'
 
 const Layout = ({ render, props }) => {
 
-  const { data, pageContext, location } = props
+  const { pageContext, location } = props
 
   const regex = new RegExp('/blog/([0-9])')
 
@@ -72,7 +72,7 @@ const Layout = ({ render, props }) => {
       setToggle={setToggle} />
         <div style={{ width: '100%', height: 30, background: '#FFF', position: 'fixed', top: 0, zIndex: 1000 }}></div>
         <main ref={siteWrapper} id='site_wrapper'>
-          {render({ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight < 480 ? 480 : `calc(${windowHeight}px - ${headerHeight + 40}px)`, data, pageContext, location })}
+          {render({ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight < 480 ? 480 : `calc(${windowHeight}px - ${headerHeight + 40}px)`, pageContext, location })}
         </main>
         <form name='contact_basic' data-netlify='true' hidden>
           <input type='text' name='name' />

@@ -17,6 +17,7 @@
 .blog_card_info > p {
     font-weight: 300;
     margin-bottom: 1rem;
+    padding: 0!important;
 }
 
 .blog_card_info > button {
@@ -30,6 +31,21 @@
 
 .section_container > .blog_card_container:nth-child(even) > .blog_card_info > button {
     align-self: flex-start;
+}
+
+.blog_date {
+    position: relative;
+    width: 100px;
+}
+
+.blog_date:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: #FEFCAD;
+    bottom: 0;
+    z-index: -1;
 }
 
 @media only screen and (min-width: 576px) {

@@ -18,6 +18,7 @@ body {
     flex-flow: column nowrap;
     overflow-y: scroll;
     overflow-x: hidden;
+    color: #463E43;
 }
 
 body::-webkit-scrollbar {
@@ -92,16 +93,49 @@ textarea::-webkit-input-placeholder {
     height: 100%;
 }
 
-.heading {
+.heading,
+.blog_post_body > h1 {
     font-size: calc(1.1rem + 1.5vw);
 }
 
-.heading, .text {
+.blog_post_body > h2 {
+    font-size: calc(0.95rem + 1.5vw);
+}
+
+.blog_post_body > h3 {
+    font-size: calc(0.8rem + 1.5vw);
+}
+
+.blog_post_body > h4 {
+    font-size: calc(0.65rem + 1.5vw);
+}
+
+.blog_post_body > h5 {
+    font-size: calc(0.5rem + 1.5vw);
+}
+
+.heading, .text, .blog_post_body > h1,
+.blog_post_body > h2,
+.blog_post_body > h3,
+.blog_post_body > h4,
+.blog_post_body > h5,
+.blog_post_body > p,
+.blog_post_body > span,
+.blog_post_body > quote {
     line-height: 1.625em!important;
 }
 
-.text {
+.text,
+.blog_post_body > p,
+.blog_post_body > span,
+.blog_post_body > quote {
     font-size: calc(0.6rem + 1.5vw);
+    padding: 0 0.5rem;
+}
+
+.home_content--container > .text,
+.home_content--container > .heading {
+    padding: 0!important;
 }
 
 .text > span {
@@ -242,41 +276,125 @@ textarea::-webkit-input-placeholder {
 }
 
 @media only screen and (min-width: 575px) {
-    .heading {
+    .heading,
+    .blog_post_body > h1 {
         font-size: calc(1.4rem + 1.15vw);
     }
 
-    body, .text {
+    .blog_post_body > h2 {
+        font-size: calc(1.25rem + 1.15vw);
+    }
+
+    .blog_post_body > h3 {
+        font-size: calc(1.15rem + 1.15vw);
+    }
+
+    .blog_post_body > h4 {
+        font-size: calc(1rem + 1.15vw);
+    }
+
+    .blog_post_body > h5 {
+        font-size: calc(0.85rem + 1.15vw);
+    }
+
+    body, .text,
+    .blog_post_body > p,
+    .blog_post_body > span,
+    .blog_post_body > quote {
         font-size: calc(0.7rem + 1.15vw);
     }
 }
 
 @media only screen and (min-width: 768px) {
-    .heading {
+    .heading,
+    .blog_post_body > h1 {
         font-size: calc(1.8rem + 1.15vw);
     }
 
-    body, .text {
+    .blog_post_body > h2 {
+        font-size: calc(1.65rem + 1.15vw);
+    }
+
+    .blog_post_body > h3 {
+        font-size: calc(1.5rem + 1.15vw);
+    }
+
+    .blog_post_body > h4 {
+        font-size: calc(1.35rem + 1.15vw);
+    }
+
+    .blog_post_body > h5 {
+        font-size: calc(1.2rem + 1.15vw);
+    }
+
+    body, .text,
+    .blog_post_body > p,
+    .blog_post_body > span,
+    .blog_post_body > quote {
         font-size: calc(0.75rem + 1.1vw);
     }
 }
 
 @media only screen and (min-width: 900px) {
-    .heading {
+    .heading,
+    .blog_post_body > h1 {
         font-size: 2.4rem;
     }
 
-    body, .text {
+    .blog_post_body > h2 {
+        font-size: 2.25rem;
+    }
+
+    .blog_post_body > h3 {
+        font-size: 2.1rem;
+    }
+
+    .blog_post_body > h4 {
+        font-size: 1.95rem;
+    }
+
+    .blog_post_body > h5 {
+        font-size: 1.8rem;
+    }
+
+    body, .text,
+    .blog_post_body > p,
+    .blog_post_body > span,
+    .blog_post_body > quote {
         font-size: 1.2rem;
     }
 }
 
 @media only screen and (min-width: 1024px) and (min-height: 1024px) {
-    .heading {
+    .heading,
+    .blog_post_body > h1,
+    .blog_post_body > h2,
+    .blog_post_body > h3,
+    .blog_post_body > h4,
+    .blog_post_body > h5 {
         font-size: 3rem;
     }
 
-    body, .text {
+    .blog_post_body > h2 {
+        font-size: 2.85rem;
+    }
+
+    .blog_post_body > h3 {
+        font-size: 2.7rem;
+    }
+
+    .blog_post_body > h4 {
+        font-size: 2.55rem;
+    }
+
+    .blog_post_body > h5 {
+        font-size: 2.4rem;
+    }
+
+    body, .text,
+    .blog_post_body > p,
+    .blog_post_body > span,
+    .blog_post_body > quote {
         font-size: 1.35rem;
     }
 }

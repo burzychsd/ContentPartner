@@ -3,7 +3,7 @@ export const headerProps = {
     style: {
         height: `12vh`,
         minHeight: `80px`,
-        top: `30px`,
+        top: `28px`,
         right: 0,
         left: 0,
     }

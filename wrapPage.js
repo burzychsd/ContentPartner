@@ -83,7 +83,7 @@ const WrapPage = ({ pages, ...props }) => {
     } : { title: `404: Not found` }
 
     return (
-        <Layout {...props} render={({ paddingTop, minHeight, data, pageContext, location }) => (
+        <Layout {...props} render={({ paddingTop, minHeight, pageContext, location }) => (
             <>
                 <SEO {...seoProps(location.pathname)} />
                 <FadeTransition
@@ -108,7 +108,7 @@ const WrapPage = ({ pages, ...props }) => {
                 </FadeTransition>
                 <FadeTransition
                 items={conditions(location.pathname, 'blog')}>
-                    {items => items && (props => <Blog style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} data={data} pageContext={pageContext} location={location} />)}
+                    {items => items && (props => <Blog style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} pageContext={pageContext} location={location} />)}
                 </FadeTransition>
                 <FadeTransition
                 items={conditions(location.pathname, 'post')}>

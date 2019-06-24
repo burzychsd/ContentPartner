@@ -39,7 +39,7 @@ const ServiceInfo = props => {
         className: 'service_info_content',
         reset: true,
         style: { flexFlow: 'column nowrap', width: '100%', 
-                 height: '100%', position: 'relative', padding: '60px 1rem 1rem 1rem', 
+                 height: '100%', position: 'relative', padding: '60px 1.5rem 1rem 1.5rem', 
                  overflow: 'auto', ...contentStyle }
     }
 
@@ -82,7 +82,7 @@ const ServiceInfo = props => {
                     <Text css={tw`font-light my-4 px-2`} {...textProps}>{content.content.paragraph01}</Text>
                     <Text css={tw`font-light my-4 px-2`} {...textProps}>{content.content.paragraph02}</Text>
                     <Text css={tw`font-bold my-4 px-2`} {...textProps}>{content.content.listTitle}</Text>
-                    <ul css={tw`flex flex-col px-2`} style={{ listStyle: 'none' }}>
+                    <ul css={tw`flex flex-col`} style={{ listStyle: 'none' }}>
                         {listItems}
                     </ul>
                     <Text css={tw`font-light my-8 px-2`} {...textProps}><span onClick={e => navigate('/kontakt')} css={tw`font-bold`}>Napisz lub zadzwoń</span>{` - ${content.content.paragraph03}`}</Text>
