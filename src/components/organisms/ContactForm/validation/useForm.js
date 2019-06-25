@@ -17,6 +17,7 @@ const useForm = (callback, validate) => {
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
     setErrors(validate(values));
+    setIsSubmitting(true);
   };
 
   const handleChange = (event) => {
@@ -26,7 +27,7 @@ const useForm = (callback, validate) => {
 
   const handleSuccess = () => {
     setStatus({ loading: false, error: false })
-    setIsSubmitting(true);
+    navigate('/sukces/')
   }
 
   const handleError = msg => {
