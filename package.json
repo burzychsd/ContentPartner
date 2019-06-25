@@ -6,6 +6,7 @@
   "author": "@burzychsd",
   "dependencies": {
     "@loadable/component": "^5.10.1",
+    "axios": "^0.19.0",
     "babel-plugin-styled-components": "^1.10.0",
     "dotenv": "^8.0.0",
     "gatsby": "^2.8.6",

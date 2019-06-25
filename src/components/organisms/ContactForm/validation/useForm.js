@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { navigate } from 'gatsby'
 
 const useForm = (callback, validate) => {
 
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState({})
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
@@ -15,7 +17,6 @@ const useForm = (callback, validate) => {
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
     setErrors(validate(values));
-    setIsSubmitting(true);
   };
 
   const handleChange = (event) => {
@@ -23,13 +24,28 @@ const useForm = (callback, validate) => {
     setValues(values => ({ ...values, [event.target.name]: event.target.value }));
   };
 
+  const handleSuccess = () => {
+    setStatus({ loading: false, error: false })
+    setIsSubmitting(true);
+  }
+
+  const handleError = msg => {
+    setStatus({
+      loading: false,
+      error: true,
+      msg
+    })
+    console.log(msg)
+  }
+
   return {
     handleChange,
     handleSubmit,
     values,
     errors,
-    setValues,
-    isSubmitting
+    handleSuccess,
+    handleError,
+    status
   }
 };
 

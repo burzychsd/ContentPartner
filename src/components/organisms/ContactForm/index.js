@@ -1,6 +1,6 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
-import { navigate } from 'gatsby'
+import axios from 'axios'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -17,12 +17,23 @@ const ContactForm = props => {
         values,
         errors,
         handleChange,
-        handleSubmit
+        handleSubmit,
+        handleSuccess,
+        handleError,
+        status
     } = useForm(sendEmail, validate);
 
     function sendEmail() {
+        const { name, email, topic, message } = values
+        const data = { name, email, topic, message }
         console.log('No errors, submit callback called!');
-        navigate('/sukces/')
+        axios.post('/.netlify/functions/contact', JSON.stringify(data)).then(response => {
+            if (response.status !== 200) {
+              handleError('Coś poszło nie tak, spróbuj ponownie później.')
+            } else {
+              handleSuccess()
+            }
+        })
     }
 
     const formContainerProps = {
