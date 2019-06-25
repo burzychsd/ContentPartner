@@ -1,48 +1,100 @@
 // DEPENDENCIES
-import React, { memo, useState } from 'react'
+import React, { memo } from 'react'
+import { navigate } from 'gatsby'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
 import FormField from './../../atoms/FormField'
 import Button from './../../atoms/Button'
 
+// VALIDATION
+import useForm from './validation/useForm'
+import validate from './validation/contactFormValidationRules'
+
 const ContactForm = props => {
+
+    const {
+        values,
+        errors,
+        handleChange,
+        handleSubmit
+    } = useForm(sendEmail, validate);
+
+    function sendEmail() {
+        console.log('No errors, submit callback called!');
+        navigate('/sukces/')
+    }
 
     const formContainerProps = {
         reset: true,
-        style: { minHeight: 400, maxWidth: 680 }
+        style: { minHeight: 400, maxWidth: 680 },
+        as: `form`,
+        noValidate: true,
     }
 
-    const inputProps = type => ({
-        name: type,
-        type: type === 'email' ? 'email' : 'text',
-        placeholder: `${type.charAt(0).toUpperCase()}${type.slice(1, )}`,
-        required: true,
-        style: { border: 'none', borderBottom: '4px solid #B4EBCA', 
-        alignSelf: type === 'topic' ? 'center' : null },
-        ariaLabel: type
-    })
+    const inputProps = type => {
 
-    const formItemClasses = { ...tw`w-5/6 xs:w-2/5 appearance-none bg-transparent font-body font-light text-dark_puce py-2 m-4 leading-tight focus:outline-none focus:bg-transparent` }
+        const condition = {
+            name: type === 'imię i nazwisko',
+            email: type === 'adres e-mail',
+            topic: type === 'temat'
+        }
+
+        const inputName = condition.name ? 'name' :
+                          condition.email ? 'email' :
+                          condition.topic ? 'topic' : null
+
+        return ({
+            name: inputName,
+            type: condition.email ? 'email' : 'text',
+            placeholder: `${type.charAt(0).toUpperCase()}${type.slice(1, )}`,
+            required: true,
+            style: { border: 'none', borderBottom: errors[`${inputName}`] ? '4px solid #EF946C' : '4px solid #B4EBCA', 
+            alignSelf: condition.topic ? 'center' : null },
+            ariaLabel: inputName,
+            autoComplete: 'off',
+            onChange: handleChange,
+            value: values[`${inputName}`] || ''
+        })
+    }
+
+    const submitButtonProps = {
+        className: 'button',
+        style: { margin: 0 },
+        onClick: e => handleSubmit(e)
+    }
+
+    const formItemClasses = { ...tw`appearance-none bg-transparent font-body font-light text-dark_puce py-2 m-4 leading-tight focus:outline-none focus:bg-transparent` }
+    const errorMessageClasses = { ...tw`text-center text-xs sm:text-sm font-body mb-4 mx-auto text-dark_salmon` }
 
     return (
-        <Flex as='form' css={tw`w-full flex-col justify-between items-center xs:items-start mt-0 mb-12 px-2`}
+        <Flex as='form' onSubmit={handleSubmit} noValidate css={tw`w-full flex-col justify-between items-center xs:items-start mt-0 mb-12 px-2`}
         {...formContainerProps}>
-            <Flex reset css={tw` w-full flex-col xs:flex-row flex-wrap my-2 xs:justify-center items-center xs:my-0 mx-auto`}>
-                <FormField reset {...inputProps('name')} css={formItemClasses} />
-                <FormField reset {...inputProps('email')} css={formItemClasses} />
+            <Flex reset css={tw`w-full flex-col xs:flex-row flex-wrap my-2 xs:justify-center items-center xs:my-0 mx-auto`}>
+                <Flex reset css={tw`flex-col w-5/6 xs:w-2/5`} style={{ height: 100 }}>
+                    <FormField reset {...inputProps('imię i nazwisko')} css={formItemClasses} />
+                    {errors.name && <p css={errorMessageClasses}>{errors.name}</p>}
+                </Flex>
+                <Flex reset css={tw`flex-col w-5/6 xs:w-2/5`} style={{ height: 100 }}>
+                    <FormField reset {...inputProps('adres e-mail')} css={formItemClasses} />
+                    {errors.email && <p css={errorMessageClasses}>{errors.email}</p>}
+                </Flex>
             </Flex>
-            <FormField reset {...inputProps('topic')} css={formItemClasses} />
+            <FormField reset {...inputProps('temat')} css={formItemClasses} />
+            {errors.topic && <p css={errorMessageClasses}>{errors.topic}</p>}
             <FormField 
             reset
             as='textarea'
             name='message'
-            placeholder='Message...'
+            placeholder='Wiadomość...'
             required
             style={{ resize: 'none', width: '100%', minHeight: 180, minWidth: '100%',
-            border: '4px solid #B4EBCA', borderTop: 'none', padding: '1rem', margin: '0 0 1.5rem 0' }}
-            css={formItemClasses} />
-            <Button className='button' css={tw`font-body font-light text-dark_puce`} style={{ margin: 0 }}>Submit</Button>
+            border: errors.message ? '4px solid #EF946C' : '4px solid #B4EBCA', borderTop: 'none', padding: '1rem', margin: '0 0 1.5rem 0' }}
+            css={formItemClasses}
+            onChange={handleChange}
+            value={values.message || ''} />
+            {errors.message && <p css={errorMessageClasses}>{errors.message}</p>}
+            <Button {...submitButtonProps} css={tw`font-body font-light text-dark_puce`}>Wyślij</Button>
         </Flex>
     )
 }

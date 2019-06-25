@@ -4,7 +4,6 @@ import loadable from '@loadable/component'
 
 // COMPONENTS
 import Layout from './src/components/templates/Layout'
-import Page from './src/components/templates/Page'
 import SEO from './src/components/templates/SEO'
 
 // PAGES
@@ -17,6 +16,7 @@ const Process = loadable(() => import('./src/pages/proces'))
 const Contact = loadable(() => import('./src/pages/kontakt'))
 const Blog = loadable(() => import('./src/components/templates/Blog'))
 const BlogPost = loadable(() => import('./src/components/templates/BlogPost'))
+const SuccessPage = loadable(() => import('./src/pages/sukces'))
 
 // HOC
 import pagesPaths from './src/HOC/pagesPaths'
@@ -41,7 +41,8 @@ const WrapPage = ({ pages, ...props }) => {
         page === 'portfolio' ? path === '/portfolio/' :
         page === 'contact' ? path === '/kontakt/' :
         page === 'blog' ? path === '/blog/' || regex.test(path) :
-        page === 'process' ? path === '/proces/' : null
+        page === 'process' ? path === '/proces/' :
+        page === 'success_contact' ? path === '/sukces/' : null
 
     const pageStyles = {
         position: 'absolute',
@@ -54,7 +55,7 @@ const WrapPage = ({ pages, ...props }) => {
         minHeight: `100%`,
     }
 
-    const seoProps = path =>
+    const seoProps = (path, pageContext) =>
     conditions(path, 'home') ? {
         title: `Home`,
         keywords: [`home`]
@@ -74,18 +75,21 @@ const WrapPage = ({ pages, ...props }) => {
     } : conditions(path, 'blog') ? {
         title: `Blog`,
         keywords: [`blog`]
-    } : conditions(path, 'post') ? {
-        title: `Post`,
+    } : blogPostsPaths.includes(`/${pageContext.slug}`) ? {
+        title: `Post - ${pageContext.slug.slice(5, )}`,
         keywords: [`post`]
     } : conditions(path, 'process') ? {
         title: `Proces`,
         keywords: [`process`]
+    } : conditions(path, 'success_contact') ? {
+        title: `Dziękuję`,
+        keywords: [`dziękuję`]
     } : { title: `404: Not found` }
 
     return (
         <Layout {...props} render={({ paddingTop, minHeight, data, pageContext, location }) => (
             <>
-                <SEO {...seoProps(location.pathname)} />
+                <SEO {...seoProps(location.pathname, pageContext)} />
                 <FadeTransition
                 items={conditions(location.pathname, 'home')}>
                     {items => items && (props => <Home style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
@@ -111,6 +115,10 @@ const WrapPage = ({ pages, ...props }) => {
                 <FadeTransition
                 items={conditions(location.pathname, 'process')}>
                     {items => items && (props => <Process style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
+                </FadeTransition>
+                <FadeTransition
+                items={conditions(location.pathname, 'success_contact')}>
+                    {items => items && (props => <SuccessPage style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
                 </FadeTransition>
                 <FadeTransition
                 items={paths.filter(path => '/' + path.replace(/\W+/g, '') === '/' + location.pathname.replace(/\W+/g, '')).length === 0}>

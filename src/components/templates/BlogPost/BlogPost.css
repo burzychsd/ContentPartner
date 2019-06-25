@@ -54,7 +54,7 @@
 .blog_post_body > h5 {
     font-family: 'Lora', serif;
     margin: 3rem 0 2rem 0;
-    text-align: left;
+    text-align: left!important;
     padding: 0 0.5rem;
 }
 

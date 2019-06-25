@@ -1,0 +1,11 @@
+.modal_info_content::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.modal_info_content::-webkit-scrollbar-track {
+    background: #B4EBCA;
+}
+
+.modal_info_content::-webkit-scrollbar-thumb {
+    background: #FEFCAD;
+}
