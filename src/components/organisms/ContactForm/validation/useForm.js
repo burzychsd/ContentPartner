@@ -27,8 +27,8 @@ const useForm = (callback, validate) => {
   };
 
   const handleSuccess = () => {
-    setStatus({ loading: false, error: false })
     navigate('/sukces/')
+    setTimeout(() => setStatus({ loading: false, error: false }), 600)
   }
 
   const handleError = msg => {
