@@ -5,19 +5,14 @@
 }
 
 .about_pic_container {
-    width: 100%;
-    height: auto;
-    flex-flow: column nowrap;
-}
-
-.about_pic_container {
+    position: relative;
     width: 100%;
     height: 250px;
     margin-bottom: 1rem;
 }
 
 .about_container > p:last-child {
-    margin-bottom: 4rem;
+    margin-bottom: 8rem;
 }
 
 @media only screen and (min-width: 575px) {
@@ -32,11 +27,32 @@
     }
 
     .about_pic_container {
-        width: 30%;
-        height: 455px;
+        width: 260px;
+        height: auto;
         float: left;
-        margin: 0 2rem 0 0;
+        margin: 2rem 5rem 0 1.5rem;
         margin-bottom: 0;
+    }
+
+    .about_pic_container:before,
+    .about_pic_container:after {
+        content: '';
+        position: absolute;
+        background: #FEFCAD;
+        z-index: -1;
+        right: -45px;
+    }
+
+    .about_pic_container:before {
+        width: 20px;
+        height: 85%;
+        bottom: 15px;
+    }
+
+    .about_pic_container:after {
+        width: 123%;
+        height: 20px;
+        bottom: -5px;
     }
 
 }

@@ -1,6 +1,6 @@
 .services_container {
     flex-flow: column nowrap;
-    margin-bottom: 4rem;
+    margin-bottom: 8rem;
 }
 
 .services_container > .icon_container {

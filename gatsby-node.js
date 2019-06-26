@@ -40,6 +40,7 @@ exports.createPages = ({ actions, graphql }) => {
                             }
                         }
                         createdAt(locale: "")
+                        id
                     }
                 }
             }
@@ -79,7 +80,8 @@ exports.createPages = ({ actions, graphql }) => {
                     alt: edge.node.postPic.file.fileName,
                     author: edge.node.postAuthor.authorName,
                     date: edge.node.createdAt,
-                    content: edge.node.postContent.childMarkdownRemark.html
+                    content: edge.node.postContent.childMarkdownRemark.html,
+                    id: edge.node.id
                 }
             })
         })

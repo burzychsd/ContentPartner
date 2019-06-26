@@ -1,6 +1,7 @@
 // DEPENDENCIES
 import React, { memo, useState, useEffect, useRef } from 'react'
 import { animated, useChain } from 'react-spring'
+import Disqus from 'gatsby-plugin-disqus'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -19,7 +20,7 @@ import { fadeIn } from './../../../animations/fadeIn'
 const BlogPost = props => {
 
     const { style, pageContext, minHeight } = props
-    const { slug, title, src, author, date, content } = pageContext
+    const { slug, title, src, author, date, content, id } = pageContext
 
     const [mounted, setMounted] = useState(false)
 
@@ -80,7 +81,12 @@ const BlogPost = props => {
                     <Text {...spanProps('date')} css={tw`text-base sm:text-lg font-heading font-light`}>{date.slice(0, 10)}</Text>
                     <Text {...spanProps('author')} css={tw`text-base sm:text-lg font-heading font-light`}>{author}</Text>
                 </AnimatedFlex>
-                <Flex {...blogPostBodyProps} css={tw`my-12 w-full flex-col`} dangerouslySetInnerHTML={{ __html: content }} />
+                <Flex {...blogPostBodyProps} css={tw`mt-12 mb-24 w-full flex-col`} dangerouslySetInnerHTML={{ __html: content }} />
+                <Disqus 
+                identifier={id}
+                title={title}
+                style={{ marginBottom: '8rem' }}
+                />
             </Flex>
         </Page>
 

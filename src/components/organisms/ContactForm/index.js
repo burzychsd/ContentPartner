@@ -61,7 +61,7 @@ const ContactForm = props => {
             placeholder: `${type.charAt(0).toUpperCase()}${type.slice(1, )}`,
             required: true,
             style: { border: 'none', borderBottom: errors[`${inputName}`] ? '4px solid #EF946C' : '4px solid #B4EBCA', 
-            alignSelf: condition.topic ? 'center' : null },
+            alignSelf: condition.topic ? 'center' : null, marginBottom: condition.topic ? '2rem' : null },
             ariaLabel: inputName,
             autoComplete: 'off',
             onChange: handleChange,
@@ -75,20 +75,20 @@ const ContactForm = props => {
         onClick: e => handleSubmit(e)
     }
 
-    const formItemClasses = { ...tw`appearance-none bg-transparent font-body font-light text-dark_puce py-2 m-4 leading-tight focus:outline-none focus:bg-transparent` }
+    const formItemClasses = { ...tw`appearance-none bg-transparent font-body font-light text-dark_puce py-2 leading-tight focus:outline-none focus:bg-transparent` }
     const errorMessageClasses = { ...tw`text-center text-xs sm:text-sm font-body mb-4 mx-auto text-dark_salmon` }
 
     return (
-        <Flex as='form' onSubmit={handleSubmit} noValidate css={tw`w-full flex-col justify-between items-center xs:items-start mt-0 mb-12 px-2`}
+        <Flex as='form' onSubmit={handleSubmit} noValidate css={tw`w-full flex-col justify-between items-center xs:items-start mt-0 mb-32 px-2`}
         {...formContainerProps}>
             <Flex reset css={tw`w-full flex-col xs:flex-row flex-wrap my-2 xs:justify-center items-center xs:my-0 mx-auto`}>
-                <Flex reset css={tw`flex-col w-5/6 xs:w-2/5`} style={{ height: 100 }}>
+                <Flex reset css={tw`flex-col w-5/6 xs:w-2/5 my-4 xs:mr-6`} style={{ height: 80 }}>
                     <FormField reset {...inputProps('imię i nazwisko')} css={formItemClasses} />
-                    {errors.name && <p css={errorMessageClasses}>{errors.name}</p>}
+                    {errors.name && <p css={errorMessageClasses} style={{ marginTop: '1rem' }}>{errors.name}</p>}
                 </Flex>
-                <Flex reset css={tw`flex-col w-5/6 xs:w-2/5`} style={{ height: 100 }}>
+                <Flex reset css={tw`flex-col w-5/6 xs:w-2/5 my-4 xs:ml-6`} style={{ height: 80 }}>
                     <FormField reset {...inputProps('adres e-mail')} css={formItemClasses} />
-                    {errors.email && <p css={errorMessageClasses}>{errors.email}</p>}
+                    {errors.email && <p css={errorMessageClasses} style={{ marginTop: '1rem' }}>{errors.email}</p>}
                 </Flex>
             </Flex>
             <FormField reset {...inputProps('temat')} css={formItemClasses} />

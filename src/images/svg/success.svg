@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="296.433 -3.001 387.956 396.107">
+<style>
+    @keyframes draw1 {
+        from { stroke-dashoffset: 4000 }
+        to { stroke-dashoffset: 0 }
+    }
+
+    @keyframes draw2 {
+        from { stroke-dashoffset: 1000 }
+        to { stroke-dashoffset: 0 }
+    }
+
+    .success_path01 {
+        stroke-dasharray: 4000;
+        stroke-dashoffset: 4000;
+        animation: draw1 800ms cubic-bezier(.17,.67,.83,.67) forwards;
+    }
+
+    .success_path02 {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: draw2 8s cubic-bezier(.17,.67,.83,.67) forwards;
+    }
+
+    .success_path01 { animation-delay: 300ms }
+    .success_path02 { animation-delay: 250ms }
+</style>
+<g>
+<path class="success_path01" d=" M 341.229 290.287 Q 250.829 43.972 489.525 16.038 C 728.222 -11.895 739.904 375.098 489.525 367.482 C 239.149 359.864 304.153 -12.401 489.525 16.038 C 674.898 44.478 796.278 301.458 489.525 351.23 C 182.773 401 305.679 -71.824 489.525 16.038 C 611.022 74.099 703.306 156.404 672.36 245.593 C 656.476 291.368 616.879 366.672 513.904 383.734 C 203.735 435.119 255.578 -119.938 534.219 28.226" fill="none" stroke-width="4" stroke="rgb(180,235,202)"/>
+<path class="success_path02" d=" M 417.922 195.285 L 470.159 248.285 L 576.078 141.821" fill="none" stroke-width="20" stroke="rgb(70,62,67)"/>
+</g>
+</svg>
