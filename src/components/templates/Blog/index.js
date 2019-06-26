@@ -1,12 +1,11 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
 import { graphql } from 'gatsby'
-import loadable from '@loadable/component'
 
 // COMPONENTS
 import Page from './../../templates/Page'
-const BlogCards = loadable(() => import('./../../molecules/BlogCards'))
-const Pagination = loadable(() => import('./../../molecules/Pagination'))
+import BlogCards from './../../molecules/BlogCards'
+import Pagination from './../../molecules/Pagination'
 
 const Blog = props => {
 
