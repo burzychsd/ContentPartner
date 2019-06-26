@@ -1,0 +1,14 @@
+.contact_loader {
+    width: 60%;
+    height: 2px;
+    background: #EF946C;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) 0.0001s;
+    margin: 0 auto;
+}
+
+.contact_loader--active {
+    transform: scaleX(1);
+    transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) 0.0001s;
+}

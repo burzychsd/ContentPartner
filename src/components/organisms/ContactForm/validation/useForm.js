@@ -6,10 +6,11 @@ const useForm = (callback, validate) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState({})
+  const [status, setStatus] = useState({ loading: false, error: false, msg: '' })
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
+      setStatus({ loading: true, error: false })
       callback();
     }
   }, [errors]);
@@ -36,7 +37,6 @@ const useForm = (callback, validate) => {
       error: true,
       msg
     })
-    console.log(msg)
   }
 
   return {

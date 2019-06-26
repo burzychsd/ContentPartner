@@ -11,6 +11,9 @@ import Button from './../../atoms/Button'
 import useForm from './validation/useForm'
 import validate from './validation/contactFormValidationRules'
 
+// STYLES
+import './ContactForm.css'
+
 const ContactForm = props => {
 
     const {
@@ -27,13 +30,9 @@ const ContactForm = props => {
         const { name, email, topic, message } = values
         const data = { name, email, topic, message }
         console.log('No errors, submit callback called!');
-        axios.post('/.netlify/functions/contact', JSON.stringify(data)).then(response => {
-            if (response.status !== 200) {
-              handleError('Coś poszło nie tak, spróbuj ponownie później.')
-            } else {
-              handleSuccess()
-            }
-        })
+        axios.post('/.netlify/functions/contact', JSON.stringify(data))
+        .then(response => handleSuccess())
+        .catch(err => handleError('Coś poszło nie tak, spróbuj ponownie później.'))
     }
 
     const formContainerProps = {
@@ -79,34 +78,38 @@ const ContactForm = props => {
     const errorMessageClasses = { ...tw`text-center text-xs sm:text-sm font-body mb-4 mx-auto text-dark_salmon` }
 
     return (
-        <Flex as='form' onSubmit={handleSubmit} noValidate css={tw`w-full flex-col justify-between items-center xs:items-start mt-0 mb-32 px-2`}
-        {...formContainerProps}>
-            <Flex reset css={tw`w-full flex-col xs:flex-row flex-wrap my-2 xs:justify-center items-center xs:my-0 mx-auto`}>
-                <Flex reset css={tw`flex-col w-5/6 xs:w-2/5 my-4 xs:mr-6`} style={{ height: 80 }}>
-                    <FormField reset {...inputProps('imię i nazwisko')} css={formItemClasses} />
-                    {errors.name && <p css={errorMessageClasses} style={{ marginTop: '1rem' }}>{errors.name}</p>}
+        <>
+            {status.error && <p css={errorMessageClasses}>{status.msg}</p>}
+            <hr class={`${status.loading ? 'contact_loader contact_loader--active' : 'contact_loader'}`} />
+            <Flex as='form' onSubmit={handleSubmit} noValidate css={tw`w-full flex-col justify-between items-center xs:items-start mt-0 mb-32 px-2`}
+            {...formContainerProps}>
+                <Flex reset css={tw`w-full flex-col xs:flex-row flex-wrap my-2 xs:justify-center items-center xs:my-0 mx-auto`}>
+                    <Flex reset css={tw`flex-col w-5/6 xs:w-2/5 my-4 xs:mr-6`} style={{ height: 80 }}>
+                        <FormField reset {...inputProps('imię i nazwisko')} css={formItemClasses} />
+                        {errors.name && <p css={errorMessageClasses} style={{ marginTop: '1rem' }}>{errors.name}</p>}
+                    </Flex>
+                    <Flex reset css={tw`flex-col w-5/6 xs:w-2/5 my-4 xs:ml-6`} style={{ height: 80 }}>
+                        <FormField reset {...inputProps('adres e-mail')} css={formItemClasses} />
+                        {errors.email && <p css={errorMessageClasses} style={{ marginTop: '1rem' }}>{errors.email}</p>}
+                    </Flex>
                 </Flex>
-                <Flex reset css={tw`flex-col w-5/6 xs:w-2/5 my-4 xs:ml-6`} style={{ height: 80 }}>
-                    <FormField reset {...inputProps('adres e-mail')} css={formItemClasses} />
-                    {errors.email && <p css={errorMessageClasses} style={{ marginTop: '1rem' }}>{errors.email}</p>}
-                </Flex>
+                <FormField reset {...inputProps('temat')} css={formItemClasses} />
+                {errors.topic && <p css={errorMessageClasses}>{errors.topic}</p>}
+                <FormField 
+                reset
+                as='textarea'
+                name='message'
+                placeholder='Wiadomość...'
+                required
+                style={{ resize: 'none', width: '100%', minHeight: 180, minWidth: '100%',
+                border: errors.message ? '4px solid #EF946C' : '4px solid #B4EBCA', borderTop: 'none', padding: '1rem', margin: '0 0 1.5rem 0' }}
+                css={formItemClasses}
+                onChange={handleChange}
+                value={values.message || ''} />
+                {errors.message && <p css={errorMessageClasses}>{errors.message}</p>}
+                <Button {...submitButtonProps} css={tw`font-body font-light text-dark_puce`}>Wyślij</Button>
             </Flex>
-            <FormField reset {...inputProps('temat')} css={formItemClasses} />
-            {errors.topic && <p css={errorMessageClasses}>{errors.topic}</p>}
-            <FormField 
-            reset
-            as='textarea'
-            name='message'
-            placeholder='Wiadomość...'
-            required
-            style={{ resize: 'none', width: '100%', minHeight: 180, minWidth: '100%',
-            border: errors.message ? '4px solid #EF946C' : '4px solid #B4EBCA', borderTop: 'none', padding: '1rem', margin: '0 0 1.5rem 0' }}
-            css={formItemClasses}
-            onChange={handleChange}
-            value={values.message || ''} />
-            {errors.message && <p css={errorMessageClasses}>{errors.message}</p>}
-            <Button {...submitButtonProps} css={tw`font-body font-light text-dark_puce`}>Wyślij</Button>
-        </Flex>
+        </>
     )
 }
 
