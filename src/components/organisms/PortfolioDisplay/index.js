@@ -1,8 +1,9 @@
 // DEPENDENCIES
 import React, { memo, Fragment } from 'react'
+import loadable from '@loadable/component'
 
 // COMPONENTS
-import PortfolioItem from './../../molecules/PortfolioItem'
+const PortfolioItem = loadable(() => import('./../../molecules/PortfolioItem'))
 
 // DATA
 import { descriptions } from './descriptions'

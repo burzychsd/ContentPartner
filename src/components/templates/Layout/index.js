@@ -1,10 +1,12 @@
 // DEPENDENCIES
 import React, { useState, useRef, useEffect, Fragment, memo } from 'react'
 import PropTypes from 'prop-types'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Header from './../../organisms/Header'
 import Menu from './../../organisms/Menu'
+const CookiesInfo = loadable(() => import('./../../molecules/CookiesInfo'))
 
 // DATA
 const links = ['O mnie', 'Oferta', 'Portfolio', 'Kontakt', 'Blog']
@@ -26,6 +28,8 @@ const Layout = ({ render, props }) => {
   const [preventScroll, setPreventScroll] = useState(false)
   const [headerHeight, setHeaderHeight] = useState(0)
   const [windowHeight, setWindowHeight] = useState(0)
+  const [cookiesInfo, setCookiesInfo] = useState(false)
+  const [showModal, setShowModal] = useState({ faq: false, policy: false })
 
   const setHeight = () => {
     typeof window !== 'undefined' && typeof document !== 'undefined' ? 
@@ -35,6 +39,7 @@ const Layout = ({ render, props }) => {
   }
 
   useEffect(() => {
+    setTimeout(() => setCookiesInfo(true), 3500)
     setHeight()
     setHeaderHeight(header.current.offsetHeight)
     menu.current.style.paddingTop = `${header.current.offsetHeight + 40}px`
@@ -70,7 +75,7 @@ const Layout = ({ render, props }) => {
       links={links}
       toggle={toggle}
       setToggle={setToggle} />
-        <div style={{ width: '100%', height: 30, background: '#FFF', position: 'fixed', top: 0, zIndex: 1000 }}></div>
+        <div style={{ width: '100%', height: 30, background: '#FFF', position: 'fixed', top: 0, zIndex: 50 }}></div>
         <main ref={siteWrapper} id='site_wrapper'>
           {render({ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight < 480 ? 480 : `calc(${windowHeight}px - ${headerHeight + 40}px)`, data, pageContext, location })}
         </main>
@@ -79,6 +84,7 @@ const Layout = ({ render, props }) => {
           <input type='email' name='email' />
           <textarea name='message'></textarea>
         </form>
+        <CookiesInfo isActive={cookiesInfo} handleClose={e => setCookiesInfo(false)} />
     </Fragment>
   )
 }

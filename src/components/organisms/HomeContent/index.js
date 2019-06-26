@@ -1,15 +1,15 @@
 // DEPENDENCIES
 import React, { memo, Fragment, useEffect, useState, useRef } from 'react'
 import { animated, useChain } from 'react-spring'
+import loadable from '@loadable/component'
 
 // COMPONENTS
-import Flex from './../../atoms/Flex'
 import TrailHeading from '../../molecules/TrailHeading'
 import Text from './../../atoms/Text'
 import Button from './../../atoms/Button'
-import TimeLineGraphic from './../../../images/svg/timeline_graphic.svg'
-import Image from './../../atoms/Image'
-import BulbsGraphic from './../../../images/svg/bulbs_graphic.svg'
+const Flex = loadable(() => import('./../../atoms/Flex'))
+const TimeLineGraphic = loadable(() => import('./../../../images/svg/timeline_graphic.svg'))
+const Image = loadable(() => import('./../../atoms/Image'))
 
 const AnimatedText = animated(Text)
 const AnimatedButton = animated(Button)
@@ -65,7 +65,6 @@ const HomeContent = ({ data }) => {
                 <TimeLineGraphic style={{ width: '100%' }} />
             </Flex>
             <Flex reset {...bulbsProps}>
-                {/* <BulbsGraphic style={{ width: '100%' }} /> */}
                 <Image fluid={data.imageOne.childImageSharp.fluid} style={{ height: 'auto', width: '100%' }} />
             </Flex>
         </Fragment>

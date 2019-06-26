@@ -64,7 +64,7 @@ const StageInfo = props => {
                         native
                         to={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 
                               graphicNum % 2 !== 0 ? 'translateX(-100px)' : 'translateX(100px)' }} delay={300}
-                        config={{ mass: 1, tension: 280, friction: 40 }}>
+                        config={{ mass: 1, tension: 210, friction: 20 }}>
                             {
                                 props => <AnimatedFlex {...infoContainerProps} css={tw`flex-col`} style={props}>
                                             <Heading className='heading stage_heading' css={tw`m-0`}>{title}</Heading>

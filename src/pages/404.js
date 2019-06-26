@@ -1,10 +1,11 @@
 // DEPENDENCIES
 import React from 'react'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Page from '../components/templates/Page'
-import TrailHeading from '../components/molecules/TrailHeading'
-import Text from '../components/atoms/Text'
+const TrailHeading = loadable(() => import('../components/molecules/TrailHeading'))
+const Text = loadable(() => import('../components/atoms/Text'))
 
 const NotFoundPage = ({ style, minHeight }) => {
 

@@ -2,6 +2,7 @@
 import React, { memo, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { RemoveScrollBar, zeroRightClassName } from 'react-remove-scroll-bar'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'

@@ -1,9 +1,10 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Page from '../components/templates/Page'
-import StageInfo from '../components/molecules/StageInfo'
+const StageInfo = loadable(() => import('../components/molecules/StageInfo'))
 
 const Proces = ({ style, minHeight }) => {
 

@@ -1,11 +1,11 @@
 // DEPENDENCIES
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Page from '../components/templates/Page'
-import Flex from '../components/atoms/Flex'
-import HomeContent from '../components/organisms/HomeContent'
+const HomeContent = loadable(() => import('../components/organisms/HomeContent'))
 
 const IndexPage = ({ style, minHeight }) => {
 

@@ -1,17 +1,13 @@
 // DEPENDENCIES
-import React, { Fragment } from 'react'
+import React from 'react'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Page from '../components/templates/Page'
-import TrailHeading from '../components/molecules/TrailHeading'
-import Text from '../components/atoms/Text'
-import ContactForm from '../components/organisms/ContactForm'
+const TrailHeading = loadable(() => import('../components/molecules/TrailHeading'))
+const ContactForm = loadable(() => import('../components/organisms/ContactForm'))
 
 const Kontakt = ({ style, minHeight }) => {
-
-    const textProps = {
-        className: `text`
-    }
 
     return (
         <Page footer style={style} minHeight={minHeight}>

@@ -1,10 +1,11 @@
 // DEPENDENCIES
 import React from 'react'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Page from '../components/templates/Page'
-import TrailHeading from '../components/molecules/TrailHeading'
-import SuccessGraphic from '../images/svg/success.svg'
+const TrailHeading = loadable(() => import('../components/molecules/TrailHeading'))
+const SuccessGraphic = loadable(() => import('../images/svg/success.svg'))
 
 const SuccessPage = ({ style, minHeight }) => {
 

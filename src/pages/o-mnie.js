@@ -1,16 +1,13 @@
 // DEPENDENCIES
 import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Page from '../components/templates/Page'
-import AboutContent from '../components/organisms/AboutContent'
+const AboutContent = loadable(() => import('../components/organisms/AboutContent'))
 
 const O_Mnie = ({ style, minHeight }) => {
-
-    const textProps = {
-        className: `text`
-    }
 
     return (
         <StaticQuery query={

@@ -1,12 +1,13 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
 import shortid from 'shortid'
+import loadable from '@loadable/component'
 
 // COMPONENT
 import Flex from './../../atoms/Flex'
-import Text from './../../atoms/Text'
-import Image from './../../atoms/Image'
-import TrailHeading from './../../molecules/TrailHeading'
+const Text = loadable(() => import('./../../atoms/Text'))
+const Image = loadable(() => import('./../../atoms/Image'))
+const TrailHeading = loadable(() => import('./../../molecules/TrailHeading'))
 
 // DATA
 import { text } from './text'

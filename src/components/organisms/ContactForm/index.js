@@ -1,11 +1,12 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
 import axios from 'axios'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-import FormField from './../../atoms/FormField'
-import Button from './../../atoms/Button'
+const FormField = loadable(() => import('./../../atoms/FormField'))
+const Button = loadable(() => import('./../../atoms/Button'))
 
 // VALIDATION
 import useForm from './validation/useForm'

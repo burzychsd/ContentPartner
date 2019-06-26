@@ -2,10 +2,11 @@
 import React, { memo } from 'react'
 import { animated } from 'react-spring/renderprops'
 import PropTypes from 'prop-types'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-import Footer from './../../organisms/Footer'
+const Footer = loadable(() => import('./../../organisms/Footer'))
 
 const AnimatedFlex = animated(Flex)
 

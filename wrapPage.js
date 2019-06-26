@@ -32,7 +32,7 @@ const WrapPage = ({ pages, ...props }) => {
     const blogPostsPaths = pages.allSitePage.edges.map(edge => edge.node.path)
                                                   .filter(path => path.includes('post'))
 
-    const regex = new RegExp('/blog/([0-9]+$)')
+    const regex = new RegExp('/blog/([0-9])/+$')
 
     const conditions = (path, page) =>
         page === 'home' ? path === '/' :

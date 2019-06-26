@@ -32,8 +32,8 @@ const Pagination = props => {
                 css={tw`border-none cursor-pointer font-light font-body py-2 px-4 
                 rounded mx-1 px-3`} 
                 style={{ display: number !== 0 ? 'inherit' : 'none', background: `${(!condition(null) && number === 1) || (!condition(number) && number !== 1) ? '#FEFCAD' : '#FFF' }` }}
-                onClick={e => number === 1 && condition(null) ? navigate('/blog') : 
-                              number !== 1 && condition(number) ? navigate(`/blog/${number}`) : null}>
+                onClick={e => number === 1 && condition(null) ? navigate('/blog/') : 
+                              number !== 1 && condition(number) ? navigate(`/blog/${number}/`) : null}>
                     {number}
                 </Button>
             )
@@ -51,12 +51,20 @@ const Pagination = props => {
             {condition(null) && 
             <Button {...buttonProps}
             css={tw`border-none cursor-pointer font-light font-body py-2 px-3 
-            rounded bg-transparent`} onClick={e => navigate('/blog')}>First</Button>}
+            rounded bg-transparent`} onClick={e => navigate('/blog/')}>First</Button>}
+            {currentPage - 1 >= 1 && 
+            <Button {...buttonProps}
+            css={tw`border-none cursor-pointer font-light font-body py-2 px-3
+            rounded bg-transparent`} onClick={e => navigate(`/blog/${currentPage - 1}/`)}>Prev</Button>}
             {buttons}
+            {currentPage + 1 <= numPages && 
+            <Button {...buttonProps}
+            css={tw`border-none cursor-pointer font-light font-body py-2 px-3
+            rounded bg-transparent`} onClick={e => navigate(`/blog/${currentPage + 1}/`)}>Next</Button>}
             {condition(numPages) && 
             <Button {...buttonProps}
             css={tw`border-none cursor-pointer font-light font-body py-2 px-3
-            rounded bg-transparent`} onClick={e => navigate(`/blog/${numPages}`)}>Last</Button>}
+            rounded bg-transparent`} onClick={e => navigate(`/blog/${numPages}/`)}>Last</Button>}
         </Flex>
     )
 }

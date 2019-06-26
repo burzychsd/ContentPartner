@@ -2,7 +2,7 @@
 import React, { memo, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { RemoveScrollBar, zeroRightClassName } from 'react-remove-scroll-bar'
-import { useSpring, useChain, animated } from 'react-spring'
+import { useSpring, useChain, animated, config } from 'react-spring'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -20,15 +20,15 @@ const Modal = props => {
 
     const { isActive, handleClick, children } = props
 
-    const containerStyle = useSpring({ opacity: isActive ? 1 : 0, ref: infoContainer })
-    const contentStyle = useSpring({ opacity: isActive ? 1 : 0, ref: infoContent })
+    const containerStyle = useSpring({ opacity: isActive ? 1 : 0, ref: infoContainer, config: config.stiff})
+    const contentStyle = useSpring({ opacity: isActive ? 1 : 0, ref: infoContent, config: config.stiff })
 
     const infoContainerProps = {
         className: zeroRightClassName,
         reset: true,
         style: { top: 0, right: 0, bottom: 0, left: 0, zIndex: 1000, 
                  background: '#FFF', position: 'fixed', 
-                 width: '100%', height: '100%', transformOrigin: '0 0', ...containerStyle,
+                 width: '100vw', height: '100vh', transformOrigin: '0 0', ...containerStyle,
                  visibility: containerStyle.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible') }
     }
 
