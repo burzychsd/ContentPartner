@@ -81,7 +81,7 @@ const ContactForm = props => {
         <>
             {status.error && <p css={errorMessageClasses}>{status.msg}</p>}
             {status.loading && <hr class='contact_loader contact_loader--active' />}
-            <Flex as='form' onSubmit={handleSubmit} noValidate css={tw`w-full flex-col justify-between items-center xs:items-start mt-0 mb-32 px-2`}
+            <Flex as='form' onSubmit={handleSubmit} noValidate css={tw`w-full flex-col justify-between items-center xs:items-start mt-0 mb-24 px-2`}
             {...formContainerProps}>
                 <Flex reset css={tw`w-full flex-col xs:flex-row flex-wrap my-2 xs:justify-center items-center xs:my-0 mx-auto`}>
                     <Flex reset css={tw`flex-col w-5/6 xs:w-2/5 my-4 xs:mr-6`} style={{ height: 80 }}>

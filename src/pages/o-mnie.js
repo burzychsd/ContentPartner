@@ -7,7 +7,7 @@ import loadable from '@loadable/component'
 import Page from '../components/templates/Page'
 const AboutContent = loadable(() => import('../components/organisms/AboutContent'))
 
-const O_Mnie = ({ style, minHeight }) => {
+const O_Mnie = ({ style, minHeight, status }) => {
 
     return (
         <StaticQuery query={
@@ -26,7 +26,7 @@ const O_Mnie = ({ style, minHeight }) => {
             `
         }
         render={data => (
-            <Page footer style={style} minHeight={minHeight}>
+            <Page footer style={style} minHeight={minHeight} status={status}>
                 <AboutContent data={data} />
             </Page>
         )} />

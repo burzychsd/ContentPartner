@@ -1,7 +1,7 @@
 // DEPENDENCIES
-import React, { memo, useRef } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { RemoveScrollBar } from 'react-remove-scroll-bar'
-import { animated, useChain } from 'react-spring'
+import { useSpring, animated } from 'react-spring'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -13,14 +13,45 @@ const AnimatedFlex = animated(Flex)
 // STYLES
 import './CookiesInfo.css'
 
-// ANIMATIONS
-import { fadeIn } from './../../../animations/fadeIn'
-
 const CookiesInfo = props => {
-    const { isActive, handleClose } = props
 
-    const cookiesInfoContainer = useRef()
-    const cookiesInfo = useRef()
+    const [isActive, setIsActive] = useState(false)
+
+    const config = { mass: 1, tension: 180, friction: 25 }
+    const setContainerStyle = { opacity: isActive ? 1 : 0, transform: isActive ? 'translateY(0%)' : 'translateY(-100%)' }
+    const setInfoStyle = { opacity: isActive ? 1 : 0, transform: isActive ? 'translateY(0px)' : 'translateY(35px)' }
+    const spring1 = { from: { opacity: 0, transform: 'translateY(-100%)' } }
+    const spring2 = { from: { opacity: 0, transform: 'translateY(35px)' } }
+
+    const [cookiesInfoContainerStyles, setCookiesInfoContainerStyles] = useSpring(() => ({ ...spring1 }))
+    const [cookiesInfoStyles, setCookiesInfoStyles] = useSpring(() => ({ ...spring2 }))
+
+    useEffect(() => {
+        if ('cookiesInfo' in localStorage) {
+            if (localStorage.getItem('cookiesInfo') === 'active') {
+                setStatus()
+            } else {
+                console.log('cookies accepted')
+            }
+        } else {
+            setStatus()
+        }
+    }, [])
+
+    useEffect(() => {
+        setCookiesInfoContainerStyles({ ...setContainerStyle, config, delay: isActive ? 200 : 0.001 })
+        setCookiesInfoStyles({ ...setInfoStyle, config, delay: isActive ? 0.001 : 200 })
+    }, [isActive])
+
+    const setStatus = async () => {
+        await localStorage.setItem('cookiesInfo', 'active')
+        await setTimeout(() =>setIsActive(true), 3500)
+    }
+
+    const handleClose = () => {
+        localStorage.setItem('cookiesInfo', 'accepted')
+        setIsActive(false)
+    }
 
     const cookiesInfoContainerProps = {
         reset: true,
@@ -29,18 +60,11 @@ const CookiesInfo = props => {
 
     const textStyle = {...tw`max-w-lg mx-auto text-center px-2 leading-normal font-body font-light text-xs sm:text-base my-1 text-dark_puce`}
 
-    const transitionStyles = first => ({ enter: 'translateY(0)', initial: first ? 'translateY(-100%)' : 'translateY(20px)'})
-
-    const cookiesInfoContainerStyles = fadeIn(isActive, cookiesInfoContainer, transitionStyles('first'), 'noDelay')
-    const cookiesInfoStyles = fadeIn(isActive, cookiesInfo, transitionStyles(), 'noDelay')
-
-    useChain([cookiesInfoContainer, cookiesInfo], [0.1, 0.5])
-
     return (
         <>
             {isActive && <RemoveScrollBar />}
-            <AnimatedFlex ref={cookiesInfoContainer} {...cookiesInfoContainerProps} style={cookiesInfoContainerStyles}>
-                <AnimatedFlex reset ref={cookiesInfo} style={cookiesInfoStyles}>
+            <AnimatedFlex {...cookiesInfoContainerProps} style={cookiesInfoContainerStyles}>
+                <AnimatedFlex reset style={cookiesInfoStyles}>
                         <Text css={textStyle} style={{ fontWeight: 700 }}>Ta strona używa plików cookies.</Text>
                         <Text css={textStyle}>Integer et congue augue, interdum posuere risus. 
                         Cras ultricies eget nunc vitae fringilla. Pellentesque habitant morbi tristique senectus 

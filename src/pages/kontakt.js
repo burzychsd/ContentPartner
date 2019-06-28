@@ -7,10 +7,10 @@ import Page from '../components/templates/Page'
 const TrailHeading = loadable(() => import('../components/molecules/TrailHeading'))
 const ContactForm = loadable(() => import('../components/organisms/ContactForm'))
 
-const Kontakt = ({ style, minHeight }) => {
+const Kontakt = ({ style, minHeight, status }) => {
 
     return (
-        <Page footer style={style} minHeight={minHeight}>
+        <Page footer style={style} minHeight={minHeight} status={status}>
             <TrailHeading title='Kontakt.' />
             <ContactForm />
         </Page>

@@ -3,7 +3,7 @@ section > .stageInfo_container:first-child {
 }
 
 .section_container > .stageInfo_container:last-child {
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
 }
 
 .stageInfo_container {

@@ -16,18 +16,18 @@ import './NavLinks.css'
 // PROPS
 import { containerProps, linkContainerProps, linkProps } from './props'
 
-const NavLinks = (props) => {
+const NavLinks = props => {
 
     const { links, setToggle, trail } = props
 
     return (
         <Flex {...containerProps} css={tw`w-4/5 mx-auto justify-center align-items`}>
             <Flex {...linkContainerProps} css={tw`w-auto h-auto flex-col align-items`}>
-                {trail.map(({ x, height, ...rest }, i) => 
-                    <AnimatedNavLink 
-                    style={{ ...rest, transform: x.interpolate(x => `translate3d(0,${x}px,0)`) }}
+                {trail.map((props, i) => 
+                    <AnimatedNavLink
+                    style={{ ...props }}
                     to={`/${links[i].replace(/\s+/g, '-').toLowerCase()}/`}
-                    key={shortid.generate()}
+                    key={i}
                     onClick={() => setToggle(toggle => !toggle)}
                     {...linkProps}>{links[i]}</AnimatedNavLink>
                 )}

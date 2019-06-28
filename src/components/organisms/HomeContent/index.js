@@ -1,15 +1,14 @@
 // DEPENDENCIES
 import React, { memo, Fragment, useEffect, useState, useRef } from 'react'
-import { animated, useChain } from 'react-spring'
-import loadable from '@loadable/component'
+import { useSpring, animated } from 'react-spring'
 
 // COMPONENTS
 import TrailHeading from '../../molecules/TrailHeading'
 import Text from './../../atoms/Text'
 import Button from './../../atoms/Button'
-const Flex = loadable(() => import('./../../atoms/Flex'))
-const TimeLineGraphic = loadable(() => import('./../../../images/svg/timeline_graphic.svg'))
-const Image = loadable(() => import('./../../atoms/Image'))
+import Flex from './../../atoms/Flex'
+import TimeLineGraphic from './../../../images/svg/timeline_graphic.svg'
+import Image from'./../../atoms/Image'
 
 const AnimatedText = animated(Text)
 const AnimatedButton = animated(Button)
@@ -17,9 +16,6 @@ const AnimatedButton = animated(Button)
 // PROPS
 import { containerProps,
          textProps, buttonProps, timelineProps, bulbsProps } from './props'
-
-// ANIMATION
-import { fadeIn } from './../../../animations/fadeIn'
 
 const HomeContent = ({ data }) => {
 
@@ -32,18 +28,22 @@ const HomeContent = ({ data }) => {
 
     const [mounted, setMounted] = useState(false)
 
-    const text = useRef()
-    const heading = useRef()
+    const textRef = useRef()
+    const buttonRef = useRef()
+
+    const config = { mass: 1, tension: 120, friction: 20 }
+    const setStyles = { opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0px)' : 'translate(10px)' }
+    const spring = { from: { opacity: 0, transform: 'translateY(10px)' } }
+
+    const [ textStyle, setTextStyle ] = useSpring(() => ({ ...spring }))
+    const [ buttonStyle, setButtonStyle ] = useSpring(() => ({ ...spring }))
+
+    setTextStyle({...setStyles, ref: textRef, config, delay: 1000})
+    setButtonStyle({...setStyles, ref: buttonRef, config, delay: 1300})
 
     useEffect(() => {
         setMounted(true)
-
     }, [])
-
-    const textStyle = fadeIn(mounted, text)
-    const buttonStyle = fadeIn(mounted, heading)
-
-    useChain([text, heading], [0.2, 0.4])
 
     return (
         <Fragment>
@@ -52,12 +52,12 @@ const HomeContent = ({ data }) => {
             css={tw`w-full flex-col justify-center xl:self-start`}>
                 <TrailHeading title={content.title} />
                 <AnimatedText
-                ref={text}
+                ref={textRef}
                 {...textProps(textStyle)}
                 css={tw`w-full font-light text-center mx-auto mt-2
                 px-0 md:px-4 xl:px-0 xl:w-4/5 xl:text-left xl:m-0`}>{content.subtitle}</AnimatedText>
                 <AnimatedButton
-                ref={heading}
+                ref={buttonRef}
                 {...buttonProps(buttonStyle)}
                 css={tw`relative self-center xl:self-start py-2`}>{content.button}</AnimatedButton>
             </Flex>

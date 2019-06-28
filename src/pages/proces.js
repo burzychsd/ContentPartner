@@ -6,7 +6,7 @@ import loadable from '@loadable/component'
 import Page from '../components/templates/Page'
 const StageInfo = loadable(() => import('../components/molecules/StageInfo'))
 
-const Proces = ({ style, minHeight }) => {
+const Proces = ({ style, minHeight, status }) => {
 
     const stageContent = [
         {
@@ -45,7 +45,7 @@ const Proces = ({ style, minHeight }) => {
     ]
 
     return (
-        <Page footer style={style} minHeight={minHeight}>
+        <Page footer style={style} minHeight={minHeight} status={status}>
             <StageInfo graphicNum={1} title={stageContent[0].title} text={stageContent[0].text} /> 
             <StageInfo graphicNum={2} title={stageContent[1].title} text={stageContent[1].text} />
             <StageInfo graphicNum={3} title={stageContent[2].title} text={stageContent[2].text} />

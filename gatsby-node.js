@@ -58,7 +58,7 @@ exports.createPages = ({ actions, graphql }) => {
 
         Array.from({ length: numPages }).forEach((_, i) => {
           createPage({
-            path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+            path: i === 0 ? `/blog/` : `/blog/${i + 1}`,
             component: path.resolve('./src/components/templates/Blog/index.js'),
             context: {
               limit: postsPerPage,
@@ -74,7 +74,7 @@ exports.createPages = ({ actions, graphql }) => {
                 path: `post/${edge.node.slug}`,
                 component: path.resolve('./src/components/templates/BlogPost/index.js'),
                 context: {
-                    slug: `post/${edge.node.slug}`,
+                    slug: `post/${edge.node.slug}/`,
                     title: edge.node.postTitle,
                     src: edge.node.postPic.file.url,
                     alt: edge.node.postPic.file.fileName,

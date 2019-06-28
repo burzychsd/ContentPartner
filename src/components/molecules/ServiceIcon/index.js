@@ -1,7 +1,7 @@
 // DEPENDENCIES
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Spring, animated } from 'react-spring/renderprops'
+import { useSpring, animated } from 'react-spring'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -22,6 +22,20 @@ import { detailsInfo } from './detailsInfo'
 const ServiceIcon = props => {
 
     const { title, handleClick, showInfo } = props
+
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    const config = { mass: 1, tension: 210, friction: 20 }
+    const setStyles = { opacity: mounted ? 1 : 0, transform: mounted ? 'translateX(0)' : 'translate(-20px)' }
+    const spring = { from: { opacity: 0, transform: 'translateX(-20px)' } }
+
+    const [titleAnimationStyle, setTitleAnimationStyle] = useSpring(() => ({...spring}))
+
+    setTitleAnimationStyle({ ...setStyles, config, delay: 600 })
 
     const conditions = {
         articles: title === 'Artykuły tematyczne',
@@ -51,12 +65,6 @@ const ServiceIcon = props => {
         className: 'text'
     }
 
-    const [mounted, setMounted] = useState(false)
-
-    useEffect(() => {
-        setMounted(true)
-    }, [])
-
     return (
         <Flex {...iconContainer} css={tw`flex-col items-center mt-8`}>
             <>
@@ -68,15 +76,10 @@ const ServiceIcon = props => {
                     conditions.ebook ? <Ebook {...iconProps} /> : 
                     conditions.cooperation ? <Cooperation {...iconProps} /> : null
                 }
-                <Spring
-                native
-                to={{ opacity: mounted ? 1 : 0, transform: mounted ? 'translateX(0)' : 'translate(-20px)' }}
-                delay={600}>
-                    { props => <AnimatedText
-                            {...textProps}
-                            css={tw`mx-4 text-center`}
-                            style={props}>{title}</AnimatedText> }
-                </Spring>
+                <AnimatedText
+                {...textProps}
+                css={tw`mx-4 text-center`}
+                style={titleAnimationStyle}>{title}</AnimatedText> 
             </>
             {
                 conditions.articles ? <ServiceInfo handleClick={handleClick} isActive={showInfo.articles} content={detailsInfo.articles} /> : 

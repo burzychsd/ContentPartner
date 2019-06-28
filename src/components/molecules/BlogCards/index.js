@@ -1,7 +1,7 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
 import { navigate } from 'gatsby'
-import { Spring, animated } from 'react-spring/renderprops'
+import { useSpring, animated } from 'react-spring'
 import shortid from 'shortid'
 
 // COMPONENTS
@@ -19,13 +19,24 @@ const AnimatedButton = animated(Button)
 // STYLES
 import './BlogCards.css'
 
-const BlogCards = props => {
-    const { data, location } = props
+export const BlogCard = props => {
+    const { data, isVisible } = props
 
-    const blogCardContainerProps = {
-        reset: true,
-        className: `blog_card_container`
-    }
+    const config = { mass: 1, tension: 120, friction: 20 }
+    const setStyles = { opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0px)' : 'translateY(35px)' }
+    const spring = { from: { opacity: 0, transform: 'translateY(35px)' } }
+
+    const [cardPicStyle, setCardPicStyle] = useSpring(() => ({ ...spring }))
+    const [cardDateStyle, setCardDateStyle] = useSpring(() => ({ ...spring }))
+    const [cardTitleStyle, setCardTitleStyle] = useSpring(() => ({ ...spring }))
+    const [cardDescriptionStyle, setCardDescriptionStyle] = useSpring(() => ({ ...spring }))
+    const [cardButtonStyle, setCardButtonStyle] = useSpring(() => ({ ...spring }))
+
+    setCardPicStyle({ ...setStyles, config, delay: 200 })
+    setCardDateStyle({ ...setStyles, config, delay: 300 })
+    setCardTitleStyle({ ...setStyles, config, delay: 400 })
+    setCardDescriptionStyle({ ...setStyles, config, delay: 500 })
+    setCardButtonStyle({ ...setStyles, config, delay: 600 })
 
     const blogPicContainerProps = (data, props) => ({
         reset: true,
@@ -55,55 +66,43 @@ const BlogCards = props => {
         className: `blog_date`
     }
 
-    const animationStyles = isVisible => ({
-        opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(10px)'
-    })
+    return (
+        <>
+            <AnimatedFlex
+            {...blogPicContainerProps(data, cardPicStyle)} />
+            <Flex {...blogCardInfoProps}>
+                <AnimatedText
+                {...spanProps}
+                style={cardDateStyle}
+                css={tw`text-base sm:text-lg mt-4 lg:mt-0 mb-2 font-heading font-light`}>{data.node.createdAt.slice(0, 10)}</AnimatedText>
+                <AnimatedHeading
+                {...headingProps}
+                style={cardTitleStyle}
+                css={tw`mb-4 mt-0 px-0`}>{data.node.postTitle}</AnimatedHeading>
+                <AnimatedText
+                {...textProps}
+                style={cardDescriptionStyle}>{data.node.shortDescription}</AnimatedText>
+                <AnimatedButton
+                {...buttonProps(data)}
+                style={cardButtonStyle}>Czytaj więcej</AnimatedButton>
+            </Flex>
+        </>
+    )
+}
 
-    const animationConfig = { mass: 1, tension: 280, friction: 20 }
+const BlogCards = props => {
+    const { data, location } = props
+
+    const blogCardContainerProps = {
+        reset: true,
+        className: `blog_card_container`
+    }
 
     const blogCards = data.map(data => 
         <Flex {...blogCardContainerProps} key={shortid.generate()}>
             <VisibilitySensor once partialVisibility>
                 {({ isVisible }) => (
-                    <>
-                        <Spring
-                        native
-                        to={animationStyles(isVisible)}
-                        delay={0.001}
-                        config={animationConfig}>
-                            { props => <AnimatedFlex {...blogPicContainerProps(data, props)} /> }
-                        </Spring>
-                        <Flex {...blogCardInfoProps}>
-                            <Spring
-                            native
-                            to={animationStyles(isVisible)}
-                            delay={200}
-                            config={animationConfig}>
-                                { props => <AnimatedText {...spanProps} style={props} css={tw`text-base sm:text-lg mt-4 lg:mt-0 mb-2 font-heading font-light`}>{data.node.createdAt.slice(0, 10)}</AnimatedText> }
-                            </Spring>
-                            <Spring
-                            native
-                            to={animationStyles(isVisible)}
-                            delay={300}
-                            config={animationConfig}>
-                                { props => <AnimatedHeading {...headingProps} style={props} css={tw`mb-4 mt-0 px-0`}>{data.node.postTitle}</AnimatedHeading> }
-                            </Spring>
-                            <Spring
-                            native
-                            to={animationStyles(isVisible)}
-                            delay={400}
-                            config={animationConfig}>
-                                { props => <AnimatedText {...textProps} style={props}>{data.node.shortDescription}</AnimatedText> }
-                            </Spring>
-                            <Spring
-                            native
-                            to={animationStyles(isVisible)}
-                            delay={500}
-                            config={animationConfig}>
-                                { props => <AnimatedButton {...buttonProps(data)} style={props}>Czytaj więcej</AnimatedButton> }
-                            </Spring>
-                        </Flex>
-                    </>
+                    <BlogCard data={data} isVisible={isVisible} />
                 )}
             </VisibilitySensor>
         </Flex>

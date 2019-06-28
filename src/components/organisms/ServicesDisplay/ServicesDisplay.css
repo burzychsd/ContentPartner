@@ -1,10 +1,12 @@
 .services_container {
     flex-flow: column nowrap;
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
+    min-height: 460px;
 }
 
 .services_container > .icon_container {
     width: 100%;
+    min-height: 166px;
     margin: 3rem 0;
 }
 

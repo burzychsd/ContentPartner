@@ -1,10 +1,9 @@
 // DEPENDENCIES
 import React, { memo, useState } from 'react'
-import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-const ServiceIcon = loadable(() => import('./../../molecules/ServiceIcon'))
+import ServiceIcon from './../../molecules/ServiceIcon'
 
 // STYLES
 import './ServicesDisplay.css'

@@ -7,7 +7,7 @@ import loadable from '@loadable/component'
 import Page from '../components/templates/Page'
 const HomeContent = loadable(() => import('../components/organisms/HomeContent'))
 
-const IndexPage = ({ style, minHeight }) => {
+const IndexPage = ({ style, minHeight, status }) => {
 
     return (
         <StaticQuery query={
@@ -26,7 +26,7 @@ const IndexPage = ({ style, minHeight }) => {
             `
         }
         render={data => (
-            <Page style={style} minHeight={minHeight}>
+            <Page style={style} minHeight={minHeight} status={status}>
                 <HomeContent data={data} />
             </Page>
         )}/>

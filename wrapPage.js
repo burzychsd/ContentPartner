@@ -21,9 +21,6 @@ const SuccessPage = loadable(() => import('./src/pages/sukces'))
 // HOC
 import pagesPaths from './src/HOC/pagesPaths'
 
-// ANIMATION
-import FadeTransition from './src/animations/FadeTransition'
-
 const WrapPage = ({ pages, ...props }) => {
 
     const paths = pages.allSitePage.edges.map(edge => edge.node.path)
@@ -42,7 +39,8 @@ const WrapPage = ({ pages, ...props }) => {
         page === 'contact' ? path === '/kontakt/' :
         page === 'blog' ? path === '/blog/' || regex.test(path) :
         page === 'process' ? path === '/proces/' :
-        page === 'success_contact' ? path === '/sukces/' : null
+        page === 'success_contact' ? path === '/sukces/' :
+        page === '404' ? path === '/404/' : null
 
     const pageStyles = {
         position: 'absolute',
@@ -55,9 +53,9 @@ const WrapPage = ({ pages, ...props }) => {
         minHeight: `100%`,
     }
 
-    const seoProps = (path, pageContext) =>
+    const seoProps = (path) =>
     conditions(path, 'home') ? {
-        title: `Home`,
+        title: `Strona główna`,
         keywords: [`home`]
     } :
     conditions(path, 'about') ? {
@@ -75,8 +73,8 @@ const WrapPage = ({ pages, ...props }) => {
     } : conditions(path, 'blog') ? {
         title: `Blog`,
         keywords: [`blog`]
-    } : blogPostsPaths.includes(`/${pageContext.slug}`) ? {
-        title: `Post - ${pageContext.slug.slice(5, )}`,
+    } : path.includes(`/post/`) ? {
+        title: `Artykuł`,
         keywords: [`post`]
     } : conditions(path, 'process') ? {
         title: `Proces`,
@@ -84,46 +82,57 @@ const WrapPage = ({ pages, ...props }) => {
     } : conditions(path, 'success_contact') ? {
         title: `Dziękuję`,
         keywords: [`dziękuję`]
-    } : { title: `404: Not found` }
+    } : paths.filter(p => '/' + p.replace(/\W+/g, '') === '/' + path.replace(/\W+/g, '')).length === 0 ? { title: '404' } : null
 
     return (
         <Layout {...props} render={({ paddingTop, minHeight, data, pageContext, location }) => (
             <>
                 <SEO {...seoProps(location.pathname, pageContext)} />
-                <FadeTransition
-                items={conditions(location.pathname, 'home')}>
-                    {items => items && (props => <Home style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
-                </FadeTransition>
-                <FadeTransition
-                items={conditions(location.pathname, 'about')}>
-                    {items => items && (props => <About style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
-                </FadeTransition>
-                <FadeTransition
-                items={conditions(location.pathname, 'services')}>
-                    {items => items && (props => <Services style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
-                </FadeTransition>
-                <FadeTransition
-                items={conditions(location.pathname, 'portfolio')}>
-                    {items => items && (props => <Portfolio style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
-                </FadeTransition>
-                <FadeTransition
-                items={conditions(location.pathname, 'contact')}>
-                    {items => items && (props => <Contact style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
-                </FadeTransition>
-                {conditions(location.pathname, 'blog') && <Blog style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} data={data} pageContext={pageContext} location={location} />}
-                {blogPostsPaths.includes(`/${pageContext.slug}`) && <BlogPost style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} pageContext={pageContext} />}
-                <FadeTransition
-                items={conditions(location.pathname, 'process')}>
-                    {items => items && (props => <Process style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
-                </FadeTransition>
-                <FadeTransition
-                items={conditions(location.pathname, 'success_contact')}>
-                    {items => items && (props => <SuccessPage style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
-                </FadeTransition>
-                <FadeTransition
-                items={paths.filter(path => '/' + path.replace(/\W+/g, '') === '/' + location.pathname.replace(/\W+/g, '')).length === 0}>
-                    {items => items && (props => <NotFound style={{...pageStyles, ...props, paddingTop }} minHeight={minHeight} />)}
-                </FadeTransition> 
+                <Home
+                style={{...pageStyles, paddingTop }}
+                minHeight={minHeight}
+                status={conditions(location.pathname, 'home')} />
+                <About
+                style={{...pageStyles, paddingTop }}
+                minHeight={minHeight}
+                status={conditions(location.pathname, 'about')} />
+                <Services
+                style={{...pageStyles, paddingTop }}
+                minHeight={minHeight}
+                status={conditions(location.pathname, 'services')} />
+                <Portfolio
+                style={{...pageStyles, paddingTop }}
+                minHeight={minHeight}
+                status={conditions(location.pathname, 'portfolio')} />
+                <Contact
+                style={{...pageStyles, paddingTop }}
+                minHeight={minHeight}
+                status={conditions(location.pathname, 'contact')} />
+                <Blog
+                style={{...pageStyles, paddingTop }}
+                minHeight={minHeight}
+                data={data}
+                pageContext={pageContext}
+                location={location}
+                status={conditions(location.pathname, 'blog')} />
+                <BlogPost
+                style={{...pageStyles, paddingTop }}
+                minHeight={minHeight}
+                pageContext={pageContext}
+                location={location}
+                status={typeof pageContext.slug !== 'undefined'} />
+                <Process
+                style={{...pageStyles, paddingTop }}
+                minHeight={minHeight}
+                status={conditions(location.pathname, 'process')} />
+                <SuccessPage
+                style={{...pageStyles, paddingTop }}
+                minHeight={minHeight}
+                status={conditions(location.pathname, 'success_contact')} />
+                <NotFound
+                style={{...pageStyles, paddingTop }}
+                minHeight={minHeight}
+                status={paths.filter(path => '/' + path.replace(/\W+/g, '') === '/' + location.pathname.replace(/\W+/g, '')).length === 0} />
             </>
         )} />
     )

@@ -1,6 +1,6 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
-import { Spring, animated } from 'react-spring/renderprops'
+import { useSpring, animated } from 'react-spring'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -19,14 +19,8 @@ import Stage05 from './../../../images/svg/graphic05.svg'
 // STYLES
 import './StageInfo.css'
 
-const StageInfo = props => {
-    const { graphicNum, title, text } = props
-
-    const containerProps = {
-        className: `stageInfo_container`,
-        as: `section`,
-        reset: true
-    }
+export const StageContainer = props => {
+    const { graphicNum, title, text, isVisible } = props
 
     const graphicContainerProps = {
         className: `graphic_container`,
@@ -42,37 +36,57 @@ const StageInfo = props => {
         preserveAspectRatio: `xMidYMid meet`
     }
 
+    const condition = graphicNum % 2 !== 0
+    const config = { mass: 1, tension: 210, friction: 20 }
+    const setStyles = { opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateX(0px)' : 
+    graphicNum % 2 !== 0 ? 'translateX(-100px)' : 'translateX(100px)' }
+    const spring = { from: { opacity: 0, transform: condition ? 'translateX(-100px)' : 'translateX(100px)' } }
+
+    const [stageInfoStyle, setStageInfoStyle] = useSpring(() => ({ ...spring }))
+
+    setStageInfoStyle({ ...setStyles, config, delay: 600 })
+
+    return (
+        <>
+            <Flex {...graphicContainerProps}>
+                {
+                    graphicNum === 1 ?
+                    isVisible && <Stage01 {...stageGraphicProps} /> :
+                    graphicNum === 2 ?
+                    isVisible && <Stage02 {...stageGraphicProps} /> :
+                    graphicNum === 3 ?
+                    isVisible && <Stage03 {...stageGraphicProps} /> :
+                    graphicNum === 4 ?
+                    isVisible && <Stage04 {...stageGraphicProps} /> :
+                    isVisible && <Stage05 {...stageGraphicProps} />
+                }
+            </Flex>
+            <AnimatedFlex {...infoContainerProps} css={tw`flex-col`} style={stageInfoStyle}>
+            <Heading className='heading stage_heading' css={tw`m-0`}>{title}</Heading>
+                <Text className='text stage_text' css={tw`mt-2 mb-6 font-light leading-relaxed break-all`}>{text}</Text>
+            </AnimatedFlex>
+        </>
+    )
+}
+
+const StageInfo = props => {
+    const { graphicNum, title, text } = props
+
+    const containerProps = {
+        className: `stageInfo_container`,
+        as: `section`,
+        reset: true
+    }
+
     return (
         <Flex {...containerProps}>
             <VisibilitySensor once partialVisibility>
                 {({ isVisible }) => (
-                    <>
-                        <Flex {...graphicContainerProps}>
-                            {
-                                graphicNum === 1 ?
-                                isVisible && <Stage01 {...stageGraphicProps} /> :
-                                graphicNum === 2 ?
-                                isVisible && <Stage02 {...stageGraphicProps} /> :
-                                graphicNum === 3 ?
-                                isVisible && <Stage03 {...stageGraphicProps} /> :
-                                graphicNum === 4 ?
-                                isVisible && <Stage04 {...stageGraphicProps} /> :
-                                isVisible && <Stage05 {...stageGraphicProps} />
-                            }
-                        </Flex>
-                        <Spring
-                        native
-                        to={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateX(0)' : 
-                              graphicNum % 2 !== 0 ? 'translateX(-100px)' : 'translateX(100px)' }} delay={300}
-                        config={{ mass: 1, tension: 210, friction: 20 }}>
-                            {
-                                props => <AnimatedFlex {...infoContainerProps} css={tw`flex-col`} style={props}>
-                                            <Heading className='heading stage_heading' css={tw`m-0`}>{title}</Heading>
-                                            <Text className='text stage_text' css={tw`mt-2 mb-6 font-light leading-relaxed break-all`}>{text}</Text>
-                                        </AnimatedFlex>
-                            }
-                        </Spring>
-                    </>
+                    <StageContainer
+                    graphicNum={graphicNum}
+                    title={title}
+                    text={text}
+                    isVisible={isVisible} />
                 )}
             </VisibilitySensor>
         </Flex>

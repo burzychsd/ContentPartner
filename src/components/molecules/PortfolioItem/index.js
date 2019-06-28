@@ -1,7 +1,7 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-import { Spring, animated } from 'react-spring/renderprops'
+import { useSpring, animated } from 'react-spring'
 
 // COMPONENT
 import Flex from './../../atoms/Flex'
@@ -18,14 +18,16 @@ const AnimatedFlex = animated(Flex)
 // STYLES
 import './PortfolioItem.css'
 
-const PortfolioItem = props => {
+export const PortfolioContainer = props => {
+    const { companyName, description, isVisible } = props
 
-    const { companyName, description } = props
+    const config = { mass: 1, tension: 210, friction: 20 }
+    const setStyles = { opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0px)' : 'translateY(40px)' }
+    const spring = { from: { opacity: 0, transform: 'translateY(40px)' } }
 
-    const itemContainerProps = {
-        reset: true,
-        className: 'portfolio_item_container'
-    }
+    const [portfolioItemStyle, setPortfolioItemStyle] = useSpring(() => ({ ...spring }))
+
+    setPortfolioItemStyle({ ...setStyles, config, delay: 600 })
 
     const companyLogoContainerProps = {
         reset: true,
@@ -46,30 +48,40 @@ const PortfolioItem = props => {
     }
 
     return (
+        <>
+            <Flex {...companyLogoContainerProps}>
+                {
+                    companyName === 'umk' ? isVisible && <UMK {...companyLogoProps} /> :
+                    companyName === 'ecopywriting' ? isVisible && <Ecopywriting {...companyLogoProps} /> :
+                    companyName === 'ekotechnologia' ? isVisible && <Ekotechnologia {...companyLogoProps} /> :
+                    companyName === 'jafi_sport' ? isVisible && <JafiSport {...companyLogoProps} /> :
+                    companyName === 'obstawiamy_info' ? isVisible && <ObstawiamyInfo {...companyLogoProps} /> : null
+                }
+            </Flex>
+            <AnimatedFlex {...descriptionProps} style={portfolioItemStyle}>
+                <Text {...textProps} css={tw`font-light leading-relaxed`}>{description}</Text>
+            </AnimatedFlex>
+        </>
+    )
+}
+
+const PortfolioItem = props => {
+
+    const { companyName, description } = props
+
+    const itemContainerProps = {
+        reset: true,
+        className: 'portfolio_item_container'
+    }
+
+    return (
         <Flex {...itemContainerProps}>
             <VisibilitySensor once>
                 {({ isVisible }) => (
-                    <>
-                        <Flex {...companyLogoContainerProps}>
-                            {
-                                companyName === 'umk' ? isVisible && <UMK {...companyLogoProps} /> :
-                                companyName === 'ecopywriting' ? isVisible && <Ecopywriting {...companyLogoProps} /> :
-                                companyName === 'ekotechnologia' ? isVisible && <Ekotechnologia {...companyLogoProps} /> :
-                                companyName === 'jafi_sport' ? isVisible && <JafiSport {...companyLogoProps} /> :
-                                companyName === 'obstawiamy_info' ? isVisible && <ObstawiamyInfo {...companyLogoProps} /> : null
-                            }
-                        </Flex>
-                        <Spring
-                        native
-                        to={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(40px)' }}
-                        delay={600}>
-                            { props => 
-                                <AnimatedFlex {...descriptionProps} style={props}>
-                                    <Text {...textProps} css={tw`font-light leading-relaxed`}>{description}</Text>
-                                </AnimatedFlex> 
-                            }
-                        </Spring>
-                    </>
+                    <PortfolioContainer
+                    companyName={companyName}
+                    description={description}
+                    isVisible={isVisible} />
                 )}
             </VisibilitySensor>
         </Flex>

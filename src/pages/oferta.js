@@ -1,15 +1,14 @@
 // DEPENDENCIES
 import React from 'react'
-import loadable from '@loadable/component'
 
 // COMPONENTS
 import Page from '../components/templates/Page'
-const ServicesDisplay = loadable(() => import('../components/organisms/ServicesDisplay'))
+import ServicesDisplay from '../components/organisms/ServicesDisplay'
 
-const Oferta = ({ style, minHeight }) => {
+const Oferta = ({ style, minHeight, status }) => {
 
     return (
-        <Page footer style={style} minHeight={minHeight}>
+        <Page footer style={style} minHeight={minHeight} status={status}>
             <ServicesDisplay />
         </Page>
     )

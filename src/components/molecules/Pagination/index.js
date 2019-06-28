@@ -55,7 +55,7 @@ const Pagination = props => {
             {currentPage - 1 >= 1 && 
             <Button {...buttonProps}
             css={tw`border-none cursor-pointer font-light font-body py-2 px-3
-            rounded bg-transparent`} onClick={e => navigate(`/blog/${currentPage - 1}/`)}>Prev</Button>}
+            rounded bg-transparent`} onClick={e => navigate(currentPage - 1 === 1 ? `/blog/` : `/blog/${currentPage - 1}/`)}>Prev</Button>}
             {buttons}
             {currentPage + 1 <= numPages && 
             <Button {...buttonProps}

@@ -1,46 +1,47 @@
 // DEPENDENCIES
-import React, { useRef, memo } from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
-import { useChain, animated } from 'react-spring'
-import loadable from '@loadable/component'
+import { useTrail, useSpring, animated } from 'react-spring'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-
-// LAZY LOAD
-const NavLinks = loadable(() => import('./../../molecules/NavLinks'))
+import NavLinks from './../../molecules/NavLinks'
 
 const AnimatedFlex = animated(Flex)
-
-// ANIMATION
-import { menuAnimation, trailLinks } from './animation'
-
-// PROPS
-import { container } from './props'
 
 // STYLES
 import './Menu.css'
 
 const Menu = (props) => {
 
-    const { links, toggle, setToggle, innerRef } = props
+    const { links, toggle, setToggle, paddingTop } = props
 
-    const menuContainer = useRef()
-    const navLinkItem = useRef()
+    const config1 = { mass: 1, tension: 180, friction: 20 }
+    const config2 = { mass: 1, tension: 280, friction: 25 }
+    const setSpringStyles = { opacity: toggle ? 1 : 0 }
+    const setTrailStyles = { opacity: toggle ? 1 : 0, transform: toggle ? 'translateY(0px)' : 'translateY(20px)' }
+    const spring = { from: { opacity: 0 } }
+    const trail = { from: { opacity: 0, transform: 'translateY(20px)' } }
 
-    const menuContainerStyle = menuAnimation(menuContainer, toggle)
-    const trail = trailLinks(navLinkItem, toggle, links)
+    const [menuContainerStyle, setMenuContainerStyle] = useSpring(() => ({ ...spring }))
+    const [linkTrailsStyle, setLinkTrailsStyle] = useTrail(links.length, () => ({ ...trail }))
 
-    useChain(toggle ? [menuContainer, navLinkItem] : [navLinkItem, menuContainer], [0, 0.6])
+    setMenuContainerStyle({ ...setSpringStyles, config: config1, delay: toggle ? 0.001 : 600 })
+    setLinkTrailsStyle({ ...setTrailStyles, config: config2, delay: toggle ? 600 : 0.001 })
 
-    const containerProps = container(menuContainerStyle)
+    const container = (menuContainerStyle, paddingTop) => ({
+        reset: true,
+        style: { ...menuContainerStyle,
+            visibility: menuContainerStyle.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible'), 
+            height: '100%', paddingTop }
+    })
 
     return (
-        <AnimatedFlex className={`menu_container`} ref={innerRef} {...containerProps} css={tw`fixed w-screen m-auto bg-white z-40`}>
+        <AnimatedFlex className={`menu_container`} {...container(menuContainerStyle, paddingTop)} css={tw`fixed w-screen m-auto bg-white z-40`}>
             <NavLinks
             links={links}
             setToggle={setToggle}
-            trail={trail} />
+            trail={linkTrailsStyle} />
         </AnimatedFlex>
     )
 }

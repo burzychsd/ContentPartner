@@ -20,15 +20,14 @@ const Layout = ({ render, props }) => {
 
   const regex = new RegExp('/blog/([0-9]+$)')
 
-  const header = useRef()
-  const siteWrapper = useRef()
-  const menu = useRef()
+  const headerRef = useRef()
+  const siteWrapperRef = useRef()
+  const menuRef = useRef()
 
   const [toggle, setToggle] = useState(false)
   const [preventScroll, setPreventScroll] = useState(false)
   const [headerHeight, setHeaderHeight] = useState(0)
   const [windowHeight, setWindowHeight] = useState(0)
-  const [cookiesInfo, setCookiesInfo] = useState(false)
   const [showModal, setShowModal] = useState({ faq: false, policy: false })
 
   const setHeight = () => {
@@ -39,10 +38,8 @@ const Layout = ({ render, props }) => {
   }
 
   useEffect(() => {
-    setTimeout(() => setCookiesInfo(true), 3500)
     setHeight()
-    setHeaderHeight(header.current.offsetHeight)
-    menu.current.style.paddingTop = `${header.current.offsetHeight + 40}px`
+    setHeaderHeight(headerRef.current.offsetHeight)
 
     typeof window !== 'undefined' ? window.addEventListener('resize', setHeight) : null
 
@@ -66,25 +63,20 @@ const Layout = ({ render, props }) => {
   return (
     <Fragment>
       <Header
-      innerRef={header}
+      innerRef={headerRef}
       toggle={toggle}
       setToggle={setToggle}
       preventScroll={preventScroll} />
       <Menu
-      innerRef={menu}
+      paddingTop={headerHeight + 40}
       links={links}
       toggle={toggle}
       setToggle={setToggle} />
-        <div style={{ width: '100%', height: 30, background: '#FFF', position: 'fixed', top: 0, zIndex: 50 }}></div>
-        <main ref={siteWrapper} id='site_wrapper'>
-          {render({ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight < 480 ? 480 : `calc(${windowHeight}px - ${headerHeight + 40}px)`, data, pageContext, location })}
-        </main>
-        <form name='contact_basic' data-netlify='true' hidden>
-          <input type='text' name='name' />
-          <input type='email' name='email' />
-          <textarea name='message'></textarea>
-        </form>
-        <CookiesInfo isActive={cookiesInfo} handleClose={e => setCookiesInfo(false)} />
+      <div style={{ width: '100%', height: 30, background: '#FFF', position: 'fixed', top: 0, zIndex: 50 }}></div>
+      <main ref={siteWrapperRef} id='site_wrapper'>
+        {render({ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight < 480 ? 480 : `calc(${windowHeight}px - ${headerHeight + 40}px)`, data, pageContext, location })}
+      </main>
+      <CookiesInfo />
     </Fragment>
   )
 }
