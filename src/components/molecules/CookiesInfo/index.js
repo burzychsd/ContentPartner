@@ -15,6 +15,8 @@ import './CookiesInfo.css'
 
 const CookiesInfo = props => {
 
+    const { onClick } = props
+
     const [isActive, setIsActive] = useState(false)
 
     const config = { mass: 1, tension: 180, friction: 25 }
@@ -71,7 +73,7 @@ const CookiesInfo = props => {
                         et netus et malesuada fames ac turpis egestas.</Text>
                         <Flex reset css={tw`w-full items-center justify-center`}>
                             <Button css={textStyle} style={{ background: 'transparent', margin: '1rem 0.5rem' }} onClick={handleClose}>Akceptuję</Button>
-                            <Button css={textStyle} style={{ background: 'transparent', margin: '1rem 0.5rem' }}>Czytaj więcej</Button>
+                            <Button css={textStyle} style={{ background: 'transparent', margin: '1rem 0.5rem' }} onClick={() => onClick({ modal: true, faq: false, cookies: true })}>Czytaj więcej</Button>
                         </Flex>
                 </AnimatedFlex>
             </AnimatedFlex>

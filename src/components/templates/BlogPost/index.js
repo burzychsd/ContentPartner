@@ -4,7 +4,6 @@ import { animated, useSpring } from 'react-spring'
 import loadable from '@loadable/component'
 
 // COMPONENTS
-import Page from './../../templates/Page'
 import Flex from './../../atoms/Flex'
 import { H1 as Heading } from './../../atoms/Heading'
 import Text from './../../atoms/Text'
@@ -17,7 +16,7 @@ import './BlogPost.css'
 
 const BlogPost = props => {
 
-    const { pageContext, location } = props
+    const { pageContext } = props
 
     const [mounted, setMounted] = useState(false)
 

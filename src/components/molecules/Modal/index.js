@@ -15,7 +15,7 @@ const AnimatedFlex = animated(Flex)
 
 const Modal = props => {
 
-    const { isActive, handleClick, children } = props
+    const { isActive, handleClick, children, button } = props
 
     const config = { mass: 1, tension: 120, friction: 20 }
     const setStyles = { opacity: isActive ? 1 : 0 }
@@ -29,7 +29,7 @@ const Modal = props => {
 
     const infoContainerProps = {
         reset: true,
-        style: { top: 0, right: 0, bottom: 0, left: 0, zIndex: 1000, 
+        style: { top: 0, right: 0, bottom: 0, left: 0, zIndex: button ? 1101 : 1000, 
                  background: '#FFF', position: 'fixed', height: '100%', transformOrigin: '0 0', ...containerStyle,
                  visibility: containerStyle.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible')}
     }
@@ -54,7 +54,7 @@ const Modal = props => {
         <AnimatedFlex className={zeroRightClassName} {...infoContainerProps}>
             <AnimatedFlex {...infoContentProps}>
                 <Flex reset css={tw`flex-col w-full m-auto`} style={{ maxWidth: 850 }}>
-                    <Text {...buttonProps} css={tw`py-2`}>Wróć do Menu</Text>
+                    <Text {...buttonProps} css={tw`py-2`}>{button ? button : 'Wróc do Menu'}</Text>
                     {children}
                 </Flex>
             </AnimatedFlex>

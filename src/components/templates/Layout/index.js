@@ -8,6 +8,7 @@ import Flex from './../../atoms/Flex'
 import Header from './../../organisms/Header'
 import Menu from './../../organisms/Menu'
 import Footer from './../../organisms/Footer'
+import Modal from './../../molecules/Modal'
 const CookiesInfo = loadable(() => import('./../../molecules/CookiesInfo'))
 
 // DATA
@@ -27,6 +28,7 @@ const Layout = ({ children, location }) => {
   const [preventScroll, setPreventScroll] = useState(false)
   const [headerHeight, setHeaderHeight] = useState(0)
   const [windowHeight, setWindowHeight] = useState(0)
+  const [showModal, setShowModal] = useState({ modal: false, faq: false, cookies: false })
 
   const setHeight = () => {
     typeof window !== 'undefined' && typeof document !== 'undefined' ? 
@@ -70,13 +72,17 @@ const Layout = ({ children, location }) => {
       links={links}
       toggle={toggle}
       setToggle={setToggle} />
-      <main ref={siteWrapperRef} id='site_wrapper'>
+      {<main ref={siteWrapperRef} id='site_wrapper'>
         <Flex as='section' reset css={tw`h-full flex-col items-center`} style={{ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight < 480 ? 480 : windowHeight, overflowX: 'hidden' }}>
           {children}
         </Flex>
-      </main>
-      {location.pathname !== '/' && <Footer />}
-      <CookiesInfo />
+      </main>}
+      {location.pathname !== '/' && windowHeight && <Footer onClick={setShowModal} />}
+      <CookiesInfo onClick={() => setShowModal({ modal: true, faq: false, cookies: true })} />
+      <Modal isActive={showModal.modal}
+      handleClick={() => setShowModal({ modal: false, faq: false, cookies: false })} button='Zamknij'>
+        <h1>{showModal.faq ? 'FAQ' : 'Cookies'}</h1>
+      </Modal>
     </Fragment>
   )
 }

@@ -11,6 +11,8 @@
 html, body {
     min-width: 280px;
     height: 100%;
+    min-height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+    min-height: calc(var(--vh, 1vh) * 100);
 }
 
 body {
@@ -40,11 +42,6 @@ header {
 
 main {
     position: relative;
-    min-height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
-    min-height: calc(var(--vh, 1vh) * 100);
-}
-
-main {
     flex: 1 0 auto;
 }
 
@@ -57,6 +54,7 @@ main > section {
 
 footer {
     flex-shrink: 0;
+    height: 4rem;
 }
 
 div[role=group] {
@@ -397,5 +395,31 @@ textarea::-webkit-input-placeholder {
     .blog_post_body > span,
     .blog_post_body > quote {
         font-size: 1.35rem;
+    }
+}
+
+@media only screen and (max-width: 499px) {
+
+    footer {
+        height: 7rem!important;
+    }
+
+    footer > div > .footer_links {
+        flex-flow: column nowrap!important;
+        align-self: flex-end!important;
+        margin-bottom: 0.5rem;
+    }
+
+    footer > div > .footer_copyright {
+        align-self: flex-end!important;
+        justify-self: flex-end!important;
+        margin: 1rem 0!important;
+        font-size: 0.7rem;
+    }
+
+    .footer_links > p,
+    .footer_links > a {
+        margin: 0.5rem 0!important;
+        font-size: 0.85rem;
     }
 }

@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { memo, Fragment, useEffect, useState, useRef } from 'react'
+import React, { memo, useEffect, useState, useRef } from 'react'
 import { useSpring, animated } from 'react-spring'
 
 // COMPONENTS
@@ -46,28 +46,32 @@ const HomeContent = ({ data }) => {
     }, [])
 
     return (
-        <Fragment>
-            <Flex
-            {...containerProps}
-            css={tw`w-full flex-col justify-center xl:self-start`}>
-                <TrailHeading title={content.title} />
-                <AnimatedText
-                ref={textRef}
-                {...textProps(textStyle)}
-                css={tw`w-full font-light text-center mx-auto mt-2
-                px-0 md:px-4 xl:px-0 xl:w-4/5 xl:text-left xl:m-0`}>{content.subtitle}</AnimatedText>
-                <AnimatedButton
-                ref={buttonRef}
-                {...buttonProps(buttonStyle)}
-                css={tw`relative self-center xl:self-start py-2`}>{content.button}</AnimatedButton>
-            </Flex>
-            <Flex reset {...timelineProps}>
-                <TimeLineGraphic style={{ width: '100%' }} />
-            </Flex>
-            <Flex reset {...bulbsProps}>
-                <Image fluid={data.imageOne.childImageSharp.fluid} style={{ height: 'auto', width: '100%' }} />
-            </Flex>
-        </Fragment>
+        <>
+            {mounted &&
+            <>
+                <Flex
+                {...containerProps}
+                css={tw`w-full flex-col justify-center xl:self-start`}>
+                    <TrailHeading title={content.title} />
+                    <AnimatedText
+                    ref={textRef}
+                    {...textProps(textStyle)}
+                    css={tw`w-full font-light text-center mx-auto mt-2
+                    px-0 md:px-4 xl:px-0 xl:w-4/5 xl:text-left xl:m-0`}>{content.subtitle}</AnimatedText>
+                    <AnimatedButton
+                    ref={buttonRef}
+                    {...buttonProps(buttonStyle)}
+                    css={tw`relative self-center xl:self-start py-2`}>{content.button}</AnimatedButton>
+                </Flex>
+                <Flex reset {...timelineProps}>
+                    <TimeLineGraphic style={{ width: '100%' }} />
+                </Flex>
+                <Flex reset {...bulbsProps}>
+                    <Image fluid={data.imageOne.childImageSharp.fluid} style={{ height: 'auto', width: '100%' }} />
+                </Flex>
+            </>
+            }
+        </>
     )
 }
 
