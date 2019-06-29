@@ -108,19 +108,19 @@ const WrapPage = ({ pages, ...props }) => {
                 style={{...pageStyles, paddingTop }}
                 minHeight={minHeight}
                 status={conditions(location.pathname, 'contact')} />
+                {conditions(location.pathname, 'blog') && 
                 <Blog
                 style={{...pageStyles, paddingTop }}
                 minHeight={minHeight}
                 data={data}
                 pageContext={pageContext}
-                location={location}
-                status={conditions(location.pathname, 'blog')} />
+                location={location} />}
+                {typeof pageContext.slug !== 'undefined' &&
                 <BlogPost
                 style={{...pageStyles, paddingTop }}
                 minHeight={minHeight}
                 pageContext={pageContext}
-                location={location}
-                status={typeof pageContext.slug !== 'undefined'} />
+                location={location} />}
                 <Process
                 style={{...pageStyles, paddingTop }}
                 minHeight={minHeight}

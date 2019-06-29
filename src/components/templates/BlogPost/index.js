@@ -17,13 +17,14 @@ import './BlogPost.css'
 
 const BlogPost = props => {
 
-    const { style, pageContext, minHeight, location, status } = props
-    const { id, title, src, date, author, content } = pageContext
+    const { style, pageContext, minHeight, location } = props
+
+    const { title, src, date, author, content } = pageContext
 
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
-        setTimeout(() => setMounted(true), 800)
+        setMounted(true)
 
         return () => {
             setMounted(false)
@@ -31,13 +32,15 @@ const BlogPost = props => {
 
     }, [location.pathname])
 
-    const config = { mass: 1, tension: 180, friction: 12 }
+    const config = { mass: 1, tension: 180, friction: 20 }
     const setStyles = { opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0px)' : 'translateY(35px)' }
     const spring = { from: { opacity: 0, transform: 'translateY(35px)' } }
 
     const [picContainerStyle, setPicContainerStyle] = useSpring(() => ({...spring}))
+    const [postContainerStyle, setPostContainerStyle] = useSpring(() => ({...spring}))
 
-    setPicContainerStyle({...setStyles, config, delay: 0.001})
+    setPicContainerStyle({...setStyles, config, delay: mounted ? 300 : 600 })
+    setPostContainerStyle({ ...setStyles, config, delay: mounted ? 600 : 300 })
 
     const blogPostPicContainer = {
         reset: true,
@@ -69,28 +72,23 @@ const BlogPost = props => {
     }
 
     return (
-        <Page footer style={style} minHeight={minHeight} status={status}>
-            {status ?
-            <>
-                <AnimatedFlex {...blogPostPicContainer}
-                style={{ background: `url(${src}) no-repeat center center / cover`, ...picContainerStyle }} />
-                <Flex {...blogPostContentContainer}>
-                    <Heading {...headingProps} css={tw`mt-12 text-center`}>{title}</Heading>
-                    <Flex {...blogPostInfoContainer}>
-                        <Text {...spanProps('date')} css={tw`text-base sm:text-lg font-heading font-light`}>{date.slice(0, 10)}</Text>
-                        <Text {...spanProps('author')} css={tw`text-base sm:text-lg font-heading font-light`}>{author}</Text>
-                    </Flex>
-                    <Flex {...blogPostBodyProps} css={tw`mt-12 mb-24 w-full flex-col`} dangerouslySetInnerHTML={{ __html: content }} />
-                    {/* <Disqus 
-                    identifier={blog.id}
-                    title={blog.title}
-                    style={{ marginBottom: '6rem' }} */}
-                    />
+        <Page noTransition footer style={style} minHeight={minHeight}>
+            <AnimatedFlex {...blogPostPicContainer}
+            style={{ background: `url(${src}) no-repeat center center / cover`, ...picContainerStyle }} />
+            <AnimatedFlex {...blogPostContentContainer} style={postContainerStyle}>
+                <Heading {...headingProps} css={tw`mt-12 text-center mx-auto`} style={{ maxWidth: 750 }}>{title}</Heading>
+                <Flex {...blogPostInfoContainer} >
+                    <Text {...spanProps('date')} css={tw`text-base sm:text-lg font-heading font-light`}>{date.slice(0, 10)}</Text>
+                    <Text {...spanProps('author')} css={tw`text-base sm:text-lg font-heading font-light`}>{author}</Text>
                 </Flex>
-            </> : null
-            }
+                <Flex {...blogPostBodyProps} css={tw`mt-12 mb-24 w-full flex-col`} dangerouslySetInnerHTML={{ __html: content }} />
+                <Disqus 
+                identifier={props.pageContext.id}
+                title={props.pageContext.title}
+                style={{ marginBottom: '6rem' }}
+                />
+            </AnimatedFlex>
         </Page>
-
     )
 }
 

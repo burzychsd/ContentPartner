@@ -2,6 +2,7 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { useTrail, useSpring, animated } from 'react-spring'
+import { zeroRightClassName } from 'react-remove-scroll-bar'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -16,12 +17,12 @@ const Menu = (props) => {
 
     const { links, toggle, setToggle, paddingTop } = props
 
-    const config1 = { mass: 1, tension: 180, friction: 20 }
+    const config1 = { mass: 1, tension: 120, friction: 20 }
     const config2 = { mass: 1, tension: 280, friction: 25 }
     const setSpringStyles = { opacity: toggle ? 1 : 0 }
-    const setTrailStyles = { opacity: toggle ? 1 : 0, transform: toggle ? 'translateY(0px)' : 'translateY(20px)' }
+    const setTrailStyles = { opacity: toggle ? 1 : 0, transform: toggle ? 'translateY(0px)' : 'translateY(5px)' }
     const spring = { from: { opacity: 0 } }
-    const trail = { from: { opacity: 0, transform: 'translateY(20px)' } }
+    const trail = { from: { opacity: 0, transform: 'translateY(5px)' } }
 
     const [menuContainerStyle, setMenuContainerStyle] = useSpring(() => ({ ...spring }))
     const [linkTrailsStyle, setLinkTrailsStyle] = useTrail(links.length, () => ({ ...trail }))
@@ -37,7 +38,7 @@ const Menu = (props) => {
     })
 
     return (
-        <AnimatedFlex className={`menu_container`} {...container(menuContainerStyle, paddingTop)} css={tw`fixed w-screen m-auto bg-white z-40`}>
+        <AnimatedFlex className={`menu_container ${zeroRightClassName}`} {...container(menuContainerStyle, paddingTop)} css={tw`fixed m-auto bg-white z-40`}>
             <NavLinks
             links={links}
             setToggle={setToggle}

@@ -64,7 +64,7 @@ const CookiesInfo = props => {
         <>
             {isActive && <RemoveScrollBar />}
             <AnimatedFlex {...cookiesInfoContainerProps} style={cookiesInfoContainerStyles}>
-                <AnimatedFlex reset style={cookiesInfoStyles}>
+                <AnimatedFlex reset style={{ ...cookiesInfoStyles, visibility: cookiesInfoStyles.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible') }}>
                         <Text css={textStyle} style={{ fontWeight: 700 }}>Ta strona używa plików cookies.</Text>
                         <Text css={textStyle}>Integer et congue augue, interdum posuere risus. 
                         Cras ultricies eget nunc vitae fringilla. Pellentesque habitant morbi tristique senectus 

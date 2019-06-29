@@ -1,7 +1,7 @@
 // DEPENDENCIES
 import React, { memo, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { RemoveScrollBar } from 'react-remove-scroll-bar'
+import { RemoveScrollBar, zeroRightClassName } from 'react-remove-scroll-bar'
 import { useSpring, useChain, animated } from 'react-spring'
 
 // COMPONENTS
@@ -15,9 +15,6 @@ const AnimatedFlex = animated(Flex)
 
 const Modal = props => {
 
-    const infoContainer = useRef()
-    const infoContent = useRef()
-
     const { isActive, handleClick, children } = props
 
     const config = { mass: 1, tension: 120, friction: 20 }
@@ -27,22 +24,21 @@ const Modal = props => {
     const [containerStyle, setContainerStyle] = useSpring(() => ({...spring}))
     const [contentStyle, setContentStyle] = useSpring(() => ({...spring}))
 
-    setContainerStyle({ ...setStyles, ref: infoContainer, config, delay: isActive ? 0.001 : 800 })
-    setContentStyle({ ...setStyles, ref: infoContent, config, delay: isActive ? 800 : 0.001 })
+    setContainerStyle({ ...setStyles, config, delay: isActive ? 0.001 : 800 })
+    setContentStyle({ ...setStyles, config, delay: isActive ? 800 : 0.001 })
 
     const infoContainerProps = {
         reset: true,
         style: { top: 0, right: 0, bottom: 0, left: 0, zIndex: 1000, 
-                 background: '#FFF', position: 'fixed', 
-                 width: '100%', height: '100%', transformOrigin: '0 0', ...containerStyle,
+                 background: '#FFF', position: 'fixed', height: '100%', transformOrigin: '0 0', ...containerStyle,
                  visibility: containerStyle.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible')}
     }
 
     const infoContentProps = {
         className: `modal_info_content`,
         reset: true,
-        style: { flexFlow: 'column nowrap', width: '100%', 
-                 height: '100%', position: 'relative', padding: '60px 1.5rem 1rem 1.5rem', 
+        style: { flexFlow: 'column nowrap', width: '100vw',
+                 height: '100%', position: 'absolute', top: 0, left: 0, right: 0, padding: '60px 1.5rem 1rem 1.5rem', 
                  overflowY: 'scroll', ...contentStyle }
     }
 
@@ -55,8 +51,8 @@ const Modal = props => {
     return (
         <>
         {isActive && <RemoveScrollBar />}
-        <AnimatedFlex ref={infoContainer} {...infoContainerProps}>
-            <AnimatedFlex ref={infoContent} {...infoContentProps}>
+        <AnimatedFlex className={zeroRightClassName} {...infoContainerProps}>
+            <AnimatedFlex {...infoContentProps}>
                 <Flex reset css={tw`flex-col w-full m-auto`} style={{ maxWidth: 850 }}>
                     <Text {...buttonProps} css={tw`py-2`}>Wróć do Menu</Text>
                     {children}

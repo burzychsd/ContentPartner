@@ -90,7 +90,7 @@ textarea::-webkit-input-placeholder {
 }
 
 #___gatsby {
-    width: 100vw;
+    width: 100%;
     height: 100%;
 }
 
@@ -244,13 +244,13 @@ textarea::-webkit-input-placeholder {
 }
 
 @media only screen and (min-width: 575px) {
-    main > section > .section_container {
+    main > div > .section_container {
         padding: 0 3.5rem;
     }
 }
 
 @media only screen and (min-width: 1140px) {
-    main > section {
+    main > div {
         padding: 0;
     }
 

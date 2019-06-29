@@ -22,7 +22,7 @@ import './BlogCards.css'
 export const BlogCard = props => {
     const { data, isVisible } = props
 
-    const config = { mass: 1, tension: 120, friction: 20 }
+    const config = { mass: 1, tension: 210, friction: 20 }
     const setStyles = { opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0px)' : 'translateY(35px)' }
     const spring = { from: { opacity: 0, transform: 'translateY(35px)' } }
 
@@ -32,11 +32,11 @@ export const BlogCard = props => {
     const [cardDescriptionStyle, setCardDescriptionStyle] = useSpring(() => ({ ...spring }))
     const [cardButtonStyle, setCardButtonStyle] = useSpring(() => ({ ...spring }))
 
-    setCardPicStyle({ ...setStyles, config, delay: 200 })
-    setCardDateStyle({ ...setStyles, config, delay: 300 })
-    setCardTitleStyle({ ...setStyles, config, delay: 400 })
-    setCardDescriptionStyle({ ...setStyles, config, delay: 500 })
-    setCardButtonStyle({ ...setStyles, config, delay: 600 })
+    setCardPicStyle({ ...setStyles, config, delay: 400 })
+    setCardDateStyle({ ...setStyles, config, delay: 500 })
+    setCardTitleStyle({ ...setStyles, config, delay: 600 })
+    setCardDescriptionStyle({ ...setStyles, config, delay: 700 })
+    setCardButtonStyle({ ...setStyles, config, delay: 800 })
 
     const blogPicContainerProps = (data, props) => ({
         reset: true,
