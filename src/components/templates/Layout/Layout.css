@@ -40,15 +40,15 @@ header {
 
 main {
     position: relative;
-    height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
-    height: calc(var(--vh, 1vh) * 100);
+    min-height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+    min-height: calc(var(--vh, 1vh) * 100);
 }
 
-main > div {
+main {
     flex: 1 0 auto;
 }
 
-main > div > .section_container {
+main > section {
     position: relative;
     padding: 0 1.5rem;
     max-width: 1024px;
@@ -202,20 +202,20 @@ textarea::-webkit-input-placeholder {
 @media only screen and (max-height: 480px) {
 
     .timeline_graphic {
-        height: 130px;
+        height: 120px;
     }
 }
 
 @media only screen and (min-width: 480px) and (max-height: 480px) {
     .timeline_graphic {
         max-height: 230px;
-        height: 45%;
+        height: 35%;
     }
 }
 
 @media only screen and (min-height: 481px) and (max-height: 600px) {
     .timeline_graphic {
-        width: 70%;
+        width: 60%;
         height: 40%;
     }
 }
@@ -229,8 +229,8 @@ textarea::-webkit-input-placeholder {
 
 @media only screen and (min-width: 700px) and (min-height: 601px) and (max-height: 1140px) {
     .timeline_graphic {
-        width: 60%;
-        height: 45%;
+        width: 80%;
+        height: 38%;
         max-width: 100%;
     }
 }
@@ -239,18 +239,18 @@ textarea::-webkit-input-placeholder {
     .timeline_graphic {
         width: 70%;
         height: 50%;
-        max-width: 600px;
+        max-width: 550px;
     }
 }
 
 @media only screen and (min-width: 575px) {
-    main > div > .section_container {
+    main > section {
         padding: 0 3.5rem;
     }
 }
 
 @media only screen and (min-width: 1140px) {
-    main > div {
+    main > section {
         padding: 0;
     }
 

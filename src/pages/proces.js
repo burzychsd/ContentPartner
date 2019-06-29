@@ -3,10 +3,10 @@ import React, { memo } from 'react'
 import loadable from '@loadable/component'
 
 // COMPONENTS
-import Page from '../components/templates/Page'
+import SEO from './../components/templates/SEO'
 const StageInfo = loadable(() => import('../components/molecules/StageInfo'))
 
-const Proces = ({ style, minHeight, status }) => {
+const Proces = () => {
 
     const stageContent = [
         {
@@ -45,13 +45,14 @@ const Proces = ({ style, minHeight, status }) => {
     ]
 
     return (
-        <Page footer style={style} minHeight={minHeight} status={status}>
+        <>
+            <SEO title='Proces' keywords={[]} />
             <StageInfo graphicNum={1} title={stageContent[0].title} text={stageContent[0].text} /> 
             <StageInfo graphicNum={2} title={stageContent[1].title} text={stageContent[1].text} />
             <StageInfo graphicNum={3} title={stageContent[2].title} text={stageContent[2].text} />
             <StageInfo graphicNum={4} title={stageContent[3].title} text={stageContent[3].text} />
             <StageInfo graphicNum={5} title={stageContent[4].title} text={stageContent[4].text} />
-        </Page>
+        </>
     )
 }
 

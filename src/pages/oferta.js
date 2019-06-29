@@ -2,15 +2,16 @@
 import React from 'react'
 
 // COMPONENTS
-import Page from '../components/templates/Page'
+import SEO from './../components/templates/SEO'
 import ServicesDisplay from '../components/organisms/ServicesDisplay'
 
-const Oferta = ({ style, minHeight, status }) => {
+const Oferta = () => {
 
     return (
-        <Page footer style={style} minHeight={minHeight} status={status}>
+        <>
+            <SEO title='Oferta' keywords={[]} />
             <ServicesDisplay />
-        </Page>
+        </>
     )
 }
 

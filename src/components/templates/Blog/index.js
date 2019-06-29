@@ -3,19 +3,18 @@ import React, { memo } from 'react'
 import { graphql } from 'gatsby'
 
 // COMPONENTS
-import Page from './../../templates/Page'
 import BlogCards from './../../molecules/BlogCards'
 import Pagination from './../../molecules/Pagination'
 
 const Blog = props => {
 
-    const { style, data, pageContext, location, minHeight } = props
+    const { data, pageContext, location } = props
 
     return (
-      <Page noTransition footer style={style} minHeight={minHeight}>
+      <>
         <BlogCards data={data.posts.edges} />
         <Pagination location={location} pageContext={pageContext} />
-      </Page>
+      </>
     )
 }
 

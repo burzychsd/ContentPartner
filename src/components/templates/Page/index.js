@@ -51,7 +51,7 @@ const Page = props => {
                 style={{ minHeight }}>
                     {children}
                 </Flex>
-                <Footer />
+                {footer && <Footer />}
             </Flex>
         )
 

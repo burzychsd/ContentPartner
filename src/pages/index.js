@@ -4,10 +4,10 @@ import { graphql, StaticQuery } from 'gatsby'
 import loadable from '@loadable/component'
 
 // COMPONENTS
-import Page from '../components/templates/Page'
+import SEO from './../components/templates/SEO'
 const HomeContent = loadable(() => import('../components/organisms/HomeContent'))
 
-const IndexPage = ({ style, minHeight, status }) => {
+const IndexPage = () => {
 
     return (
         <StaticQuery query={
@@ -26,9 +26,10 @@ const IndexPage = ({ style, minHeight, status }) => {
             `
         }
         render={data => (
-            <Page style={style} minHeight={minHeight} status={status}>
+            <>
+                <SEO title='Strona główna' keywords={[]} />
                 <HomeContent data={data} />
-            </Page>
+            </>
         )}/>
     )
 }

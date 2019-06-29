@@ -25,11 +25,11 @@
     margin-right: 0.5rem;
 }
 
-.section_container > .blog_card_container:nth-child(odd) > .blog_card_info > button {
+section > .blog_card_container:nth-child(odd) > .blog_card_info > button {
     align-self: flex-end;
 }
 
-.section_container > .blog_card_container:nth-child(even) > .blog_card_info > button {
+section > .blog_card_container:nth-child(even) > .blog_card_info > button {
     align-self: flex-start;
 }
 
@@ -56,11 +56,11 @@
 
 @media only screen and (min-width: 960px) {
 
-    .section_container > .blog_card_container:nth-child(odd) {
+    section > .blog_card_container:nth-child(odd) {
         flex-flow: row nowrap;
     }
 
-    .section_container > .blog_card_container:nth-child(even) {
+    section > .blog_card_container:nth-child(even) {
         flex-flow: row-reverse nowrap;
     }
 

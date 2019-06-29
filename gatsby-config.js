@@ -12,6 +12,12 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+          component: require.resolve(`./src/components/templates/Layout/index.js`)
+      }
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Content Partner`,

@@ -1,20 +1,21 @@
 // DEPENDENCIES
-import React from 'react'
+import React, { memo } from 'react'
 import loadable from '@loadable/component'
 
 // COMPONENTS
-import Page from '../components/templates/Page'
+import SEO from './../components/templates/SEO'
 const TrailHeading = loadable(() => import('../components/molecules/TrailHeading'))
 const SuccessGraphic = loadable(() => import('../images/svg/success.svg'))
 
-const SuccessPage = ({ style, minHeight, status }) => {
+const SuccessPage = () => {
 
   return (
-    <Page footer style={style} minHeight={minHeight} status={status}>
+    <>
+      <SEO title='Dziękuję' keywords={[]} />
       <SuccessGraphic preserveAspectRatio='xMidYMid meet' style={{ width: '60%', maxWidth: 280, marginBottom: '1rem' }} />
       <TrailHeading title='Dziękuję za kontakt.' />
-    </Page>
+    </>
   )
 }
 
-export default SuccessPage
+export default memo(SuccessPage)

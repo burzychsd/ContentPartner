@@ -3,17 +3,18 @@ import React from 'react'
 import loadable from '@loadable/component'
 
 // COMPONENTS
-import Page from '../components/templates/Page'
+import SEO from './../components/templates/SEO'
 const TrailHeading = loadable(() => import('../components/molecules/TrailHeading'))
 const ContactForm = loadable(() => import('../components/organisms/ContactForm'))
 
-const Kontakt = ({ style, minHeight, status }) => {
+const Kontakt = () => {
 
     return (
-        <Page footer style={style} minHeight={minHeight} status={status}>
+        <>
+            <SEO title='Kontakt' keywords={[]} />
             <TrailHeading title='Kontakt.' />
             <ContactForm />
-        </Page>
+        </>
     )
 }
 
