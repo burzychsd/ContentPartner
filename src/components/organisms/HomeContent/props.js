@@ -23,7 +23,7 @@ export const timelineProps = {
     style: { position: 'absolute', left: '1rem', bottom: 0, zIndex: -1 }
 }
 
-export const bulbsProps = {
+export const picProps = picStyle => ({
     className: `bulbs_graphic`,
-    style: { position: 'absolute', right: 0, bottom: 0, zIndex: -3 }
-}
+    style: { position: 'absolute', right: 0, bottom: 0, zIndex: -3, ...picStyle }
+})

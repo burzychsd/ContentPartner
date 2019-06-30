@@ -35,12 +35,14 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Lora`,
-            variants: [`700`],
+            family: `Fira Sans`,
+            variants: [`400`, `700`],
+            subsets: [`latin-ext`]
           },
           {
             family: `Merriweather`,
-            variants: [`300`, `400`]
+            variants: [`200`, `300`, `400`],
+            subsets: [`latin-ext`]
           },
         ],
       },

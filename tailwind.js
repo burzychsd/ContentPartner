@@ -159,8 +159,8 @@ module.exports = {
       'Courier New',
       'monospace',
     ],
-    heading: ['Lora', 'serif'],
-    body: ['Merriweather', 'serif']
+    heading: ['Fira Sans', 'sans-serif'],
+    body: ['Merriweather', 'sans-serif']
   },
 
   /*

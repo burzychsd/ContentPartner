@@ -12,10 +12,11 @@ import Image from'./../../atoms/Image'
 
 const AnimatedText = animated(Text)
 const AnimatedButton = animated(Button)
+const AnimatedFlex = animated(Flex)
 
 // PROPS
 import { containerProps,
-         textProps, buttonProps, timelineProps, bulbsProps } from './props'
+         textProps, buttonProps, timelineProps, picProps } from './props'
 
 const HomeContent = ({ data }) => {
 
@@ -37,9 +38,11 @@ const HomeContent = ({ data }) => {
 
     const [ textStyle, setTextStyle ] = useSpring(() => ({ ...spring }))
     const [ buttonStyle, setButtonStyle ] = useSpring(() => ({ ...spring }))
+    const [ picStyle, setPicStyle ] = useSpring(() => ({ from: { opacity: 0 } }))
 
     setTextStyle({...setStyles, ref: textRef, config, delay: 1000})
     setButtonStyle({...setStyles, ref: buttonRef, config, delay: 1300})
+    setPicStyle({ opacity: mounted ? 1 : 0, config, delay: 400 })
 
     useEffect(() => {
         setMounted(true)
@@ -66,9 +69,9 @@ const HomeContent = ({ data }) => {
                 <Flex reset {...timelineProps}>
                     <TimeLineGraphic style={{ width: '100%' }} />
                 </Flex>
-                <Flex reset {...bulbsProps}>
+                <AnimatedFlex reset {...picProps(picStyle)}>
                     <Image fluid={data.imageOne.childImageSharp.fluid} style={{ height: 'auto', width: '100%' }} />
-                </Flex>
+                </AnimatedFlex>
             </>
             }
         </>

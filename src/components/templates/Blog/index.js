@@ -13,7 +13,7 @@ const Blog = props => {
     return (
       <>
         <BlogCards data={data.posts.edges} />
-        <Pagination location={location} pageContext={pageContext} />
+        {pageContext.numPages > 10 && <Pagination location={location} pageContext={pageContext} />}
       </>
     )
 }

@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { memo, useState } from 'react'
+import React, { memo, useState, useEffect } from 'react'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -24,15 +24,26 @@ const ServicesDisplay = props => {
         cooperation: false
     })
 
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setTimeout(() => setMounted(true), 600)
+    }, [])
+
     return (
-        <Flex {...containerProps}>
-            <ServiceIcon title='Artykuły tematyczne' handleClick={setShowInfo} showInfo={showInfo} />
-            <ServiceIcon title='Opisy produktów' handleClick={setShowInfo} showInfo={showInfo} />
-            <ServiceIcon title='Treści na strony www' handleClick={setShowInfo} showInfo={showInfo} />
-            <ServiceIcon title='Media społecznościowe' handleClick={setShowInfo} showInfo={showInfo} />
-            <ServiceIcon title='E-booki' handleClick={setShowInfo} showInfo={showInfo} />
-            <ServiceIcon title='Kompleksowa współpraca' handleClick={setShowInfo} showInfo={showInfo} />
-        </Flex>
+        <>
+            {
+                mounted && 
+                <Flex {...containerProps}>
+                    <ServiceIcon title='Artykuły tematyczne' handleClick={setShowInfo} showInfo={showInfo} />
+                    <ServiceIcon title='Opisy produktów' handleClick={setShowInfo} showInfo={showInfo} />
+                    <ServiceIcon title='Treści na strony www' handleClick={setShowInfo} showInfo={showInfo} />
+                    <ServiceIcon title='Media społecznościowe' handleClick={setShowInfo} showInfo={showInfo} />
+                    <ServiceIcon title='E-booki' handleClick={setShowInfo} showInfo={showInfo} />
+                    <ServiceIcon title='Kompleksowa współpraca' handleClick={setShowInfo} showInfo={showInfo} />
+                </Flex>
+            }
+        </>
     )
 }
 

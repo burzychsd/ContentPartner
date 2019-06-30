@@ -55,8 +55,7 @@ const Layout = ({ children, location }) => {
 
   const preventScrolling = async (location) => {
     await setPreventScroll(true)
-    await location.pathname === '/' && windowHeight >= 480 ? null : 
-          location.pathname === '/blog/' || regex.test(location.pathname) ? setPreventScroll(false) : 
+    await location.pathname === '/blog/' || regex.test(location.pathname) ? setPreventScroll(false) : 
           setTimeout(() => setPreventScroll(false), 1200)
   }
 
@@ -72,17 +71,17 @@ const Layout = ({ children, location }) => {
       links={links}
       toggle={toggle}
       setToggle={setToggle} />
-      {<main ref={siteWrapperRef} id='site_wrapper'>
+      <main ref={siteWrapperRef} id='site_wrapper'>
         <Flex as='section' reset css={tw`h-full flex-col items-center`} style={{ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight < 480 ? 480 : windowHeight, overflowX: 'hidden' }}>
           {children}
         </Flex>
-      </main>}
-      {location.pathname !== '/' && windowHeight && <Footer onClick={setShowModal} />}
-      <CookiesInfo onClick={() => setShowModal({ modal: true, faq: false, cookies: true })} />
-      <Modal isActive={showModal.modal}
-      handleClick={() => setShowModal({ modal: false, faq: false, cookies: false })} button='Zamknij'>
-        <h1>{showModal.faq ? 'FAQ' : 'Cookies'}</h1>
-      </Modal>
+        <Modal isActive={showModal.modal}
+        handleClick={() => setShowModal({ modal: false, faq: false, cookies: false })} button='Zamknij'>
+          <h1>{showModal.faq ? 'FAQ' : showModal.cookies ? 'Cookies' : null}</h1>
+        </Modal>
+      </main>
+      {location.pathname !== '/' && windowHeight > 0 && <Footer setShowModal={setShowModal} />}
+      <CookiesInfo setShowModal={setShowModal} />
     </Fragment>
   )
 }

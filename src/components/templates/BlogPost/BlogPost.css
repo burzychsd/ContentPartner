@@ -52,17 +52,43 @@
 .blog_post_body > h3,
 .blog_post_body > h4,
 .blog_post_body > h5 {
-    font-family: 'Lora', serif;
-    margin: 3rem 0 2rem 0;
+    font-family: 'Fira Sans', sans-serif;
     align-self: flex-start!important;
-    padding: 0 1rem 0 0.5rem;
+    padding: 0 0 0 0.5rem;
+}
+
+.blog_post_body > h1,
+.blog_post_body > h2 {
+    margin: 4rem 0 1.5rem 0;
+}
+
+.blog_post_body > h3,
+.blog_post_body > h4,
+.blog_post_body > h5 {
+    margin: 2rem 0 1rem 0;
 }
 
 .blog_post_body > p,
+.blog_post_body > ul {
+    margin-bottom: 2rem;
+}
+
+.blog_post_body > ul {
+    padding-left: 2rem;
+}
+
+.blog_post_body > p,
+.blog_post_body > ul,
+.blog_post_body > ul > li,
 .blog_post_body > span,
 .blog_post_body > quote {
-    font-family: 'Merriweather', serif;
+    font-family: 'Merriweather', sans-serif;
     font-weight: 300;
+}
+
+.blog_post_body > p > strong,
+.blog_post_body > ul > li > strong {
+    font-weight: 700;
 }
 
 @media only screen and (min-width: 575px) {

@@ -84,6 +84,7 @@ const BlogPost = props => {
                 <Flex {...blogPostBodyProps} css={tw`mt-12 mb-24 w-full flex-col`} dangerouslySetInnerHTML={{ __html: content }} />
                 <Disqus 
                 config={disqusConfig}
+                style={{ marginBottom: '6rem' }}
                 />
             </AnimatedFlex>
         </>

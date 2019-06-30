@@ -15,16 +15,16 @@ ${footerTextClasses}
 
 const Footer = React.forwardRef((props, innerRef) => {
 
-    const { onClick } = props
+    const { setShowModal } = props
 
     const handleClick = link => {
-        link === 'FAQ' ? onClick({ modal: true, faq: true, cookies: false }) :
-                         onClick({ modal: true, faq: false, cookies: true })
+        link === 'FAQ' ? setShowModal({ modal: true, faq: true, cookies: false }) :
+                         setShowModal({ modal: true, faq: false, cookies: true })
     }
 
     return (
         <Flex as='footer' ref={innerRef ? innerRef : null} reset css={tw`bg-dark_puce w-full`} style={{ ...props.style }}>
-            <Flex reset css={tw`w-full h-full justify-between items-center px-8 mx-auto`} style={{ maxWidth: 1280 }}>
+            <Flex className='footer_container' reset css={tw`w-full h-full justify-between items-center px-8 mx-auto`} style={{ maxWidth: 1280 }}>
                 <Flex reset className='footer_links'>
                     <Text css={footerTextClasses} style={{ cursor: 'pointer' }} onClick={() => handleClick('FAQ')}>FAQ</Text>
                     <Text css={footerTextClasses} style={{ cursor: 'pointer' }} onClick={() => handleClick('Cookies')}>Prywatność</Text>

@@ -44,7 +44,7 @@ const Header = (props) => {
             <div style={{ width: '100%', height: 30, background: '#FFF', position: 'fixed', top: 0, zIndex: 50 }}></div>
             <Flex className={zeroRightClassName} ref={innerRef} {...headerProps} reset css={tw`px-6 sm:px-12 fixed z-50`}>
                 {(toggle || preventScroll) && <RemoveScrollBar />}
-                <Navigation {...navProps} toggle={toggle} setToggle={setToggle} isScrolled={scrollPos.y > 0}/>
+                <Navigation {...navProps} toggle={toggle} setToggle={setToggle} isScrolled={scrollPos.y > 0} />
             </Flex>
         </>
     )

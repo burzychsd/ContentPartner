@@ -15,13 +15,13 @@ import './CookiesInfo.css'
 
 const CookiesInfo = props => {
 
-    const { onClick } = props
+    const { setShowModal } = props
 
-    const [isActive, setIsActive] = useState(false)
+    const [active, setActive] = useState(false)
 
     const config = { mass: 1, tension: 180, friction: 25 }
-    const setContainerStyle = { opacity: isActive ? 1 : 0, transform: isActive ? 'translateY(0%)' : 'translateY(-100%)' }
-    const setInfoStyle = { opacity: isActive ? 1 : 0, transform: isActive ? 'translateY(0px)' : 'translateY(35px)' }
+    const setContainerStyle = { opacity: active ? 1 : 0, transform: active ? 'translateY(0%)' : 'translateY(-100%)' }
+    const setInfoStyle = { opacity: active ? 1 : 0, transform: active ? 'translateY(0px)' : 'translateY(35px)' }
     const spring1 = { from: { opacity: 0, transform: 'translateY(-100%)' } }
     const spring2 = { from: { opacity: 0, transform: 'translateY(35px)' } }
 
@@ -41,18 +41,18 @@ const CookiesInfo = props => {
     }, [])
 
     useEffect(() => {
-        setCookiesInfoContainerStyles({ ...setContainerStyle, config, delay: isActive ? 200 : 0.001 })
-        setCookiesInfoStyles({ ...setInfoStyle, config, delay: isActive ? 0.001 : 200 })
-    }, [isActive])
+        setCookiesInfoContainerStyles({ ...setContainerStyle, config, delay: active ? 200 : 0.001 })
+        setCookiesInfoStyles({ ...setInfoStyle, config, delay: active ? 0.001 : 200 })
+    }, [active])
 
     const setStatus = async () => {
         await localStorage.setItem('cookiesInfo', 'active')
-        await setTimeout(() =>setIsActive(true), 3500)
+        await setTimeout(() =>setActive(true), 3500)
     }
 
     const handleClose = () => {
         localStorage.setItem('cookiesInfo', 'accepted')
-        setIsActive(false)
+        setActive(false)
     }
 
     const cookiesInfoContainerProps = {
@@ -64,7 +64,7 @@ const CookiesInfo = props => {
 
     return (
         <>
-            {isActive && <RemoveScrollBar />}
+            {active && <RemoveScrollBar />}
             <AnimatedFlex {...cookiesInfoContainerProps} style={cookiesInfoContainerStyles}>
                 <AnimatedFlex reset style={{ ...cookiesInfoStyles, visibility: cookiesInfoStyles.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible') }}>
                         <Text css={textStyle} style={{ fontWeight: 700 }}>Ta strona używa plików cookies.</Text>
@@ -73,7 +73,7 @@ const CookiesInfo = props => {
                         et netus et malesuada fames ac turpis egestas.</Text>
                         <Flex reset css={tw`w-full items-center justify-center`}>
                             <Button css={textStyle} style={{ background: 'transparent', margin: '1rem 0.5rem' }} onClick={handleClose}>Akceptuję</Button>
-                            <Button css={textStyle} style={{ background: 'transparent', margin: '1rem 0.5rem' }} onClick={() => onClick({ modal: true, faq: false, cookies: true })}>Czytaj więcej</Button>
+                            <Button css={textStyle} style={{ background: 'transparent', margin: '1rem 0.5rem' }} onClick={() => setShowModal({ modal: true, faq: false, cookies: true })}>Czytaj więcej</Button>
                         </Flex>
                 </AnimatedFlex>
             </AnimatedFlex>
