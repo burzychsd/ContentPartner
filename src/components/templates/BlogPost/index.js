@@ -22,14 +22,14 @@ const BlogPost = props => {
 
     const { id, title, src, date, author, content } = pageContext
 
-    const config = { mass: 1, tension: 210, friction: 20 }
+    const config = { mass: 1, tension: 280, friction: 20 }
     const setStyles = { opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0px)' : 'translateY(50px)' }
     const spring = { from: { opacity: 0, transform: 'translateY(50px)' } }
 
     const [picContainerStyle, setPicContainerStyle] = useSpring(() => ({...spring}))
     const [postContainerStyle, setPostContainerStyle] = useSpring(() => ({ from : { opacity: 0 } }))
 
-    setPicContainerStyle({...setStyles, config, delay: mounted ? 600 : 300 })
+    setPicContainerStyle({...setStyles, config, delay: mounted ? 800 : 300 })
     setPostContainerStyle({ opacity: mounted ? 1 : 0, config, delay: mounted ? 300 : 600 })
 
     useEffect(() => {
