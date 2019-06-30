@@ -81,7 +81,7 @@ const BlogPost = props => {
                     <Text {...spanProps('date')} css={tw`text-base sm:text-lg font-heading font-light`}>{date.slice(0, 10)}</Text>
                     <Text {...spanProps('author')} css={tw`text-base sm:text-lg font-heading font-light`}>{author}</Text>
                 </Flex>
-                <Flex {...blogPostBodyProps} css={tw`mt-12 mb-24 w-full flex-col`} dangerouslySetInnerHTML={{ __html: content }} />
+                <Flex {...blogPostBodyProps} css={tw`mt-12 mb-24 w-full flex-col item-start`} dangerouslySetInnerHTML={{ __html: content }} />
                 <Disqus 
                 config={disqusConfig}
                 style={{ marginBottom: '6rem' }}
