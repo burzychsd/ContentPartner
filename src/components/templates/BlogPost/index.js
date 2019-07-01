@@ -2,6 +2,7 @@
 import React, { memo, useState, useEffect } from 'react'
 import { animated, useSpring } from 'react-spring'
 import loadable from '@loadable/component'
+import { navigate } from 'gatsby'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -23,8 +24,8 @@ const BlogPost = props => {
     const { id, title, src, date, author, content } = pageContext
 
     const config = { mass: 1, tension: 280, friction: 60 }
-    const setStyles = { opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0px)' : 'translateY(100px)' }
-    const spring = { from: { opacity: 0, transform: 'translateY(100px)' } }
+    const setStyles = { opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0px)' : 'translateY(10px)' }
+    const spring = { from: { opacity: 0, transform: 'translateY(10px)' } }
 
     const [picContainerStyle, setPicContainerStyle] = useSpring(() => ({...spring}))
     const [postContainerStyle, setPostContainerStyle] = useSpring(() => ({ from : { opacity: 0 } }))
@@ -84,7 +85,8 @@ const BlogPost = props => {
                     <Text {...spanProps('date')} css={tw`text-base sm:text-lg font-heading font-light`}>{date.slice(0, 10)}</Text>
                     <Text {...spanProps('author')} css={tw`text-base sm:text-lg font-heading font-light`}>{author}</Text>
                 </Flex>
-                <Flex {...blogPostBodyProps} css={tw`mt-12 mb-24 w-full flex-col items-start`} dangerouslySetInnerHTML={{ __html: content }} />
+                <Flex {...blogPostBodyProps} css={tw`mt-12 mb-12 w-full flex-col items-start`} dangerouslySetInnerHTML={{ __html: content }} />
+                <Text className='text' css={tw`font-light mb-24`}><span css={tw`font-bold`} onClick={() => navigate('/o-mnie/')}>Poznajmy się</span> ← link do „o mnie”*</Text>
                 <Disqus 
                 config={disqusConfig}
                 style={{ marginBottom: '6rem' }}

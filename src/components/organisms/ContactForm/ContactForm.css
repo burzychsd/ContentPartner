@@ -2,6 +2,8 @@
     width: 80%;
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     height: 2px;
     background: #EF946C;
     transform: scaleX(0);

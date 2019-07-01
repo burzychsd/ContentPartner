@@ -12,8 +12,12 @@ const PortfolioDisplay = props => {
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
-        setTimeout(() => setMounted(true), 600)
-    })
+        setTimeout(() => setMounted(true), 200)
+
+        return () => {
+            setMounted(false)
+        }
+    }, [])
 
     return (
         <Fragment>

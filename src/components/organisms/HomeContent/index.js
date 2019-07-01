@@ -46,6 +46,10 @@ const HomeContent = ({ data }) => {
 
     useEffect(() => {
         setMounted(true)
+
+        return () => {
+            setMounted(false)
+        }
     }, [])
 
     return (

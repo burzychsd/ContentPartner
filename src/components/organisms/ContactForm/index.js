@@ -33,8 +33,12 @@ const ContactForm = props => {
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
-        setTimeout(() => setMounted(true), 600)
-    })
+        setTimeout(() => setMounted(true), 200)
+
+        return () => {
+            setMounted(false)
+        }
+    }, [])
 
     const config = { mass: 1, tension: 180, friction: 20 }
     const [formContainerStyle, setFormContainerStyle] = useSpring(() => ({ from: { opacity: 0 } }))
