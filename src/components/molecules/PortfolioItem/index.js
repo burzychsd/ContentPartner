@@ -58,8 +58,17 @@ export const PortfolioContainer = props => {
                     companyName === 'obstawiamy_info' ? isVisible && <ObstawiamyInfo {...companyLogoProps} /> : null
                 }
             </Flex>
-            <AnimatedFlex {...descriptionProps} style={portfolioItemStyle}>
-                <Text {...textProps} css={tw`font-light leading-relaxed`}>{description}</Text>
+            <AnimatedFlex {...descriptionProps} css={tw`flex-col`} style={portfolioItemStyle}>
+                <Text {...textProps} css={tw`font-light mb-8`}>{description}</Text>
+                <Text {...textProps} css={tw`font-light`}><span>{
+                    <a css={tw`font-body font-bold no-underline text-dark_puce`} href={`${
+                        companyName === 'umk' ? 'https://www.wpism.umk.pl/' :
+                        companyName === 'ecopywriting' ? 'http://ecopywriting.pl/' :
+                        companyName === 'ekotechnologia' ? 'https://sklep.ekotechnologia.eu/' :
+                        companyName === 'jafi_sport' ? 'https://www.jafisport.pl/' :
+                        companyName === 'obstawiamy_info' ? 'https://www.youtube.com/channel/UCLvMlqIUfR07ArOTZDczYeQ/videos' : null
+                    }`} target='_blank' rel='noopener noreferrer'>Adres strony</a>
+                }</span></Text>
             </AnimatedFlex>
         </>
     )

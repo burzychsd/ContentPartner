@@ -3,8 +3,8 @@ export const detailsInfo = {
         title: 'Artykuły tematyczne',
         content: {
             paragraph01: `Zacznijmy od tego, że da się napisać ciekawy artykuł na każdy temat. 
-            Każdy. Dlatego jeśli chcesz zlecić publikację artykułu sponsorowanego w gazecie 
-            lub lokalnym portalu lub prowadzisz firmowego bloga, powierz to zadanie doświadczonemu 
+            Każdy. Dlatego jeśli chcesz zlecić publikację artykułu sponsorowanego w gazecie czy lokalnym portalu
+             lub prowadzisz firmowego bloga, powierz to zadanie doświadczonemu 
             copywriterowi. Indywidualnie ustalamy szczegóły zlecenia. Piszę tekst na zadany temat, 
             mogę go również zaproponować w oparciu o specyfikę branży, format publikacji i grupę docelową. 
             Najważniejsze, aby artykuł był atrakcyjny dla odbiorcy oraz merytoryczny i użyteczny.`,
@@ -34,7 +34,7 @@ export const detailsInfo = {
             paragraph02: `Rozwiązaniem są unikatowe opisy, które przygotowuję w oparciu o dostarczone 
             lub wskazane źródła. Nie muszą być bardzo długie – chodzi o to, by klient z jednej 
             strony dowiedział się czegoś o praktycznym zastosowaniu produktów i ich specyfice, 
-            a z drugiej – został przekonany do zakupu właśnie w tym, a nie innym sklepie. 
+            a z drugiej został przekonany do zakupu właśnie w tym, a nie innym sklepie. 
             Wbrew pozorom oba cele można zrealizować w kilku zdaniach, nie zapominając o 
             słowach kluczowych, odpowiednim formacie, branżowym żargonie oraz kreatywności i 
             poprawności językowej.`,
@@ -55,8 +55,7 @@ export const detailsInfo = {
             Ale czy je tam znajdzie? Jeśli dopiero tworzysz stronę internetową lub planujesz jej 
             odświeżenie, skontaktuj się – pomogę wypełnić ją treścią, dokładnie według Twoich potrzeb 
             i oczekiwań. Strona www powinna posiadać takie elementy, jak opis działalności 
-            czy dane kontaktowe. W wielu przypadkach świetnie sprawdzają się na bieżąco 
-            dodawane aktualności, podstrona z najczęściej zadawanymi pytaniami (FAQ) 
+            czy dane kontaktowe. W wielu przypadkach świetnie sprawdzają się dodawane na bieżąco aktualności, podstrona z najczęściej zadawanymi pytaniami (FAQ) 
             czy blog wspierający pozycjonowanie i działania wizerunkowe.`,
             paragraph02: `Swoją ofertę kieruję także do specjalistów w zakresie pozycjonowania 
             i twórców stron internetowych. Znam reguły i zależności dotyczące pozycjonowania i 
@@ -102,7 +101,7 @@ export const detailsInfo = {
         title: 'E-booki',
         content: {
             paragraph01: `Już dawno definicja książki przestała obejmować wyłącznie 
-            drukowane publikacjie Dziś przygotowanie i opublikowanie e-booka do darmowego 
+            drukowane publikacje. Dziś przygotowanie i opublikowanie e-booka do darmowego 
             lub płatnego ściągnięcia jest łatwe, co przekłada się na znaczny wzrost zainteresowania 
             tą formą promocji. E-book może stać się zachętą do subskrypcji newslettera, 
             może być prezentem dla stałych lub nowych klientów. Jedno jest pewne – 
@@ -136,7 +135,7 @@ export const detailsInfo = {
             który obejmuje kilka obszarów copywritingu.`,
             paragraph02: `Jako specjalista w zakresie tworzenia treści oferuję: 
             pisanie artykułów tematycznych i zapleczowych, opisów produktów i usług, 
-            a także treści na strony www. Redaguję także blogi, wpisy do mediów społecznościowych 
+            a także treści na strony www. Redaguję również blogi, wpisy do mediów społecznościowych 
             czy wymyślam hasła, slogany, scenariusze filmowe i formy literackie. 
             Koszt i założenia projektu są zawsze ustalane indywidualnie, 
             z nastawieniem na obopólną korzyść.`,
@@ -145,7 +144,7 @@ export const detailsInfo = {
                         `pozwala jeszcze lepiej poznać specyfikę działalności, język grupy docelowej, sposoby na skuteczną realizację założeń wizerunkowych czy sprzedażowych;`,
                         `zwiększa Twoje szanse i możliwości dzięki korzyściom płynącym ze stosowania marketingu treści;`,
                         `jest oparta na otwartości, profesjonalizmie i rzetelności.`],
-            paragraph03: `skorzystaj z perspektyw, jakie daje szeroka i rozbudowana współpraca skupiona wokół jakościowej, perswazyjnej i kreatywnej treści dla Twojego biznesu.`
+            paragraph03: `skorzystaj z perspektyw, które daje szeroka i rozbudowana współpraca skupiona wokół jakościowej, perswazyjnej i kreatywnej treści dla Twojego biznesu.`
         }
     }
 }

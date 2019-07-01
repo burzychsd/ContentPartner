@@ -5,6 +5,14 @@
     flex-flow: column nowrap;
 }
 
+section > .portfolio_item_container:nth-child(odd) > .portfolio_description > p:last-child {
+    align-self: flex-end;
+}
+
+section > .portfolio_item_container:nth-child(even) > .portfolio_description > p:last-child {
+    align-self: flex-start;
+}
+
 section > .portfolio_item_container:last-child {
     margin-bottom: 6rem;
 }

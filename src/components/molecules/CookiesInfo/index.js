@@ -68,9 +68,7 @@ const CookiesInfo = props => {
             <AnimatedFlex {...cookiesInfoContainerProps} style={cookiesInfoContainerStyles}>
                 <AnimatedFlex reset style={{ ...cookiesInfoStyles, visibility: cookiesInfoStyles.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible') }}>
                         <Text css={textStyle} style={{ fontWeight: 700 }}>Ta strona używa plików cookies.</Text>
-                        <Text css={textStyle}>Integer et congue augue, interdum posuere risus. 
-                        Cras ultricies eget nunc vitae fringilla. Pellentesque habitant morbi tristique senectus 
-                        et netus et malesuada fames ac turpis egestas.</Text>
+                        <Text css={textStyle}>Aby strona odpowiednio działała w trybie PWA oraz w celu gromadzenia danych w ramach Google Analytics, wykorzytujemy tzw. ciasteczka. Korzystając z tej strony, godzisz się na ich wykorzystywanie.</Text>
                         <Flex reset css={tw`w-full items-center justify-center`}>
                             <Button css={textStyle} style={{ background: 'transparent', margin: '1rem 0.5rem' }} onClick={handleClose}>Akceptuję</Button>
                             <Button css={textStyle} style={{ background: 'transparent', margin: '1rem 0.5rem' }} onClick={() => setShowModal({ modal: true, faq: false, cookies: true })}>Czytaj więcej</Button>

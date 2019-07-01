@@ -1,7 +1,7 @@
 export const descriptions = {
     umk: `Od semestru letniego 2017/2018 prowadzę zajęcia Custom Publishing dla studentów III roku
     Dziennikarstwa i Komunikacji Społecznej na Wydziale Politologii i Studiów Międzynarodowych
-    Uniwersytetu Mikołaja Kopernika w Toruniu. Ćwiczenia mają charakter praktyczny – staram sięprzekazać jak najwięcej wiedzy na temat marketingu treści i zasad tworzenia skutecznych,
+    Uniwersytetu Mikołaja Kopernika w Toruniu. Ćwiczenia mają charakter praktyczny – staram się przekazać jak najwięcej wiedzy na temat marketingu treści i zasad tworzenia skutecznych,
     perswazyjnych artykułów.`,
     ecopywriting: `Współpraca z agencją copywriterską sięgająca 2012 roku, która wciąż jest owocnie kontynuowana.
     W jej ramach tworzyłem treści dla takich marek, jak Rankomat, SFD, KarGroup, MDDP

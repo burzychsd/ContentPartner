@@ -9,6 +9,7 @@ import Header from './../../organisms/Header'
 import Menu from './../../organisms/Menu'
 import Footer from './../../organisms/Footer'
 import Modal from './../../molecules/Modal'
+import PageInfo from './../../molecules/PageInfo'
 const CookiesInfo = loadable(() => import('./../../molecules/CookiesInfo'))
 
 // DATA
@@ -77,7 +78,7 @@ const Layout = ({ children, location }) => {
         </Flex>
         <Modal isActive={showModal.modal}
         handleClick={() => setShowModal({ modal: false, faq: false, cookies: false })} button='Zamknij'>
-          <h1>{showModal.faq ? 'FAQ' : showModal.cookies ? 'Cookies' : null}</h1>
+          <PageInfo status={showModal.faq ? 'FAQ' : showModal.cookies ? 'Cookies' : null} />
         </Modal>
       </main>
       {location.pathname !== '/' && windowHeight > 0 && <Footer setShowModal={setShowModal} />}

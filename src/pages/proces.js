@@ -24,8 +24,8 @@ const Proces = () => {
         },
         {
             title: `Etap 3.`,
-            text: `10-letnie doświadczenie w tworzeniu treści sprawia, że szybko i skutecznie wyszukuję oraz
-            przetwarzam informacje. Otrzymujesz teksty wyłącznie oryginalne i dopracowane pod
+            text: `Wieloletnie doświadczenie w tworzeniu treści sprawia, że szybko i skutecznie wyszukuję oraz
+            przetwarzam informacje. Otrzymujesz teksty wyłącznie unikatowe i dopracowane pod
             względem poprawności, stylistyki oraz wytycznych.`
         },
         {

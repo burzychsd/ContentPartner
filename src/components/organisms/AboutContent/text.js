@@ -1,6 +1,6 @@
 export const text = [
-    `Od kiedy pamiętam, czytam. A pisanie szybko stało się ulubionym wśród szkolnych zadań.
-    Jako 10-latek złożyłem swoją pierwszą gazetkę sportową i marzyłem o pracy dziennikarza. Kilka
+    `Czytam, od kiedy pamiętam, a pisanie szybko stało się ulubionym wśród szkolnych zadań.
+    Jako 10-latek zredagowałem swoją pierwszą gazetkę sportową i marzyłem o pracy dziennikarza. Kilka
     lat później poznałem ten zawód, prowadząc radiową audycję, przeprowadzając wywiady,
     wykonując fotorelacje czy publikując newsy i artykuły.`,
     `Jako nastolatek zacząłem się interesować światem reklamy, PR-u, marketingu. W 2009 roku
@@ -8,12 +8,12 @@ export const text = [
     znalazłem niszę, w której mogę się realizować. Pisać, pisać i jeszcze raz pisać. Być wolnym
     strzelcem, który obcuje ze słowem i zarabia na tym pieniądze.`,
     `Ukończyłem Dziennikarstwo i Komunikację Społeczną ze specjalnością Branding i PR na
-    Uniwersytecie Mikołaja Kopernika w Toruniu. Dziś prowadzę zajęcia Custom Publishing dlastudentów mojego dawnego kierunku.`,
+    Uniwersytecie Mikołaja Kopernika w Toruniu. Dziś prowadzę zajęcia Custom Publishing dla studentów mojego dawnego kierunku.`,
     `Napisałem w życiu miliony znaków na potrzeby setek projektów. Dziesiątki razy mierzyłem
     się z trudnymi wyzwaniami, ale tysiące razy uśmiechałem się dlatego, że uwielbiam swoją pracę.`,
     `Po latach zdobywania doświadczeń, otwieram nowy rozdział kariery zawodowej. Zapraszam
     Cię do współpracy nad rozwojem Twojego biznesu. Piszę, bo umiem, piszę, bo lubię. Poświęcam
-    temu całe dnie, wciąż podnosząc kwalifikacje i ucząc się nowych zagadnień. Jeśli szukasz kogoś, to
+    temu całe dnie, wciąż podnosząc kwalifikacje i ucząc się nowych zagadnień. Jeśli szukasz kogoś, kto
     opisze Twoją działalność, pomoże Ci w pozycjonowaniu, sprzedaży czy budowaniu wizerunku –
     sprawdź, co mogę zaoferować.`,
     `To chyba dobre miejsce, by wspomnieć o swoich najważniejszych zainteresowaniach,

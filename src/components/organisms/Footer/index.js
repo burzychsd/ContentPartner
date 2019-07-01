@@ -28,7 +28,7 @@ const Footer = React.forwardRef((props, innerRef) => {
                 <Flex reset className='footer_links'>
                     <Text css={footerTextClasses} style={{ cursor: 'pointer' }} onClick={() => handleClick('FAQ')}>FAQ</Text>
                     <Text css={footerTextClasses} style={{ cursor: 'pointer' }} onClick={() => handleClick('Cookies')}>Prywatność</Text>
-                    <FooterLink to='/kontakt/'>Contact</FooterLink>
+                    <FooterLink to='/kontakt/'>Kontakt</FooterLink>
                 </Flex>
                 <Text className='footer_copyright' css={footerTextClasses}>&copy;{` ${new Date().getFullYear()} Content Partner`}</Text>
             </Flex>

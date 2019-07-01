@@ -39,7 +39,7 @@ const Modal = props => {
         reset: true,
         style: { flexFlow: 'column nowrap', width: '100vw',
                  height: '100%', position: 'absolute', top: 0, left: 0, right: 0, padding: '60px 1.5rem 1rem 1.5rem', 
-                 overflowY: 'scroll', ...contentStyle }
+                 overflowY: 'scroll', overflowX: 'hidden', ...contentStyle }
     }
 
     const buttonProps = {
@@ -54,7 +54,7 @@ const Modal = props => {
         <AnimatedFlex className={zeroRightClassName} {...infoContainerProps}>
             <AnimatedFlex {...infoContentProps}>
                 <Flex reset css={tw`flex-col w-full m-auto`} style={{ maxWidth: 850 }}>
-                    <Text {...buttonProps} css={tw`py-2`}>{button ? button : 'Wróc do Menu'}</Text>
+                    <Text {...buttonProps} css={tw`py-2`}>{button ? button : 'Wróć do Menu'}</Text>
                     {children}
                 </Flex>
             </AnimatedFlex>
