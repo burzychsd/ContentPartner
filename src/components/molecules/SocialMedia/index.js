@@ -13,7 +13,6 @@ const SocialMedia = props => {
 
     const links = [
         'https://www.facebook.com/fanpage.contentpartner/',
-        '',
         'https://twitter.com/_contentpartner',
         'https://www.linkedin.com/showcase/_content-partner/'
     ]
@@ -26,8 +25,7 @@ const SocialMedia = props => {
         <a key={shortid.generate()} href={link} target='_blank' rel='noopener noreferrer'>
             {
                 i === 0 ? <Facebook {...iconProps} /> :
-                i === 1 ? <Instagram {...iconProps} /> :
-                i === 2 ? <Twitter {...iconProps} /> :
+                i === 1 ? <Twitter {...iconProps} /> :
                 <Linkedin {...iconProps} />
             }
         </a>
