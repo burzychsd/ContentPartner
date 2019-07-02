@@ -1,8 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="-3 -3 123.96 160.5">
 <style>
+    @-webkit-keyframes fadeIn {
+        from { opacity: 0 }
+        to { opacity: 1 }
+    }
+
     @keyframes fadeIn {
         from { opacity: 0 }
         to { opacity: 1 }
+    }
+
+    @-webkit-keyframes draw_1 {
+        from { stroke-dashoffset: 1000 }
+        to { stroke-dashoffset: 0 }
     }
 
     @keyframes draw_1 {
@@ -10,8 +20,18 @@
         to { stroke-dashoffset: 0 }
     }
 
+    @-webkit-keyframes draw_2 {
+        from { stroke-dashoffset: 180 }
+        to { stroke-dashoffset: 0 }
+    }
+
     @keyframes draw_2 {
         from { stroke-dashoffset: 180 }
+        to { stroke-dashoffset: 0 }
+    }
+
+    @-webkit-keyframes draw_3 {
+        from { stroke-dashoffset: 100 }
         to { stroke-dashoffset: 0 }
     }
 
@@ -23,34 +43,38 @@
     .cloud_3 {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
-        animation: draw_1 2s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw_1 2s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw_1 2s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .cloud_2 {
         stroke-dasharray: 180;
         stroke-dashoffset: 180;
-        animation: draw_2 2s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw_2 2s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw_2 2s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .cloud_1 {
         stroke-dasharray: 100;
         stroke-dashoffset: 100;
-        animation: draw_3 2s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw_3 2s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw_3 2s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .path01_scene01,
     .path02_scene01
      {
         opacity: 0;
-        animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
-    .cloud_1 { animation-delay: 100ms }
-    .cloud_2 { animation-delay: 300ms }
-    .cloud_3 { animation-delay: 500ms }
+    .cloud_1 { -webkit-animation-delay: 100ms; animation-delay: 100ms }
+    .cloud_2 { -webkit-animation-delay: 300ms; animation-delay: 300ms }
+    .cloud_3 { -webkit-animation-delay: 500ms; animation-delay: 500ms }
 
-    .path01_scene01 { animation-delay: 200ms }
-    .path02_scene01 { animation-delay: 400ms }
+    .path01_scene01 { -webkit-animation-delay: 200ms; animation-delay: 200ms }
+    .path02_scene01 { -webkit-animation-delay: 400ms; animation-delay: 400ms }
 
 </style>
 <g>

@@ -1,8 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate" viewBox="532.246 538 192.08 176">
 <style>
+    @-webkit-keyframes moveIn {
+        from { opacity: 0; -webkit-transform: translateX(-10px); transform: translateX(-10px); }
+        to { opacity: 1; -webkit-transform: translate(0); transform: translate(0); }
+    }
+
     @keyframes moveIn {
-        from { opacity: 0; transform: translateX(-10px); }
-        to { opacity: 1; transform: translate(0); }
+        from { opacity: 0; -webkit-transform: translateX(-10px); transform: translateX(-10px); }
+        to { opacity: 1; -webkit-transform: translate(0); transform: translate(0); }
+    }
+
+    @-webkit-keyframes draw1 {
+        from { stroke-dashoffset: 1000 }
+        to { stroke-dashoffset: 0 }
     }
 
     @keyframes draw1 {
@@ -16,7 +26,8 @@
     }
 
     .background_green {
-        animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .background_green:hover > path {
@@ -26,7 +37,8 @@
     .cooperation_path01 {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
-        animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .cooperation_path02,
@@ -38,16 +50,17 @@
     .cooperation_path08 {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
-        animation: draw1 8s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw1 8s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw1 8s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
-    .cooperation_path02 { animation-delay: 100ms; }
-    .cooperation_path03 { animation-delay: 200ms; }
-    .cooperation_path04 { animation-delay: 300ms; }
-    .cooperation_path05 { animation-delay: 400ms; }
-    .cooperation_path06 { animation-delay: 500ms; }
-    .cooperation_path07 { animation-delay: 600ms; }
-    .cooperation_path08 { animation-delay: 700ms; }
+    .cooperation_path02 { -webkit-animation-delay: 100ms; animation-delay: 100ms; }
+    .cooperation_path03 { -webkit-animation-delay: 200ms; animation-delay: 200ms; }
+    .cooperation_path04 { -webkit-animation-delay: 300ms; animation-delay: 300ms; }
+    .cooperation_path05 { -webkit-animation-delay: 400ms; animation-delay: 400ms; }
+    .cooperation_path06 { -webkit-animation-delay: 500ms; animation-delay: 500ms; }
+    .cooperation_path07 { -webkit-animation-delay: 600ms; animation-delay: 600ms; }
+    .cooperation_path08 { -webkit-animation-delay: 700ms; animation-delay: 700ms; }
 
 </style>
 <g class="background_green">

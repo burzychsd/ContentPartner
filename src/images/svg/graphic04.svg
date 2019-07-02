@@ -1,8 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="358.138 -3 129.724 151">
 <style>
+    @-webkit-keyframes fadeIn {
+        from { opacity: 0 }
+        to { opacity: 1 }
+    }
+
     @keyframes fadeIn {
         from { opacity: 0 }
         to { opacity: 1 }
+    }
+
+    @-webkit-keyframes draw {
+        from { stroke-dashoffset: 2000 }
+        to { stroke-dashoffset: 0 }
     }
 
     @keyframes draw {
@@ -15,20 +25,22 @@
     .path03_scene04,
     .path04_scene04 {
         opacity: 0;
-        animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .line {
         stroke-dasharray: 2000;
         stroke-dashoffset: 2000;
-        animation: draw 2s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw 2s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw 2s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
-    .line { animation-delay: 500ms }
-    .path01_scene04 { animation-delay: 200ms }
-    .path02_scene04 { animation-delay: 400ms }
-    .path03_scene04 { animation-delay: 600ms }
-    .path04_scene04 { animation-delay: 800ms }
+    .line { -webkit-animation-delay: 500ms; animation-delay: 500ms }
+    .path01_scene04 { -webkit-animation-delay: 200ms; animation-delay: 200ms }
+    .path02_scene04 { -webkit-animation-delay: 400ms; animation-delay: 400ms }
+    .path03_scene04 { -webkit-animation-delay: 600ms; animation-delay: 600ms }
+    .path04_scene04 { -webkit-animation-delay: 800ms; animation-delay: 800ms }
 </style>
 <g>
 <path class="line" d=" M 361.138 0 Q 477.867 1.773 480.921 14.973 Q 484.832 31.878 480.921 145 L 362.714 133.179 L 365.866 3.94 Q 440.228 1.815 476.98 14.973 Q 484.959 17.829 484.861 140.272 L 368.23 129.239 L 361.138 0 Z " fill="none" stroke-width="2" stroke="rgb(182,235,203)"/>

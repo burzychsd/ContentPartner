@@ -1,9 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate" viewBox="310.09 519.5 178.74 211">
 <style>
 
+    @-webkit-keyframes moveIn {
+        from { opacity: 0; -webkit-transform: translateX(-10px); transform: translateX(-10px); }
+        to { opacity: 1; -webkit-transform: translate(0); transform: translate(0); }
+    }
+
     @keyframes moveIn {
-        from { opacity: 0; transform: translateX(-10px); }
-        to { opacity: 1; transform: translate(0); }
+        from { opacity: 0; -webkit-transform: translateX(-10px); transform: translateX(-10px); }
+        to { opacity: 1; -webkit-transform: translate(0); transform: translate(0); }
+    }
+
+    @-webkit-keyframes draw1 {
+        from { stroke-dashoffset: 1000 }
+        to { stroke-dashoffset: 0 }
     }
 
     @keyframes draw1 {
@@ -18,11 +28,13 @@
     }
 
     .background_green {
-        animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .www_group {
-        animation: moveIn 200ms cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: moveIn 200ms cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: moveIn 200ms cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .background_green:hover {
@@ -32,7 +44,8 @@
     .www_path01 {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
-        animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .www_path02,
@@ -40,13 +53,14 @@
     .www_path04 {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
-        animation: draw1 12s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw1 12s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw1 12s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
-    .www_path02 { animation-delay: 200ms; }
-    .www_path03 { animation-delay: 300ms; }
-    .www_path04 { animation-delay: 400ms; }
-    .www_group { animation-delay: 600ms; }
+    .www_path02 { -webkit-animation-delay: 200ms; animation-delay: 200ms; }
+    .www_path03 { -webkit-animation-delay: 300ms; animation-delay: 300ms; }
+    .www_path04 { -webkit-animation-delay: 400ms; animation-delay: 400ms; }
+    .www_group { -webkit-animation-delay: 600ms; animation-delay: 600ms; }
 
 </style>
 <path class="background_green" d="M 330.066 531.452 L 450.927 531.452 C 454.932 531.452 458.184 534.704 458.184 538.709 L 458.184 691.036 C 458.184 695.041 454.932 698.292 450.927 698.292 L 330.066 698.292 C 326.061 698.292 322.81 695.041 322.81 691.036 L 322.81 538.709 C 322.81 534.704 326.061 531.452 330.066 531.452 Z" fill="#B4EBCA"/>

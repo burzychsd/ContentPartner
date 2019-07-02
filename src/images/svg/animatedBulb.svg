@@ -3,7 +3,15 @@
     .light_animated {
         stroke-dasharray: 1000;
         stroke-dashoffset: 800;
-        animation: dash 3s linear forwards;
+        -webkit-animation: dash 3s linear forwards;
+                animation: dash 3s linear forwards;
+    }
+
+    @-webkit-keyframes dash {
+        from { stroke-dashoffset: 800 }
+        to {
+            stroke-dashoffset: 0;
+        }
     }
 
     @keyframes dash {

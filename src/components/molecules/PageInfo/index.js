@@ -18,7 +18,7 @@ import { faqData, cookiesData } from './data'
 import { fadeTransition } from './../../../animations/fadeTransition'
 
 const PageInfo = props => {
-    const { status } = props
+    const { status, handleClick } = props
     const condition1 = status === 'FAQ'
     const condition2 = status === 'Cookies'
 
@@ -38,7 +38,11 @@ const PageInfo = props => {
     const faqContent = faqData.map((data, i) => 
         <Flex reset key={shortid.generate()} css={tw`flex-col my-2`}>
             <Text className='text' css={tw`font-bold my-2`}>{data.question}</Text>
-            <Text className='text' css={tw`font-light my-2`}>{i === 2 ? <span css={tw`font-bold`} onClick={() => navigate('/kontakt/')}>{data.answer}</span> : data.answer}</Text>
+            <Text className='text' css={tw`font-light my-2`}>{i === 2 ? <span css={tw`font-bold`}
+            onClick={() => {
+                navigate('/kontakt/')
+                handleClick()
+            }}>{data.answer}</span> : data.answer}</Text>
         </Flex>
     )
 

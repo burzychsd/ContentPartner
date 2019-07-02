@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate" viewBox="334 -55 200 200">
+<style>
+  @-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; } 
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; } 
+  }
+
+  .facebook_background,
+  .facebook_icon {
+    opacity: 0;
+    -webkit-animation: fadeIn 400ms cubic-bezier(.17,.67,.83,.67) forwards;
+            animation: fadeIn 400ms cubic-bezier(.17,.67,.83,.67) forwards;
+    -webkit-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    -o-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+  }
+
+  .facebook_background:hover {
+    fill: #FEFCAD;
+    -webkit-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    -o-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+  }
+
+  .facebook_background { -webkit-animation-delay: 200ms; animation-delay: 200ms; }
+  .facebook_icon { -webkit-animation-delay: 400ms; animation-delay: 400ms; }
+</style>
+  <path class="facebook_background" fill="#b4ebca" d="M434-55c55.192 0 100 44.808 100 100s-44.808 100-100 100-100-44.808-100-100S378.808-55 434-55z"/>
+  <path class="facebook_icon" fill="#463E43" d="M457.619 42.8H442.8V100h-22V42.8h-13.2V25.2h13.2V14.596C420.809-.839 427.22-10 445.405-10H460.4V7.6h-10.063c-7.079 0-7.537 2.64-7.537 7.581V25.2h17.6l-2.781 17.6z"/>
+</svg>

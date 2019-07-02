@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate" viewBox="334 182 200 200">
+<style>
+  @-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; } 
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; } 
+  }
+
+  .instagram_background,
+  .instagram_icon {
+    opacity: 0;
+    -webkit-animation: fadeIn 400ms cubic-bezier(.17,.67,.83,.67) forwards;
+            animation: fadeIn 400ms cubic-bezier(.17,.67,.83,.67) forwards;
+    -webkit-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    -o-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+  }
+
+  .instagram_background:hover {
+    fill: #FEFCAD;
+    -webkit-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    -o-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+  }
+
+  .instagram_background { -webkit-animation-delay: 200ms; animation-delay: 200ms; }
+  .instagram_icon { -webkit-animation-delay: 400ms; animation-delay: 400ms; }
+</style>
+  <path class="instagram_background" fill="#b4ebca" d="M434 182c55.192 0 100 44.808 100 100s-44.808 100-100 100-100-44.808-100-100 44.808-100 100-100z"/>
+  <path class="instagram_icon" fill="#463E43" fill-rule="evenodd" d="M410.93 227c-17.588 0-31.93 14.342-31.93 31.93v46.14c0 17.588 14.342 31.93 31.93 31.93h46.14c17.588 0 31.93-14.342 31.93-31.93v-46.14c0-17.588-14.342-31.93-31.93-31.93h-46.14zm0 8.462h46.14a23.394 23.394 0 0 1 23.468 23.468v46.14a23.394 23.394 0 0 1-23.468 23.468h-46.14a23.394 23.394 0 0 1-23.468-23.468v-46.14a23.394 23.394 0 0 1 23.468-23.468zm54.801 8.461a6.346 6.346 0 1 0 0 12.691 6.346 6.346 0 0 0 0-12.691zM434 252.385c-16.31 0-29.615 13.305-29.615 29.615S417.69 311.615 434 311.615 463.615 298.31 463.615 282 450.31 252.385 434 252.385zm0 8.461A21.092 21.092 0 0 1 455.154 282 21.092 21.092 0 0 1 434 303.154 21.092 21.092 0 0 1 412.846 282 21.092 21.092 0 0 1 434 260.846z"/>
+</svg>

@@ -1,9 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate" viewBox="298.92 239 209.08 211">
 <style>
 
+    @-webkit-keyframes moveIn {
+        from { opacity: 0; -webkit-transform: translateX(-10px); transform: translateX(-10px); }
+        to { opacity: 1; -webkit-transform: translate(0); transform: translate(0); }
+    }
+
     @keyframes moveIn {
-        from { opacity: 0; transform: translateX(-10px); }
-        to { opacity: 1; transform: translate(0); }
+        from { opacity: 0; -webkit-transform: translateX(-10px); transform: translateX(-10px); }
+        to { opacity: 1; -webkit-transform: translate(0); transform: translate(0); }
+    }
+
+    @-webkit-keyframes draw1 {
+        from { stroke-dashoffset: 1000 }
+        to { stroke-dashoffset: 0 }
     }
 
     @keyframes draw1 {
@@ -20,11 +30,13 @@
     }
 
     .background_green {
-        animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .articles_pen {
-        animation: moveIn 200ms cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: moveIn 200ms cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: moveIn 200ms cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .background_green:hover {
@@ -34,7 +46,8 @@
     .articles_path01 {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
-        animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .articles_path02,
@@ -45,16 +58,17 @@
     .articles_path07 {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
-        animation: draw1 12s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw1 12s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw1 12s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
-    .articles_path02 { animation-delay: 200ms; }
-    .articles_path03 { animation-delay: 300ms; }
-    .articles_path04 { animation-delay: 400ms; }
-    .articles_path05 { animation-delay: 500ms; }
-    .articles_path06 { animation-delay: 600ms; }
-    .articles_path07 { animation-delay: 700ms; }
-    .articles_pen { animation-delay: 1000ms; }
+    .articles_path02 { -webkit-animation-delay: 200ms; animation-delay: 200ms; }
+    .articles_path03 { -webkit-animation-delay: 300ms; animation-delay: 300ms; }
+    .articles_path04 { -webkit-animation-delay: 400ms; animation-delay: 400ms; }
+    .articles_path05 { -webkit-animation-delay: 500ms; animation-delay: 500ms; }
+    .articles_path06 { -webkit-animation-delay: 600ms; animation-delay: 600ms; }
+    .articles_path07 { -webkit-animation-delay: 700ms; animation-delay: 700ms; }
+    .articles_pen { -webkit-animation-delay: 1000ms; animation-delay: 1000ms; }
 
 </style>
 <path class="background_green" d="M 320.137 251 L 450.699 251 C 455.258 251 458.96 254.701 458.96 259.26 L 458.96 441.74 C 458.96 446.299 455.258 450 450.699 450 L 320.137 450 C 315.579 450 311.877 446.299 311.877 441.74 L 311.877 259.26 C 311.877 254.701 315.579 251 320.137 251 Z" fill="#B4EBCA"/>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate" viewBox="564.898 408 200 200">
+<style>
+  @-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; } 
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; } 
+  }
+
+  .linkedin_background,
+  .linkedin_icon {
+    opacity: 0;
+    -webkit-animation: fadeIn 400ms cubic-bezier(.17,.67,.83,.67) forwards;
+            animation: fadeIn 400ms cubic-bezier(.17,.67,.83,.67) forwards;
+    -webkit-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    -o-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+  }
+
+  .linkedin_background:hover {
+    fill: #FEFCAD;
+    -webkit-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    -o-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+  }
+
+  .linkedin_background { -webkit-animation-delay: 200ms; animation-delay: 200ms; }
+  .linkedin_icon { -webkit-animation-delay: 400ms; animation-delay: 400ms; }
+</style>
+  <path class="linkedin_background" fill="#b4ebca" d="M664.898 408c55.192 0 100 44.808 100 100s-44.808 100-100 100-100-44.808-100-100 44.808-100 100-100z"/>
+  <path class="linkedin_icon" fill="#463E43" fill-rule="evenodd" d="M645.353 524.636V544h-21.819v-62.727h21.819v43.363zm-10.91-50.181c-6.545 0-10.909-4.637-10.909-10.364 0-5.727 4.364-10.091 10.909-10.091 6.546 0 10.637 4.364 10.91 10.091 0 5.727-4.091 10.364-10.91 10.364zM716.262 544h-21.819v-35.455c0-2.454-.272-10.909-9.545-10.909-8.182 0-9.545 7.909-9.545 10.909V544h-21.819v-62.727h21.819v8.454s4.363-8.454 17.181-8.454c13.091 0 23.728 9 23.728 27.272V544z"/>
+</svg>

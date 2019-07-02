@@ -1,8 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate" viewBox="761.25 519.5 169.5 211">
 <style>
+    @-webkit-keyframes moveIn {
+        from { opacity: 0; -webkit-transform: translateX(-10px); transform: translateX(-10px); }
+        to { opacity: 1; -webkit-transform: translate(0); transform: translate(0); }
+    }
+
     @keyframes moveIn {
-        from { opacity: 0; transform: translateX(-10px); }
-        to { opacity: 1; transform: translate(0); }
+        from { opacity: 0; -webkit-transform: translateX(-10px); transform: translateX(-10px); }
+        to { opacity: 1; -webkit-transform: translate(0); transform: translate(0); }
+    }
+
+    @-webkit-keyframes draw1 {
+        from { stroke-dashoffset: 1000 }
+        to { stroke-dashoffset: 0 }
     }
 
     @keyframes draw1 {
@@ -19,13 +29,15 @@
     }
 
     .background_green {
-        animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: moveIn 1s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .social_cloud,
     .social_group01,
     .social_group02 {
-        animation: moveIn 150ms cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: moveIn 150ms cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: moveIn 150ms cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .background_green:hover {
@@ -35,22 +47,23 @@
     .social_path01 {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
-        animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw1 2s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .social_path02,
     .social_path03 {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
-        animation: draw1 6s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw1 6s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw1 6s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
-    .social_path02 { animation-delay: 800ms; }
-    .social_path03 { animation-delay: 1000ms; }
-    .social_cloud { animation-delay: 1200ms; }
-    .social_group01 { animation-delay: 1300ms; }
-    .social_group02 { animation-delay: 1400ms; }
-
+    .social_path02 { -webkit-animation-delay: 800ms; animation-delay: 800ms; }
+    .social_path03 { -webkit-animation-delay: 1000ms; animation-delay: 1000ms; }
+    .social_cloud { -webkit-animation-delay: 1200ms; animation-delay: 1200ms; }
+    .social_group01 { -webkit-animation-delay: 1300ms; animation-delay: 1300ms; }
+    .social_group02 { -webkit-animation-delay: 1400ms; animation-delay: 1400ms; }
 
 </style>
 <path class="background_green" d="M 818.608 531.95 L 921.869 531.95 C 926.771 531.95 930.75 535.929 930.75 540.831 L 930.75 721.619 C 930.75 726.521 926.771 730.5 921.869 730.5 L 818.608 730.5 C 813.707 730.5 809.728 726.521 809.728 721.619 L 809.728 540.831 C 809.728 535.929 813.707 531.95 818.608 531.95 Z" fill="#B4EBCA"/>

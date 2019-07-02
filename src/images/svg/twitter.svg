@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate" viewBox="564.898 -55 200 200">
+<style>
+  @-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; } 
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; } 
+  }
+
+  .twitter_background,
+  .twitter_icon {
+    opacity: 0;
+    -webkit-animation: fadeIn 400ms cubic-bezier(.17,.67,.83,.67) forwards;
+            animation: fadeIn 400ms cubic-bezier(.17,.67,.83,.67) forwards;
+    -webkit-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    -o-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+  }
+
+  .twitter_background:hover {
+    fill: #FEFCAD;
+    -webkit-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    -o-transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+    transition: fill 200ms cubic-bezier(.17,.67,.83,.67) 0.0001s;
+  }
+
+  .twitter_background { -webkit-animation-delay: 200ms; animation-delay: 200ms; }
+  .twitter_icon { -webkit-animation-delay: 400ms; animation-delay: 400ms; }
+</style>
+  <path class="twitter_background" fill="#b4ebca" d="M664.898-55c55.192 0 100 44.808 100 100s-44.808 100-100 100-100-44.808-100-100 44.808-100 100-100z"/>
+  <path class="twitter_icon" fill="#463E43" d="M708.914 22.222v3.143c0 29.857-22.81 64.413-64.46 64.413-12.548 0-24.334-3.929-34.556-10.183h5.5c10.214 0 20.429-3.929 28.286-9.46-10.215 0-18.072-7.056-21.199-15.714 1.564 0 3.127.801 3.929.801 2.325 0 3.928 0 6.254-.801-10.183-2.326-18.04-10.985-18.04-21.969 3.127 1.564 6.254 2.326 10.183 3.127-6.254-5.5-10.183-11.785-10.183-19.643 0-3.928.762-7.857 3.127-10.984 10.984 13.349 27.5 22.77 46.342 23.572 0-1.603-.763-3.167-.763-5.532.009-12.572 10.198-22.761 22.77-22.77 6.294 0 12.588 2.357 16.516 7.056 5.492-.762 10.214-3.127 14.143-5.492-1.595 5.5-5.524 9.428-10.214 12.587 4.69-.802 8.619-1.572 13.349-3.929a53.356 53.356 0 0 1-10.984 11.786v-.008z"/>
+</svg>

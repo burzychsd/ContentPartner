@@ -1,8 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="-172 -6 133.535 157">
 <style>
+    @-webkit-keyframes fadeIn {
+        from { opacity: 0 }
+        to { opacity: 1 }
+    }
+
     @keyframes fadeIn {
         from { opacity: 0 }
         to { opacity: 1 }
+    }
+
+    @-webkit-keyframes draw {
+        from { stroke-dashoffset: 1000 }
+        to { stroke-dashoffset: 0 }
     }
 
     @keyframes draw {
@@ -14,19 +24,21 @@
     .path02_scene02,
     .path03_scene02 {
         opacity: 0;
-        animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .line {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
-        animation: draw 2s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw 2s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw 2s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
-    .line { animation-delay: 400ms }
-    .path01_scene02 { animation-delay: 200ms }
-    .path02_scene02 { animation-delay: 400ms }
-    .path03_scene02 { animation-delay: 600ms }
+    .line { -webkit-animation-delay: 400ms; animation-delay: 400ms }
+    .path01_scene02 { -webkit-animation-delay: 200ms; animation-delay: 200ms }
+    .path02_scene02 { -webkit-animation-delay: 400ms; animation-delay: 400ms }
+    .path03_scene02 { -webkit-animation-delay: 600ms; animation-delay: 600ms }
 </style>
 <g>
 <path class="line" d=" M -124.089 124.172 Q -43.915 160.523 -44.469 73.868 C -45.031 -14.266 -170.234 -28.507 -165.89 58.256 C -164.772 80.581 -161.053 95.775 -152.882 112.841 C -141.467 136.684 -120.341 152.313 -99.109 141.518" fill="none" stroke-width="2" stroke="rgb(180,235,202)"/>

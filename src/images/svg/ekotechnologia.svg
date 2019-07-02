@@ -1,5 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="16.096 15 222.904 111.8">
 <style>
+    @-webkit-keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
     @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
@@ -17,26 +22,28 @@
     .ekotechnologia_l10,
     .ekotechnologia_l11 {
         opacity: 0;
-        animation: fadeIn 200ms cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: fadeIn 200ms cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: fadeIn 200ms cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .ekotechnologia {
         opacity: 0;
-        animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
-    .ekotechnologia_l01 { animation-delay: 50ms; }
-    .ekotechnologia_l02 { animation-delay: 100ms; }
-    .ekotechnologia_l03 { animation-delay: 150ms; }
-    .ekotechnologia_l04 { animation-delay: 200ms; }
-    .ekotechnologia_l05 { animation-delay: 250ms; }
-    .ekotechnologia_l06 { animation-delay: 300ms; }
-    .ekotechnologia_l07 { animation-delay: 350ms; }
-    .ekotechnologia_l08 { animation-delay: 400ms; }
-    .ekotechnologia_l09 { animation-delay: 450ms; }
-    .ekotechnologia_l10 { animation-delay: 500ms; }
-    .ekotechnologia_l11 { animation-delay: 550ms; }
-    .ekotechnologia { animation-delay: 600ms; }
+    .ekotechnologia_l01 { -webkit-animation-delay: 50ms; animation-delay: 50ms; }
+    .ekotechnologia_l02 { -webkit-animation-delay: 100ms; animation-delay: 100ms; }
+    .ekotechnologia_l03 { -webkit-animation-delay: 150ms; animation-delay: 150ms; }
+    .ekotechnologia_l04 { -webkit-animation-delay: 200ms; animation-delay: 200ms; }
+    .ekotechnologia_l05 { -webkit-animation-delay: 250ms; animation-delay: 250ms; }
+    .ekotechnologia_l06 { -webkit-animation-delay: 300ms; animation-delay: 300ms; }
+    .ekotechnologia_l07 { -webkit-animation-delay: 350ms; animation-delay: 350ms; }
+    .ekotechnologia_l08 { -webkit-animation-delay: 400ms; animation-delay: 400ms; }
+    .ekotechnologia_l09 { -webkit-animation-delay: 450ms; animation-delay: 450ms; }
+    .ekotechnologia_l10 { -webkit-animation-delay: 500ms; animation-delay: 500ms; }
+    .ekotechnologia_l11 { -webkit-animation-delay: 550ms; animation-delay: 550ms; }
+    .ekotechnologia { -webkit-animation-delay: 600ms; animation-delay: 600ms; }
 
 </style>
 <g>

@@ -27,7 +27,7 @@ const ServicesDisplay = props => {
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
-        setTimeout(() => setMounted(true), 200)
+        setTimeout(() => setMounted(true), 400)
 
         return () => {
             setMounted(false)

@@ -8,6 +8,7 @@ import Flex from './../../atoms/Flex'
 import FormField from './../../atoms/FormField'
 import Button from './../../atoms/Button'
 import Text from './../../atoms/Text'
+import SocialMedia from './../../molecules/SocialMedia'
 
 const AnimatedFlex = animated(Flex)
 
@@ -134,7 +135,10 @@ const ContactForm = props => {
                         onChange={handleChange}
                         value={values.message || ''} />
                         {errors.message && <p css={errorMessageClasses}>{errors.message}</p>}
-                        <Button {...submitButtonProps} css={tw`font-body font-light text-dark_puce`}>Wyślij</Button>
+                        <Flex reset css={tw`w-full wrap justify-between items-center`}>
+                            <Button {...submitButtonProps} css={tw`font-body font-light text-dark_puce`}>Wyślij</Button>
+                            <SocialMedia />
+                        </Flex>
                     </Flex>
                 </AnimatedFlex>
             }

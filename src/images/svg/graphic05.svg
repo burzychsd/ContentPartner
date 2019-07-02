@@ -1,8 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="-352.639 -3 153.278 151">
 <style>
+    @-webkit-keyframes fadeIn {
+        from { opacity: 0 }
+        to { opacity: 1 }
+    }
+
     @keyframes fadeIn {
         from { opacity: 0 }
         to { opacity: 1 }
+    }
+
+    @-webkit-keyframes draw {
+        from { stroke-dashoffset: 2000 }
+        to { stroke-dashoffset: 0 }
     }
 
     @keyframes draw {
@@ -15,20 +25,22 @@
     .path03_scene05,
     .path04_scene05 {
         opacity: 0;
-        animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: fadeIn 600ms cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
     .line {
         stroke-dasharray: 2000;
         stroke-dashoffset: 2000;
-        animation: draw 2s cubic-bezier(.17,.67,.83,.67) forwards;
+        -webkit-animation: draw 2s cubic-bezier(.17,.67,.83,.67) forwards;
+                animation: draw 2s cubic-bezier(.17,.67,.83,.67) forwards;
     }
 
-    .line { animation-delay: 500ms }
-    .path01_scene05 { animation-delay: 200ms }
-    .path02_scene05 { animation-delay: 400ms }
-    .path03_scene05 { animation-delay: 600ms }
-    .path04_scene05 { animation-delay: 800ms }
+    .line { -webkit-animation-delay: 500ms; animation-delay: 500ms }
+    .path01_scene05 { -webkit-animation-delay: 200ms; animation-delay: 200ms }
+    .path02_scene05 { -webkit-animation-delay: 400ms; animation-delay: 400ms }
+    .path03_scene05 { -webkit-animation-delay: 600ms; animation-delay: 600ms }
+    .path04_scene05 { -webkit-animation-delay: 800ms; animation-delay: 800ms }
 </style>
 <g>
 <path class="line" d=" M -333.921 21.485 C -311.976 -6.397 -222.133 -12.593 -206.901 36.201 C -196.128 70.711 -205.61 98.678 -223.94 133.015 C -233.493 151.861 -320.155 145.849 -333.921 133.015 C -357.524 111.008 -352.056 33.155 -333.921 21.485 C -304.232 2.381 -244.585 -6.023 -217.744 31.554 C -203.544 51.433 -210.516 98.678 -223.94 133.015" fill="none" stroke-width="2" stroke="rgb(182,235,203)"/>

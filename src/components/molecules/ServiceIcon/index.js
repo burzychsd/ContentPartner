@@ -27,6 +27,10 @@ const ServiceIcon = props => {
 
     useEffect(() => {
         setMounted(true)
+
+        return () => {
+            setMounted(false)
+        }
     }, [])
 
     const config = { mass: 1, tension: 210, friction: 20 }

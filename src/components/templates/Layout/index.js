@@ -78,7 +78,8 @@ const Layout = ({ children, location }) => {
         </Flex>
         <Modal isActive={showModal.modal}
         handleClick={() => setShowModal({ modal: false, faq: false, cookies: false })} button='Zamknij'>
-          <PageInfo status={showModal.faq ? 'FAQ' : showModal.cookies ? 'Cookies' : null} />
+          <PageInfo status={showModal.faq ? 'FAQ' : showModal.cookies ? 'Cookies' : null}
+          handleClick={() => setShowModal({ modal: false, faq: false, cookies: false })} />
         </Modal>
       </main>
       {location.pathname !== '/' && windowHeight > 0 && <Footer setShowModal={setShowModal} />}
