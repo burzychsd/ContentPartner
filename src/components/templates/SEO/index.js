@@ -91,7 +91,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: ``,
-  img: LinkImage
+  img: `https://www.contentpartner.pl/${LinkImage}`
 }
 
 SEO.propTypes = {
