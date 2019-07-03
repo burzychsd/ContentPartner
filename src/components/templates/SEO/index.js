@@ -4,6 +4,9 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
+// IMAGES
+import LinkImage from './../../../images/fb_avatar_content_partner_2x.png'
+
 function SEO({ description, lang, meta, keywords, title, img }) {
   const { site } = useStaticQuery(
     graphql`
@@ -88,7 +91,7 @@ SEO.defaultProps = {
   meta: [],
   keywords: [],
   description: ``,
-  img: `./../../../images/fb_avatar_content_partner_2x.png`
+  img: LinkImage
 }
 
 SEO.propTypes = {
