@@ -78,7 +78,7 @@ const BlogPost = props => {
 
     return (
         <>
-            <SEO title={title} />
+            <SEO title={title} img={src} />
             <AnimatedFlex {...blogPostPicContainer}
             style={{ background: `url(${src}) no-repeat center center / cover`, ...picContainerStyle }} />
             <AnimatedFlex {...blogPostContentContainer} style={{ ...postContainerStyle, background: '#FFF' }}>
