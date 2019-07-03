@@ -13,7 +13,7 @@ const Blog = props => {
 
     return (
       <>
-        <SEO title='Blog' keywords={[]} />
+        <SEO title='Blog' description='Blog o copywritingu, content marketingu i pisaniu.' />
         <BlogCards data={data.posts.edges} />
         {pageContext.numPages > 10 && <Pagination location={location} pageContext={pageContext} />}
       </>

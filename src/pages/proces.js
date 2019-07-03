@@ -46,7 +46,7 @@ const Proces = () => {
 
     return (
         <>
-            <SEO title='Proces' keywords={[]} />
+            <SEO title='Proces' description='Unikatowa treść dla biznesu – współpraca krok po kroku.' />
             <StageInfo graphicNum={1} title={stageContent[0].title} text={stageContent[0].text} /> 
             <StageInfo graphicNum={2} title={stageContent[1].title} text={stageContent[1].text} />
             <StageInfo graphicNum={3} title={stageContent[2].title} text={stageContent[2].text} />

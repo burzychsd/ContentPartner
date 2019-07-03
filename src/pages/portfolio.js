@@ -10,7 +10,7 @@ const Portfolio = () => {
 
     return (
         <>
-            <SEO title='Portfolio' keywords={[]} />
+            <SEO title='Portfolio' description='Poznaj moich klientów i dotychczasowe projekty.' />
            <PortfolioDisplay />
         </>
     )

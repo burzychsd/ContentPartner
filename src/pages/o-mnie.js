@@ -27,7 +27,7 @@ const O_Mnie = () => {
         }
         render={data => (
             <>
-                <SEO title='O mnie' keywords={[]} />
+                <SEO title='O mnie' description='Copywriter z Bydgoszczy – teksty na zamówienie.' />
                 <AboutContent data={data} />
             </>
         )} />

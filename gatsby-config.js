@@ -15,7 +15,7 @@ module.exports = {
   siteMetadata: {
     title: `Content Partner`,
     description: `Słowa to nie zbiór znaków`,
-    author: `@burzychsd`,
+    author: `Franciszek Budzbon`,
     siteUrl
   },
   plugins: [

@@ -15,7 +15,7 @@ const NotFoundPage = () => {
 
   return (
     <>
-      <SEO title='404' />
+      <SEO title='404' description='Uwaga, nie znaleziono strony.' />
       <TrailHeading title='Not Found.' />
       <Text {...textProps} css={tw`font-light`}>You just hit a route that doesn&#39;t exist... the sadness.</Text>
     </>

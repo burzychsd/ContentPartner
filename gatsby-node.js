@@ -76,6 +76,7 @@ exports.createPages = ({ actions, graphql }) => {
                 context: {
                     slug: `post/${edge.node.slug}/`,
                     title: edge.node.postTitle,
+                    shortDescription: edge.node.shortDescription,
                     src: edge.node.postPic.file.url,
                     alt: edge.node.postPic.file.fileName,
                     author: edge.node.postAuthor.authorName,

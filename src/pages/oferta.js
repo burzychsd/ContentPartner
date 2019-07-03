@@ -9,7 +9,7 @@ const Oferta = () => {
 
     return (
         <>
-            <SEO title='Oferta' keywords={[]} />
+            <SEO title='Oferta' desciption='Lista usług, które mogę dla Ciebie wykonać.' />
             <ServicesDisplay />
         </>
     )

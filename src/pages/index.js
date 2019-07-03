@@ -27,7 +27,7 @@ const IndexPage = () => {
         }
         render={data => (
             <>
-                <SEO title='Strona główna' keywords={[]} />
+                <SEO title='Strona główna' description='Copywriting – pisanie tekstów na zlecenie, content marketing.' />
                 <HomeContent data={data} />
             </>
         )}/>

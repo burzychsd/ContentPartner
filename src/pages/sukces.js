@@ -11,7 +11,7 @@ const SuccessPage = () => {
 
   return (
     <>
-      <SEO title='Dziękuję' keywords={[]} />
+      <SEO title='Dziękuję' description='Gratulacje, udało Ci się wysłać wiadomość.' />
       <SuccessGraphic preserveAspectRatio='xMidYMid meet' style={{ width: '60%', maxWidth: 280, marginBottom: '1rem' }} />
       <TrailHeading title='Dziękuję za kontakt.' />
     </>

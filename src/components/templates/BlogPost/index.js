@@ -22,7 +22,7 @@ const BlogPost = props => {
 
     const [mounted, setMounted] = useState(false)
 
-    const { id, title, src, date, author, content } = pageContext
+    const { id, title, src, date, author, content, shortDescription } = pageContext
 
     const config = { mass: 1, tension: 280, friction: 60 }
     const setStyles = { opacity: mounted ? 1 : 0, transform: mounted ? 'translateY(0px)' : 'translateY(10px)' }
@@ -78,7 +78,7 @@ const BlogPost = props => {
 
     return (
         <>
-            <SEO title={title} img={src} />
+            <SEO title={title} img={`https:${src}`} description={shortDescription} />
             <AnimatedFlex {...blogPostPicContainer}
             style={{ background: `url(${src}) no-repeat center center / cover`, ...picContainerStyle }} />
             <AnimatedFlex {...blogPostContentContainer} style={{ ...postContainerStyle, background: '#FFF' }}>
