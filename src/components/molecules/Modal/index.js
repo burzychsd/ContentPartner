@@ -30,7 +30,8 @@ const Modal = props => {
     const infoContainerProps = {
         reset: true,
         style: { top: 0, right: 0, bottom: 0, left: 0, zIndex: button ? 1101 : 1000, 
-                 background: '#FFF', position: 'fixed', width: '100vw', height: '100%', transformOrigin: '0 0', ...containerStyle,
+                 background: '#FFF', position: 'fixed', width: '100vw', height: '100%', flexFlow: 'column nowrap',
+                 transformOrigin: '0 0', ...containerStyle,
                  visibility: containerStyle.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible')}
     }
 
@@ -38,8 +39,8 @@ const Modal = props => {
         className: `modal_info_content`,
         reset: true,
         style: { flexFlow: 'column nowrap', width: '100vw',
-                 minHeight: '100%', padding: '60px 1.5rem 1rem 1.5rem', 
-                 ...contentStyle, overflowY: 'scroll', overflowX: 'hidden' }
+                 padding: '60px 1.5rem 1rem 1.5rem', position: 'relative',
+                 ...contentStyle, flexBasis: 'auto', overflowY: 'auto', overflowX: 'hidden', maxHeight: '100%' }
     }
 
     const buttonProps = {
@@ -53,7 +54,7 @@ const Modal = props => {
         {isActive && <RemoveScrollBar />}
         <AnimatedFlex className={zeroRightClassName} {...infoContainerProps}>
             <AnimatedFlex {...infoContentProps}>
-                <Flex reset css={tw`flex-col w-full m-auto`} style={{ maxWidth: 850 }}>
+                <Flex reset css={tw`flex-col`} style={{ maxWidth: 850, margin: '0 auto' }}>
                     <Text {...buttonProps} css={tw`py-2`}>{button ? button : 'Wróć do Menu'}</Text>
                     {children}
                 </Flex>

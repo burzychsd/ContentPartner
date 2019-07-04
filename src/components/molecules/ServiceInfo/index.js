@@ -39,10 +39,10 @@ const ServiceInfo = props => {
             <Text css={tw`font-light my-4 px-2`} {...textProps}>{content.content.paragraph01}</Text>
             <Text css={tw`font-light my-4 px-2`} {...textProps}>{content.content.paragraph02}</Text>
             <Text css={tw`font-bold my-4 px-2`} {...textProps}>{content.content.listTitle}</Text>
-            <ul css={tw`flex flex-col`} style={{ listStyle: 'none' }}>
+            <ul css={tw`flex flex-col`} style={{ listStyle: 'none', display: 'block' }}>
                 {listItems}
             </ul>
-            <Text css={tw`font-light my-8 px-2`} {...textProps}><span onClick={e => navigate('/kontakt/')} css={tw`font-bold`}>Napisz lub zadzwoń</span>{` - ${content.content.paragraph03}`}</Text>
+            <Text css={tw`font-light px-2`} {...textProps} style={{ margin: '1rem 0' }}><span onClick={e => navigate('/kontakt/')} css={tw`font-bold`}>Napisz lub zadzwoń</span>{` - ${content.content.paragraph03}`}</Text>
         </Modal>
     )
 }

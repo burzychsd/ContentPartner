@@ -35,7 +35,7 @@ const Navigation = (props) => {
         document.querySelector('.hamburger_container').classList.remove('hamburger_container--scrolled')
 
         isScrolled ? 
-        document.getElementsByTagName('header')[0].style.background = 'linear-gradient(0deg, transparent 0%, rgb(255,255,255) 45%)' : 
+        document.getElementsByTagName('header')[0].style.background = 'linear-gradient(0deg, rgba(255,255,255, 0) 0%, rgb(255,255,255) 45%)' : 
         document.getElementsByTagName('header')[0].style.background = 'transparent'
 
     }, [isScrolled])

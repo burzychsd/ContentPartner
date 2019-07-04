@@ -36,9 +36,9 @@ const PageInfo = props => {
     const transition2 = fadeTransition(condition2)
 
     const faqContent = faqData.map((data, i) => 
-        <Flex reset key={shortid.generate()} css={tw`flex-col my-2`}>
+        <Flex reset key={shortid.generate()} css={tw`flex-col my-2`} style={{ display: 'block' }}>
             <Text className='text' css={tw`font-bold my-2`}>{data.question}</Text>
-            <Text className='text' css={tw`font-light my-2`}>{i === 2 ? <span css={tw`font-bold`}
+            <Text className='text' css={tw`font-light my-2`} style={{ marginBottom: '1rem' }}>{i === 2 ? <span css={tw`font-bold`}
             onClick={() => {
                 navigate('/kontakt/')
                 handleClick()
@@ -47,9 +47,9 @@ const PageInfo = props => {
     )
 
     const cookiesContent = cookiesData.map(data => 
-        <Flex reset key={shortid.generate()} css={tw`flex-col my-2`}>
+        <Flex reset key={shortid.generate()} css={tw`flex-col my-2`} style={{ display: 'block' }}>
             <Text className='text' css={tw`font-bold my-2`}>{data.listTitle}</Text>
-            <ol css={tw`pl-8`}>
+            <ol css={tw`pl-8`} style={{ marginBottom: '1rem' }}>
                 {data.listItems.map(item => 
                     <li key={shortid.generate()} className='text' css={tw`font-body font-light my-2`}>{item}</li>
                 )}
