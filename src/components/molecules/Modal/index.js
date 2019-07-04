@@ -30,7 +30,7 @@ const Modal = props => {
     const infoContainerProps = {
         reset: true,
         style: { top: 0, right: 0, bottom: 0, left: 0, zIndex: button ? 1101 : 1000, 
-                 background: '#FFF', position: 'fixed', height: '100%', transformOrigin: '0 0', ...containerStyle,
+                 background: '#FFF', position: 'fixed', width: '100vw', height: '100%', transformOrigin: '0 0', ...containerStyle,
                  visibility: containerStyle.opacity.interpolate(o => o === 0 ? 'hidden' : 'visible')}
     }
 
@@ -38,8 +38,8 @@ const Modal = props => {
         className: `modal_info_content`,
         reset: true,
         style: { flexFlow: 'column nowrap', width: '100vw',
-                 height: '100%', position: 'absolute', top: 0, left: 0, right: 0, padding: '60px 1.5rem 1rem 1.5rem', 
-                 overflowY: 'scroll', overflowX: 'hidden', ...contentStyle }
+                 minHeight: '100%', padding: '60px 1.5rem 1rem 1.5rem', 
+                 ...contentStyle, overflowY: 'scroll', overflowX: 'hidden' }
     }
 
     const buttonProps = {
