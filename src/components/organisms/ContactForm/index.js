@@ -51,10 +51,13 @@ const ContactForm = props => {
         const { name, email, topic, message } = values
         const data = { name, email, topic, message }
         console.log('No errors, submit callback called!')
-        console.log(token)
-        axios.post('/.netlify/functions/contact', JSON.stringify(data))
-        .then(response => handleSuccess())
-        .catch(err => handleError('Coś poszło nie tak, spróbuj ponownie później.'))
+        if (token) {
+            axios.post('/.netlify/functions/contact', JSON.stringify(data))
+            .then(response => handleSuccess())
+            .catch(err => handleError('Coś poszło nie tak, spróbuj ponownie później.'))
+        } else {
+            handleError('Recaptcha wykryło nieprawidłowość. Usuń ciasteczka i spróbuj ponownie.')
+        }
     }
 
     const formContainerProps = {
