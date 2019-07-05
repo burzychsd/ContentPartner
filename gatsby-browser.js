@@ -6,9 +6,6 @@
 
 // You can delete this file if you're not using it
 import './normalize.css'
-import WrapPage from './wrapPage'
-
-const wrapRootElement = WrapPage
 
 const onClientEntry = () => {
   // IntersectionObserver polyfill for gatsby-image (Safari, IE)
@@ -29,6 +26,5 @@ const onClientEntry = () => {
 }
 
 export {
-  onClientEntry,
-  wrapRootElement
+  onClientEntry
 }

@@ -2,6 +2,7 @@
 import React, { memo, useState, useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 import axios from 'axios'
+import { ReCaptcha } from 'react-recaptcha-v3'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -46,10 +47,11 @@ const ContactForm = props => {
 
     setFormContainerStyle({ opacity: mounted ? 1 : 0, config })
 
-    function sendEmail() {
+    function sendEmail(recaptchaToken) {
         const { name, email, topic, message } = values
         const data = { name, email, topic, message }
         console.log('No errors, submit callback called!')
+        console.log(recaptchaToken)
         axios.post('/.netlify/functions/contact', JSON.stringify(data))
         .then(response => handleSuccess())
         .catch(err => handleError('Coś poszło nie tak, spróbuj ponownie później.'))
@@ -99,6 +101,7 @@ const ContactForm = props => {
 
     return (
         <>
+            <ReCaptcha sitekey={`${process.env.RECAPTCHA_KEY}`} action='homepage' verifyCallback={sendEmail} />
             {
                 mounted &&
                 <AnimatedFlex reset css={tw`flex-col`} style={formContainerStyle}>
