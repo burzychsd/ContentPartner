@@ -42,7 +42,7 @@ const Layout = ({ children, location }) => {
   useEffect(() => {
     setHeight()
     setHeaderHeight(headerRef.current.offsetHeight)
-    loadReCaptcha(`${process.env.RECAPTCHA_KEY}`)
+    loadReCaptcha(`${process.env.SITE_RECAPTCHA_KEY}`)
 
     typeof window !== 'undefined' ? window.addEventListener('resize', setHeight) : null
 

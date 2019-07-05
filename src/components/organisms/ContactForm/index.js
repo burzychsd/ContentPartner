@@ -101,7 +101,7 @@ const ContactForm = props => {
 
     return (
         <>
-            <ReCaptcha sitekey={`${process.env.RECAPTCHA_KEY}`} action='homepage' verifyCallback={sendEmail} />
+            <ReCaptcha sitekey={`${process.env.SITE_RECAPTCHA_KEY}`} action='contact' verifyCallback={sendEmail} />
             {
                 mounted &&
                 <AnimatedFlex reset css={tw`flex-col`} style={formContainerStyle}>
