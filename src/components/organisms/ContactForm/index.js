@@ -22,6 +22,8 @@ import './ContactForm.css'
 
 const ContactForm = props => {
 
+    let recaptchaToken = null
+
     const {
         values,
         errors,
@@ -47,11 +49,11 @@ const ContactForm = props => {
 
     setFormContainerStyle({ opacity: mounted ? 1 : 0, config })
 
-    function sendEmail(token) {
+    function sendEmail() {
         const { name, email, topic, message } = values
         const data = { name, email, topic, message }
         console.log('No errors, submit callback called!')
-        if (token) {
+        if (recaptchaToken) {
             axios.post('/.netlify/functions/contact', JSON.stringify(data))
             .then(response => handleSuccess())
             .catch(err => handleError('Coś poszło nie tak, spróbuj ponownie później.'))
@@ -59,6 +61,8 @@ const ContactForm = props => {
             handleError('Recaptcha wykryło nieprawidłowość. Usuń ciasteczka i spróbuj ponownie.')
         }
     }
+
+    const getToken = token => recaptchaToken = token
 
     const formContainerProps = {
         reset: true,
@@ -145,7 +149,7 @@ const ContactForm = props => {
                             <SocialMedia />
                         </Flex>
                     </Flex>
-                    <Recaptcha action='contact' sitekey='6LeSQKwUAAAAAKFAv8YR1dV3WYJdfVuJdYjqGOFm' onToken={sendEmail} />
+                    <Recaptcha action='contact' sitekey='6LeSQKwUAAAAAKFAv8YR1dV3WYJdfVuJdYjqGOFm' onToken={getToken} />
                 </AnimatedFlex>
             }
         </>
