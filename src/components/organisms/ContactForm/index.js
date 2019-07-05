@@ -2,7 +2,6 @@
 import React, { memo, useState, useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 import axios from 'axios'
-import { ReCaptcha } from 'react-recaptcha-v3'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -10,6 +9,7 @@ import FormField from './../../atoms/FormField'
 import Button from './../../atoms/Button'
 import Text from './../../atoms/Text'
 import SocialMedia from './../../molecules/SocialMedia'
+import Recaptcha from './../../molecules/Recaptcha'
 
 const AnimatedFlex = animated(Flex)
 
@@ -47,11 +47,11 @@ const ContactForm = props => {
 
     setFormContainerStyle({ opacity: mounted ? 1 : 0, config })
 
-    function sendEmail(recaptchaToken) {
+    function sendEmail(token) {
         const { name, email, topic, message } = values
         const data = { name, email, topic, message }
         console.log('No errors, submit callback called!')
-        console.log(recaptchaToken)
+        console.log(token)
         axios.post('/.netlify/functions/contact', JSON.stringify(data))
         .then(response => handleSuccess())
         .catch(err => handleError('Coś poszło nie tak, spróbuj ponownie później.'))
@@ -101,7 +101,6 @@ const ContactForm = props => {
 
     return (
         <>
-            <ReCaptcha sitekey={`${process.env.SITE_RECAPTCHA_KEY}`} action='contact' verifyCallback={sendEmail} />
             {
                 mounted &&
                 <AnimatedFlex reset css={tw`flex-col`} style={formContainerStyle}>
@@ -143,7 +142,7 @@ const ContactForm = props => {
                             <SocialMedia />
                         </Flex>
                     </Flex>
-                    <Text style={{ lineHeight: '1.625rem' }} css={tw`text-center text-xs sm:text-sm font-body mb-8 mx-auto text-dark_puce self-start`}>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</Text>
+                    <Recaptcha action='contact' sitekey={process.env.SITE_RECAPTCHA_KEY} onToken={sendEmail} />
                 </AnimatedFlex>
             }
         </>

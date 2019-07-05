@@ -2,7 +2,6 @@
 import React, { useState, useRef, useEffect, Fragment, memo } from 'react'
 import PropTypes from 'prop-types'
 import loadable from '@loadable/component'
-import { loadReCaptcha } from 'react-recaptcha-v3'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -42,7 +41,6 @@ const Layout = ({ children, location }) => {
   useEffect(() => {
     setHeight()
     setHeaderHeight(headerRef.current.offsetHeight)
-    loadReCaptcha(`${process.env.SITE_RECAPTCHA_KEY}`)
 
     typeof window !== 'undefined' ? window.addEventListener('resize', setHeight) : null
 

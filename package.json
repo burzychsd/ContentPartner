@@ -38,7 +38,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-lazy-load": "^3.0.13",
-    "react-recaptcha-v3": "^1.1.0",
+    "react-recaptcha-hook": "^1.0.7",
     "react-remove-scroll-bar": "^2.0.0",
     "react-spring": "^8.0.25",
     "react-visibility-sensor": "^5.0.2",
