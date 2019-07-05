@@ -142,7 +142,7 @@ const ContactForm = props => {
                             <SocialMedia />
                         </Flex>
                     </Flex>
-                    <Recaptcha action='contact' sitekey={process.env.SITE_RECAPTCHA_KEY} onToken={sendEmail} />
+                    <Recaptcha action='contact' sitekey='6LeSQKwUAAAAAKFAv8YR1dV3WYJdfVuJdYjqGOFm' onToken={sendEmail} />
                 </AnimatedFlex>
             }
         </>
