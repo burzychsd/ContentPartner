@@ -232,7 +232,8 @@ textarea::-webkit-input-placeholder {
     max-width: 600px;
 }
 
-.bulbs_graphic {
+.bulbs_graphic,
+.grecaptcha-badge {
     visibility: hidden;
 }
 

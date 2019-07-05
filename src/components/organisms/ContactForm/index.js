@@ -49,7 +49,7 @@ const ContactForm = props => {
     function sendEmail() {
         const { name, email, topic, message } = values
         const data = { name, email, topic, message }
-        console.log('No errors, submit callback called!');
+        console.log('No errors, submit callback called!')
         axios.post('/.netlify/functions/contact', JSON.stringify(data))
         .then(response => handleSuccess())
         .catch(err => handleError('Coś poszło nie tak, spróbuj ponownie później.'))
@@ -140,6 +140,7 @@ const ContactForm = props => {
                             <SocialMedia />
                         </Flex>
                     </Flex>
+                    <Text style={{ lineHeight: '1.625rem' }} css={tw`text-center text-xs sm:text-sm font-body mb-8 mx-auto text-dark_puce self-start`}>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</Text>
                 </AnimatedFlex>
             }
         </>

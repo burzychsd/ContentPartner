@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { navigate } from 'gatsby'
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 
 const useForm = (callback, validate) => {
 
@@ -8,10 +9,20 @@ const useForm = (callback, validate) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState({ loading: false, error: false, msg: '' })
 
+  const { executeRecaptcha } = useGoogleReCaptcha()
+  let recaptchaValidation = null
+
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
+    const token = executeRecaptcha('kontakt')
+    recaptchaValidation = token
+  }, [])
+
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting && recaptchaValidation) {
       setStatus({ loading: true, error: false })
       callback();
+    } else if (Boolean(recaptchaValidation) === false) {
+      handleError('Coś poszło nie tak. Spróbuj ponownie później.')
     }
   }, [errors]);
 
