@@ -232,9 +232,13 @@ textarea::-webkit-input-placeholder {
     max-width: 600px;
 }
 
-.bulbs_graphic,
-.grecaptcha-badge {
+.bulbs_graphic {
     visibility: hidden;
+}
+
+.grecaptcha-badge {
+    visibility: hidden!important;
+    opacity: 0!important;
 }
 
 /* MEDIA QUERIES */
