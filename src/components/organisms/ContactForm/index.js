@@ -22,8 +22,6 @@ import './ContactForm.css'
 
 const ContactForm = props => {
 
-    let recaptchaToken = null
-
     const {
         values,
         errors,
@@ -35,6 +33,7 @@ const ContactForm = props => {
     } = useForm(sendEmail, validate);
 
     const [mounted, setMounted] = useState(false)
+    const [recaptchaToken, setRecaptchaToken] = useState(null)
 
     useEffect(() => {
         setTimeout(() => setMounted(true), 200)
@@ -62,7 +61,7 @@ const ContactForm = props => {
         }
     }
 
-    const getToken = token => recaptchaToken = token
+    const getToken = token => setRecaptchaToken(token)
 
     const formContainerProps = {
         reset: true,
