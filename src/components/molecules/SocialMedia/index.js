@@ -14,7 +14,7 @@ const SocialMedia = props => {
     const links = [
         'https://www.facebook.com/fanpage.contentpartner/',
         'https://twitter.com/_contentpartner',
-        'https://www.linkedin.com/showcase/_content-partner/'
+        'https://www.linkedin.com/company/20314231/'
     ]
 
     const iconProps = {
