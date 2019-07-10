@@ -26,6 +26,7 @@ require('dotenv').config({
   exports.handler = function(event, context, callback) {
     let data = JSON.parse(event.body)
     let { name, email, topic, message, recaptchaToken } = data
+    console.log(recaptchaToken)
     let mailOptions = {
       from: `${name} <${email}>`,
       to: process.env.MY_EMAIL_ADDRESS,
@@ -38,11 +39,15 @@ require('dotenv').config({
 
     function isHuman(recaptchaToken) {
       return axios
-        .post(`${RECAPTCHA_VERIFY_URL}?response=${recaptchaToken}&secret=${process.env.SITE_RECAPTCHA_KEY}`)
+        .post(`${RECAPTCHA_VERIFY_URL}?response=${recaptchaToken}&secret=${process.env.SITE_RECAPTCHA_SECRET}`)
         .then(({ data }) => {
           console.log(data)
           return data.score > 0.5
-        });
+        })
+        .else(error => {
+          console.log(error)
+          return false
+        })
     }
 
     // It's really as simple as this, 
