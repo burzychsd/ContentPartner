@@ -165,13 +165,20 @@ textarea::-webkit-input-placeholder {
 .blog_post_body > ol > li > a {
     position: relative;
     text-decoration: none;
-    color: #463E43;
     font-weight: 700;
 }
 
+.blog_post_body > ul > li > a,
+.blog_post_body > ol > li > a {
+    color: #463E43;
+}
+
+.blog_post_body > a,
+.blog_post_body > p > a {
+    color: #22AED1;
+}
+
 .text > span:before,
-.blog_post_body > a:before,
-.blog_post_body > p > a:before,
 .blog_post_body > ul > li > a:before,
 .blog_post_body > ol > li > a:before {
     content: '';
@@ -189,8 +196,6 @@ textarea::-webkit-input-placeholder {
     background: #B4EBCA;
 }
 
-.blog_post_body > a:before,
-.blog_post_body > p > a:before,
 .blog_post_body > ul > li > a:before,
 .blog_post_body > ol > li > a:before {
     background: #FEFCAD;
