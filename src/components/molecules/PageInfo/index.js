@@ -27,9 +27,6 @@ const PageInfo = props => {
     useEffect(() => {
         setTimeout(() => setMounted(true), 200)
 
-        return () => {
-            setTimeout(() => setMounted(false), 200)
-        }
     }, [])
 
     const transition1 = fadeTransition(condition1)
