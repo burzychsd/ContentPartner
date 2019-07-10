@@ -25,7 +25,7 @@ require('dotenv').config({
   // Our cloud function
   exports.handler = function(event, context, callback) {
     let data = JSON.parse(event.body)
-    let { name, email, topic, message, recaptchaToken } = data
+    let { name, email, topic, message } = data
     let mailOptions = {
       from: `${name} <${email}>`,
       to: process.env.MY_EMAIL_ADDRESS,
@@ -40,8 +40,6 @@ require('dotenv').config({
       return axios
         .post(`${RECAPTCHA_VERIFY_URL}?response=${recaptchaToken}&secret=${process.env.SITE_RECAPTCHA_SECRET}`)
         .then(({ data }) => {
-          console.log(data)
-          console.log(recaptchaToken)
           return data.score > 0.5
         })
         .catch(error => {
@@ -53,7 +51,7 @@ require('dotenv').config({
     // It's really as simple as this, 
     // directly from the Mailgun dashboard
   
-    if(isHuman(recaptchaToken) || typeof recaptchaToken !== 'undefined') {
+    if (data.recaptchaToken && isHuman(data.recaptchaToken)) {
       mg.messages().send(mailOptions, (error, body) => {
         if (error) {
           callback(null, {

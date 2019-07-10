@@ -38,8 +38,6 @@ const ContactForm = props => {
     useEffect(() => {
         setTimeout(() => setMounted(true), 200)
 
-        console.log(recaptchaToken)
-
         return () => {
             setMounted(false)
         }
