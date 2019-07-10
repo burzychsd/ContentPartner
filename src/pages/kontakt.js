@@ -1,11 +1,10 @@
 // DEPENDENCIES
 import React from 'react'
-import loadable from '@loadable/component'
 
 // COMPONENTS
 import SEO from './../components/templates/SEO'
-const TrailHeading = loadable(() => import('../components/molecules/TrailHeading'))
-const ContactForm = loadable(() => import('../components/organisms/ContactForm'))
+import TrailHeading from '../components/molecules/TrailHeading'
+import ContactForm from '../components/organisms/ContactForm'
 
 const Kontakt = () => {
 

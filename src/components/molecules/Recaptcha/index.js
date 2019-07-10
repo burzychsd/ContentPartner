@@ -9,7 +9,6 @@ const Recaptcha = ({ action, sitekey, onToken }) => {
       const getToken = async () => {
         const token = await execute(action);
         onToken(token);
-        console.log(token)
       };
 
       getToken();
