@@ -44,7 +44,7 @@ require('dotenv').config({
           console.log(data)
           return data.score > 0.5
         })
-        .else(error => {
+        .catch(error => {
           console.log(error)
           return false
         })
