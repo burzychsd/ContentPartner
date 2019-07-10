@@ -39,7 +39,10 @@ require('dotenv').config({
     function isHuman(recaptchaToken) {
       return axios
         .post(`${RECAPTCHA_VERIFY_URL}?response=${recaptchaToken}&secret=${process.env.SITE_RECAPTCHA_KEY}`)
-        .then(({ data }) => data.score > 0.5);
+        .then(({ data }) => {
+          console.log(data)
+          return data.score > 0.5
+        });
     }
 
     // It's really as simple as this, 
