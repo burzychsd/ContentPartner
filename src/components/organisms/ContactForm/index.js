@@ -50,7 +50,7 @@ const ContactForm = props => {
 
     function sendEmail() {
         const { name, email, topic, message } = values
-        const data = { name, email, topic, message }
+        const data = { name, email, topic, message, recaptchaToken }
         console.log('No errors, submit callback called!')
         if (recaptchaToken) {
             axios.post('/.netlify/functions/contact', JSON.stringify(data))
