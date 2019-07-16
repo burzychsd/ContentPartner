@@ -12,7 +12,7 @@ const Kontakt = () => {
     return (
         <>
             <SEO title='Kontakt' description='Napisz lub zadzwoń, jeśli chcesz nawiązać współpracę.' />
-            <TrailHeading title='Kontakt' />
+            <TrailHeading title='Kontakt' delay={true} />
             <ContactForm />
         </>
     )

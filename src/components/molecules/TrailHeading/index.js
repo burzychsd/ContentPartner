@@ -11,7 +11,7 @@ import { H1 as Heading } from '../../atoms/Heading'
 // ANIMATION
 import { titleAnimation } from './animation'
 
-const TrailHeading = ({ title, style, customCss }) => {
+const TrailHeading = ({ title, style, customCss, delay }) => {
 
     const [mounted, setMounted] = useState(false)
 
@@ -22,7 +22,7 @@ const TrailHeading = ({ title, style, customCss }) => {
 
     const letters = title.split('')
 
-    const trail = titleAnimation(letters, mounted)
+    const trail = titleAnimation(letters, mounted, delay ? 1200 : 600)
 
     return (
         <Heading
