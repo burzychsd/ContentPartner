@@ -1,11 +1,10 @@
 // DEPENDENCIES
 import React from 'react'
 import loadable from '@loadable/component'
-import pMinDelay from 'p-min-delay'
 
 // COMPONENTS
 import SEO from './../components/templates/SEO'
-const TrailHeading = loadable(() => pMinDelay(import('../components/molecules/TrailHeading'), 600))
+const TrailHeading = loadable(() => import('../components/molecules/TrailHeading'))
 const ContactForm = loadable(() => import('../components/organisms/ContactForm'))
 
 const Kontakt = () => {

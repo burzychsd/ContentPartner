@@ -21,7 +21,7 @@ const TrailHeading = ({ title, style, customCss, delay }) => {
 
     const letters = title.split('')
 
-    const trail = titleAnimation(letters, mounted, delay ? 1200 : 600)
+    const trail = titleAnimation(letters, mounted, delay ? 1400 : 600)
 
     return (
         <Heading
