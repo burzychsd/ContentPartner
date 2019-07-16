@@ -69,7 +69,8 @@
 }
 
 .blog_post_body > p,
-.blog_post_body > ul {
+.blog_post_body > ul,
+.post_picture {
     margin-bottom: 2rem;
 }
 
@@ -91,15 +92,7 @@
     font-weight: 700;
 }
 
-.post_picture {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2rem;
-    display: flex;
-}
-
-.post_picture > img,
+.post_picture,
 .post_iframe {
     width: 100%;
     max-width: 750px;
