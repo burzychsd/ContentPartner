@@ -91,14 +91,14 @@
     font-weight: 700;
 }
 
-.blog_post_body > figure {
+.post_picture {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2rem;
 }
 
-.blog_post_body > figure > img,
+.post_picture > img,
 .post_iframe {
     width: 100%;
     max-width: 750px;
