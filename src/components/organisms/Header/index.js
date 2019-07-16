@@ -5,8 +5,8 @@ import { RemoveScrollBar, zeroRightClassName } from 'react-remove-scroll-bar'
 import loadable from '@loadable/component'
 
 // COMPONENTS
-const Flex = loadable(() => import('./../../atoms/Flex'))
-const Navigation = loadable(() => import('./../../molecules/Navigation'))
+import Flex from './../../atoms/Flex'
+import Navigation from './../../molecules/Navigation'
 
 // PROPS
 import { headerProps, navProps } from './props'
