@@ -6,11 +6,11 @@ import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-const FormField = loadable(() => import('./../../atoms/FormField'))
-const Button = loadable(() => import('./../../atoms/Button'))
-const Text = loadable(() => import('./../../atoms/Text'))
-const SocialMedia = loadable(() => import('./../../molecules/SocialMedia'))
-const Recaptcha = loadable(() => import('./../../molecules/Recaptcha'))
+import FormField from './../../atoms/FormField'
+import Button from './../../atoms/Button'
+import Text from './../../atoms/Text'
+import SocialMedia from './../../molecules/SocialMedia'
+import Recaptcha from './../../molecules/Recaptcha'
 
 const AnimatedFlex = animated(Flex)
 
