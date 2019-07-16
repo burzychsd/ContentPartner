@@ -91,7 +91,7 @@
     font-weight: 700;
 }
 
-.blog_post_body > p > img,
+.blog_post_body > figure > img,
 .post_iframe {
     width: 100%;
     max-width: 750px;
