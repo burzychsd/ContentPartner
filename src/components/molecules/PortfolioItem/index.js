@@ -2,16 +2,18 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { useSpring, animated } from 'react-spring'
+import loadable from '@loadable/component'
 
 // COMPONENT
 import Flex from './../../atoms/Flex'
 import Text from './../../atoms/Text'
-import UMK from './../../../images/svg/umk.svg'
-import Ecopywriting from './../../../images/svg/eCopywriting.svg'
-import Ekotechnologia from './../../../images/svg/ekotechnologia.svg'
-import JafiSport from './../../../images/svg/jafi_sport.svg'
-import ObstawiamyInfo from './../../../images/svg/obstawiamy_info.svg'
 import VisibilitySensor from './../../atoms/VisibilitySensor'
+
+const UMK = loadable(() => import('./../../../images/svg/umk.svg'))
+const Ecopywriting = loadable(() => import('./../../../images/svg/eCopywriting.svg'))
+const Ekotechnologia = loadable(() => import('./../../../images/svg/ekotechnologia.svg'))
+const JafiSport = loadable(() => import('./../../../images/svg/jafi_sport.svg'))
+const ObstawiamyInfo = loadable(() => import('./../../../images/svg/obstawiamy_info.svg'))
 
 const AnimatedFlex = animated(Flex)
 

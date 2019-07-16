@@ -3,10 +3,11 @@ import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { useTrail, useSpring, animated } from 'react-spring'
 import { zeroRightClassName } from 'react-remove-scroll-bar'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
-import NavLinks from './../../molecules/NavLinks'
+const NavLinks = loadable(() => import('./../../molecules/NavLinks'))
 
 const AnimatedFlex = animated(Flex)
 

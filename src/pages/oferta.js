@@ -1,9 +1,10 @@
 // DEPENDENCIES
 import React from 'react'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import SEO from './../components/templates/SEO'
-import ServicesDisplay from '../components/organisms/ServicesDisplay'
+const ServicesDisplay = loadable(() => import('../components/organisms/ServicesDisplay'))
 
 const Oferta = () => {
 

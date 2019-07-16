@@ -74,7 +74,7 @@ const Layout = ({ children, location }) => {
       setToggle={setToggle} />
       <main ref={siteWrapperRef} id='site_wrapper'>
         <Flex as='section' reset css={tw`h-full flex-col items-center`} style={{ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight < 480 ? 480 : windowHeight, overflowX: 'hidden' }}>
-          {children}
+          {headerHeight > 0 ? children : null}
         </Flex>
         <Modal isActive={showModal.modal}
         handleClick={() => setShowModal({ modal: false, faq: false, cookies: false })} button='Zamknij'>

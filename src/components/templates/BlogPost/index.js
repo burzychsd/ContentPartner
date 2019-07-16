@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { memo, useState, useEffect } from 'react'
+import React, { memo, useState } from 'react'
 import { animated, useSpring } from 'react-spring'
 import loadable from '@loadable/component'
 import { navigate } from 'gatsby'
@@ -7,9 +7,9 @@ import { navigate } from 'gatsby'
 // COMPONENTS
 import SEO from './../../templates/SEO'
 import Flex from './../../atoms/Flex'
-import { H1 as Heading } from './../../atoms/Heading'
+import {H1 as Heading} from './../../atoms/Heading'
 import Text from './../../atoms/Text'
-const Disqus = loadable(() => import('gatsby-plugin-disqus'))
+const Disqus = loadable(() => import(/* webpackPrefetch: true */ 'gatsby-plugin-disqus'))
 
 const AnimatedFlex = animated(Flex)
 
@@ -20,7 +20,7 @@ const BlogPost = props => {
 
     const { pageContext } = props
 
-    const [mounted, setMounted] = useState(false)
+    const [mounted] = useState(true)
 
     const { id, title, src, date, author, content, shortDescription } = pageContext
 
@@ -33,14 +33,6 @@ const BlogPost = props => {
 
     setPicContainerStyle({...setStyles, config, delay: mounted ? 600 : 300 })
     setPostContainerStyle({ opacity: mounted ? 1 : 0, config, delay: mounted ? 300 : 600 })
-
-    useEffect(() => {
-        setMounted(true)
-
-        return () => {
-            setMounted(false)
-        }
-    }, [])
 
     const blogPostPicContainer = {
         reset: true,

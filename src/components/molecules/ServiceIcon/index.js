@@ -2,17 +2,19 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useSpring, animated } from 'react-spring'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
 import Text from './../../atoms/Text'
-import ServiceInfo from './../../molecules/ServiceInfo'
-import Articles from './../../../images/svg/articles.svg'
-import Ecommerce from './../../../images/svg/e-commerce.svg'
-import Website from './../../../images/svg/www.svg'
-import SocialMedia from './../../../images/svg/social.svg'
-import Ebook from './../../../images/svg/e-book.svg'
-import Cooperation from './../../../images/svg/cooperation.svg'
+
+const ServiceInfo = loadable(() => import('./../../molecules/ServiceInfo'))
+const Articles = loadable(() => import('./../../../images/svg/articles.svg'))
+const Ecommerce = loadable(() => import('./../../../images/svg/e-commerce.svg'))
+const Website = loadable(() => import('./../../../images/svg/www.svg'))
+const SocialMedia = loadable(() => import('./../../../images/svg/social.svg'))
+const Ebook = loadable(() => import('./../../../images/svg/e-book.svg'))
+const Cooperation = loadable(() => import('./../../../images/svg/cooperation.svg'))
 
 const AnimatedText = animated(Text)
 

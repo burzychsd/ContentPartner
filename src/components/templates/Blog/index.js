@@ -1,11 +1,12 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
 import { graphql } from 'gatsby'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import SEO from './../../templates/SEO'
-import BlogCards from './../../molecules/BlogCards'
-import Pagination from './../../molecules/Pagination'
+const BlogCards = loadable(() => import(/* webpackPrefetch: true */ './../../molecules/BlogCards'))
+const Pagination = loadable(() => import(/* webpackPrefetch: true */ './../../molecules/Pagination'))
 
 const Blog = props => {
 

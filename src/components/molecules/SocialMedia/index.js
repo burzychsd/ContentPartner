@@ -1,13 +1,14 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
 import shortid from 'shortid'
+import loadable from '@loadable/component'
 
 // COMPONENTS
-import Flex from './../../atoms/Flex'
-import Facebook from './../../../images/svg/facebook.svg'
-import Instagram from './../../../images/svg/instagram.svg'
-import Twitter from './../../../images/svg/twitter.svg'
-import Linkedin from './../../../images/svg/linkedin.svg'
+const Flex = loadable(() => import('./../../atoms/Flex'))
+const Facebook = loadable(() => import('./../../../images/svg/facebook.svg'))
+const Instagram = loadable(() => import('./../../../images/svg/instagram.svg'))
+const Twitter = loadable(() => import('./../../../images/svg/twitter.svg'))
+const Linkedin = loadable(() => import('./../../../images/svg/linkedin.svg'))
 
 const SocialMedia = props => {
 

@@ -5,7 +5,6 @@ import shortid from 'shortid'
 import { animated } from 'react-spring'
 
 // COMPONENTS
-import Flex from '../../atoms/Flex'
 import { H1 as Heading } from '../../atoms/Heading'
 
 // ANIMATION

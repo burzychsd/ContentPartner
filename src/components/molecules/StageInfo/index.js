@@ -1,6 +1,7 @@
 // DEPENDENCIES
 import React, { memo } from 'react'
 import { useSpring, animated } from 'react-spring'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -10,11 +11,11 @@ import VisibilitySensor from './../../atoms/VisibilitySensor'
 
 const AnimatedFlex = animated(Flex)
 
-import Stage01 from './../../../images/svg/graphic01.svg'
-import Stage02 from './../../../images/svg/graphic02.svg'
-import Stage03 from './../../../images/svg/graphic03.svg'
-import Stage04 from './../../../images/svg/graphic04.svg'
-import Stage05 from './../../../images/svg/graphic05.svg'
+const Stage01 = loadable(() => import('./../../../images/svg/graphic01.svg'))
+const Stage02 = loadable(() => import('./../../../images/svg/graphic02.svg'))
+const Stage03 = loadable(() => import('./../../../images/svg/graphic03.svg'))
+const Stage04 = loadable(() => import('./../../../images/svg/graphic04.svg'))
+const Stage05 = loadable(() => import('./../../../images/svg/graphic05.svg'))
 
 // STYLES
 import './StageInfo.css'

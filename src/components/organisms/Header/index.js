@@ -2,10 +2,11 @@
 import React, { memo, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { RemoveScrollBar, zeroRightClassName } from 'react-remove-scroll-bar'
+import loadable from '@loadable/component'
 
 // COMPONENTS
-import Flex from './../../atoms/Flex'
-import Navigation from './../../molecules/Navigation'
+const Flex = loadable(() => import('./../../atoms/Flex'))
+const Navigation = loadable(() => import('./../../molecules/Navigation'))
 
 // PROPS
 import { headerProps, navProps } from './props'

@@ -1,9 +1,11 @@
 // DEPENDENCIES
-import React, { memo, useState, useEffect } from 'react'
+import React, { memo, useState } from 'react'
+import loadable from '@loadable/component'
+import pMinDelay from 'p-min-delay'
 
 // COMPONENTS
-import Flex from './../../atoms/Flex'
-import ServiceIcon from './../../molecules/ServiceIcon'
+const Flex = loadable(() => import('./../../atoms/Flex'))
+const ServiceIcon = loadable(() => pMinDelay(import('./../../molecules/ServiceIcon'), 600))
 
 // STYLES
 import './ServicesDisplay.css'
@@ -24,30 +26,15 @@ const ServicesDisplay = props => {
         cooperation: false
     })
 
-    const [mounted, setMounted] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => setMounted(true), 400)
-
-        return () => {
-            setMounted(false)
-        }
-    }, [])
-
     return (
-        <>
-            {
-                mounted && 
-                <Flex {...containerProps}>
-                    <ServiceIcon title='Artykuły tematyczne' handleClick={setShowInfo} showInfo={showInfo} />
-                    <ServiceIcon title='Opisy produktów' handleClick={setShowInfo} showInfo={showInfo} />
-                    <ServiceIcon title='Treści na strony www' handleClick={setShowInfo} showInfo={showInfo} />
-                    <ServiceIcon title='Media społecznościowe' handleClick={setShowInfo} showInfo={showInfo} />
-                    <ServiceIcon title='E-booki' handleClick={setShowInfo} showInfo={showInfo} />
-                    <ServiceIcon title='Kompleksowa współpraca' handleClick={setShowInfo} showInfo={showInfo} />
-                </Flex>
-            }
-        </>
+        <Flex {...containerProps}>
+            <ServiceIcon title='Artykuły tematyczne' handleClick={setShowInfo} showInfo={showInfo} />
+            <ServiceIcon title='Opisy produktów' handleClick={setShowInfo} showInfo={showInfo} />
+            <ServiceIcon title='Treści na strony www' handleClick={setShowInfo} showInfo={showInfo} />
+            <ServiceIcon title='Media społecznościowe' handleClick={setShowInfo} showInfo={showInfo} />
+            <ServiceIcon title='E-booki' handleClick={setShowInfo} showInfo={showInfo} />
+            <ServiceIcon title='Kompleksowa współpraca' handleClick={setShowInfo} showInfo={showInfo} />
+        </Flex>
     )
 }
 

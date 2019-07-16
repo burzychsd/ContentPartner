@@ -1,37 +1,25 @@
 // DEPENDENCIES
-import React, { memo, Fragment, useState, useEffect } from 'react'
+import React, { memo } from 'react'
+import loadable from '@loadable/component'
 
 // COMPONENTS
-import PortfolioItem from './../../molecules/PortfolioItem'
+const PortfolioItem = loadable(() => import('./../../molecules/PortfolioItem'))
 
 // DATA
 import { descriptions } from './descriptions'
 
 const PortfolioDisplay = props => {
 
-    const [mounted, setMounted] = useState(false)
-
-    useEffect(() => {
-        setTimeout(() => setMounted(true), 200)
-
-        return () => {
-            setMounted(false)
-        }
-    }, [])
-
     return (
-        <Fragment>
-            {
-                mounted &&
-                <>
-                    <PortfolioItem companyName='ecopywriting' description={descriptions.ecopywriting} />
-                    <PortfolioItem companyName='umk' description={descriptions.umk} />
-                    <PortfolioItem companyName='ekotechnologia' description={descriptions.ekotechnologia} />
-                    <PortfolioItem companyName='jafi_sport' description={descriptions.jafi_sport} />
-                    <PortfolioItem companyName='obstawiamy_info' description={descriptions.obstawiamy_info} />
-                </>
-            }
-        </Fragment>
+
+        <>
+            <PortfolioItem companyName='ecopywriting' description={descriptions.ecopywriting} />
+            <PortfolioItem companyName='umk' description={descriptions.umk} />
+            <PortfolioItem companyName='ekotechnologia' description={descriptions.ekotechnologia} />
+            <PortfolioItem companyName='jafi_sport' description={descriptions.jafi_sport} />
+            <PortfolioItem companyName='obstawiamy_info' description={descriptions.obstawiamy_info} />
+        </>
+
     )
 }
 

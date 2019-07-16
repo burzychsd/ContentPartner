@@ -1,13 +1,14 @@
 // DEPENDENCIES
-import React, { memo, useState, useEffect } from 'react'
+import React, { memo, useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import shortid from 'shortid'
+import loadable from '@loadable/component'
 
 // COMPONENT
 import Flex from './../../atoms/Flex'
 import Text from './../../atoms/Text'
-import Image from './../../atoms/Image'
-import TrailHeading from './../../molecules/TrailHeading'
+const Image = loadable(() => import('./../../atoms/Image'))
+const TrailHeading = loadable(() => import('./../../molecules/TrailHeading'))
 
 const AnimatedFlex = animated(Flex)
 const AnimatedText = animated(Text)
@@ -22,15 +23,7 @@ const AboutContent = props => {
 
     const { data } = props
 
-    const [mounted, setMounted] = useState(false)
-
-    useEffect(() => {
-        setMounted(true)
-
-        return () => {
-            setMounted(false)
-        }
-    }, [])
+    const [mounted] = useState(true)
 
     const config = { mass: 1, tension: 120, friction: 20 }
 

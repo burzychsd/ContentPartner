@@ -3,11 +3,12 @@ import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import shortid from 'shortid'
 import { navigate } from 'gatsby'
+import loadable from '@loadable/component'
 
 // COMPONENTS
 import Text from './../../atoms/Text'
 import { H1 as Heading } from './../../atoms/Heading'
-import Modal from './../Modal'
+const Modal = loadable(() => import('./../Modal'))
 
 const ServiceInfo = props => {
 
