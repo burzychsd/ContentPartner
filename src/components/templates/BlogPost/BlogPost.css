@@ -69,8 +69,7 @@
 }
 
 .blog_post_body > p,
-.blog_post_body > ul,
-.post_picture {
+.blog_post_body > ul {
     margin-bottom: 2rem;
 }
 
@@ -97,7 +96,7 @@
     width: 100%;
     max-width: 750px;
     height: auto;
-    margin: 0 auto;
+    margin: 0 auto 2rem auto;
 }
 
 .post_iframe {
