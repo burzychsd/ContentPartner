@@ -40,8 +40,10 @@ const ServiceIcon = props => {
     const spring = { from: { opacity: 0, transform: 'translateX(-20px)' } }
 
     const [titleAnimationStyle, setTitleAnimationStyle] = useSpring(() => ({...spring}))
+    const [iconAnimationStyle, setIconAnimationStyle] = useSpring(() => ({ opacity: 0 }))
 
-    setTitleAnimationStyle({ ...setStyles, config, delay: 600 })
+    setTitleAnimationStyle({ ...setStyles, config, delay: 400 })
+    setIconAnimationStyle({ opacity: mounted ? 1 : 0, config, delay: 300 })
 
     const conditions = {
         articles: title === 'Artykuły tematyczne',
@@ -54,7 +56,8 @@ const ServiceIcon = props => {
 
     const iconContainer = {
         reset: true,
-        className: 'icon_container'
+        className: 'icon_container',
+        style: { ...iconAnimationStyle }
     }
 
     const iconProps = {

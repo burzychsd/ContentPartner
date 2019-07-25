@@ -4,7 +4,7 @@ import loadable from '@loadable/component'
 
 // COMPONENTS
 import SEO from './../components/templates/SEO'
-import TrailHeading from '../components/molecules/TrailHeading'
+import { H1 as Heading } from './../components/atoms/Heading'
 const ContactForm = loadable(() => import('../components/organisms/ContactForm'))
 
 const Kontakt = () => {
@@ -12,7 +12,7 @@ const Kontakt = () => {
     return (
         <>
             <SEO title='Kontakt' description='Napisz lub zadzwoń, jeśli chcesz nawiązać współpracę.' />
-            <TrailHeading title='Kontakt' delay={true} />
+            <Heading>Kontakt</Heading>
             <ContactForm />
         </>
     )

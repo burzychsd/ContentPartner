@@ -1,11 +1,10 @@
 // DEPENDENCIES
 import React, { memo, useState } from 'react'
 import loadable from '@loadable/component'
-import pMinDelay from 'p-min-delay'
 
 // COMPONENTS
 const Flex = loadable(() => import('./../../atoms/Flex'))
-const ServiceIcon = loadable(() => pMinDelay(import('./../../molecules/ServiceIcon'), 400))
+const ServiceIcon = loadable(() => import('./../../molecules/ServiceIcon'))
 
 // STYLES
 import './ServicesDisplay.css'
