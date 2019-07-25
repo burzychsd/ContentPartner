@@ -12,6 +12,8 @@ import Modal from './../../molecules/Modal'
 import PageInfo from './../../molecules/PageInfo'
 const CookiesInfo = loadable(() => import('./../../molecules/CookiesInfo'))
 
+import Loader from './../../molecules/Loader'
+
 // DATA
 const links = ['O mnie', 'Oferta', 'Portfolio', 'Kontakt', 'Blog']
 
@@ -74,7 +76,7 @@ const Layout = ({ children, location }) => {
       setToggle={setToggle} />
       <main ref={siteWrapperRef} id='site_wrapper'>
         <Flex as='section' reset css={tw`h-full flex-col items-center`} style={{ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight < 480 ? 480 : windowHeight, overflowX: 'hidden' }}>
-          {headerHeight > 0 ? children : null}
+          {headerHeight > 0 ? children : <Loader animate={headerHeight === 0} />}
         </Flex>
         <Modal isActive={showModal.modal}
         handleClick={() => setShowModal({ modal: false, faq: false, cookies: false })} button='Zamknij'>

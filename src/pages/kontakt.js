@@ -4,7 +4,7 @@ import loadable from '@loadable/component'
 
 // COMPONENTS
 import SEO from './../components/templates/SEO'
-const TrailHeading = loadable(() => import('../components/molecules/TrailHeading'))
+import TrailHeading from '../components/molecules/TrailHeading'
 const ContactForm = loadable(() => import('../components/organisms/ContactForm'))
 
 const Kontakt = () => {

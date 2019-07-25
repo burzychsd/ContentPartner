@@ -1,8 +1,6 @@
 // DEPENDENCIES
-import React, { memo, useState } from 'react'
-import { useSpring, animated } from 'react-spring'
+import React, { memo } from 'react'
 import axios from 'axios'
-import loadable from '@loadable/component'
 
 // COMPONENTS
 import Flex from './../../atoms/Flex'
@@ -11,8 +9,6 @@ import Button from './../../atoms/Button'
 import Text from './../../atoms/Text'
 import SocialMedia from './../../molecules/SocialMedia'
 import Recaptcha from './../../molecules/Recaptcha'
-
-const AnimatedFlex = animated(Flex)
 
 // VALIDATION
 import useForm from './validation/useForm'
@@ -32,13 +28,6 @@ const ContactForm = props => {
         handleError,
         status
     } = useForm(sendEmail, validate);
-
-    const [mounted] = useState(true)
-
-    const config = { mass: 1, tension: 180, friction: 20 }
-    const [formContainerStyle, setFormContainerStyle] = useSpring(() => ({ from: { opacity: 0 } }))
-
-    setFormContainerStyle({ opacity: mounted ? 1 : 0, config, delay: 200 })
 
     function sendEmail() {
         const recaptchaToken = window.localStorage.getItem('recaptchaToken')
@@ -99,7 +88,7 @@ const ContactForm = props => {
     const errorMessageClasses = { ...tw`text-center text-xs sm:text-sm font-body mb-4 mx-auto text-dark_salmon` }
 
     return (
-        <AnimatedFlex reset css={tw`flex-col`} style={formContainerStyle}>
+        <Flex reset css={tw`flex-col`}>
             {status.error && <p css={errorMessageClasses}>{status.msg}</p>}
             {status.loading && <hr className='contact_loader contact_loader--active' />}
             <Flex className='contact_details' reset css={tw`flex-col lg:flex-row justify-center items-center mt-2 mx-auto`}>
@@ -139,7 +128,7 @@ const ContactForm = props => {
                 </Flex>
             </Flex>
             <Recaptcha action='contact' sitekey='6LeSQKwUAAAAAKFAv8YR1dV3WYJdfVuJdYjqGOFm' onToken={getToken} />
-        </AnimatedFlex>
+        </Flex>
     )
 }
 

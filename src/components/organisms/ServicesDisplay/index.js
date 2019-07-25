@@ -5,7 +5,7 @@ import pMinDelay from 'p-min-delay'
 
 // COMPONENTS
 const Flex = loadable(() => import('./../../atoms/Flex'))
-const ServiceIcon = loadable(() => pMinDelay(import('./../../molecules/ServiceIcon'), 600))
+const ServiceIcon = loadable(() => pMinDelay(import('./../../molecules/ServiceIcon'), 400))
 
 // STYLES
 import './ServicesDisplay.css'
