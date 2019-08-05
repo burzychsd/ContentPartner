@@ -11,7 +11,7 @@ const Loader = (props) => {
     const show = animate => ({ opacity: animate ? 1 : 0, transition: 'opacity 400ms ease-out 0.0001s' })
 
     return (
-        <Spin style={{ width: '4rem', height: '4rem', position: 'fixed', top: '50%', transform: 'translateY(-50%)', margin: '0 auto', ...show(animate) }} />
+        <Spin style={{ width: '4rem', height: '4rem', position: 'fixed', top: '50%', transform: 'translateY(-50%)', left: 0, right: 0, margin: '0 auto', ...show(animate) }} />
     )
 
 }

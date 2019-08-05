@@ -76,7 +76,7 @@ const Layout = ({ children, location }) => {
       setToggle={setToggle} />
       <main ref={siteWrapperRef} id='site_wrapper'>
         <Flex as='section' reset css={tw`h-full flex-col items-center`} style={{ paddingTop: `${headerHeight + 40}px`, minHeight: windowHeight < 480 ? 480 : windowHeight, overflowX: 'hidden' }}>
-          {headerHeight > 0 ? children : <Loader animate={headerHeight === 0} />}
+          {children}
         </Flex>
         <Modal isActive={showModal.modal}
         handleClick={() => setShowModal({ modal: false, faq: false, cookies: false })} button='Zamknij'>
@@ -86,6 +86,7 @@ const Layout = ({ children, location }) => {
       </main>
       {location.pathname !== '/' && windowHeight > 0 && <Footer setShowModal={setShowModal} />}
       <CookiesInfo setShowModal={setShowModal} />
+      {headerHeight === 0 && <Loader animate={headerHeight === 0} />}
     </Fragment>
   )
 }
