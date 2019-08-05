@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { memo, useState, useRef } from 'react'
+import React, { memo, useState, useRef, useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 import loadable from '@loadable/component'
 
@@ -28,7 +28,11 @@ const HomeContent = ({ data }) => {
         button: `Dowiedz się więcej`,
     }
 
-    const [mounted] = useState(true)
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setTimeout(() => setMounted(true), 1200)
+    });
 
     const textRef = useRef()
     const buttonRef = useRef()
@@ -62,7 +66,7 @@ const HomeContent = ({ data }) => {
                 css={tw`relative self-center xl:self-start py-2`}>{content.button}</AnimatedButton>
             </Flex>
             <Flex reset {...timelineProps}>
-                <TimeLineGraphic style={{ width: '100%' }} />
+                {mounted && <TimeLineGraphic style={{ width: '100%' }} />}
             </Flex>
             <AnimatedFlex reset {...picProps(picStyle)}>
                 <Image fluid={data.imageOne.childImageSharp.fluid} style={{ height: 'auto', width: '100%' }} />
