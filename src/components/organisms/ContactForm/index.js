@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { memo } from 'react'
+import React, { memo, PureComponent } from 'react'
 import axios from 'axios'
 
 // COMPONENTS
@@ -34,12 +34,18 @@ const ContactForm = props => {
         const { name, email, topic, message } = values
         const data = { name, email, topic, message, recaptchaToken }
         console.log('No errors, submit callback called!')
-        if (recaptchaToken) {
+        console.log(recaptchaToken)
+        if (typeof recaptchaToken === 'string') {
             axios.post('/.netlify/functions/contact', JSON.stringify(data))
-            .then(response => mounted && handleSuccess())
-            .catch(err => handleError('Coś poszło nie tak, spróbuj ponownie później.'))
+            .then(response => {
+                if (response.status === 200) {
+                    handleSuccess()
+                } else {
+                    handleError('Coś poszło nie tak, spróbuj ponownie później.')
+                }
+            })
         } else {
-            handleError('Recaptcha wykryło nieprawidłowość. Usuń ciasteczka i spróbuj ponownie.')
+            handleError('Coś poszło nie tak, spróbuj ponownie później.')
         }
     }
 

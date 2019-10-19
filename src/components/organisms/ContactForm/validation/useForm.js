@@ -26,10 +26,11 @@ const useForm = (callback, validate) => {
     setValues(values => ({ ...values, [event.target.name]: event.target.value }));
   };
 
-  const handleSuccess = async () => {
-    await setTimeout(() => setStatus({ loading: false, error: false }), 600)
-    await navigate('/sukces/')
-  }
+  const handleSuccess = () => setTimeout(async () => {
+    await setStatus({ loading: false, error: false, msg: '' });
+    await navigate('/sukces/');
+  }, 600)
+
 
   const handleError = msg => {
     setStatus({
