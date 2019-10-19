@@ -34,7 +34,6 @@ const ContactForm = props => {
         const { name, email, topic, message } = values
         const data = { name, email, topic, message, recaptchaToken }
         console.log('No errors, submit callback called!')
-        console.log(recaptchaToken)
         if (typeof recaptchaToken === 'string') {
             axios.post('/.netlify/functions/contact', JSON.stringify(data))
             .then(response => {
