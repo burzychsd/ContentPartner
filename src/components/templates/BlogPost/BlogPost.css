@@ -84,6 +84,7 @@
 .blog_post_body > quote {
     font-family: 'Merriweather', sans-serif;
     font-weight: 300;
+    word-break: break-word;
 }
 
 .blog_post_body > p > strong,
